@@ -1,0 +1,44 @@
+Temat: Aplikacja do obs³ugi biblioteki miejskiej.
+
+	Aplikacja s³u¿¹ca do obs³ugi bilioteki. Aplikacja pozwala na prowadzenie ewidencji wypo¿yczonych ksi¹¿ek, klientów i zasobów ksi¹¿kowych biblioteki. Wymagania dot. aplikacji:
+
+- dodawanie nowych ksi¹zek, woluminów i klientów 
+- dodawanie i zarz¹dzanie wypo¿yczeniami
+- usuwanie i edycja pozycji ksi¹¿kowych i klientów
+- przegl¹d dostêpnych ksi¹¿ek
+- wyszukiwanie niewypo¿yczonych woluminów
+- wyszukiwanie ksi¹¿ek po s³owach kluczowych
+- generowanie powiadomienia o przekroczonym czasie przechowywania ksia¿ki
+- archiwizacja wypo¿yczeñ po oddaniu ksi¹¿ki przez klienta
+- usuwanie danych o wypo¿yczeniu po przekroczeniu okreœlonego czasu
+
+
+Aktorzy:
+
+Goœæ:
+- Przegl¹danie i wyszukiwanie ksi¹¿ek po tytu³ach
+- Sprawdzanie dostêpnoœci ksi¹¿ki
+- Rejestracja elektroniczna
+
+Klient biblioteki:
+- Przegl¹danie i wyszukiwanie ksi¹¿ek po tytu³ach
+- Sprawdzanie dostêpnoœci ksi¹¿ki
+- zg³aszanie proœby o wypo¿yczenie (je¿eli nie ma ju¿ wypo¿yczonych 6 pozycji)
+- wniosek o aktualizacjê karty klienta
+
+Bibliotekarz:
+- Przegl¹danie i wyszukiwanie ksi¹¿ek po tytu³ach lub numerach katalogowych
+- zapisywanie terminów wypo¿yczeñ i zwrotów ksi¹¿ek
+- Sprawdzanie numerów katalogowych oddanych ksi¹¿ek w celu umieszczenia ich na odpowiednich pó³kach
+- Aktualizacja bazy ksi¹¿ek
+
+System:
+
+Bazy ksi¹¿ek i klientów:
+- Przechowywanie tytu³ów ksi¹¿ek posegregowanych wg. numerów katalogowych
+- Przechowywanie listy wypo¿yczonych ksi¹¿ek wg. daty wypo¿yczenia
+- Przechowywanie informacji o klientach (nazwiska, adresy, wypo¿yczone ksi¹¿ki)
+
+System poczty elektronicznej:
+- Obs³uga rejestracji klientów
+- Wysy³anie ponagleñ do klientów przekraczaj¹cych czas wypo¿yczenia ksi¹¿ek (6 miesiêcy)
