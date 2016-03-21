@@ -1,2 +1,2 @@
-# biblioteka
-Aplikacja s³u¿¹ca do obs³ugi bilioteki. Aplikacja pozwala na prowadzenie ewidencji wypo¿yczonych ksi¹¿ek, klientów i zasobów ksi¹¿kowych biblioteki.
+# Aplikacja do obs³ugi biblioteki miejskiej.
+Aplikacja s³u¿aca do obs³ugi bilioteki. Aplikacja pozwala na prowadzenie ewidencji wypo¿yczonych ksia¿ek, klientów i zasobów ksia¿kowych biblioteki.
