@@ -1,0 +1,1266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="Users" EntityType="Model1.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Readers" EntityType="Model1.Store.Readers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Authors" EntityType="Model1.Store.Authors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Publishers" EntityType="Model1.Store.Publishers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Genres" EntityType="Model1.Store.Genres" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Books" EntityType="Model1.Store.Books" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Authorships" EntityType="Model1.Store.Authorships" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Magazines" EntityType="Model1.Store.Magazines" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Resources" EntityType="Model1.Store.Resources" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Borrowings" EntityType="Model1.Store.Borrowings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reservations" EntityType="Model1.Store.Reservations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReaderApplications" EntityType="Model1.Store.ReaderApplications" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReaderApplicationsDatas" EntityType="Model1.Store.ReaderApplicationsDatas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Positions" EntityType="Model1.Store.Positions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Positions_BookEdition" EntityType="Model1.Store.Positions_BookEdition" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Positions_MagazineNumber" EntityType="Model1.Store.Positions_MagazineNumber" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Positions_Game" EntityType="Model1.Store.Positions_Game" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="GenreBook" Association="Model1.Store.GenreBook">
+      <End Role="Book" EntitySet="Books" />
+      <End Role="Genre" EntitySet="Genres" />
+    </AssociationSet>
+    <AssociationSet Name="AuthorshipAuthor" Association="Model1.Store.AuthorshipAuthor">
+      <End Role="Authorship" EntitySet="Authorships" />
+      <End Role="Author" EntitySet="Authors" />
+    </AssociationSet>
+    <AssociationSet Name="AuthorshipBook" Association="Model1.Store.AuthorshipBook">
+      <End Role="Authorship" EntitySet="Authorships" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="BookEditionBook" Association="Model1.Store.BookEditionBook">
+      <End Role="BookEdition" EntitySet="Positions_BookEdition" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="BookEditionPublisher" Association="Model1.Store.BookEditionPublisher">
+      <End Role="BookEdition" EntitySet="Positions_BookEdition" />
+      <End Role="Publisher" EntitySet="Publishers" />
+    </AssociationSet>
+    <AssociationSet Name="MagazineGenre" Association="Model1.Store.MagazineGenre">
+      <End Role="Magazine" EntitySet="Magazines" />
+      <End Role="Genre" EntitySet="Genres" />
+    </AssociationSet>
+    <AssociationSet Name="MagazinePublisher" Association="Model1.Store.MagazinePublisher">
+      <End Role="Magazine" EntitySet="Magazines" />
+      <End Role="Publisher" EntitySet="Publishers" />
+    </AssociationSet>
+    <AssociationSet Name="MagazineNumberMagazine" Association="Model1.Store.MagazineNumberMagazine">
+      <End Role="MagazineNumber" EntitySet="Positions_MagazineNumber" />
+      <End Role="Magazine" EntitySet="Magazines" />
+    </AssociationSet>
+    <AssociationSet Name="GameGenre" Association="Model1.Store.GameGenre">
+      <End Role="Game" EntitySet="Positions_Game" />
+      <End Role="Genre" EntitySet="Genres" />
+    </AssociationSet>
+    <AssociationSet Name="BorrowingResource" Association="Model1.Store.BorrowingResource">
+      <End Role="Borrowing" EntitySet="Borrowings" />
+      <End Role="Resource" EntitySet="Resources" />
+    </AssociationSet>
+    <AssociationSet Name="BorrowingReader" Association="Model1.Store.BorrowingReader">
+      <End Role="Borrowing" EntitySet="Borrowings" />
+      <End Role="Reader" EntitySet="Readers" />
+    </AssociationSet>
+    <AssociationSet Name="BorrowingUser" Association="Model1.Store.BorrowingUser">
+      <End Role="Borrowing" EntitySet="Borrowings" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="ReservationResource" Association="Model1.Store.ReservationResource">
+      <End Role="Reservation" EntitySet="Reservations" />
+      <End Role="Resource" EntitySet="Resources" />
+    </AssociationSet>
+    <AssociationSet Name="ReservationReader" Association="Model1.Store.ReservationReader">
+      <End Role="Reservation" EntitySet="Reservations" />
+      <End Role="Reader" EntitySet="Readers" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationReader" Association="Model1.Store.ApplicationReader">
+      <End Role="Application" EntitySet="ReaderApplications" />
+      <End Role="Reader" EntitySet="Readers" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationDataApplication" Association="Model1.Store.ApplicationDataApplication">
+      <End Role="ApplicationData" EntitySet="ReaderApplicationsDatas" />
+      <End Role="Application" EntitySet="ReaderApplications" />
+    </AssociationSet>
+    <AssociationSet Name="ResourcePosition" Association="Model1.Store.ResourcePosition">
+      <End Role="Resource" EntitySet="Resources" />
+      <End Role="Position" EntitySet="Positions" />
+    </AssociationSet>
+    <AssociationSet Name="ReaderUser" Association="Model1.Store.ReaderUser">
+      <End Role="Reader" EntitySet="Readers" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookEdition_inherits_Position" Association="Model1.Store.FK_BookEdition_inherits_Position">
+      <End Role="Position" EntitySet="Positions" />
+      <End Role="BookEdition" EntitySet="Positions_BookEdition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MagazineNumber_inherits_Position" Association="Model1.Store.FK_MagazineNumber_inherits_Position">
+      <End Role="Position" EntitySet="Positions" />
+      <End Role="MagazineNumber" EntitySet="Positions_MagazineNumber" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Game_inherits_Position" Association="Model1.Store.FK_Game_inherits_Position">
+      <End Role="Position" EntitySet="Positions" />
+      <End Role="Game" EntitySet="Positions_Game" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nchar" Nullable="false" MaxLength="32" />
+    <Property Name="E_Mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="nchar" Nullable="false" DefaultValue="C" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Readers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="true" MaxLength="12" />
+    <Property Name="Street" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="HouseNumber" Type="nvarchar" Nullable="true" MaxLength="5" />
+    <Property Name="ApartmentNumber" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PostalCode" Type="nchar" Nullable="true" MaxLength="6" />
+    <Property Name="Debt" Type="decimal" Nullable="false" DefaultValue="0" Precision="6" Scale="2" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BirthDate" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Publishers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Genres">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GenreId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Authorships">
+    <Key>
+      <PropertyRef Name="AuthorId" />
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="AuthorId" Type="int" Nullable="false" />
+    <Property Name="BookId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Magazines">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GenreId" Type="int" Nullable="false" />
+    <Property Name="PublisherId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Resources">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="Category" Type="nchar" Nullable="false" MaxLength="1" />
+    <Property Name="PositionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Borrowings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BorrowingDate" Type="datetime" Nullable="false" />
+    <Property Name="ReturnDate" Type="datetime" Nullable="true" />
+    <Property Name="ReturnTerm" Type="datetime" Nullable="false" />
+    <Property Name="ResourceId" Type="int" Nullable="false" />
+    <Property Name="ReaderId" Type="int" Nullable="false" />
+    <Property Name="LibrarianId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reservations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RealizationDate" Type="datetime" Nullable="false" />
+    <Property Name="ResourceId" Type="int" Nullable="false" />
+    <Property Name="ReaderId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReaderApplications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicationDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="nchar" Nullable="false" DefaultValue="N" MaxLength="1" />
+    <Property Name="ReaderId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReaderApplicationsDatas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Surname" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="true" MaxLength="12" />
+    <Property Name="Street" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="HouseNumber" Type="nvarchar" Nullable="true" MaxLength="5" />
+    <Property Name="ApartmentNumber" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PostalCode" Type="nchar" Nullable="true" MaxLength="6" />
+    <Property Name="ReaderApplicationId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Positions">
+    <Key>
+      <PropertyRef Name="PositionId" />
+    </Key>
+    <Property Name="PositionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Positions_BookEdition">
+    <Key>
+      <PropertyRef Name="PositionId" />
+    </Key>
+    <Property Name="ISBN" Type="nvarchar" Nullable="true" MaxLength="13" />
+    <Property Name="PublicationDate" Type="datetime" Nullable="true" />
+    <Property Name="Number" Type="int" Nullable="true" />
+    <Property Name="BookId" Type="int" Nullable="false" />
+    <Property Name="PublisherId" Type="int" Nullable="false" />
+    <Property Name="PositionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Positions_MagazineNumber">
+    <Key>
+      <PropertyRef Name="PositionId" />
+    </Key>
+    <Property Name="PublicationDate" Type="datetime" Nullable="true" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="MagazineId" Type="int" Nullable="false" />
+    <Property Name="PositionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Positions_Game">
+    <Key>
+      <PropertyRef Name="PositionId" />
+    </Key>
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Producer" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Edition" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="GenreId" Type="int" Nullable="false" />
+    <Property Name="PositionId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="GenreBook">
+    <End Role="Book" Type="Model1.Store.Books" Multiplicity="*" />
+    <End Role="Genre" Type="Model1.Store.Genres" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Genre">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="GenreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AuthorshipAuthor">
+    <End Role="Authorship" Type="Model1.Store.Authorships" Multiplicity="*" />
+    <End Role="Author" Type="Model1.Store.Authors" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Author">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Authorship">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AuthorshipBook">
+    <End Role="Authorship" Type="Model1.Store.Authorships" Multiplicity="*" />
+    <End Role="Book" Type="Model1.Store.Books" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Authorship">
+        <PropertyRef Name="BookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookEditionBook">
+    <End Role="BookEdition" Type="Model1.Store.Positions_BookEdition" Multiplicity="*" />
+    <End Role="Book" Type="Model1.Store.Books" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookEdition">
+        <PropertyRef Name="BookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookEditionPublisher">
+    <End Role="BookEdition" Type="Model1.Store.Positions_BookEdition" Multiplicity="*" />
+    <End Role="Publisher" Type="Model1.Store.Publishers" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookEdition">
+        <PropertyRef Name="PublisherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MagazineGenre">
+    <End Role="Magazine" Type="Model1.Store.Magazines" Multiplicity="*" />
+    <End Role="Genre" Type="Model1.Store.Genres" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Genre">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Magazine">
+        <PropertyRef Name="GenreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MagazinePublisher">
+    <End Role="Magazine" Type="Model1.Store.Magazines" Multiplicity="*" />
+    <End Role="Publisher" Type="Model1.Store.Publishers" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Magazine">
+        <PropertyRef Name="PublisherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MagazineNumberMagazine">
+    <End Role="MagazineNumber" Type="Model1.Store.Positions_MagazineNumber" Multiplicity="*" />
+    <End Role="Magazine" Type="Model1.Store.Magazines" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Magazine">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MagazineNumber">
+        <PropertyRef Name="MagazineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GameGenre">
+    <End Role="Game" Type="Model1.Store.Positions_Game" Multiplicity="*" />
+    <End Role="Genre" Type="Model1.Store.Genres" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Genre">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="GenreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BorrowingResource">
+    <End Role="Borrowing" Type="Model1.Store.Borrowings" Multiplicity="*" />
+    <End Role="Resource" Type="Model1.Store.Resources" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Resource">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Borrowing">
+        <PropertyRef Name="ResourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BorrowingReader">
+    <End Role="Borrowing" Type="Model1.Store.Borrowings" Multiplicity="*" />
+    <End Role="Reader" Type="Model1.Store.Readers" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Reader">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Borrowing">
+        <PropertyRef Name="ReaderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BorrowingUser">
+    <End Role="Borrowing" Type="Model1.Store.Borrowings" Multiplicity="*" />
+    <End Role="User" Type="Model1.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Borrowing">
+        <PropertyRef Name="LibrarianId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReservationResource">
+    <End Role="Reservation" Type="Model1.Store.Reservations" Multiplicity="*" />
+    <End Role="Resource" Type="Model1.Store.Resources" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Resource">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="ResourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReservationReader">
+    <End Role="Reservation" Type="Model1.Store.Reservations" Multiplicity="*" />
+    <End Role="Reader" Type="Model1.Store.Readers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Reader">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="ReaderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationReader">
+    <End Role="Application" Type="Model1.Store.ReaderApplications" Multiplicity="*" />
+    <End Role="Reader" Type="Model1.Store.Readers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Reader">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="ReaderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationDataApplication">
+    <End Role="ApplicationData" Type="Model1.Store.ReaderApplicationsDatas" Multiplicity="*" />
+    <End Role="Application" Type="Model1.Store.ReaderApplications" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Application">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ApplicationData">
+        <PropertyRef Name="ReaderApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ResourcePosition">
+    <End Role="Resource" Type="Model1.Store.Resources" Multiplicity="*" />
+    <End Role="Position" Type="Model1.Store.Positions" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="PositionId" />
+      </Principal>
+      <Dependent Role="Resource">
+        <PropertyRef Name="PositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReaderUser">
+    <End Role="Reader" Type="Model1.Store.Readers" Multiplicity="*" />
+    <End Role="User" Type="Model1.Store.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reader">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookEdition_inherits_Position">
+    <End Role="Position" Type="Model1.Store.Positions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BookEdition" Type="Model1.Store.Positions_BookEdition" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="PositionId" />
+      </Principal>
+      <Dependent Role="BookEdition">
+        <PropertyRef Name="PositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MagazineNumber_inherits_Position">
+    <End Role="Position" Type="Model1.Store.Positions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MagazineNumber" Type="Model1.Store.Positions_MagazineNumber" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="PositionId" />
+      </Principal>
+      <Dependent Role="MagazineNumber">
+        <PropertyRef Name="PositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Game_inherits_Position">
+    <End Role="Position" Type="Model1.Store.Positions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Game" Type="Model1.Store.Positions_Game" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="PositionId" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="PositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="LibraryDBContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Model1.User" />
+          <EntitySet Name="Readers" EntityType="Model1.Reader" />
+          <EntitySet Name="Authors" EntityType="Model1.Author" />
+          <EntitySet Name="Publishers" EntityType="Model1.Publisher" />
+          <EntitySet Name="Genres" EntityType="Model1.Genre" />
+          <EntitySet Name="Books" EntityType="Model1.Book" />
+          <AssociationSet Name="GenreBook" Association="Model1.GenreBook">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="Genre" EntitySet="Genres" />
+          </AssociationSet>
+          <EntitySet Name="Authorships" EntityType="Model1.Authorship" />
+          <AssociationSet Name="AuthorshipAuthor" Association="Model1.AuthorshipAuthor">
+            <End Role="Authorship" EntitySet="Authorships" />
+            <End Role="Author" EntitySet="Authors" />
+          </AssociationSet>
+          <AssociationSet Name="AuthorshipBook" Association="Model1.AuthorshipBook">
+            <End Role="Authorship" EntitySet="Authorships" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="BookEditionBook" Association="Model1.BookEditionBook">
+            <End Role="BookEdition" EntitySet="Positions" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="BookEditionPublisher" Association="Model1.BookEditionPublisher">
+            <End Role="BookEdition" EntitySet="Positions" />
+            <End Role="Publisher" EntitySet="Publishers" />
+          </AssociationSet>
+          <EntitySet Name="Magazines" EntityType="Model1.Magazine" />
+          <AssociationSet Name="MagazineGenre" Association="Model1.MagazineGenre">
+            <End Role="Magazine" EntitySet="Magazines" />
+            <End Role="Genre" EntitySet="Genres" />
+          </AssociationSet>
+          <AssociationSet Name="MagazinePublisher" Association="Model1.MagazinePublisher">
+            <End Role="Magazine" EntitySet="Magazines" />
+            <End Role="Publisher" EntitySet="Publishers" />
+          </AssociationSet>
+          <AssociationSet Name="MagazineNumberMagazine" Association="Model1.MagazineNumberMagazine">
+            <End Role="MagazineNumber" EntitySet="Positions" />
+            <End Role="Magazine" EntitySet="Magazines" />
+          </AssociationSet>
+          <AssociationSet Name="GameGenre" Association="Model1.GameGenre">
+            <End Role="Game" EntitySet="Positions" />
+            <End Role="Genre" EntitySet="Genres" />
+          </AssociationSet>
+          <EntitySet Name="Resources" EntityType="Model1.Resource" />
+          <EntitySet Name="Borrowings" EntityType="Model1.Borrowing" />
+          <AssociationSet Name="BorrowingResource" Association="Model1.BorrowingResource">
+            <End Role="Borrowing" EntitySet="Borrowings" />
+            <End Role="Resource" EntitySet="Resources" />
+          </AssociationSet>
+          <AssociationSet Name="BorrowingReader" Association="Model1.BorrowingReader">
+            <End Role="Borrowing" EntitySet="Borrowings" />
+            <End Role="Reader" EntitySet="Readers" />
+          </AssociationSet>
+          <AssociationSet Name="BorrowingUser" Association="Model1.BorrowingUser">
+            <End Role="Borrowing" EntitySet="Borrowings" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Reservations" EntityType="Model1.Reservation" />
+          <AssociationSet Name="ReservationResource" Association="Model1.ReservationResource">
+            <End Role="Reservation" EntitySet="Reservations" />
+            <End Role="Resource" EntitySet="Resources" />
+          </AssociationSet>
+          <AssociationSet Name="ReservationReader" Association="Model1.ReservationReader">
+            <End Role="Reservation" EntitySet="Reservations" />
+            <End Role="Reader" EntitySet="Readers" />
+          </AssociationSet>
+          <EntitySet Name="ReaderApplications" EntityType="Model1.ReaderApplication" />
+          <AssociationSet Name="ApplicationReader" Association="Model1.ApplicationReader">
+            <End Role="Application" EntitySet="ReaderApplications" />
+            <End Role="Reader" EntitySet="Readers" />
+          </AssociationSet>
+          <EntitySet Name="ReaderApplicationsDatas" EntityType="Model1.ReaderApplicationData" />
+          <AssociationSet Name="ApplicationDataApplication" Association="Model1.ApplicationDataApplication">
+            <End Role="ApplicationData" EntitySet="ReaderApplicationsDatas" />
+            <End Role="Application" EntitySet="ReaderApplications" />
+          </AssociationSet>
+          <EntitySet Name="Positions" EntityType="Model1.Position" />
+          <AssociationSet Name="ResourcePosition" Association="Model1.ResourcePosition">
+            <End Role="Resource" EntitySet="Resources" />
+            <End Role="Position" EntitySet="Positions" />
+          </AssociationSet>
+          <AssociationSet Name="ReaderUser" Association="Model1.ReaderUser">
+            <End Role="Reader" EntitySet="Readers" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" FixedLength="true" MaxLength="32" >
+            <Documentation>
+              <LongDescription>Hash MD5</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Name="E_Mail" Type="String" Nullable="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" Unicode="true" />
+          <Property Name="Surname" Type="String" Nullable="false" Unicode="true" />
+          <Property Name="Type" Type="String" Nullable="false" FixedLength="true" MaxLength="1" Unicode="true" DefaultValue="C" >
+            <Documentation>
+              <LongDescription>Typ użytkownika: C - czytelnik, B - bibliotekarz, A - administrator</LongDescription>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="Borrowing" Relationship="Model1.BorrowingUser" FromRole="User" ToRole="Borrowing" />
+          <NavigationProperty Name="Reader" Relationship="Model1.ReaderUser" FromRole="User" ToRole="Reader" />
+        </EntityType>
+        <EntityType Name="Reader">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneNumber" Type="String" Nullable="true" MaxLength="12" Unicode="true" />
+          <Property Name="Street" Type="String" Nullable="true" Unicode="true" />
+          <Property Name="HouseNumber" Type="String" Nullable="true" Unicode="true" MaxLength="5" />
+          <Property Name="ApartmentNumber" Type="String" Nullable="true" Unicode="true" MaxLength="10" />
+          <Property Name="City" Type="String" Nullable="true" Unicode="true" />
+          <Property Name="PostalCode" Type="String" Nullable="true" FixedLength="true" MaxLength="6" />
+          <Property Name="Debt" Type="Decimal" Nullable="false" Precision="6" Scale="2" DefaultValue="0" />
+          <NavigationProperty Name="Borrowing" Relationship="Model1.BorrowingReader" FromRole="Reader" ToRole="Borrowing" />
+          <NavigationProperty Name="Reservation" Relationship="Model1.ReservationReader" FromRole="Reader" ToRole="Reservation" />
+          <NavigationProperty Name="Application" Relationship="Model1.ApplicationReader" FromRole="Reader" ToRole="Application" />
+          <NavigationProperty Name="User" Relationship="Model1.ReaderUser" FromRole="Reader" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="true" Unicode="true" />
+          <Property Name="Surname" Type="String" Nullable="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="Authorship" Relationship="Model1.AuthorshipAuthor" FromRole="Author" ToRole="Authorship" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" Unicode="true" />
+          <NavigationProperty Name="BookEdition" Relationship="Model1.BookEditionPublisher" FromRole="Publisher" ToRole="BookEdition" />
+          <NavigationProperty Name="Magazine" Relationship="Model1.MagazinePublisher" FromRole="Publisher" ToRole="Magazine" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" Unicode="true" />
+          <NavigationProperty Name="Book" Relationship="Model1.GenreBook" FromRole="Genre" ToRole="Book" />
+          <NavigationProperty Name="Magazine" Relationship="Model1.MagazineGenre" FromRole="Genre" ToRole="Magazine" />
+          <NavigationProperty Name="Game" Relationship="Model1.GameGenre" FromRole="Genre" ToRole="Game" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" Unicode="true" />
+          <NavigationProperty Name="Genre" Relationship="Model1.GenreBook" FromRole="Book" ToRole="Genre" />
+          <Property Name="GenreId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Authorship" Relationship="Model1.AuthorshipBook" FromRole="Book" ToRole="Authorship" />
+          <NavigationProperty Name="BookEdition" Relationship="Model1.BookEditionBook" FromRole="Book" ToRole="BookEdition" />
+        </EntityType>
+        <Association Name="GenreBook">
+          <End Type="Model1.Book" Role="Book" Multiplicity="*" />
+          <End Type="Model1.Genre" Role="Genre" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="GenreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Authorship">
+          <Key>
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="BookId" />
+          </Key>
+          <NavigationProperty Name="Author" Relationship="Model1.AuthorshipAuthor" FromRole="Authorship" ToRole="Author" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="Model1.AuthorshipBook" FromRole="Authorship" ToRole="Book" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="AuthorshipAuthor">
+          <End Type="Model1.Authorship" Role="Authorship" Multiplicity="*" />
+          <End Type="Model1.Author" Role="Author" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Authorship">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AuthorshipBook">
+          <End Type="Model1.Authorship" Role="Authorship" Multiplicity="*" />
+          <End Type="Model1.Book" Role="Book" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Authorship">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BookEdition" BaseType="Model1.Position">
+          <Property Name="ISBN" Type="String" Nullable="true" MaxLength="13" />
+          <Property Name="PublicationDate" Type="DateTime" Nullable="true" />
+          <Property Name="Number" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Book" Relationship="Model1.BookEditionBook" FromRole="BookEdition" ToRole="Book" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Publisher" Relationship="Model1.BookEditionPublisher" FromRole="BookEdition" ToRole="Publisher" />
+          <Property Name="PublisherId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="BookEditionBook">
+          <End Type="Model1.BookEdition" Role="BookEdition" Multiplicity="*" />
+          <End Type="Model1.Book" Role="Book" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookEdition">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BookEditionPublisher">
+          <End Type="Model1.BookEdition" Role="BookEdition" Multiplicity="*" />
+          <End Type="Model1.Publisher" Role="Publisher" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookEdition">
+              <PropertyRef Name="PublisherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Magazine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" Unicode="true" />
+          <NavigationProperty Name="Genre" Relationship="Model1.MagazineGenre" FromRole="Magazine" ToRole="Genre" />
+          <Property Name="GenreId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Publisher" Relationship="Model1.MagazinePublisher" FromRole="Magazine" ToRole="Publisher" />
+          <Property Name="PublisherId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MagazineNumber" Relationship="Model1.MagazineNumberMagazine" FromRole="Magazine" ToRole="MagazineNumber" />
+        </EntityType>
+        <Association Name="MagazineGenre">
+          <End Type="Model1.Magazine" Role="Magazine" Multiplicity="*" />
+          <End Type="Model1.Genre" Role="Genre" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magazine">
+              <PropertyRef Name="GenreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MagazinePublisher">
+          <End Type="Model1.Magazine" Role="Magazine" Multiplicity="*" />
+          <End Type="Model1.Publisher" Role="Publisher" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magazine">
+              <PropertyRef Name="PublisherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MagazineNumber" BaseType="Model1.Position">
+          <Property Name="PublicationDate" Type="DateTime" Nullable="true" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Magazine" Relationship="Model1.MagazineNumberMagazine" FromRole="MagazineNumber" ToRole="Magazine" />
+          <Property Name="MagazineId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="MagazineNumberMagazine">
+          <End Type="Model1.MagazineNumber" Role="MagazineNumber" Multiplicity="*" />
+          <End Type="Model1.Magazine" Role="Magazine" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Magazine">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MagazineNumber">
+              <PropertyRef Name="MagazineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Game" BaseType="Model1.Position">
+          <Property Name="Name" Type="String" Nullable="false" Unicode="true" />
+          <Property Name="Producer" Type="String" Nullable="true" Unicode="true" />
+          <Property Name="Edition" Type="String" Nullable="true" Unicode="true" />
+          <NavigationProperty Name="Genre" Relationship="Model1.GameGenre" FromRole="Game" ToRole="Genre" />
+          <Property Name="GenreId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="GameGenre">
+          <End Type="Model1.Game" Role="Game" Multiplicity="*" />
+          <End Type="Model1.Genre" Role="Genre" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="GenreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Resource">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" >
+            <Documentation>
+              <LongDescription>Kategoria zasobu: K - książka, C - czasopismo, G - gra</LongDescription>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="Borrowing" Relationship="Model1.BorrowingResource" FromRole="Resource" ToRole="Borrowing" />
+          <NavigationProperty Name="Reservation" Relationship="Model1.ReservationResource" FromRole="Resource" ToRole="Reservation" />
+          <NavigationProperty Name="Position" Relationship="Model1.ResourcePosition" FromRole="Resource" ToRole="Position" />
+          <Property Name="PositionId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Borrowing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BorrowingDate" Type="DateTime" Nullable="false" />
+          <Property Name="ReturnDate" Type="DateTime" Nullable="true" />
+          <Property Name="ReturnTerm" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Resource" Relationship="Model1.BorrowingResource" FromRole="Borrowing" ToRole="Resource" />
+          <Property Name="ResourceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Reader" Relationship="Model1.BorrowingReader" FromRole="Borrowing" ToRole="Reader" />
+          <Property Name="ReaderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.BorrowingUser" FromRole="Borrowing" ToRole="User" />
+          <Property Name="LibrarianId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="BorrowingResource">
+          <End Type="Model1.Borrowing" Role="Borrowing" Multiplicity="*" />
+          <End Type="Model1.Resource" Role="Resource" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Borrowing">
+              <PropertyRef Name="ResourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BorrowingReader">
+          <End Type="Model1.Borrowing" Role="Borrowing" Multiplicity="*" />
+          <End Type="Model1.Reader" Role="Reader" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Reader">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Borrowing">
+              <PropertyRef Name="ReaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BorrowingUser">
+          <End Type="Model1.Borrowing" Role="Borrowing" Multiplicity="*" />
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Borrowing">
+              <PropertyRef Name="LibrarianId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RealizationDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Resource" Relationship="Model1.ReservationResource" FromRole="Reservation" ToRole="Resource" />
+          <Property Name="ResourceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Reader" Relationship="Model1.ReservationReader" FromRole="Reservation" ToRole="Reader" />
+          <Property Name="ReaderId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ReservationResource">
+          <End Type="Model1.Reservation" Role="Reservation" Multiplicity="*" />
+          <End Type="Model1.Resource" Role="Resource" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="ResourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ReservationReader">
+          <End Type="Model1.Reservation" Role="Reservation" Multiplicity="*" >
+          </End>
+          <End Type="Model1.Reader" Role="Reader" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Reader">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="ReaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ReaderApplication">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationDate" Type="DateTime" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" FixedLength="true" MaxLength="1" Unicode="true" DefaultValue="N" >
+            <Documentation>
+              <LongDescription>Stan wniosku: P - przyjęty, O - odrzucony, N - niesprawdzony</LongDescription>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="Reader" Relationship="Model1.ApplicationReader" FromRole="Application" ToRole="Reader" />
+          <Property Name="ReaderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicationData" Relationship="Model1.ApplicationDataApplication" FromRole="Application" ToRole="ApplicationData" />
+        </EntityType>
+        <Association Name="ApplicationReader">
+          <End Type="Model1.ReaderApplication" Role="Application" Multiplicity="*" />
+          <End Type="Model1.Reader" Role="Reader" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Reader">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="ReaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ReaderApplicationData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="true" Unicode="true" />
+          <Property Name="Surname" Type="String" Nullable="true" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="true" Unicode="true" MaxLength="12" />
+          <Property Name="Street" Type="String" Nullable="true" Unicode="true" />
+          <Property Name="HouseNumber" Type="String" Nullable="true" MaxLength="5" Unicode="true" />
+          <Property Name="ApartmentNumber" Type="String" Nullable="true" Unicode="true" MaxLength="10" />
+          <Property Name="City" Type="String" Nullable="true" Unicode="true" />
+          <Property Name="PostalCode" Type="String" Nullable="true" FixedLength="true" MaxLength="6" />
+          <NavigationProperty Name="Application" Relationship="Model1.ApplicationDataApplication" FromRole="ApplicationData" ToRole="Application" />
+          <Property Name="ReaderApplicationId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ApplicationDataApplication">
+          <End Type="Model1.ReaderApplicationData" Role="ApplicationData" Multiplicity="*" />
+          <End Type="Model1.ReaderApplication" Role="Application" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationData">
+              <PropertyRef Name="ReaderApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Position" Abstract="true">
+          <Key>
+            <PropertyRef Name="PositionId" />
+          </Key>
+          <Property Name="PositionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Resource" Relationship="Model1.ResourcePosition" FromRole="Position" ToRole="Resource" />
+        </EntityType>
+        <Association Name="ResourcePosition">
+          <End Type="Model1.Resource" Role="Resource" Multiplicity="*" />
+          <End Type="Model1.Position" Role="Position" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="PositionId" />
+            </Principal>
+            <Dependent Role="Resource">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ReaderUser">
+          <End Type="Model1.Reader" Role="Reader" Multiplicity="0..1" />
+          <End Type="Model1.User" Role="User" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="LibraryDBContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="E_Mail" ColumnName="E_Mail" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Readers">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Reader)">
+        <MappingFragment StoreEntitySet="Readers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+          <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="Debt" ColumnName="Debt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Author)">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publishers">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Publisher)">
+        <MappingFragment StoreEntitySet="Publishers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genres">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Genre)">
+        <MappingFragment StoreEntitySet="Genres">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Book)">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authorships">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Authorship)">
+        <MappingFragment StoreEntitySet="Authorships">
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Magazines">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Magazine)">
+        <MappingFragment StoreEntitySet="Magazines">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+          <ScalarProperty Name="PublisherId" ColumnName="PublisherId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Resources">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Resource)">
+        <MappingFragment StoreEntitySet="Resources">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Borrowings">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Borrowing)">
+        <MappingFragment StoreEntitySet="Borrowings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BorrowingDate" ColumnName="BorrowingDate" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="ReturnTerm" ColumnName="ReturnTerm" />
+          <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+          <ScalarProperty Name="ReaderId" ColumnName="ReaderId" />
+          <ScalarProperty Name="LibrarianId" ColumnName="LibrarianId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Reservation)">
+        <MappingFragment StoreEntitySet="Reservations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RealizationDate" ColumnName="RealizationDate" />
+          <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+          <ScalarProperty Name="ReaderId" ColumnName="ReaderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReaderApplications">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.ReaderApplication)">
+        <MappingFragment StoreEntitySet="ReaderApplications">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ReaderId" ColumnName="ReaderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReaderApplicationsDatas">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.ReaderApplicationData)">
+        <MappingFragment StoreEntitySet="ReaderApplicationsDatas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+          <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="ReaderApplicationId" ColumnName="ReaderApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Position)">
+        <MappingFragment StoreEntitySet="Positions">
+          <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.BookEdition)">
+        <MappingFragment StoreEntitySet="Positions_BookEdition">
+          <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="PublicationDate" ColumnName="PublicationDate" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="PublisherId" ColumnName="PublisherId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.MagazineNumber)">
+        <MappingFragment StoreEntitySet="Positions_MagazineNumber">
+          <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+          <ScalarProperty Name="PublicationDate" ColumnName="PublicationDate" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="MagazineId" ColumnName="MagazineId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Game)">
+        <MappingFragment StoreEntitySet="Positions_Game">
+          <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Producer" ColumnName="Producer" />
+          <ScalarProperty Name="Edition" ColumnName="Edition" />
+          <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ReaderUser" TypeName="Model1.ReaderUser" StoreEntitySet="Readers">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Reader">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
