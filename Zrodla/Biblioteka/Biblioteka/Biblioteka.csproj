@@ -53,81 +53,81 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Author.cs">
+    <Compile Include="DB\Author.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Authorship.cs">
+    <Compile Include="DB\Authorship.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Book.cs">
+    <Compile Include="DB\Book.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="BookEdition.cs">
+    <Compile Include="DB\BookEdition.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Borrowing.cs">
+    <Compile Include="DB\Borrowing.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Game.cs">
+    <Compile Include="DB\Game.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Genre.cs">
+    <Compile Include="DB\Genre.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="LibraryDBModel.Context.cs">
+    <Compile Include="DB\LibraryDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LibraryDBModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="LibraryDBModel.cs">
+    <Compile Include="DB\LibraryDBModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="LibraryDBModel.Designer.cs">
+    <Compile Include="DB\LibraryDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LibraryDBModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Magazine.cs">
+    <Compile Include="DB\Magazine.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="MagazineNumber.cs">
+    <Compile Include="DB\MagazineNumber.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Position.cs">
+    <Compile Include="DB\Position.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Publisher.cs">
+    <Compile Include="DB\Publisher.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Reader.cs">
+    <Compile Include="DB\Reader.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ReaderApplication.cs">
+    <Compile Include="DB\ReaderApplication.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ReaderApplicationData.cs">
+    <Compile Include="DB\ReaderApplicationData.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Reservation.cs">
+    <Compile Include="DB\Reservation.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Resource.cs">
+    <Compile Include="DB\Resource.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="User.cs">
+    <Compile Include="DB\User.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -139,11 +139,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="LibraryDBModel.edmx">
+    <EntityDeploy Include="DB\LibraryDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LibraryDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="LibraryDBModel.edmx.diagram">
+    <None Include="DB\LibraryDBModel.edmx.diagram">
       <DependentUpon>LibraryDBModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -161,13 +161,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LibraryDBModel.Context.tt">
+    <Content Include="DB\LibraryDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LibraryDBModel.Context.cs</LastGenOutput>
       <DependentUpon>LibraryDBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="LibraryDBModel.edmx.sql" />
-    <Content Include="LibraryDBModel.tt">
+    <Content Include="DB\LibraryDBModel.edmx.sql" />
+    <Content Include="DB\LibraryDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LibraryDBModel.cs</LastGenOutput>
       <DependentUpon>LibraryDBModel.edmx</DependentUpon>
