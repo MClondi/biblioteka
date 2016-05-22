@@ -88,6 +88,7 @@
             this.btnLogout.TabIndex = 5;
             this.btnLogout.Text = "Wyloguj się";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // AdminForm
             // 
