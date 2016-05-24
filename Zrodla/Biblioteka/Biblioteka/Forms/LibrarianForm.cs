@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteka.DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace Biblioteka.Forms
 {
     public partial class LibrarianForm : Form
     {
-        public LibrarianForm()
+        public LibrarianForm(Form parent, LibraryDBContainer dbContext)
         {
             InitializeComponent();
         }

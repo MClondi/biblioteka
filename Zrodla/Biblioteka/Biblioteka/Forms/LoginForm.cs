@@ -43,12 +43,23 @@ namespace Biblioteka.Forms
                     case "A":
                         new AdminForm(this, context).Show();
                         break;
+                    case "U":
+                        new UserForm(this, context).Show();
+                        break;
+                    case "L":
+                        new LibrarianForm(this, context).Show();
+                        break;
                     default:
                         break;
                 }
 
             }
            
+        }
+
+        private void btnEnterAsGuest_Click(object sender, EventArgs e)
+        {
+            new GuestForm(this, context).Show();
         }
     }
 }

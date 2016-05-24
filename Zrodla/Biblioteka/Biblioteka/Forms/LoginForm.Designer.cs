@@ -103,6 +103,7 @@
             this.btnEnterAsGuest.TabIndex = 6;
             this.btnEnterAsGuest.Text = "Wejdź jako gość";
             this.btnEnterAsGuest.UseVisualStyleBackColor = true;
+            this.btnEnterAsGuest.Click += new System.EventHandler(this.btnEnterAsGuest_Click);
             // 
             // loginMessage
             // 

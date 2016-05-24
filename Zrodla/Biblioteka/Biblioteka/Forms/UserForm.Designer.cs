@@ -45,6 +45,7 @@
             this.btnLogout.TabIndex = 7;
             this.btnLogout.Text = "Wyloguj się";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // lstViewBooksAndUsers
             // 
@@ -80,6 +81,7 @@
             this.btnCheckIfResourceAvailable.TabIndex = 11;
             this.btnCheckIfResourceAvailable.Text = "Sprawdź dostępność";
             this.btnCheckIfResourceAvailable.UseVisualStyleBackColor = true;
+            this.btnCheckIfResourceAvailable.Click += new System.EventHandler(this.btnCheckIfResourceAvailable_Click);
             // 
             // btnUpdateUserAccount
             // 
@@ -99,7 +101,7 @@
             this.btnCheckBorrowedPositions.Text = "Przeglądaj wypożyczone zasoby";
             this.btnCheckBorrowedPositions.UseVisualStyleBackColor = true;
             // 
-            // UserAndGuestForm
+            // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -111,7 +113,7 @@
             this.Controls.Add(this.btnSearchResource);
             this.Controls.Add(this.lstViewBooksAndUsers);
             this.Controls.Add(this.btnLogout);
-            this.Name = "UserAndGuestForm";
+            this.Name = "UserForm";
             this.Text = "Panel użytkownika";
             this.ResumeLayout(false);
 
