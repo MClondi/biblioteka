@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Biblioteka.Forms
 {
-    public partial class UserAndGuestForm : Form
+    public partial class UserForm : Form
     {
-        public UserAndGuestForm()
+        public UserForm()
         {
             InitializeComponent();
         }
