@@ -34,7 +34,7 @@ namespace Biblioteka.Forms
 
             if (query.ToList().Count < 1)
             {
-                MessageBox.Show("Wrong username or password.");
+                MessageBox.Show("Złe hasło lub nazwa użytkownika", "Niepowodzenie");
             } 
             else
             {
