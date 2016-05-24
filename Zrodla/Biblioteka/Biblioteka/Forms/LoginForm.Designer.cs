@@ -36,13 +36,14 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnEnterAsGuest = new System.Windows.Forms.Button();
             this.loginMessage = new System.Windows.Forms.Label();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // helloMessage
             // 
             this.helloMessage.AutoSize = true;
             this.helloMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.helloMessage.Location = new System.Drawing.Point(82, 27);
+            this.helloMessage.Location = new System.Drawing.Point(78, 23);
             this.helloMessage.Name = "helloMessage";
             this.helloMessage.Size = new System.Drawing.Size(114, 17);
             this.helloMessage.TabIndex = 0;
@@ -50,7 +51,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(90, 229);
+            this.btnLogin.Location = new System.Drawing.Point(168, 214);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(83, 23);
             this.btnLogin.TabIndex = 1;
@@ -61,7 +62,7 @@
             // txtBxUsername
             // 
             this.txtBxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txtBxUsername.Location = new System.Drawing.Point(128, 141);
+            this.txtBxUsername.Location = new System.Drawing.Point(128, 144);
             this.txtBxUsername.Name = "txtBxUsername";
             this.txtBxUsername.Size = new System.Drawing.Size(123, 21);
             this.txtBxUsername.TabIndex = 2;
@@ -69,7 +70,7 @@
             // txtBxPassword
             // 
             this.txtBxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txtBxPassword.Location = new System.Drawing.Point(128, 180);
+            this.txtBxPassword.Location = new System.Drawing.Point(128, 183);
             this.txtBxPassword.Name = "txtBxPassword";
             this.txtBxPassword.Size = new System.Drawing.Size(123, 21);
             this.txtBxPassword.TabIndex = 3;
@@ -78,7 +79,7 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUsername.Location = new System.Drawing.Point(8, 141);
+            this.lblUsername.Location = new System.Drawing.Point(8, 144);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(114, 15);
             this.lblUsername.TabIndex = 4;
@@ -88,7 +89,7 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblPassword.Location = new System.Drawing.Point(78, 180);
+            this.lblPassword.Location = new System.Drawing.Point(78, 183);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(39, 15);
             this.lblPassword.TabIndex = 5;
@@ -96,7 +97,7 @@
             // 
             // btnEnterAsGuest
             // 
-            this.btnEnterAsGuest.Location = new System.Drawing.Point(85, 62);
+            this.btnEnterAsGuest.Location = new System.Drawing.Point(81, 61);
             this.btnEnterAsGuest.Name = "btnEnterAsGuest";
             this.btnEnterAsGuest.Size = new System.Drawing.Size(106, 23);
             this.btnEnterAsGuest.TabIndex = 6;
@@ -107,17 +108,27 @@
             // 
             this.loginMessage.AutoSize = true;
             this.loginMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.loginMessage.Location = new System.Drawing.Point(94, 104);
+            this.loginMessage.Location = new System.Drawing.Point(94, 107);
             this.loginMessage.Name = "loginMessage";
             this.loginMessage.Size = new System.Drawing.Size(76, 17);
             this.loginMessage.TabIndex = 7;
             this.loginMessage.Text = "Logowanie";
             // 
+            // btnRegister
+            // 
+            this.btnRegister.Location = new System.Drawing.Point(145, 243);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(106, 23);
+            this.btnRegister.TabIndex = 8;
+            this.btnRegister.Text = "Rejestracja";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 270);
+            this.ClientSize = new System.Drawing.Size(279, 275);
+            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.loginMessage);
             this.Controls.Add(this.btnEnterAsGuest);
             this.Controls.Add(this.lblPassword);
@@ -143,5 +154,6 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Button btnEnterAsGuest;
         private System.Windows.Forms.Label loginMessage;
+        private System.Windows.Forms.Button btnRegister;
     }
 }
