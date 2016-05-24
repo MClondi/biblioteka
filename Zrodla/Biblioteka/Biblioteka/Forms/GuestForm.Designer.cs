@@ -1,6 +1,6 @@
 ﻿namespace Biblioteka.Forms
 {
-    partial class UserForm
+    partial class GuestForm
     {
         /// <summary>
         /// Required designer variable.
