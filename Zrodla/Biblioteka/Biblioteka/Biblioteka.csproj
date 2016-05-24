@@ -110,6 +110,12 @@
     <Compile Include="DB\Position.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Forms\LibrarianForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LibrarianForm.Designer.cs">
+      <DependentUpon>LibrarianForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LibrarianForm.resx">
+      <DependentUpon>LibrarianForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
