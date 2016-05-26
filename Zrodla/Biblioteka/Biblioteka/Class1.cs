@@ -27,8 +27,8 @@ namespace Biblioteka
                     }
                     var jpAdmin = new User
                     {
-                        Login = "User0",
-                        Password = "User0",
+                        Login = "admin",
+                        Password = "admin",
                         Name = "Jakub",
                         Surname = "Plachta",
                         Type = "A",

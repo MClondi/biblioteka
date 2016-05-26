@@ -1,5 +1,4 @@
-﻿using Biblioteka.Adapters;
-using Biblioteka.DB;
+﻿using Biblioteka.DB;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +15,7 @@ namespace Biblioteka.Forms
     {
         Form parent;
         LibraryDBContainer dbContext;
+        Dictionary<String, User> tagSet = new Dictionary<string, User>();
 
         public AdminForm(Form parent, LibraryDBContainer dbContext)
         {
@@ -25,7 +25,10 @@ namespace Biblioteka.Forms
             this.dbContext = dbContext;
             foreach (User user in dbContext.Users)
             {
-                lstViewAllUsers.Items.Add(new ListItemUser(user));
+                ListViewItem item = new ListViewItem(user.Name + " " + user.Surname);
+                item.Tag = user.GetHashCode();
+                tagSet.Add(item.Tag.ToString(), user);
+                lstViewAllUsers.Items.Add(item);
             }
         }
 
@@ -39,10 +42,27 @@ namespace Biblioteka.Forms
         {
             if (lstViewAllUsers.SelectedItems.Count > 0)
             {
-                int usrId = ((ListItemUser)lstViewAllUsers.SelectedItems[0]).getUser().Id;
-                dbContext.Users.Remove(dbContext.Users.First(user => user.Id == usrId));
-                dbContext.SaveChanges();
+
+                User user;
+                if (tagSet.TryGetValue(lstViewAllUsers.SelectedItems[0].Tag.ToString(), out user))
+                {
+                    int usrId = user.Id;
+                    dbContext.Users.Remove(dbContext.Users.First(userSearch => userSearch.Id == usrId));
+                    dbContext.SaveChanges();
+                    // listview populate
+                    lstViewAllUsers.Clear();
+                    tagSet.Clear();
+                    foreach (User usr in dbContext.Users)
+                    {
+                        ListViewItem item = new ListViewItem(usr.Name + " " + usr.Surname);
+                        item.Tag = usr.GetHashCode();
+                        tagSet.Add(item.Tag.ToString(), usr);
+                        lstViewAllUsers.Items.Add(item);
+                    }
+                }
+                
             }
         }
+
     }
 }

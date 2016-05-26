@@ -15,6 +15,8 @@ namespace Biblioteka.Forms
     {
         LibraryDBContainer dbContext;
         Form parent;
+        Dictionary<String, Book> tagSet = new Dictionary<string, Book>();
+
         public UserForm(Form parent, LibraryDBContainer dbContext)
         {
             
@@ -24,41 +26,48 @@ namespace Biblioteka.Forms
             this.dbContext = dbContext;
             foreach (Book book in dbContext.Books)
             {
-                lstViewBooksAndUsers.Items.Add(new ListItemBook(book));
+                ListViewItem item = new ListViewItem(book.Title);
+                item.Tag = book.GetHashCode();
+                tagSet.Add(item.Tag.ToString(), book);
+                lstViewBooksAndUsers.Items.Add(item);
             }
-
-            //test
-            lstViewBooksAndUsers.Items.Add("test");
         }
 
         private void btnCheckIfResourceAvailable_Click(object sender, EventArgs e)
         {
             if (lstViewBooksAndUsers.SelectedItems.Count > 0)
             {
-                int pos = ((ListItemBook)lstViewBooksAndUsers.SelectedItems[0]).getBook().Id;
-
-                var resources = from r in dbContext.Resources
-                                where r.PositionId == pos
-                                select r;
-
-                foreach (Resource res in resources)
+                Book book;
+                if (tagSet.TryGetValue(lstViewBooksAndUsers.SelectedItems[0].Tag.ToString(), out book))
                 {
-                    var bor = from b in dbContext.Borrowings
-                              where b.ResourceId == res.Id
-                              select b;
+                    int pos = book.Id;
+                    var resources = from r in dbContext.Resources
+                                    where r.PositionId == pos
+                                    select r;
 
-                    foreach (Borrowing b in bor)
+                    foreach (Resource res in resources)
                     {
-                        if (b.ReturnDate > DateTime.Now)
+                        var bor = from b in dbContext.Borrowings
+                                  where b.ResourceId == res.Id
+                                  select b;
+
+                        foreach (Borrowing b in bor)
                         {
-                            MessageBox.Show("Ksiazka niedostępna");
-                            return;
+                            if (b.ReturnDate > DateTime.Now)
+                            {
+                                MessageBox.Show("Ksiazka niedostępna");
+                                return;
+                            }
                         }
                     }
+
+                    MessageBox.Show("Książka dostępna");
                 }
+                else
+                {
+                    MessageBox.Show("Nastąpił błąd.");
 
-                MessageBox.Show("Książka dostępna");
-
+                }
             }
 
         }
