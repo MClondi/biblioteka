@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\ListItemUser.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="DB\Author.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
@@ -193,7 +194,9 @@
     <None Include="DB\LibraryDBModel.edmx.diagram">
       <DependentUpon>LibraryDBModel.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
