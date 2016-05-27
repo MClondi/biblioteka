@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DbUtils.cs" />
     <Compile Include="DB\Author.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
@@ -69,11 +70,23 @@
     <Compile Include="DB\Borrowing.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BorrowedResources.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BorrowedResources.Designer.cs">
+      <DependentUpon>BorrowedResources.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GuestForm.cs">
       <SubType>Form</SubType>
@@ -158,8 +171,14 @@
     <Compile Include="DB\User.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BorrowedResources.resx">
+      <DependentUpon>BorrowedResources.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GuestForm.resx">
       <DependentUpon>GuestForm.cs</DependentUpon>

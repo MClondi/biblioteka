@@ -44,7 +44,7 @@ namespace Biblioteka.Forms
                         new AdminForm(this, context).Show();
                         break;
                     case "U":
-                        new UserForm(this, context).Show();
+                        new UserForm(this, context, query.First()).Show();
                         break;
                     case "L":
                         new LibrarianForm(this, context).Show();

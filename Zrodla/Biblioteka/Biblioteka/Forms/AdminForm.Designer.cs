@@ -44,6 +44,7 @@
             this.btnAddUser.TabIndex = 0;
             this.btnAddUser.Text = "Dodaj użytkownika";
             this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // lstViewAllUsers
             // 
@@ -61,6 +62,7 @@
             this.btnEditUser.TabIndex = 2;
             this.btnEditUser.Text = "Edytuj użytkownika";
             this.btnEditUser.UseVisualStyleBackColor = true;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
             // btnDeleteUser
             // 

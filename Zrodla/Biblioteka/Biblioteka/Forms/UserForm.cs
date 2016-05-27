@@ -15,15 +15,17 @@ namespace Biblioteka.Forms
     {
         LibraryDBContainer dbContext;
         Form parent;
+        User userContext;
         Dictionary<String, Book> tagSet = new Dictionary<string, Book>();
 
-        public UserForm(Form parent, LibraryDBContainer dbContext)
+        public UserForm(Form parent, LibraryDBContainer dbContext, User userContext)
         {
             
             InitializeComponent();
             parent.Hide();
             this.parent = parent;
             this.dbContext = dbContext;
+            this.userContext = userContext;
             foreach (Book book in dbContext.Books)
             {
                 ListViewItem item = new ListViewItem(book.Title);
@@ -76,6 +78,39 @@ namespace Biblioteka.Forms
         {
             this.Hide();
             parent.Show();
+        }
+
+        private void btnReserveResource_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnCheckBorrowedPositions_Click(object sender, EventArgs e)
+        {
+            BorrowedResources brform = new BorrowedResources();
+
+            foreach( Borrowing bor in userContext.Borrowing)
+            {
+          
+                if (bor.Resource.Position is Game)
+                {
+                   brform.addItem( ((Game)bor.Resource.Position).Name );
+                }
+                else if (bor.Resource.Position is MagazineNumber)
+                {
+                    brform.addItem( ((MagazineNumber)bor.Resource.Position).Magazine.Title );
+                }
+                else if (bor.Resource.Position is BookEdition)
+                {
+                    brform.addItem(((BookEdition)bor.Resource.Position).Book.Title);
+                }
+            }
+            brform.initialize();
+        }
+
+        private void btnUpdateUserAccount_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Wniosek przyjęty, udaj się do najbliżego pracownika w celu wypełnieniea wniosku.");
         }
     }
 }

@@ -72,6 +72,7 @@
             this.btnReserveResource.TabIndex = 10;
             this.btnReserveResource.Text = "Zarezerwuj zasób";
             this.btnReserveResource.UseVisualStyleBackColor = true;
+            this.btnReserveResource.Click += new System.EventHandler(this.btnReserveResource_Click);
             // 
             // btnCheckIfResourceAvailable
             // 
@@ -91,6 +92,7 @@
             this.btnUpdateUserAccount.TabIndex = 12;
             this.btnUpdateUserAccount.Text = "Zgłoś wniosek o aktualizację karty klienta";
             this.btnUpdateUserAccount.UseVisualStyleBackColor = true;
+            this.btnUpdateUserAccount.Click += new System.EventHandler(this.btnUpdateUserAccount_Click);
             // 
             // btnCheckBorrowedPositions
             // 
@@ -100,6 +102,7 @@
             this.btnCheckBorrowedPositions.TabIndex = 13;
             this.btnCheckBorrowedPositions.Text = "Przeglądaj wypożyczone zasoby";
             this.btnCheckBorrowedPositions.UseVisualStyleBackColor = true;
+            this.btnCheckBorrowedPositions.Click += new System.EventHandler(this.btnCheckBorrowedPositions_Click);
             // 
             // UserForm
             // 
