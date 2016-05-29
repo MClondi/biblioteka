@@ -57,6 +57,7 @@
             this.lstViewBooksAndUsers.Size = new System.Drawing.Size(466, 186);
             this.lstViewBooksAndUsers.TabIndex = 7;
             this.lstViewBooksAndUsers.UseCompatibleStateImageBehavior = false;
+            this.lstViewBooksAndUsers.View = System.Windows.Forms.View.List;
             // 
             // btnSearchUser
             // 

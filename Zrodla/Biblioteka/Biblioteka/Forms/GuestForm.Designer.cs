@@ -71,6 +71,7 @@
             this.lstViewBooksAndUsers.Size = new System.Drawing.Size(471, 272);
             this.lstViewBooksAndUsers.TabIndex = 8;
             this.lstViewBooksAndUsers.UseCompatibleStateImageBehavior = false;
+            this.lstViewBooksAndUsers.View = System.Windows.Forms.View.List;
             // 
             // GuestForm
             // 

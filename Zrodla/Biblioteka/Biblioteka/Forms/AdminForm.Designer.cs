@@ -53,6 +53,7 @@
             this.lstViewAllUsers.Size = new System.Drawing.Size(466, 186);
             this.lstViewAllUsers.TabIndex = 1;
             this.lstViewAllUsers.UseCompatibleStateImageBehavior = false;
+            this.lstViewAllUsers.View = System.Windows.Forms.View.List;
             // 
             // btnEditUser
             // 
