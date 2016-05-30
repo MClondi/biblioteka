@@ -107,6 +107,7 @@
             // 
             // textBoxStreet
             // 
+            this.textBoxStreet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxStreet.Location = new System.Drawing.Point(102, 195);
             this.textBoxStreet.Name = "textBoxStreet";
             this.textBoxStreet.Size = new System.Drawing.Size(223, 20);

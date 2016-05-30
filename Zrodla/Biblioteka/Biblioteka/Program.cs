@@ -15,7 +15,7 @@ namespace Biblioteka
         [STAThread]
         static void Main()
         {
-            Class1 test = new Class1();
+            tmpClass test = new tmpClass();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());

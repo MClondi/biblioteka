@@ -18,6 +18,7 @@ namespace Biblioteka.Forms
         public LoginForm()
         {
             InitializeComponent();
+            txtBxPassword.PasswordChar = '*';
             context = new LibraryDBContainer();
             if (context == null)
             {
@@ -60,6 +61,11 @@ namespace Biblioteka.Forms
         private void btnEnterAsGuest_Click(object sender, EventArgs e)
         {
             new GuestForm(this, context).Show();
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            new AddUser(true).Show();
         }
     }
 }

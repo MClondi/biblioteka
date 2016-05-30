@@ -26,6 +26,7 @@ namespace Biblioteka.Forms
             else
             {
                 initSpinner();
+                readerComponents(true);
             }
         }
 
@@ -62,6 +63,12 @@ namespace Biblioteka.Forms
 
         private void readerComponents(bool isShow)
         {
+            textBoxLogin.Enabled = isShow;
+            textBoxPassword.Enabled = isShow;
+            textBoxPassword.PasswordChar = '*';
+            textBoxMail.Enabled = isShow;
+            textBoxName.Enabled = isShow;
+            textBoxSurname.Enabled = isShow;
             textBoxTel.Enabled = isShow;
             textBoxStreet.Enabled = isShow;
             textBoxStrNum.Enabled = isShow;
@@ -103,12 +110,68 @@ namespace Biblioteka.Forms
             this.Hide();
         }
 
+        private bool checkString(string toCheck)
+        {
+            return string.IsNullOrWhiteSpace(toCheck);
+        }
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            // add or edit user
+            if (checkString(textBoxLogin.Text) || checkString(textBoxPassword.Text) || checkString(textBoxMail.Text) || checkString(textBoxName.Text) ||
+                checkString(textBoxSurname.Text))
+            {
+                MessageBox.Show("Pola: Login, Haslo, Email, Imie, Nazwisko nie moga byc puste!");
+                return;
+            }
+            else
+
+            {
+                using (var db = new LibraryDBContainer())
+                {
+                    var query = from u in db.Users
+                                where u.Login.Equals(textBoxLogin.Text)
+                                select u;
+                    if (query.ToList().Count > 0)
+                    {
+                        MessageBox.Show("Użytkownik o podanym loginie istnieje!");
+                        return;
+                    }
+                    query = from u in db.Users
+                                where u.E_Mail.Equals(textBoxMail.Text)
+                                select u;
+                    if (query.ToList().Count > 0)
+                    {
+                        MessageBox.Show("Użytkownik o podanym adresie email istnieje!");
+                        return;
+                    }
+                    else
+                    {
+                        var newUser = new User
+                        {
+                            Login = textBoxLogin.Text,
+                            Password = textBoxPassword.Text,
+                            Name = textBoxName.Text,
+                            Surname = textBoxSurname.Text,
+                            Type = "U",
+                            E_Mail = textBoxMail.Text
+                        };
+                        db.Users.Add(newUser);
+                        var newReader = new Reader
+                        {
+                            PhoneNumber = textBoxTel.Text,
+                            Street = textBoxStreet.Text,
+                            HouseNumber = textBoxStrNum.Text,
+                            ApartmentNumber = textBoxApt.Text,
+                            City = textBoxCity.Text,
+                            PostalCode = textBoxPostal.Text,
+                            Debt = 0,
+                            User = newUser
+                        };
+                        db.Readers.Add(newReader);
+                        db.SaveChanges();
+                        this.Hide();
+                    }
+                }
+            }
         }
-
-
-
     }
 }
