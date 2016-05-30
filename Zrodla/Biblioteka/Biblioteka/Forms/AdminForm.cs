@@ -23,40 +23,53 @@ namespace Biblioteka.Forms
             parent.Hide();
             this.parent = parent;
             this.dbContext = dbContext;
-            refreshListView();
+            refreshListView(dbContext.Users.ToList());
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Hide();
             parent.Show();
+            this.Close();
         }
 
         private void btnDeleteUser_Click(object sender, EventArgs e)
         {
-            if (lstViewAllUsers.SelectedItems.Count > 0)
+            if(getSelectedUser() != null)
             {
-
-                User user;
-                if (tagSet.TryGetValue(lstViewAllUsers.SelectedItems[0].Tag.ToString(), out user))
-                {
-                    dbContext.Users.Remove(dbContext.Users.First(userSearch => userSearch.Id == user.Id));
-                    dbContext.SaveChanges();
-                    refreshListView();
-                }
-                else
-                {
-                    MessageBox.Show("Error");
-                }
-                
+                dbContext.Users.Remove(dbContext.Users.First(userSearch => userSearch.Id == getSelectedUser().Id));
+                dbContext.SaveChanges();
+                refreshListView(dbContext.Users.ToList());
             }
         }
 
-        private void refreshListView()
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            AddUser newUser = new AddUser(false, dbContext);
+            newUser.userSaved += new EventHandler(userSaved);
+            newUser.Show();
+        }
+
+        private void btnEditUser_Click(object sender, EventArgs e)
+        {
+            if (getSelectedUser() != null)
+            {
+                AddUser editUser = new AddUser(getSelectedUser(), dbContext);
+                editUser.userSaved += new EventHandler(userSaved);
+                editUser.Show();
+            }
+        }
+
+        private void btnSearchUser_Click(object sender, EventArgs e)
+        {
+            SearchUser searchUserForm = new SearchUser(dbContext, searchClicked);
+            searchUserForm.Show();
+        }
+
+        private void refreshListView(List<User> users)
         {
             lstViewAllUsers.Clear();
             tagSet.Clear();
-            foreach (User usr in dbContext.Users)
+            foreach (User usr in users)
             {
                 ListViewItem item = new ListViewItem(usr.Name + " " + usr.Surname);
                 item.Tag = usr.GetHashCode();
@@ -65,30 +78,28 @@ namespace Biblioteka.Forms
             }
         }
 
-        private void btnAddUser_Click(object sender, EventArgs e)
+        private User getSelectedUser()
         {
-            AddUser newUser = new AddUser(false);
-            newUser.Show();
-        }
-
-        private void btnEditUser_Click(object sender, EventArgs e)
-        {
+            User user = null;
             if (lstViewAllUsers.SelectedItems.Count > 0)
             {
-
-                User user;
-                if (tagSet.TryGetValue(lstViewAllUsers.SelectedItems[0].Tag.ToString(), out user))
-                {
-                    AddUser editUser = new AddUser(user);
-                    editUser.Show();
-                    
-                }
-                else
+                if ( ! tagSet.TryGetValue(lstViewAllUsers.SelectedItems[0].Tag.ToString(), out user))
                 {
                     MessageBox.Show("Error");
                 }
-
+                
             }
+            return user;
+        }
+
+        void userSaved(object sender, EventArgs e)
+        {
+            refreshListView(dbContext.Users.ToList());
+        }
+        
+        void searchClicked(object sender, List<User> searchResults)
+        {
+            refreshListView(searchResults);
         }
 
     }

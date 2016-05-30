@@ -65,7 +65,7 @@ namespace Biblioteka.Forms
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            new AddUser(true).Show();
+            new AddUser(true, context).Show();
         }
     }
 }

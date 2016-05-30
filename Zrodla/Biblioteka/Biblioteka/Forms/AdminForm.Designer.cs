@@ -83,6 +83,7 @@
             this.btnSearchUser.TabIndex = 4;
             this.btnSearchUser.Text = "Szukaj użytkownika";
             this.btnSearchUser.UseVisualStyleBackColor = true;
+            this.btnSearchUser.Click += new System.EventHandler(this.btnSearchUser_Click);
             // 
             // btnLogout
             // 

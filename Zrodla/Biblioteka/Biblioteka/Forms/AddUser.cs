@@ -13,43 +13,37 @@ namespace Biblioteka.Forms
 {
     public partial class AddUser : Form
     {
-        bool editingUser = false;
 
-        public AddUser(bool hideTypeSpinner)
+        LibraryDBContainer dbContext;
+        User editedUser = null;
+        public event EventHandler userSaved;
+
+        public AddUser(bool hideTypeSpinner, LibraryDBContainer dbContext)
         {
+            this.dbContext = dbContext;
             InitializeComponent();
+            textBoxPassword.PasswordChar = '*';
+            initSpinner();
+            typeSpinner.SelectedIndex = 0;
             if (hideTypeSpinner)
             {
                 typeSpinner.Hide();
                 label11.Hide();
             }
-            else
-            {
-                initSpinner();
-                readerComponents(true);
-            }
         }
 
-        public AddUser(User u)
+        public AddUser(User u, LibraryDBContainer dbContext)
         {
+            this.dbContext = dbContext;
             InitializeComponent();
-            editingUser = true;
+            editedUser = u;
             initSpinner();
+            initUser(u);
+            textBoxPassword.PasswordChar = '*';
             switch (u.Type)
-            {
-                case "A":
-                    typeSpinner.SelectedIndex = 2;
-                    readerComponents(false);
-                    initUser(u);
-                    break;
-                case "L":
-                    typeSpinner.SelectedIndex = 1;
-                    readerComponents(false);
-                    initUser(u);
-                    break;
+            {       
                 case "U":
                     typeSpinner.SelectedIndex = 0;
-                    initUser(u);
                     textBoxTel.Text = u.Reader.PhoneNumber;
                     textBoxStreet.Text = u.Reader.Street;
                     textBoxStrNum.Text = u.Reader.HouseNumber;
@@ -57,18 +51,67 @@ namespace Biblioteka.Forms
                     textBoxCity.Text = u.Reader.City;
                     textBoxPostal.Text = u.Reader.PostalCode;
                     break;
+                case "L":
+                    typeSpinner.SelectedIndex = 1;
+                    readerComponents(false);
+                    break;
+                case "A":
+                    typeSpinner.SelectedIndex = 2;
+                    readerComponents(false);
+                    break;
             }
 
         }
 
+        private void typeSpinner_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            readerComponents(typeSpinner.SelectedIndex == 0) ;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+
+            if (editedUser != null)
+            {
+                // edit the user and save db context
+            }
+            else
+            {
+                switch (typeSpinner.SelectedIndex)
+                {
+                    case 0:
+                        DbUtils.AddReader(dbContext, textBoxLogin.Text, textBoxPassword.Text, 
+                            textBoxName.Text, textBoxSurname.Text, textBoxMail.Text, textBoxTel.Text, textBoxStreet.Text, 
+                            textBoxStrNum.Text, textBoxApt.Text, textBoxCity.Text, textBoxPostal.Text);
+                        break;
+                    case 1:
+                        DbUtils.AddUser("L", dbContext, textBoxLogin.Text, textBoxPassword.Text,
+                            textBoxName.Text, textBoxSurname.Text, textBoxMail.Text);
+                        break;
+                    case 2:
+                        DbUtils.AddUser("A", dbContext, textBoxLogin.Text, textBoxPassword.Text, 
+                            textBoxName.Text, textBoxSurname.Text, textBoxMail.Text);
+                        break;
+                }
+                
+
+            }
+
+            if(userSaved != null)
+            {
+                userSaved(this, e);
+            }
+
+            this.Close();
+        }
+
         private void readerComponents(bool isShow)
         {
-            textBoxLogin.Enabled = isShow;
-            textBoxPassword.Enabled = isShow;
-            textBoxPassword.PasswordChar = '*';
-            textBoxMail.Enabled = isShow;
-            textBoxName.Enabled = isShow;
-            textBoxSurname.Enabled = isShow;
             textBoxTel.Enabled = isShow;
             textBoxStreet.Enabled = isShow;
             textBoxStrNum.Enabled = isShow;
@@ -93,85 +136,11 @@ namespace Biblioteka.Forms
             textBoxSurname.Text = u.Surname;
         }
 
-        private void typeSpinner_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (typeSpinner.SelectedIndex == 0)
-            {
-                readerComponents(true);
-            }
-            else
-            {
-                readerComponents(false);
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-        }
 
         private bool checkString(string toCheck)
         {
             return string.IsNullOrWhiteSpace(toCheck);
         }
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            if (checkString(textBoxLogin.Text) || checkString(textBoxPassword.Text) || checkString(textBoxMail.Text) || checkString(textBoxName.Text) ||
-                checkString(textBoxSurname.Text))
-            {
-                MessageBox.Show("Pola: Login, Haslo, Email, Imie, Nazwisko nie moga byc puste!");
-                return;
-            }
-            else
 
-            {
-                using (var db = new LibraryDBContainer())
-                {
-                    var query = from u in db.Users
-                                where u.Login.Equals(textBoxLogin.Text)
-                                select u;
-                    if (query.ToList().Count > 0)
-                    {
-                        MessageBox.Show("Użytkownik o podanym loginie istnieje!");
-                        return;
-                    }
-                    query = from u in db.Users
-                                where u.E_Mail.Equals(textBoxMail.Text)
-                                select u;
-                    if (query.ToList().Count > 0)
-                    {
-                        MessageBox.Show("Użytkownik o podanym adresie email istnieje!");
-                        return;
-                    }
-                    else
-                    {
-                        var newUser = new User
-                        {
-                            Login = textBoxLogin.Text,
-                            Password = textBoxPassword.Text,
-                            Name = textBoxName.Text,
-                            Surname = textBoxSurname.Text,
-                            Type = "U",
-                            E_Mail = textBoxMail.Text
-                        };
-                        db.Users.Add(newUser);
-                        var newReader = new Reader
-                        {
-                            PhoneNumber = textBoxTel.Text,
-                            Street = textBoxStreet.Text,
-                            HouseNumber = textBoxStrNum.Text,
-                            ApartmentNumber = textBoxApt.Text,
-                            City = textBoxCity.Text,
-                            PostalCode = textBoxPostal.Text,
-                            Debt = 0,
-                            User = newUser
-                        };
-                        db.Readers.Add(newReader);
-                        db.SaveChanges();
-                        this.Hide();
-                    }
-                }
-            }
-        }
     }
 }
