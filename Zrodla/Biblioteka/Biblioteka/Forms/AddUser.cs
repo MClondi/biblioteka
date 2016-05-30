@@ -98,8 +98,7 @@ namespace Biblioteka.Forms
                             textBoxName.Text, textBoxSurname.Text, textBoxMail.Text);
                         break;
                 }
-                
-
+               
             }
 
             if(userSaved != null)
@@ -134,12 +133,6 @@ namespace Biblioteka.Forms
             textBoxMail.Text = u.E_Mail;
             textBoxName.Text = u.Name;
             textBoxSurname.Text = u.Surname;
-        }
-
-
-        private bool checkString(string toCheck)
-        {
-            return string.IsNullOrWhiteSpace(toCheck);
         }
 
     }
