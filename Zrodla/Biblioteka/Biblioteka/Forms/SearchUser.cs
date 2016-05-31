@@ -23,7 +23,6 @@ namespace Biblioteka.Forms
             this.searchClicked += search;
             InitializeComponent();
             initSpinner();
-            typeSpinner.SelectedIndex = 0;
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -72,6 +71,7 @@ namespace Biblioteka.Forms
             typeSpinner.Items.Add("User");
             typeSpinner.Items.Add("Librarian");
             typeSpinner.Items.Add("Admin");
+            typeSpinner.SelectedIndex = 0;
         }
     }
 }

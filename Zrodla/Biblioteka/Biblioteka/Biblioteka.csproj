@@ -201,6 +201,9 @@
     <EmbeddedResource Include="Forms\GuestForm.resx">
       <DependentUpon>GuestForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReaderApplicationForm.resx">
+      <DependentUpon>ReaderApplicationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SearchResource.resx">
       <DependentUpon>SearchResource.cs</DependentUpon>
     </EmbeddedResource>
