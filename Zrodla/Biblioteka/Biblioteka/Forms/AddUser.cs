@@ -38,8 +38,11 @@ namespace Biblioteka.Forms
             InitializeComponent();
             editedUser = u;
             initSpinner();
+            typeSpinner.Hide();
+            label11.Hide();
             initUser(u);
             textBoxPassword.PasswordChar = '*';
+            textBoxLogin.Enabled = false;
             switch (u.Type)
             {       
                 case "U":
@@ -78,7 +81,23 @@ namespace Biblioteka.Forms
 
             if (editedUser != null)
             {
-                // edit the user and save db context
+                editedUser.Password = textBoxPassword.Text;
+                editedUser.E_Mail = textBoxMail.Text;
+                editedUser.Name = textBoxName.Text;
+                editedUser.Surname = textBoxSurname.Text;
+                
+                if (editedUser.Type.Equals("U"))
+                {
+                    editedUser.Reader.PhoneNumber = textBoxTel.Text;
+                    editedUser.Reader.Street = textBoxStreet.Text;
+                    editedUser.Reader.HouseNumber = textBoxStrNum.Text;
+                    editedUser.Reader.ApartmentNumber = textBoxApt.Text;
+                    editedUser.Reader.City = textBoxCity.Text;
+                    editedUser.Reader.PostalCode = textBoxPostal.Text;
+                }
+
+                dbContext.SaveChanges();
+
             }
             else
             {
