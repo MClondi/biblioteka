@@ -110,7 +110,8 @@ namespace Biblioteka.Forms
 
         private void btnUpdateUserAccount_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Wniosek przyjęty, udaj się do najbliżego pracownika w celu wypełnieniea wniosku.");
+            ReaderApplicationForm raf = new ReaderApplicationForm(userContext ,dbContext);
+            raf.Show();
         }
     }
 }

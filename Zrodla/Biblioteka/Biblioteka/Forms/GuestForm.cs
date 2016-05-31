@@ -15,7 +15,7 @@ namespace Biblioteka.Forms
     {
         LibraryDBContainer dbContext;
         Form parent;
-        Dictionary<String, Book> tagSet = new Dictionary<string, Book>();
+        Dictionary<String, Position> tagSet = new Dictionary<string, Position>();
 
         public GuestForm(Form parent, LibraryDBContainer dbContext)
         {
@@ -23,15 +23,7 @@ namespace Biblioteka.Forms
             parent.Hide();
             this.parent = parent;
             this.dbContext = dbContext;
-            foreach (Book book in dbContext.Books)
-            {
-                ListViewItem item = new ListViewItem(book.Title);
-                item.Tag = book.GetHashCode();
-                tagSet.Add(item.Tag.ToString(), book);
-                lstViewBooksAndUsers.Items.Add(item);
-            }
-
-            lstViewBooksAndUsers.Items.Add("test");
+            refreshListView(dbContext.Positions.ToList());
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -44,12 +36,11 @@ namespace Biblioteka.Forms
         {
             if(lstViewBooksAndUsers.SelectedItems.Count > 0)
             {
-                Book book;
-                if (tagSet.TryGetValue(lstViewBooksAndUsers.SelectedItems[0].Tag.ToString(), out book))
+                Position resource;
+                if (tagSet.TryGetValue(lstViewBooksAndUsers.SelectedItems[0].Tag.ToString(), out resource))
                 {
-                    int pos = book.Id;
                     var resources = from r in dbContext.Resources
-                                    where r.PositionId == pos
+                                    where r.PositionId == resource.PositionId
                                     select r;
 
                     foreach (Resource res in resources)
@@ -62,13 +53,13 @@ namespace Biblioteka.Forms
                         {
                             if (b.ReturnDate > DateTime.Now)
                             {
-                                MessageBox.Show("Ksiazka niedostępna");
+                                MessageBox.Show("Zasób niedostępny");
                                 return;
                             }
                         }
                     }
 
-                    MessageBox.Show("Książka dostępna");
+                    MessageBox.Show("Zasób dostępny");
                 } 
                 else
                 {
@@ -82,7 +73,43 @@ namespace Biblioteka.Forms
 
         private void btnSearchResource_Click(object sender, EventArgs e)
         {
-            // show dialog, sort the books
+            SearchResource sr = new SearchResource(dbContext, searchClicked);
+            sr.Show();
         }
+
+        private void refreshListView(List<Position> positions)
+        {
+            tagSet.Clear();
+            lstViewBooksAndUsers.Clear();
+
+            foreach (Position pos in positions)
+            {
+                ListViewItem item = new ListViewItem();
+
+                if (pos is BookEdition)
+                {
+                    item.Text = ((BookEdition)pos).Book.Title;
+                }
+                else if (pos is Game)
+                {
+                    item.Text = ((Game)pos).Name;
+                }
+                else if (pos is MagazineNumber)
+                {
+                    item.Text = ((MagazineNumber)pos).Magazine.Title;
+                }
+
+                item.Tag = pos.GetHashCode();
+                tagSet.Add(item.Tag.ToString(), pos);
+                lstViewBooksAndUsers.Items.Add(item);
+            }
+        }
+
+        void searchClicked(object sender, List<Position> results)
+        {
+            refreshListView(results);
+        }
+
+        
     }
 }

@@ -8,6 +8,8 @@ using System.Windows.Forms;
 
 namespace Biblioteka
 {
+    public enum ResourceTypes { Book, Game, Magazine };
+
     class DbUtils
     {
         public static void AddReader(LibraryDBContainer dbContext, String login, String password, String name, String surname, String mail, String phone, String street, String houseNum, String aptNum, String city, String postal)

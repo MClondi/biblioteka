@@ -11,7 +11,6 @@ using System.Windows.Forms;
 
 namespace Biblioteka.Forms
 {
-    public enum ResourceTypes {Book, Game, Magazine};
 
     public partial class SearchResource : Form
     {
