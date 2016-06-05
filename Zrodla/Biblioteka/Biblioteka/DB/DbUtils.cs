@@ -29,6 +29,7 @@ namespace Biblioteka
                             Debt = 0,
                             User = user
                         };
+                        user.Reader = newReader;
 
                         dbContext.Readers.Add(newReader);
                         dbContext.SaveChanges();
