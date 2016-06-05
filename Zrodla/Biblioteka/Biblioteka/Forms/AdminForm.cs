@@ -86,8 +86,7 @@ namespace Biblioteka.Forms
                 if ( ! tagSet.TryGetValue(lstViewAllUsers.SelectedItems[0].Tag.ToString(), out user))
                 {
                     MessageBox.Show("Error");
-                }
-                
+                }                
             }
             return user;
         }

@@ -148,7 +148,7 @@ namespace Biblioteka.Forms
         private void initUser(User u)
         {
             textBoxLogin.Text = u.Login;
-            textBoxPassword.Text = u.Password;
+            textBoxPassword.Text = u.Password.Trim();
             textBoxMail.Text = u.E_Mail;
             textBoxName.Text = u.Name;
             textBoxSurname.Text = u.Surname;
