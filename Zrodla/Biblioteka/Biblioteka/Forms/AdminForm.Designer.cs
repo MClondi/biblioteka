@@ -108,6 +108,7 @@
             this.Controls.Add(this.btnAddUser);
             this.Name = "AdminForm";
             this.Text = "Panel administratora";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdminForm_FormClosing);
             this.ResumeLayout(false);
 
         }

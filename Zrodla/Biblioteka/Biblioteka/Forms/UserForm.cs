@@ -113,5 +113,10 @@ namespace Biblioteka.Forms
             ReaderApplicationForm raf = new ReaderApplicationForm(userContext ,dbContext);
             raf.Show();
         }
+
+        private void UserForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            btnLogout_Click(sender, e);
+        }
     }
 }

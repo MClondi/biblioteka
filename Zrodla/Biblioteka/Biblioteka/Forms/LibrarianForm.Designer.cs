@@ -67,6 +67,7 @@
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "Wyloguj się";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // lstViewBooksAndUsers
             // 
@@ -312,6 +313,7 @@
             this.Controls.Add(this.btnLogout);
             this.Name = "LibrarianForm";
             this.Text = "Panel bibliotekarza";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LibrarianForm_FormClosing);
             this.userActionPanel.ResumeLayout(false);
             this.resourcesPanel.ResumeLayout(false);
             this.actionsPanel.ResumeLayout(false);

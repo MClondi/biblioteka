@@ -119,6 +119,7 @@
             this.Controls.Add(this.btnLogout);
             this.Name = "UserForm";
             this.Text = "Panel użytkownika";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserForm_FormClosing);
             this.ResumeLayout(false);
 
         }

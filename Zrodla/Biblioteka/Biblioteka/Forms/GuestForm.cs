@@ -110,6 +110,12 @@ namespace Biblioteka.Forms
             refreshListView(results);
         }
 
+        private void GuestForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            parent.Show();
+        }
+
         
     }
 }

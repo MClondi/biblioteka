@@ -28,8 +28,8 @@ namespace Biblioteka.Forms
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            this.Hide();
             parent.Show();
-            this.Close();
         }
 
         private void btnDeleteUser_Click(object sender, EventArgs e)
@@ -100,6 +100,11 @@ namespace Biblioteka.Forms
         void searchClicked(object sender, List<User> searchResults)
         {
             refreshListView(searchResults);
+        }
+
+        private void AdminForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            btnLogout_Click(sender, e);
         }
 
     }

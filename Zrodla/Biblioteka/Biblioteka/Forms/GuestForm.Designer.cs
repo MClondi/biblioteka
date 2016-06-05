@@ -84,6 +84,7 @@
             this.Controls.Add(this.lstViewBooksAndUsers);
             this.Name = "GuestForm";
             this.Text = "Panel użytkownika";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GuestForm_FormClosing);
             this.ResumeLayout(false);
 
         }
