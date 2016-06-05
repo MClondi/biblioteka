@@ -228,7 +228,7 @@
             this.Controls.Add(this.textBoxSurname);
             this.Controls.Add(this.textBoxName);
             this.Name = "ReaderApplicationForm";
-            this.Text = "ReaderApplicationForm";
+            this.Text = "Wniosek";
             this.ResumeLayout(false);
             this.PerformLayout();
 

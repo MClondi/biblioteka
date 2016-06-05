@@ -59,7 +59,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.Name = "BorrowedResources";
-            this.Text = "BorrowedResources";
+            this.Text = "Wypożyczone zasoby";
             this.ResumeLayout(false);
 
         }

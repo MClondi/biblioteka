@@ -163,7 +163,7 @@
             this.Controls.Add(this.textBoxTitle);
             this.Controls.Add(this.comboBoxType);
             this.Name = "SearchResource";
-            this.Text = "SearchResource";
+            this.Text = "Szukaj zasobu";
             this.ResumeLayout(false);
             this.PerformLayout();
 

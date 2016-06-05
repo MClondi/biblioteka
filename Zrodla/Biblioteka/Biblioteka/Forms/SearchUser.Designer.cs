@@ -292,7 +292,7 @@
             this.Controls.Add(this.textBoxMail);
             this.Controls.Add(this.textBoxLogin);
             this.Name = "SearchUser";
-            this.Text = "SearchUser";
+            this.Text = "Szukaj użytkownika";
             this.ResumeLayout(false);
             this.PerformLayout();
 

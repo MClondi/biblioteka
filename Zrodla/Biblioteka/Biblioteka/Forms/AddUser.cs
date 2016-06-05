@@ -22,6 +22,7 @@ namespace Biblioteka.Forms
         {
             this.dbContext = dbContext;
             InitializeComponent();
+            this.Text = "Dodaj użytkownika";
             textBoxPassword.PasswordChar = '*';
             initSpinner();
             typeSpinner.SelectedIndex = 0;
@@ -36,6 +37,7 @@ namespace Biblioteka.Forms
         {
             this.dbContext = dbContext;
             InitializeComponent();
+            this.Text = "Edytuj użytkownika";
             editedUser = u;
             initSpinner();
             typeSpinner.Hide();

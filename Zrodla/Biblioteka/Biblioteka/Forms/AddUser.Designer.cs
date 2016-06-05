@@ -315,7 +315,7 @@
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxLogin);
             this.Name = "AddUser";
-            this.Text = "AddUser";
+            this.Text = "Dodaj użytkownika";
             this.ResumeLayout(false);
             this.PerformLayout();
 
