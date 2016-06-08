@@ -64,6 +64,7 @@
             this.btnSearchResource.TabIndex = 9;
             this.btnSearchResource.Text = "Szukaj zasobu";
             this.btnSearchResource.UseVisualStyleBackColor = true;
+            this.btnSearchResource.Click += new System.EventHandler(this.btnSearchResource_Click);
             // 
             // btnReserveResource
             // 

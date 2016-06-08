@@ -16,7 +16,7 @@ namespace Biblioteka.Forms
         LibraryDBContainer dbContext;
         Form parent;
         User userContext;
-        Dictionary<String, Book> tagSet = new Dictionary<string, Book>();
+        Dictionary<String, Position> tagSet = new Dictionary<string, Position>();
 
         public UserForm(Form parent, LibraryDBContainer dbContext, User userContext)
         {
@@ -26,50 +26,34 @@ namespace Biblioteka.Forms
             this.parent = parent;
             this.dbContext = dbContext;
             this.userContext = userContext;
-            foreach (Book book in dbContext.Books)
-            {
-                ListViewItem item = new ListViewItem(book.Title);
-                item.Tag = book.GetHashCode();
-                tagSet.Add(item.Tag.ToString(), book);
-                lstViewBooksAndUsers.Items.Add(item);
-            }
+            refreshListView(dbContext.Positions.ToList());
         }
 
         private void btnCheckIfResourceAvailable_Click(object sender, EventArgs e)
         {
             if (lstViewBooksAndUsers.SelectedItems.Count > 0)
             {
-                Book book;
-                if (tagSet.TryGetValue(lstViewBooksAndUsers.SelectedItems[0].Tag.ToString(), out book))
+                Position resource;
+                if (tagSet.TryGetValue(lstViewBooksAndUsers.SelectedItems[0].Tag.ToString(), out resource))
                 {
-                    int pos = book.Id;
-                    var resources = from r in dbContext.Resources
-                                    where r.PositionId == pos
-                                    select r;
 
-                    foreach (Resource res in resources)
+                    if (DbUtils.IsResourceBorrowed(dbContext, resource))
                     {
-                        var bor = from b in dbContext.Borrowings
-                                  where b.ResourceId == res.Id
-                                  select b;
 
-                        foreach (Borrowing b in bor)
-                        {
-                            if (b.ReturnDate > DateTime.Now)
-                            {
-                                MessageBox.Show("Ksiazka niedostępna");
-                                return;
-                            }
-                        }
+                        MessageBox.Show("Zasób niedostępny");
                     }
+                    else
+                    {
 
-                    MessageBox.Show("Książka dostępna");
+                        MessageBox.Show("Zasób dostępny");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Nastąpił błąd.");
 
+                    MessageBox.Show("Nastąpił błąd.");
                 }
+
             }
 
         }
@@ -117,6 +101,45 @@ namespace Biblioteka.Forms
         private void UserForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             btnLogout_Click(sender, e);
+        }
+
+        private void refreshListView(List<Position> positions)
+        {
+            tagSet.Clear();
+            lstViewBooksAndUsers.Clear();
+
+            foreach (Position pos in positions)
+            {
+                ListViewItem item = new ListViewItem();
+
+                if (pos is BookEdition)
+                {
+                    item.Text = ((BookEdition)pos).Book.Title;
+                }
+                else if (pos is Game)
+                {
+                    item.Text = ((Game)pos).Name;
+                }
+                else if (pos is MagazineNumber)
+                {
+                    item.Text = ((MagazineNumber)pos).Magazine.Title;
+                }
+
+                item.Tag = pos.GetHashCode();
+                tagSet.Add(item.Tag.ToString(), pos);
+                lstViewBooksAndUsers.Items.Add(item);
+            }
+        }
+
+        void searchClicked(object sender, List<Position> results)
+        {
+            refreshListView(results);
+        }
+
+        private void btnSearchResource_Click(object sender, EventArgs e)
+        {
+            SearchResource sr = new SearchResource(dbContext, searchClicked);
+            sr.Show();
         }
     }
 }

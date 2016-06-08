@@ -65,8 +65,8 @@ namespace Biblioteka.Forms
                 case ((int)ResourceTypes.Magazine):
                     results = dbContext.Positions
                         .Where(position => position is MagazineNumber)
-                        .Where(magazine => textBoxTitle.Text.Trim().Equals(string.Empty) ? true : ((MagazineNumber)magazine).Magazine.Title.Contains(textBoxTitle.Text))
-                        .Where(magazine => textBoxPublisher.Text.Trim().Equals(string.Empty) ? true : ((MagazineNumber)magazine).Magazine.Publisher.Name.Contains(textBoxPublisher.Text))
+                        .Where(magazine => textBoxTitle.Text.Trim().Equals(string.Empty) ? true : (magazine as MagazineNumber).Magazine.Title.Contains(textBoxTitle.Text))
+                        .Where(magazine => textBoxPublisher.Text.Trim().Equals(string.Empty) ? true : (magazine as MagazineNumber).Magazine.Publisher.Name.Contains(textBoxPublisher.Text))
                         .ToList();
                     break;
             }

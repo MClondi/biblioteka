@@ -65,5 +65,30 @@ namespace Biblioteka
 
             return newUser;
         }
+    
+        public static bool IsResourceBorrowed(LibraryDBContainer dbContext, Position resource)
+        {
+            var resources = from r in dbContext.Resources
+                            where r.PositionId == resource.PositionId
+                            select r;
+
+            foreach (Resource res in resources)
+            {
+                var bor = from b in dbContext.Borrowings
+                          where b.ResourceId == res.Id
+                          select b;
+
+                foreach (Borrowing b in bor)
+                {
+                    if (b.ReturnDate > DateTime.Now)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+
+        }
     }
 }
