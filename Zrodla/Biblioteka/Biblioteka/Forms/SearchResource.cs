@@ -49,17 +49,17 @@ namespace Biblioteka.Forms
                 case ((int)ResourceTypes.Book):
                     results = dbContext.Positions
                         .Where(position => position is BookEdition)
-                        .Where(book => textBoxTitle.Text.Trim().Equals(string.Empty) ? true : ((BookEdition)book).Book.Title.Contains(textBoxTitle.Text))
-                        .Where(book => textBoxAuthorName.Text.Trim().Equals(string.Empty) ? true : ((BookEdition)book).Book.Authorship.First().Author.Name.Contains(textBoxAuthorName.Text))
-                        .Where(book => textBoxAuthorSurname.Text.Trim().Equals(string.Empty) ? true : ((BookEdition)book).Book.Authorship.First().Author.Surname.Contains(textBoxAuthorSurname.Text))
-                        .Where(book => textBoxPublisher.Text.Trim().Equals(string.Empty) ? true : ((BookEdition)book).Publisher.Name.Contains(textBoxPublisher.Text))
+                        .Where(book => textBoxTitle.Text.Trim().Equals(string.Empty) ? true : (book as BookEdition).Book.Title.Contains(textBoxTitle.Text))
+                        .Where(book => textBoxAuthorName.Text.Trim().Equals(string.Empty) ? true : (book as BookEdition).Book.Authorship.FirstOrDefault().Author.Name.Contains(textBoxAuthorName.Text))
+                        .Where(book => textBoxAuthorSurname.Text.Trim().Equals(string.Empty) ? true : (book as BookEdition).Book.Authorship.FirstOrDefault().Author.Surname.Contains(textBoxAuthorSurname.Text))
+                        .Where(book => textBoxPublisher.Text.Trim().Equals(string.Empty) ? true : (book as BookEdition).Publisher.Name.Contains(textBoxPublisher.Text))
                         .ToList();
                     break;
                 case ((int)ResourceTypes.Game):
                     results = dbContext.Positions
                         .Where(position => position is Game)
-                        .Where(game => textBoxTitle.Text.Trim().Equals(string.Empty) ? true : ((Game)game).Name.Contains(textBoxTitle.Text))
-                        .Where(game => textBoxPublisher.Text.Trim().Equals(string.Empty) ? true : ((Game)game).Producer.Contains(textBoxPublisher.Text))
+                        .Where(game => textBoxTitle.Text.Trim().Equals(string.Empty) ? true : (game as Game).Name.Contains(textBoxTitle.Text))
+                        .Where(game => textBoxPublisher.Text.Trim().Equals(string.Empty) ? true : (game as Game).Producer.Contains(textBoxPublisher.Text))
                         .ToList();
                     break;
                 case ((int)ResourceTypes.Magazine):
