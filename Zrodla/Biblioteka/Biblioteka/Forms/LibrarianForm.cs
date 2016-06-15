@@ -74,7 +74,7 @@ namespace Biblioteka.Forms
 
         private void btnAddAuthor_Click(object sender, EventArgs e)
         {
-
+            AuthorForm addAuthor = new AuthorForm(dbContext, refresh);
         }
 
         private void btnAddPosition_Click(object sender, EventArgs e)
@@ -116,11 +116,11 @@ namespace Biblioteka.Forms
         {
             // todo populate the list of users
         }
-        void searchRestourceClicked(object sender, List<Position> results)
+        void searchResourceClicked(object sender, List<Position> results)
         {
             // todo populate the list of resources
         }
-        void refresh(object sender)
+        void refresh(object sender, EventArgs e)
         {
             // todo refresh the listview after add/edit/delete action
         }

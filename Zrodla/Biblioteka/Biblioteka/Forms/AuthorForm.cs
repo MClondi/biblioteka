@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteka.DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,50 @@ namespace Biblioteka.Forms
 {
     public partial class AuthorForm : Form
     {
-        public AuthorForm()
+
+        LibraryDBContainer dbContext;
+        public event EventHandler authorSaved;
+        Author editedAuthor = null;
+
+        public AuthorForm(LibraryDBContainer dbContext, EventHandler onAuthorSave, Author editedAuthor) : this(dbContext, onAuthorSave)
         {
+            this.editedAuthor = editedAuthor;
+            this.textBoxName.Text = editedAuthor.Name;
+            this.textBoxSurname.Text = editedAuthor.Surname;
+            this.dateTimePicker1.Value = (DateTime)editedAuthor.BirthDate;
+        }
+
+        public AuthorForm(LibraryDBContainer dbContext, EventHandler onAuthorSave)
+        {
+            this.dbContext = dbContext;
+            this.authorSaved += onAuthorSave;
             InitializeComponent();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if (editedAuthor != null)
+            {
+                editedAuthor.Name = textBoxName.Text;
+                editedAuthor.Surname = textBoxSurname.Text;
+                editedAuthor.BirthDate = dateTimePicker1.Value;
+            }
+            else
+            {
+                Author result = new Author();
+                result.Name = textBoxName.Text;
+                result.Surname = textBoxSurname.Text;
+                result.BirthDate = dateTimePicker1.Value;
+                dbContext.Authors.Add(result);
+            }
+            dbContext.SaveChanges();
+            authorSaved(this, e);
+            this.Close();
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

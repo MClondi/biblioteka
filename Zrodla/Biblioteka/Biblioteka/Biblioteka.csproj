@@ -213,6 +213,9 @@
     <EmbeddedResource Include="Forms\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorForm.resx">
+      <DependentUpon>AuthorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BorrowedResources.resx">
       <DependentUpon>BorrowedResources.cs</DependentUpon>
     </EmbeddedResource>
