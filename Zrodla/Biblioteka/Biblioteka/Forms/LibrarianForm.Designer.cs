@@ -44,15 +44,15 @@
             this.actionsPanel = new System.Windows.Forms.Panel();
             this.databaseLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAddResource = new System.Windows.Forms.Button();
-            this.btnAddAuthor = new System.Windows.Forms.Button();
-            this.btnAddPosition = new System.Windows.Forms.Button();
-            this.btnEditResource = new System.Windows.Forms.Button();
-            this.btnEditAuthor = new System.Windows.Forms.Button();
-            this.btnEditPosition = new System.Windows.Forms.Button();
             this.btnDeleteResource = new System.Windows.Forms.Button();
             this.btnDeleteAuthor = new System.Windows.Forms.Button();
             this.btnDeletePosition = new System.Windows.Forms.Button();
+            this.btnEditResource = new System.Windows.Forms.Button();
+            this.btnEditAuthor = new System.Windows.Forms.Button();
+            this.btnEditPosition = new System.Windows.Forms.Button();
+            this.btnAddResource = new System.Windows.Forms.Button();
+            this.btnAddAuthor = new System.Windows.Forms.Button();
+            this.btnAddPosition = new System.Windows.Forms.Button();
             this.userActionPanel.SuspendLayout();
             this.resourcesPanel.SuspendLayout();
             this.actionsPanel.SuspendLayout();
@@ -86,6 +86,7 @@
             this.btnSearchUser.TabIndex = 8;
             this.btnSearchUser.Text = "Szukaj użytkownika";
             this.btnSearchUser.UseVisualStyleBackColor = true;
+            this.btnSearchUser.Click += new System.EventHandler(this.btnSearchUser_Click);
             // 
             // btnSearchResource
             // 
@@ -95,6 +96,7 @@
             this.btnSearchResource.TabIndex = 9;
             this.btnSearchResource.Text = "Szukaj zasobu";
             this.btnSearchResource.UseVisualStyleBackColor = true;
+            this.btnSearchResource.Click += new System.EventHandler(this.btnSearchResource_Click);
             // 
             // btnBorrowResource
             // 
@@ -104,6 +106,7 @@
             this.btnBorrowResource.TabIndex = 13;
             this.btnBorrowResource.Text = "Wypożycz zasób";
             this.btnBorrowResource.UseVisualStyleBackColor = true;
+            this.btnBorrowResource.Click += new System.EventHandler(this.btnBorrowResource_Click);
             // 
             // btnReserveResource
             // 
@@ -113,6 +116,7 @@
             this.btnReserveResource.TabIndex = 14;
             this.btnReserveResource.Text = "Zarezerwuj zasób";
             this.btnReserveResource.UseVisualStyleBackColor = true;
+            this.btnReserveResource.Click += new System.EventHandler(this.btnReserveResource_Click);
             // 
             // btnNoteReturn
             // 
@@ -122,6 +126,7 @@
             this.btnNoteReturn.TabIndex = 15;
             this.btnNoteReturn.Text = "Zaksięguj zwrot";
             this.btnNoteReturn.UseVisualStyleBackColor = true;
+            this.btnNoteReturn.Click += new System.EventHandler(this.btnNoteReturn_Click);
             // 
             // btnCancelReservation
             // 
@@ -131,6 +136,7 @@
             this.btnCancelReservation.TabIndex = 16;
             this.btnCancelReservation.Text = "Usuń rezerwację";
             this.btnCancelReservation.UseVisualStyleBackColor = true;
+            this.btnCancelReservation.Click += new System.EventHandler(this.btnCancelReservation_Click);
             // 
             // userActionPanel
             // 
@@ -215,60 +221,6 @@
             this.panel1.Size = new System.Drawing.Size(405, 107);
             this.panel1.TabIndex = 23;
             // 
-            // btnAddResource
-            // 
-            this.btnAddResource.Location = new System.Drawing.Point(17, 13);
-            this.btnAddResource.Name = "btnAddResource";
-            this.btnAddResource.Size = new System.Drawing.Size(112, 23);
-            this.btnAddResource.TabIndex = 14;
-            this.btnAddResource.Text = "Dodaj zasób";
-            this.btnAddResource.UseVisualStyleBackColor = true;
-            // 
-            // btnAddAuthor
-            // 
-            this.btnAddAuthor.Location = new System.Drawing.Point(17, 42);
-            this.btnAddAuthor.Name = "btnAddAuthor";
-            this.btnAddAuthor.Size = new System.Drawing.Size(112, 23);
-            this.btnAddAuthor.TabIndex = 13;
-            this.btnAddAuthor.Text = "Dodaj autora";
-            this.btnAddAuthor.UseVisualStyleBackColor = true;
-            // 
-            // btnAddPosition
-            // 
-            this.btnAddPosition.Location = new System.Drawing.Point(17, 71);
-            this.btnAddPosition.Name = "btnAddPosition";
-            this.btnAddPosition.Size = new System.Drawing.Size(112, 23);
-            this.btnAddPosition.TabIndex = 16;
-            this.btnAddPosition.Text = "Dodaj pozycję";
-            this.btnAddPosition.UseVisualStyleBackColor = true;
-            // 
-            // btnEditResource
-            // 
-            this.btnEditResource.Location = new System.Drawing.Point(145, 13);
-            this.btnEditResource.Name = "btnEditResource";
-            this.btnEditResource.Size = new System.Drawing.Size(112, 23);
-            this.btnEditResource.TabIndex = 18;
-            this.btnEditResource.Text = "Edytuj zasób";
-            this.btnEditResource.UseVisualStyleBackColor = true;
-            // 
-            // btnEditAuthor
-            // 
-            this.btnEditAuthor.Location = new System.Drawing.Point(145, 42);
-            this.btnEditAuthor.Name = "btnEditAuthor";
-            this.btnEditAuthor.Size = new System.Drawing.Size(112, 23);
-            this.btnEditAuthor.TabIndex = 17;
-            this.btnEditAuthor.Text = "Edytuj autora";
-            this.btnEditAuthor.UseVisualStyleBackColor = true;
-            // 
-            // btnEditPosition
-            // 
-            this.btnEditPosition.Location = new System.Drawing.Point(145, 71);
-            this.btnEditPosition.Name = "btnEditPosition";
-            this.btnEditPosition.Size = new System.Drawing.Size(112, 23);
-            this.btnEditPosition.TabIndex = 19;
-            this.btnEditPosition.Text = "Edytuj pozycję";
-            this.btnEditPosition.UseVisualStyleBackColor = true;
-            // 
             // btnDeleteResource
             // 
             this.btnDeleteResource.Location = new System.Drawing.Point(272, 13);
@@ -277,6 +229,7 @@
             this.btnDeleteResource.TabIndex = 21;
             this.btnDeleteResource.Text = "Usuń zasób";
             this.btnDeleteResource.UseVisualStyleBackColor = true;
+            this.btnDeleteResource.Click += new System.EventHandler(this.btnDeleteResource_Click);
             // 
             // btnDeleteAuthor
             // 
@@ -286,6 +239,7 @@
             this.btnDeleteAuthor.TabIndex = 20;
             this.btnDeleteAuthor.Text = "Usuń autora";
             this.btnDeleteAuthor.UseVisualStyleBackColor = true;
+            this.btnDeleteAuthor.Click += new System.EventHandler(this.btnDeleteAuthor_Click);
             // 
             // btnDeletePosition
             // 
@@ -295,6 +249,67 @@
             this.btnDeletePosition.TabIndex = 22;
             this.btnDeletePosition.Text = "Usuń pozycję";
             this.btnDeletePosition.UseVisualStyleBackColor = true;
+            this.btnDeletePosition.Click += new System.EventHandler(this.btnDeletePosition_Click);
+            // 
+            // btnEditResource
+            // 
+            this.btnEditResource.Location = new System.Drawing.Point(145, 13);
+            this.btnEditResource.Name = "btnEditResource";
+            this.btnEditResource.Size = new System.Drawing.Size(112, 23);
+            this.btnEditResource.TabIndex = 18;
+            this.btnEditResource.Text = "Edytuj zasób";
+            this.btnEditResource.UseVisualStyleBackColor = true;
+            this.btnEditResource.Click += new System.EventHandler(this.btnEditResource_Click);
+            // 
+            // btnEditAuthor
+            // 
+            this.btnEditAuthor.Location = new System.Drawing.Point(145, 42);
+            this.btnEditAuthor.Name = "btnEditAuthor";
+            this.btnEditAuthor.Size = new System.Drawing.Size(112, 23);
+            this.btnEditAuthor.TabIndex = 17;
+            this.btnEditAuthor.Text = "Edytuj autora";
+            this.btnEditAuthor.UseVisualStyleBackColor = true;
+            this.btnEditAuthor.Click += new System.EventHandler(this.btnEditAuthor_Click);
+            // 
+            // btnEditPosition
+            // 
+            this.btnEditPosition.Location = new System.Drawing.Point(145, 71);
+            this.btnEditPosition.Name = "btnEditPosition";
+            this.btnEditPosition.Size = new System.Drawing.Size(112, 23);
+            this.btnEditPosition.TabIndex = 19;
+            this.btnEditPosition.Text = "Edytuj pozycję";
+            this.btnEditPosition.UseVisualStyleBackColor = true;
+            this.btnEditPosition.Click += new System.EventHandler(this.btnEditPosition_Click);
+            // 
+            // btnAddResource
+            // 
+            this.btnAddResource.Location = new System.Drawing.Point(17, 13);
+            this.btnAddResource.Name = "btnAddResource";
+            this.btnAddResource.Size = new System.Drawing.Size(112, 23);
+            this.btnAddResource.TabIndex = 14;
+            this.btnAddResource.Text = "Dodaj zasób";
+            this.btnAddResource.UseVisualStyleBackColor = true;
+            this.btnAddResource.Click += new System.EventHandler(this.btnAddResource_Click);
+            // 
+            // btnAddAuthor
+            // 
+            this.btnAddAuthor.Location = new System.Drawing.Point(17, 42);
+            this.btnAddAuthor.Name = "btnAddAuthor";
+            this.btnAddAuthor.Size = new System.Drawing.Size(112, 23);
+            this.btnAddAuthor.TabIndex = 13;
+            this.btnAddAuthor.Text = "Dodaj autora";
+            this.btnAddAuthor.UseVisualStyleBackColor = true;
+            this.btnAddAuthor.Click += new System.EventHandler(this.btnAddAuthor_Click);
+            // 
+            // btnAddPosition
+            // 
+            this.btnAddPosition.Location = new System.Drawing.Point(17, 71);
+            this.btnAddPosition.Name = "btnAddPosition";
+            this.btnAddPosition.Size = new System.Drawing.Size(112, 23);
+            this.btnAddPosition.TabIndex = 16;
+            this.btnAddPosition.Text = "Dodaj pozycję";
+            this.btnAddPosition.UseVisualStyleBackColor = true;
+            this.btnAddPosition.Click += new System.EventHandler(this.btnAddPosition_Click);
             // 
             // LibrarianForm
             // 
