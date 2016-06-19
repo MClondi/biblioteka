@@ -34,6 +34,8 @@
             this.btnDeleteUser = new System.Windows.Forms.Button();
             this.btnSearchUser = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.surname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnAddUser
@@ -48,12 +50,15 @@
             // 
             // lstViewAllUsers
             // 
+            this.lstViewAllUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.name,
+            this.surname});
             this.lstViewAllUsers.Location = new System.Drawing.Point(12, 51);
             this.lstViewAllUsers.Name = "lstViewAllUsers";
             this.lstViewAllUsers.Size = new System.Drawing.Size(466, 186);
             this.lstViewAllUsers.TabIndex = 1;
             this.lstViewAllUsers.UseCompatibleStateImageBehavior = false;
-            this.lstViewAllUsers.View = System.Windows.Forms.View.List;
+            this.lstViewAllUsers.View = System.Windows.Forms.View.Details;
             // 
             // btnEditUser
             // 
@@ -95,6 +100,16 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // name
+            // 
+            this.name.Text = "Imię";
+            this.name.Width = 87;
+            // 
+            // surname
+            // 
+            this.surname.Text = "Nazwisko";
+            this.surname.Width = 119;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,5 +136,7 @@
         private System.Windows.Forms.Button btnDeleteUser;
         private System.Windows.Forms.Button btnSearchUser;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.ColumnHeader name;
+        private System.Windows.Forms.ColumnHeader surname;
     }
 }

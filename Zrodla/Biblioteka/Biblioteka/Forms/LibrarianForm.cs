@@ -115,7 +115,13 @@ namespace Biblioteka.Forms
 
         void searchUserClicked(object sender, List<User> searchResults)
         {
-            // todo populate the list of users
+            lstViewBooksAndUsers.Items.Clear();
+            foreach (User usr in searchResults)
+            {
+                string[] row = { usr.Name, usr.Surname };
+                ListViewItem item = new ListViewItem(row);
+                lstViewBooksAndUsers.Items.Add(item);
+            }
         }
         void searchResourceClicked(object sender, List<Position> results)
         {

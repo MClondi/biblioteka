@@ -61,6 +61,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.surname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -78,12 +80,15 @@
             // 
             // lstViewBooksAndUsers
             // 
+            this.lstViewBooksAndUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.name,
+            this.surname});
             this.lstViewBooksAndUsers.Location = new System.Drawing.Point(12, 63);
             this.lstViewBooksAndUsers.Name = "lstViewBooksAndUsers";
             this.lstViewBooksAndUsers.Size = new System.Drawing.Size(143, 196);
             this.lstViewBooksAndUsers.TabIndex = 7;
             this.lstViewBooksAndUsers.UseCompatibleStateImageBehavior = false;
-            this.lstViewBooksAndUsers.View = System.Windows.Forms.View.List;
+            this.lstViewBooksAndUsers.View = System.Windows.Forms.View.Details;
             // 
             // btnSearchUser
             // 
@@ -350,7 +355,7 @@
             this.listView1.Size = new System.Drawing.Size(142, 196);
             this.listView1.TabIndex = 33;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // label1
             // 
@@ -396,6 +401,14 @@
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 38;
             this.label5.Text = "Pozycje";
+            // 
+            // name
+            // 
+            this.name.Text = "Imię";
+            // 
+            // surname
+            // 
+            this.surname.Text = "Nazwisko";
             // 
             // LibrarianForm
             // 
@@ -462,5 +475,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ColumnHeader name;
+        private System.Windows.Forms.ColumnHeader surname;
     }
 }

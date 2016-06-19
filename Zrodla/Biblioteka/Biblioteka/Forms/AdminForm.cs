@@ -68,11 +68,12 @@ namespace Biblioteka.Forms
 
         private void refreshListView(List<User> users)
         {
-            lstViewAllUsers.Clear();
+            lstViewAllUsers.Items.Clear();
             tagSet.Clear();
             foreach (User usr in users)
             {
-                ListViewItem item = new ListViewItem(usr.Name + " " + usr.Surname);
+                string[] row = { usr.Name, usr.Surname };
+                ListViewItem item = new ListViewItem(row);
                 item.Tag = usr.GetHashCode();
                 tagSet.Add(item.Tag.ToString(), usr);
                 lstViewAllUsers.Items.Add(item);
@@ -86,9 +87,10 @@ namespace Biblioteka.Forms
             {
                 if ( ! tagSet.TryGetValue(lstViewAllUsers.SelectedItems[0].Tag.ToString(), out user))
                 {
-                    MessageBox.Show("Error");
+                    MessageBox.Show("Błąd");
                 }                
             }
+
             return user;
         }
 
