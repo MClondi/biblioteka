@@ -13,6 +13,7 @@ namespace Biblioteka.Forms
     public partial class BorrowedResources : Form
     {
         private List<String> initList = new List<string>();
+        Boolean help;
 
         public BorrowedResources()
         {
@@ -44,6 +45,27 @@ namespace Biblioteka.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            {
+                help = !help;
+                if (!help)
+                {
+                    helpButton.Text = "Pomoc";
+                    this.HelpButton = false;
+                    this.MaximizeBox = true;
+                    this.MinimizeBox = true;
+                }
+                else
+                {
+                    helpButton.Text = "Wylacz Pomoc";
+                    this.HelpButton = true;
+                    this.MaximizeBox = false;
+                    this.MinimizeBox = false;
+                }
+            }
         }
     }
 }

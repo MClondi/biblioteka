@@ -40,42 +40,52 @@
             this.textBoxPublisher = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // comboBoxType
             // 
             this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(134, 13);
+            this.helpProvider1.SetHelpString(this.comboBoxType, "W tym polu wprowadź typ zasobu który chcesz znaleźć");
+            this.comboBoxType.Location = new System.Drawing.Point(134, 40);
             this.comboBoxType.Name = "comboBoxType";
+            this.helpProvider1.SetShowHelp(this.comboBoxType, true);
             this.comboBoxType.Size = new System.Drawing.Size(232, 21);
             this.comboBoxType.TabIndex = 0;
             this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.comboBoxType_SelectedIndexChanged);
             // 
             // textBoxTitle
             // 
-            this.textBoxTitle.Location = new System.Drawing.Point(134, 41);
+            this.helpProvider1.SetHelpString(this.textBoxTitle, "W tym polu wprowadź tytuł zasobu który chcesz znaleźć");
+            this.textBoxTitle.Location = new System.Drawing.Point(134, 67);
             this.textBoxTitle.Name = "textBoxTitle";
+            this.helpProvider1.SetShowHelp(this.textBoxTitle, true);
             this.textBoxTitle.Size = new System.Drawing.Size(232, 20);
             this.textBoxTitle.TabIndex = 1;
             // 
             // textBoxAuthorName
             // 
-            this.textBoxAuthorName.Location = new System.Drawing.Point(134, 67);
+            this.helpProvider1.SetHelpString(this.textBoxAuthorName, "W tym polu wprowadź imię autora zasobu który chcesz znaleźć");
+            this.textBoxAuthorName.Location = new System.Drawing.Point(134, 93);
             this.textBoxAuthorName.Name = "textBoxAuthorName";
+            this.helpProvider1.SetShowHelp(this.textBoxAuthorName, true);
             this.textBoxAuthorName.Size = new System.Drawing.Size(232, 20);
             this.textBoxAuthorName.TabIndex = 2;
             // 
             // textBoxAuthorSurname
             // 
-            this.textBoxAuthorSurname.Location = new System.Drawing.Point(134, 93);
+            this.helpProvider1.SetHelpString(this.textBoxAuthorSurname, "W tym polu wprowadź nazwisko autora zasobu który chcesz znaleźć");
+            this.textBoxAuthorSurname.Location = new System.Drawing.Point(134, 119);
             this.textBoxAuthorSurname.Name = "textBoxAuthorSurname";
+            this.helpProvider1.SetShowHelp(this.textBoxAuthorSurname, true);
             this.textBoxAuthorSurname.Size = new System.Drawing.Size(232, 20);
             this.textBoxAuthorSurname.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 20);
+            this.label1.Location = new System.Drawing.Point(13, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 4;
@@ -84,7 +94,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 74);
+            this.label2.Location = new System.Drawing.Point(13, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 5;
@@ -93,7 +103,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 100);
+            this.label3.Location = new System.Drawing.Point(13, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 6;
@@ -102,7 +112,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 126);
+            this.label4.Location = new System.Drawing.Point(13, 152);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(115, 13);
             this.label4.TabIndex = 7;
@@ -111,7 +121,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 48);
+            this.label5.Location = new System.Drawing.Point(12, 74);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 11;
@@ -120,15 +130,20 @@
             // 
             // textBoxPublisher
             // 
-            this.textBoxPublisher.Location = new System.Drawing.Point(134, 119);
+            this.helpProvider1.SetHelpString(this.textBoxPublisher, "W tym polu wprowadź wydawcę/producenta zasobu który chcesz znaleźć");
+            this.textBoxPublisher.Location = new System.Drawing.Point(134, 145);
             this.textBoxPublisher.Name = "textBoxPublisher";
+            this.helpProvider1.SetShowHelp(this.textBoxPublisher, true);
             this.textBoxPublisher.Size = new System.Drawing.Size(232, 20);
             this.textBoxPublisher.TabIndex = 8;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(291, 172);
+            this.helpProvider1.SetHelpString(this.button1, "Wciśnij ten przycisk aby anulować wprowadzone dane i/lub cofnąć się do poprzednie" +
+        "go okna");
+            this.button1.Location = new System.Drawing.Point(291, 181);
             this.button1.Name = "button1";
+            this.helpProvider1.SetShowHelp(this.button1, true);
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 12;
             this.button1.Text = "Anuluj";
@@ -137,19 +152,34 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(210, 171);
+            this.helpProvider1.SetHelpString(this.button2, "Wciśnij ten przycisk aby wyszukać wprowadzone dane w bazie danych");
+            this.button2.Location = new System.Drawing.Point(210, 181);
             this.button2.Name = "button2";
+            this.helpProvider1.SetShowHelp(this.button2, true);
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 13;
             this.button2.Text = "Szukaj";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // helpButton
+            // 
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalający włączyć/wyłączyć pomoc");
+            this.helpButton.Location = new System.Drawing.Point(164, 4);
+            this.helpButton.Name = "helpButton";
+            this.helpProvider1.SetShowHelp(this.helpButton, true);
+            this.helpButton.Size = new System.Drawing.Size(201, 23);
+            this.helpButton.TabIndex = 14;
+            this.helpButton.Text = "Pomoc";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
             // SearchResource
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 207);
+            this.ClientSize = new System.Drawing.Size(378, 216);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
@@ -183,5 +213,7 @@
         private System.Windows.Forms.TextBox textBoxPublisher;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button helpButton;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

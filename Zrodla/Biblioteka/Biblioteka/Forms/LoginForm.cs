@@ -14,6 +14,7 @@ namespace Biblioteka.Forms
     public partial class LoginForm : Form
     {
         LibraryDBContainer context;
+        Boolean help;
 
         public LoginForm()
         {
@@ -66,6 +67,27 @@ namespace Biblioteka.Forms
         private void btnRegister_Click(object sender, EventArgs e)
         {
             new AddUser(true, context).Show();
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            {
+                help = !help;
+                if (!help)
+                {
+                    helpButton.Text = "Pomoc";
+                    this.HelpButton = false;
+                    this.MaximizeBox = true;
+                    this.MinimizeBox = true;
+                }
+                else
+                {
+                    helpButton.Text = "Wylacz Pomoc";
+                    this.HelpButton = true;
+                    this.MaximizeBox = false;
+                    this.MinimizeBox = false;
+                }
+            }
         }
     }
 }
