@@ -75,6 +75,7 @@ namespace Biblioteka.Forms
         private void btnAddAuthor_Click(object sender, EventArgs e)
         {
             AuthorForm addAuthor = new AuthorForm(dbContext, refresh);
+            addAuthor.Show();
         }
 
         private void btnAddPosition_Click(object sender, EventArgs e)
