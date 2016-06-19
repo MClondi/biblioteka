@@ -17,6 +17,7 @@ namespace Biblioteka.Forms
         Form parent;
         User userContext;
         Dictionary<String, Position> tagSet = new Dictionary<string, Position>();
+        Boolean help;
 
         public UserForm(Form parent, LibraryDBContainer dbContext, User userContext)
         {
@@ -140,6 +141,27 @@ namespace Biblioteka.Forms
         {
             SearchResource sr = new SearchResource(dbContext, searchClicked);
             sr.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            {
+                help = !help;
+                if (!help)
+                {
+                    helpButton.Text = "Pomoc";
+                    this.HelpButton = false;
+                    this.MaximizeBox = true;
+                    this.MinimizeBox = true;
+                }
+                else
+                {
+                    helpButton.Text = "Wylacz Pomoc";
+                    this.HelpButton = true;
+                    this.MaximizeBox = false;
+                    this.MinimizeBox = false;
+                }
+            }
         }
     }
 }

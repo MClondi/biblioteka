@@ -17,10 +17,13 @@ namespace Biblioteka.Forms
         LibraryDBContainer dbContext;
         User editedUser = null;
         public event EventHandler userSaved;
+        Boolean help = false;
 
         public AddUser(bool hideTypeSpinner, LibraryDBContainer dbContext)
         {
+
             this.dbContext = dbContext;
+            
             InitializeComponent();
             this.Text = "Dodaj użytkownika";
             textBoxPassword.PasswordChar = '*';
@@ -154,6 +157,27 @@ namespace Biblioteka.Forms
             textBoxMail.Text = u.E_Mail;
             textBoxName.Text = u.Name;
             textBoxSurname.Text = u.Surname;
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            {
+                help = !help;
+                if (!help)
+                {
+                    helpButton.Text = "Pomoc";
+                    this.HelpButton = false;
+                    this.MaximizeBox = true;
+                    this.MinimizeBox = true;
+                }
+                else
+                {
+                    helpButton.Text = "Wylacz Pomoc";
+                    this.HelpButton = true;
+                    this.MaximizeBox = false;
+                    this.MinimizeBox = false;
+                }
+            }
         }
 
     }

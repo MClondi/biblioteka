@@ -36,12 +36,16 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.surname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.helpButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddUser
             // 
+            this.helpProvider1.SetHelpString(this.btnAddUser, "Press this button to add new user");
             this.btnAddUser.Location = new System.Drawing.Point(12, 261);
             this.btnAddUser.Name = "btnAddUser";
+            this.helpProvider1.SetShowHelp(this.btnAddUser, true);
             this.btnAddUser.Size = new System.Drawing.Size(112, 23);
             this.btnAddUser.TabIndex = 0;
             this.btnAddUser.Text = "Dodaj użytkownika";
@@ -50,11 +54,13 @@
             // 
             // lstViewAllUsers
             // 
+            this.helpProvider1.SetHelpString(this.lstViewAllUsers, "This is screen where users are displayed");
             this.lstViewAllUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.name,
             this.surname});
             this.lstViewAllUsers.Location = new System.Drawing.Point(12, 51);
             this.lstViewAllUsers.Name = "lstViewAllUsers";
+            this.helpProvider1.SetShowHelp(this.lstViewAllUsers, true);
             this.lstViewAllUsers.Size = new System.Drawing.Size(466, 186);
             this.lstViewAllUsers.TabIndex = 1;
             this.lstViewAllUsers.UseCompatibleStateImageBehavior = false;
@@ -62,8 +68,10 @@
             // 
             // btnEditUser
             // 
+            this.helpProvider1.SetHelpString(this.btnEditUser, "Press this button on chosen user to edit him");
             this.btnEditUser.Location = new System.Drawing.Point(130, 261);
             this.btnEditUser.Name = "btnEditUser";
+            this.helpProvider1.SetShowHelp(this.btnEditUser, true);
             this.btnEditUser.Size = new System.Drawing.Size(112, 23);
             this.btnEditUser.TabIndex = 2;
             this.btnEditUser.Text = "Edytuj użytkownika";
@@ -72,8 +80,10 @@
             // 
             // btnDeleteUser
             // 
+            this.helpProvider1.SetHelpString(this.btnDeleteUser, "Press this button on chosen user to remove him");
             this.btnDeleteUser.Location = new System.Drawing.Point(248, 261);
             this.btnDeleteUser.Name = "btnDeleteUser";
+            this.helpProvider1.SetShowHelp(this.btnDeleteUser, true);
             this.btnDeleteUser.Size = new System.Drawing.Size(112, 23);
             this.btnDeleteUser.TabIndex = 3;
             this.btnDeleteUser.Text = "Usuń użytkownika";
@@ -82,8 +92,10 @@
             // 
             // btnSearchUser
             // 
+            this.helpProvider1.SetHelpString(this.btnSearchUser, "Press this button to search user");
             this.btnSearchUser.Location = new System.Drawing.Point(366, 261);
             this.btnSearchUser.Name = "btnSearchUser";
+            this.helpProvider1.SetShowHelp(this.btnSearchUser, true);
             this.btnSearchUser.Size = new System.Drawing.Size(112, 23);
             this.btnSearchUser.TabIndex = 4;
             this.btnSearchUser.Text = "Szukaj użytkownika";
@@ -92,8 +104,10 @@
             // 
             // btnLogout
             // 
+            this.helpProvider1.SetHelpString(this.btnLogout, "Press this button to log out from the system");
             this.btnLogout.Location = new System.Drawing.Point(366, 12);
             this.btnLogout.Name = "btnLogout";
+            this.helpProvider1.SetShowHelp(this.btnLogout, true);
             this.btnLogout.Size = new System.Drawing.Size(112, 23);
             this.btnLogout.TabIndex = 5;
             this.btnLogout.Text = "Wyloguj się";
@@ -110,11 +124,24 @@
             this.surname.Text = "Nazwisko";
             this.surname.Width = 119;
             // 
+            // helpButton
+            // 
+            this.helpProvider1.SetHelpString(this.helpButton, "This button allows to turn on/off help");
+            this.helpButton.Location = new System.Drawing.Point(205, 12);
+            this.helpButton.Name = "helpButton";
+            this.helpProvider1.SetShowHelp(this.helpButton, true);
+            this.helpButton.Size = new System.Drawing.Size(155, 23);
+            this.helpButton.TabIndex = 6;
+            this.helpButton.Text = "Pomoc";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 313);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnSearchUser);
             this.Controls.Add(this.btnDeleteUser);
@@ -138,5 +165,7 @@
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.ColumnHeader name;
         private System.Windows.Forms.ColumnHeader surname;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Button helpButton;
     }
 }

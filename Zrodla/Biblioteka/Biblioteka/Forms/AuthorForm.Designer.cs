@@ -36,12 +36,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 45);
+            this.label3.Location = new System.Drawing.Point(12, 67);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
@@ -51,7 +53,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 19);
+            this.label4.Location = new System.Drawing.Point(12, 41);
             this.label4.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
@@ -60,29 +62,35 @@
             // 
             // textBoxSurname
             // 
-            this.textBoxSurname.Location = new System.Drawing.Point(102, 38);
+            this.helpProvider1.SetHelpString(this.textBoxSurname, "Tutaj wprowadź nazwisko autora ");
+            this.textBoxSurname.Location = new System.Drawing.Point(102, 60);
             this.textBoxSurname.Name = "textBoxSurname";
+            this.helpProvider1.SetShowHelp(this.textBoxSurname, true);
             this.textBoxSurname.Size = new System.Drawing.Size(223, 20);
             this.textBoxSurname.TabIndex = 33;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(102, 12);
+            this.helpProvider1.SetHelpString(this.textBoxName, "Tutaj wprowadź imię autora");
+            this.textBoxName.Location = new System.Drawing.Point(102, 34);
             this.textBoxName.Name = "textBoxName";
+            this.helpProvider1.SetShowHelp(this.textBoxName, true);
             this.textBoxName.Size = new System.Drawing.Size(223, 20);
             this.textBoxName.TabIndex = 32;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(102, 65);
+            this.helpProvider1.SetHelpString(this.dateTimePicker1, "Tutaj wprowadź datę urodzenia autora");
+            this.dateTimePicker1.Location = new System.Drawing.Point(102, 86);
             this.dateTimePicker1.Name = "dateTimePicker1";
+            this.helpProvider1.SetShowHelp(this.dateTimePicker1, true);
             this.dateTimePicker1.Size = new System.Drawing.Size(223, 20);
             this.dateTimePicker1.TabIndex = 36;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 71);
+            this.label1.Location = new System.Drawing.Point(12, 93);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
@@ -91,8 +99,11 @@
             // 
             // buttonExit
             // 
-            this.buttonExit.Location = new System.Drawing.Point(177, 91);
+            this.helpProvider1.SetHelpString(this.buttonExit, "Przycisk pozwalający na anulowanie wprowadzonych zmian, automatycznie wyłącza opc" +
+        "ję dodawania autora");
+            this.buttonExit.Location = new System.Drawing.Point(177, 114);
             this.buttonExit.Name = "buttonExit";
+            this.helpProvider1.SetShowHelp(this.buttonExit, true);
             this.buttonExit.Size = new System.Drawing.Size(148, 23);
             this.buttonExit.TabIndex = 41;
             this.buttonExit.Text = "Anuluj";
@@ -101,19 +112,34 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(15, 91);
+            this.helpProvider1.SetHelpString(this.buttonSave, "Przycisk zapisujący zmiany i dodający autora do listy autorów");
+            this.buttonSave.Location = new System.Drawing.Point(15, 114);
             this.buttonSave.Name = "buttonSave";
+            this.helpProvider1.SetShowHelp(this.buttonSave, true);
             this.buttonSave.Size = new System.Drawing.Size(136, 23);
             this.buttonSave.TabIndex = 40;
             this.buttonSave.Text = "Zapisz";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // helpButton
+            // 
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalający na włączenie/wyłączenie pomocy");
+            this.helpButton.Location = new System.Drawing.Point(102, 5);
+            this.helpButton.Name = "helpButton";
+            this.helpProvider1.SetShowHelp(this.helpButton, true);
+            this.helpButton.Size = new System.Drawing.Size(223, 23);
+            this.helpButton.TabIndex = 42;
+            this.helpButton.Text = "Pomoc";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
             // AuthorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 124);
+            this.ClientSize = new System.Drawing.Size(337, 149);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.label1);
@@ -139,5 +165,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button helpButton;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

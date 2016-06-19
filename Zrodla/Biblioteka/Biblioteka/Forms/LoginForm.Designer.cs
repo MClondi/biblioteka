@@ -37,13 +37,15 @@
             this.btnEnterAsGuest = new System.Windows.Forms.Button();
             this.loginMessage = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.helpButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // helloMessage
             // 
             this.helloMessage.AutoSize = true;
             this.helloMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.helloMessage.Location = new System.Drawing.Point(78, 23);
+            this.helloMessage.Location = new System.Drawing.Point(78, 31);
             this.helloMessage.Name = "helloMessage";
             this.helloMessage.Size = new System.Drawing.Size(114, 17);
             this.helloMessage.TabIndex = 0;
@@ -51,8 +53,11 @@
             // 
             // btnLogin
             // 
+            this.helpProvider1.SetHelpString(this.btnLogin, "Przycisk pozwalający na zalogowanie sie do systemu przy użyciu wprowadzonych wyże" +
+        "j  danych");
             this.btnLogin.Location = new System.Drawing.Point(168, 214);
             this.btnLogin.Name = "btnLogin";
+            this.helpProvider1.SetShowHelp(this.btnLogin, true);
             this.btnLogin.Size = new System.Drawing.Size(83, 23);
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Zaloguj";
@@ -62,16 +67,20 @@
             // txtBxUsername
             // 
             this.txtBxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.helpProvider1.SetHelpString(this.txtBxUsername, "Tutaj wprowadź login, który wybrałes jako login Twojego konta");
             this.txtBxUsername.Location = new System.Drawing.Point(128, 144);
             this.txtBxUsername.Name = "txtBxUsername";
+            this.helpProvider1.SetShowHelp(this.txtBxUsername, true);
             this.txtBxUsername.Size = new System.Drawing.Size(123, 21);
             this.txtBxUsername.TabIndex = 2;
             // 
             // txtBxPassword
             // 
             this.txtBxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.helpProvider1.SetHelpString(this.txtBxPassword, "Tutaj wprowadź hasło które ustawiłes podczas rejestracji konta");
             this.txtBxPassword.Location = new System.Drawing.Point(128, 183);
             this.txtBxPassword.Name = "txtBxPassword";
+            this.helpProvider1.SetShowHelp(this.txtBxPassword, true);
             this.txtBxPassword.Size = new System.Drawing.Size(123, 21);
             this.txtBxPassword.TabIndex = 3;
             // 
@@ -97,8 +106,11 @@
             // 
             // btnEnterAsGuest
             // 
+            this.helpProvider1.SetHelpString(this.btnEnterAsGuest, "Po wciśnieciu tego przycisku zostaniesz przeniesiony do okna bibliotecznego jako " +
+        "gość, bedziesz miał możliwość przeglądania zasobów biblioteki");
             this.btnEnterAsGuest.Location = new System.Drawing.Point(81, 61);
             this.btnEnterAsGuest.Name = "btnEnterAsGuest";
+            this.helpProvider1.SetShowHelp(this.btnEnterAsGuest, true);
             this.btnEnterAsGuest.Size = new System.Drawing.Size(106, 23);
             this.btnEnterAsGuest.TabIndex = 6;
             this.btnEnterAsGuest.Text = "Wejdź jako gość";
@@ -117,19 +129,33 @@
             // 
             // btnRegister
             // 
+            this.helpProvider1.SetHelpString(this.btnRegister, "Przycisk pozwalający na złożenie nowego konta");
             this.btnRegister.Location = new System.Drawing.Point(145, 243);
             this.btnRegister.Name = "btnRegister";
+            this.helpProvider1.SetShowHelp(this.btnRegister, true);
             this.btnRegister.Size = new System.Drawing.Size(106, 23);
             this.btnRegister.TabIndex = 8;
             this.btnRegister.Text = "Rejestracja";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
+            // helpButton
+            // 
+            this.helpButton.Location = new System.Drawing.Point(115, 5);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.helpButton.Size = new System.Drawing.Size(152, 23);
+            this.helpButton.TabIndex = 9;
+            this.helpButton.Text = "Pomoc";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(279, 275);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.loginMessage);
             this.Controls.Add(this.btnEnterAsGuest);
@@ -157,5 +183,7 @@
         private System.Windows.Forms.Button btnEnterAsGuest;
         private System.Windows.Forms.Label loginMessage;
         private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Button helpButton;
     }
 }

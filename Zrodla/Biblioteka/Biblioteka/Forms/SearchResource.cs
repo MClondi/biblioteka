@@ -17,6 +17,7 @@ namespace Biblioteka.Forms
 
         LibraryDBContainer dbContext;
         public event EventHandler<List<Position>> searchClicked;
+        Boolean help = false;
 
         public SearchResource(LibraryDBContainer dbContext, EventHandler<List<Position>> search)
         {
@@ -85,6 +86,27 @@ namespace Biblioteka.Forms
             comboBoxType.Items.Add("Game");
             comboBoxType.Items.Add("Magazine");
             comboBoxType.SelectedIndex = (int)ResourceTypes.Book;
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            {
+                help = !help;
+                if (!help)
+                {
+                    helpButton.Text = "Pomoc";
+                    this.HelpButton = false;
+                    this.MaximizeBox = true;
+                    this.MinimizeBox = true;
+                }
+                else
+                {
+                    helpButton.Text = "Wylacz Pomoc";
+                    this.HelpButton = true;
+                    this.MaximizeBox = false;
+                    this.MinimizeBox = false;
+                }
+            }
         }
 
     }

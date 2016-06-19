@@ -16,6 +16,7 @@ namespace Biblioteka.Forms
 
         LibraryDBContainer dbContext;
         public event EventHandler<List<User>> searchClicked;
+        Boolean help = false;
 
         public SearchUser(LibraryDBContainer dbContext, EventHandler<List<User>> search)
         {
@@ -72,6 +73,27 @@ namespace Biblioteka.Forms
             typeSpinner.Items.Add("Librarian");
             typeSpinner.Items.Add("Admin");
             typeSpinner.SelectedIndex = 0;
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            {
+                help = !help;
+                if (!help)
+                {
+                    helpButton.Text = "Pomoc";
+                    this.HelpButton = false;
+                    this.MaximizeBox = true;
+                    this.MinimizeBox = true;
+                }
+                else
+                {
+                    helpButton.Text = "Wylacz Pomoc";
+                    this.HelpButton = true;
+                    this.MaximizeBox = false;
+                    this.MinimizeBox = false;
+                }
+            }
         }
     }
 }

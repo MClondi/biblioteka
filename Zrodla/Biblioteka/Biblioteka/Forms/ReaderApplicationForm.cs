@@ -16,6 +16,7 @@ namespace Biblioteka.Forms
 
         LibraryDBContainer dbContext;
         User user;
+        Boolean help;
 
         public ReaderApplicationForm(User u, LibraryDBContainer dbContext)
         {
@@ -62,6 +63,27 @@ namespace Biblioteka.Forms
         private void cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            {
+                help = !help;
+                if (!help)
+                {
+                    helpButton.Text = "Pomoc";
+                    this.HelpButton = false;
+                    this.MaximizeBox = true;
+                    this.MinimizeBox = true;
+                }
+                else
+                {
+                    helpButton.Text = "Wylacz Pomoc";
+                    this.HelpButton = true;
+                    this.MaximizeBox = false;
+                    this.MinimizeBox = false;
+                }
+            }
         }
     }
 }

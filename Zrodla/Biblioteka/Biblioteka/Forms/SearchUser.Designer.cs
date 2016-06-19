@@ -52,12 +52,17 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxMail = new System.Windows.Forms.TextBox();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // buttonExit
             // 
+            this.helpProvider1.SetHelpString(this.buttonExit, "Wciśnij ten przycisk jeżeli chcesz anulować dane i/lub powrócić do poprzedniego o" +
+        "kna");
             this.buttonExit.Location = new System.Drawing.Point(177, 339);
             this.buttonExit.Name = "buttonExit";
+            this.helpProvider1.SetShowHelp(this.buttonExit, true);
             this.buttonExit.Size = new System.Drawing.Size(148, 23);
             this.buttonExit.TabIndex = 65;
             this.buttonExit.Text = "Anuluj";
@@ -66,8 +71,10 @@
             // 
             // buttonSave
             // 
+            this.helpProvider1.SetHelpString(this.buttonSave, "Wciśnij ten przycisk jeżeli chcesz wyszukać użytkownika w bazie danych");
             this.buttonSave.Location = new System.Drawing.Point(15, 339);
             this.buttonSave.Name = "buttonSave";
+            this.helpProvider1.SetShowHelp(this.buttonSave, true);
             this.buttonSave.Size = new System.Drawing.Size(136, 23);
             this.buttonSave.TabIndex = 64;
             this.buttonSave.Text = "Szukaj";
@@ -77,7 +84,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 278);
+            this.label9.Location = new System.Drawing.Point(12, 307);
             this.label9.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(74, 13);
@@ -87,7 +94,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 252);
+            this.label10.Location = new System.Drawing.Point(12, 281);
             this.label10.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(38, 13);
@@ -97,7 +104,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 226);
+            this.label12.Location = new System.Drawing.Point(12, 255);
             this.label12.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(73, 13);
@@ -107,7 +114,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 200);
+            this.label6.Location = new System.Drawing.Point(12, 229);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
@@ -117,7 +124,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 174);
+            this.label7.Location = new System.Drawing.Point(12, 203);
             this.label7.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(31, 13);
@@ -127,7 +134,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 148);
+            this.label8.Location = new System.Drawing.Point(12, 177);
             this.label8.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(25, 13);
@@ -137,7 +144,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 122);
+            this.label3.Location = new System.Drawing.Point(12, 151);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
@@ -147,7 +154,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 96);
+            this.label4.Location = new System.Drawing.Point(12, 125);
             this.label4.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
@@ -157,7 +164,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 70);
+            this.label5.Location = new System.Drawing.Point(12, 99);
             this.label5.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
@@ -167,7 +174,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 46);
+            this.label1.Location = new System.Drawing.Point(12, 73);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
@@ -177,15 +184,17 @@
             // typeSpinner
             // 
             this.typeSpinner.FormattingEnabled = true;
-            this.typeSpinner.Location = new System.Drawing.Point(102, 12);
+            this.helpProvider1.SetHelpString(this.typeSpinner, "Tutaj podaj typ konta użytkownika");
+            this.typeSpinner.Location = new System.Drawing.Point(102, 39);
             this.typeSpinner.Name = "typeSpinner";
+            this.helpProvider1.SetShowHelp(this.typeSpinner, true);
             this.typeSpinner.Size = new System.Drawing.Size(223, 21);
             this.typeSpinner.TabIndex = 52;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 20);
+            this.label11.Location = new System.Drawing.Point(12, 47);
             this.label11.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(25, 13);
@@ -194,79 +203,110 @@
             // 
             // textBoxPostal
             // 
-            this.textBoxPostal.Location = new System.Drawing.Point(102, 271);
+            this.helpProvider1.SetHelpString(this.textBoxPostal, "W tym polu podaj kod pocztowy użytkownika którego chcesz znaleźć");
+            this.textBoxPostal.Location = new System.Drawing.Point(102, 300);
             this.textBoxPostal.Name = "textBoxPostal";
+            this.helpProvider1.SetShowHelp(this.textBoxPostal, true);
             this.textBoxPostal.Size = new System.Drawing.Size(223, 20);
             this.textBoxPostal.TabIndex = 50;
             // 
             // textBoxCity
             // 
-            this.textBoxCity.Location = new System.Drawing.Point(102, 245);
+            this.helpProvider1.SetHelpString(this.textBoxCity, "W tym polu podaj miasto zameldowania użytkownika którego chcesz znaleźć");
+            this.textBoxCity.Location = new System.Drawing.Point(102, 274);
             this.textBoxCity.Name = "textBoxCity";
+            this.helpProvider1.SetShowHelp(this.textBoxCity, true);
             this.textBoxCity.Size = new System.Drawing.Size(223, 20);
             this.textBoxCity.TabIndex = 49;
             // 
             // textBoxApt
             // 
-            this.textBoxApt.Location = new System.Drawing.Point(102, 219);
+            this.helpProvider1.SetHelpString(this.textBoxApt, "W tym polu podaj numer mieszkania użytkownika którego chcesz znaleźć");
+            this.textBoxApt.Location = new System.Drawing.Point(102, 248);
             this.textBoxApt.Name = "textBoxApt";
+            this.helpProvider1.SetShowHelp(this.textBoxApt, true);
             this.textBoxApt.Size = new System.Drawing.Size(223, 20);
             this.textBoxApt.TabIndex = 48;
             // 
             // textBoxStrNum
             // 
-            this.textBoxStrNum.Location = new System.Drawing.Point(102, 193);
+            this.helpProvider1.SetHelpString(this.textBoxStrNum, "W tym polu podaj numer domu użytkownika którego chcesz znaleźć");
+            this.textBoxStrNum.Location = new System.Drawing.Point(102, 222);
             this.textBoxStrNum.Name = "textBoxStrNum";
+            this.helpProvider1.SetShowHelp(this.textBoxStrNum, true);
             this.textBoxStrNum.Size = new System.Drawing.Size(223, 20);
             this.textBoxStrNum.TabIndex = 47;
             // 
             // textBoxStreet
             // 
-            this.textBoxStreet.Location = new System.Drawing.Point(102, 167);
+            this.helpProvider1.SetHelpString(this.textBoxStreet, "W tym polu podaj nazwę ulicy użytkownika którego chcesz znaleźć");
+            this.textBoxStreet.Location = new System.Drawing.Point(102, 196);
             this.textBoxStreet.Name = "textBoxStreet";
+            this.helpProvider1.SetShowHelp(this.textBoxStreet, true);
             this.textBoxStreet.Size = new System.Drawing.Size(223, 20);
             this.textBoxStreet.TabIndex = 46;
             // 
             // textBoxTel
             // 
-            this.textBoxTel.Location = new System.Drawing.Point(102, 141);
+            this.helpProvider1.SetHelpString(this.textBoxTel, "W tym polu podaj numer telefonu użytkownika którego chcesz znaleźć");
+            this.textBoxTel.Location = new System.Drawing.Point(102, 170);
             this.textBoxTel.Name = "textBoxTel";
+            this.helpProvider1.SetShowHelp(this.textBoxTel, true);
             this.textBoxTel.Size = new System.Drawing.Size(223, 20);
             this.textBoxTel.TabIndex = 45;
             // 
             // textBoxSurname
             // 
-            this.textBoxSurname.Location = new System.Drawing.Point(102, 115);
+            this.helpProvider1.SetHelpString(this.textBoxSurname, "W tym polu podaj nazwisko użytkownika którego chcesz znaleźć");
+            this.textBoxSurname.Location = new System.Drawing.Point(102, 144);
             this.textBoxSurname.Name = "textBoxSurname";
+            this.helpProvider1.SetShowHelp(this.textBoxSurname, true);
             this.textBoxSurname.Size = new System.Drawing.Size(223, 20);
             this.textBoxSurname.TabIndex = 44;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(102, 89);
+            this.helpProvider1.SetHelpString(this.textBoxName, "W tym polu podaj imie użytkownika którego chcesz znaleźć");
+            this.textBoxName.Location = new System.Drawing.Point(102, 118);
             this.textBoxName.Name = "textBoxName";
+            this.helpProvider1.SetShowHelp(this.textBoxName, true);
             this.textBoxName.Size = new System.Drawing.Size(223, 20);
             this.textBoxName.TabIndex = 43;
             // 
             // textBoxMail
             // 
-            this.textBoxMail.Location = new System.Drawing.Point(102, 63);
+            this.helpProvider1.SetHelpString(this.textBoxMail, "W tym polu podaj adres email użytkownika którego chcesz znaleźć");
+            this.textBoxMail.Location = new System.Drawing.Point(102, 92);
             this.textBoxMail.Name = "textBoxMail";
+            this.helpProvider1.SetShowHelp(this.textBoxMail, true);
             this.textBoxMail.Size = new System.Drawing.Size(223, 20);
             this.textBoxMail.TabIndex = 42;
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(102, 39);
+            this.helpProvider1.SetHelpString(this.textBoxLogin, "W tym polu podaj login użytkownika którego chcesz znaleźć");
+            this.textBoxLogin.Location = new System.Drawing.Point(102, 66);
             this.textBoxLogin.Name = "textBoxLogin";
+            this.helpProvider1.SetShowHelp(this.textBoxLogin, true);
             this.textBoxLogin.Size = new System.Drawing.Size(223, 20);
             this.textBoxLogin.TabIndex = 40;
+            // 
+            // helpButton
+            // 
+            this.helpButton.Location = new System.Drawing.Point(117, 10);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(208, 23);
+            this.helpButton.TabIndex = 66;
+            this.helpButton.Text = "Pomoc";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
             // 
             // SearchUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 380);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.label9);
@@ -324,5 +364,7 @@
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxMail;
         private System.Windows.Forms.TextBox textBoxLogin;
+        private System.Windows.Forms.Button helpButton;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
