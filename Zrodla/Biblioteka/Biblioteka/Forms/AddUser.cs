@@ -83,7 +83,6 @@ namespace Biblioteka.Forms
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-
             if (editedUser != null)
             {
                 editedUser.Password = textBoxPassword.Text;

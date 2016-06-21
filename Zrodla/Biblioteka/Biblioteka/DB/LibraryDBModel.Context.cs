@@ -18,6 +18,7 @@ namespace Biblioteka.DB
         public LibraryDBContainer()
             : base("name=LibraryDBContainer")
         {
+            this.Configuration.LazyLoadingEnabled = false; 
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

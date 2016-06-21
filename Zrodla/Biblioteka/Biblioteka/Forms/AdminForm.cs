@@ -37,7 +37,9 @@ namespace Biblioteka.Forms
             if(getSelectedUser() != null)
             {
                 int userToDeleteId = getSelectedUser().Id;
-                dbContext.Users.Remove(dbContext.Users.First(userSearch => userSearch.Id == userToDeleteId));
+                var userToDelete = dbContext.Users.Include("Reader").Include("Borrowing")
+                               .Where(userSearch => userSearch.Id == userToDeleteId).FirstOrDefault();
+                dbContext.Users.Remove(userToDelete);
                 dbContext.SaveChanges();
                 refreshListView(dbContext.Users.ToList());
             }

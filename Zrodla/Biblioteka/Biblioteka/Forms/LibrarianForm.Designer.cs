@@ -30,6 +30,8 @@
         {
             this.btnLogout = new System.Windows.Forms.Button();
             this.lstViewBooksAndUsers = new System.Windows.Forms.ListView();
+            this.userName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.userSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnSearchUser = new System.Windows.Forms.Button();
             this.btnBorrowResource = new System.Windows.Forms.Button();
             this.btnReserveResource = new System.Windows.Forms.Button();
@@ -53,7 +55,7 @@
             this.btnSearchAuthor = new System.Windows.Forms.Button();
             this.btnSearchResource = new System.Windows.Forms.Button();
             this.listView2 = new System.Windows.Forms.ListView();
-            this.listView3 = new System.Windows.Forms.ListView();
+            this.lstViewAuthors = new System.Windows.Forms.ListView();
             this.listView4 = new System.Windows.Forms.ListView();
             this.listView1 = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,8 +63,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.surname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.authorName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.authorSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -81,14 +83,22 @@
             // lstViewBooksAndUsers
             // 
             this.lstViewBooksAndUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.name,
-            this.surname});
+            this.userName,
+            this.userSurname});
             this.lstViewBooksAndUsers.Location = new System.Drawing.Point(12, 63);
             this.lstViewBooksAndUsers.Name = "lstViewBooksAndUsers";
             this.lstViewBooksAndUsers.Size = new System.Drawing.Size(143, 196);
             this.lstViewBooksAndUsers.TabIndex = 7;
             this.lstViewBooksAndUsers.UseCompatibleStateImageBehavior = false;
             this.lstViewBooksAndUsers.View = System.Windows.Forms.View.Details;
+            // 
+            // userName
+            // 
+            this.userName.Text = "Imię";
+            // 
+            // userSurname
+            // 
+            this.userSurname.Text = "Nazwisko";
             // 
             // btnSearchUser
             // 
@@ -294,24 +304,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Baza danych";
             // 
-            // btnSearchResource
-            // 
-            this.btnSearchResource.Location = new System.Drawing.Point(20, 116);
-            this.btnSearchResource.Name = "btnSearchResource";
-            this.btnSearchResource.Size = new System.Drawing.Size(112, 23);
-            this.btnSearchResource.TabIndex = 23;
-            this.btnSearchResource.Text = "Szukaj zasobu";
-            this.btnSearchResource.UseVisualStyleBackColor = true;
-            // 
-            // btnSearchAuthor
-            // 
-            this.btnSearchAuthor.Location = new System.Drawing.Point(148, 116);
-            this.btnSearchAuthor.Name = "btnSearchAuthor";
-            this.btnSearchAuthor.Size = new System.Drawing.Size(112, 23);
-            this.btnSearchAuthor.TabIndex = 24;
-            this.btnSearchAuthor.Text = "Szukaj autora";
-            this.btnSearchAuthor.UseVisualStyleBackColor = true;
-            // 
             // btnSearchPosition
             // 
             this.btnSearchPosition.Location = new System.Drawing.Point(276, 116);
@@ -329,6 +321,7 @@
             this.btnSearchAuthor.TabIndex = 24;
             this.btnSearchAuthor.Text = "Szukaj autora";
             this.btnSearchAuthor.UseVisualStyleBackColor = true;
+            this.btnSearchAuthor.Click += new System.EventHandler(this.btnSearchAuthor_Click);
             // 
             // btnSearchResource
             // 
@@ -338,24 +331,28 @@
             this.btnSearchResource.TabIndex = 23;
             this.btnSearchResource.Text = "Szukaj zasobu";
             this.btnSearchResource.UseVisualStyleBackColor = true;
+            this.btnSearchResource.Click += new System.EventHandler(this.btnSearchResource_Click_1);
             // 
             // listView2
             // 
-             this.listView2.Location = new System.Drawing.Point(603, 63);
+            this.listView2.Location = new System.Drawing.Point(603, 63);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(119, 196);
             this.listView2.TabIndex = 30;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.List;
             // 
-            // listView3
+            // lstViewAuthors
             // 
-            this.listView3.Location = new System.Drawing.Point(476, 63);
-            this.listView3.Name = "listView3";
-             this.listView3.Size = new System.Drawing.Size(112, 196);
-            this.listView3.TabIndex = 31;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.List;
+            this.lstViewAuthors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.authorName,
+            this.authorSurname});
+            this.lstViewAuthors.Location = new System.Drawing.Point(476, 63);
+            this.lstViewAuthors.Name = "lstViewAuthors";
+            this.lstViewAuthors.Size = new System.Drawing.Size(112, 196);
+            this.lstViewAuthors.TabIndex = 31;
+            this.lstViewAuthors.UseCompatibleStateImageBehavior = false;
+            this.lstViewAuthors.View = System.Windows.Forms.View.Details;
             // 
             // listView4
             // 
@@ -420,13 +417,13 @@
             this.label5.TabIndex = 38;
             this.label5.Text = "Pozycje";
             // 
-            // name
+            // authorName
             // 
-            this.name.Text = "Imię";
+            this.authorName.Text = "Imię";
             // 
-            // surname
+            // authorSurname
             // 
-            this.surname.Text = "Nazwisko";
+            this.authorSurname.Text = "Nazwisko";
             // 
             // LibrarianForm
             // 
@@ -440,7 +437,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.listView4);
-            this.Controls.Add(this.listView3);
+            this.Controls.Add(this.lstViewAuthors);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -485,7 +482,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.ListView lstViewAuthors;
         private System.Windows.Forms.ListView listView4;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label label1;
@@ -493,7 +490,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ColumnHeader name;
-        private System.Windows.Forms.ColumnHeader surname;
+        private System.Windows.Forms.ColumnHeader userName;
+        private System.Windows.Forms.ColumnHeader userSurname;
+        private System.Windows.Forms.ColumnHeader authorName;
+        private System.Windows.Forms.ColumnHeader authorSurname;
     }
 }

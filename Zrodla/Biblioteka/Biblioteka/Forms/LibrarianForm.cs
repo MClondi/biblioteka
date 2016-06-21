@@ -16,6 +16,7 @@ namespace Biblioteka.Forms
         Form parent;
         LibraryDBContainer dbContext;
         Boolean help;
+        private Dictionary<String, Author> authorTagSet = new Dictionary<string, Author>();
 
         public LibrarianForm(Form parent, LibraryDBContainer dbContext)
         {
@@ -43,11 +44,7 @@ namespace Biblioteka.Forms
             SearchUser searchUserForm = new SearchUser(dbContext, searchUserClicked);
             searchUserForm.Show();
         }
-        private void btnSearchResource_Click(object sender, EventArgs e)
-        {
-            SearchResource sr = new SearchResource(dbContext, searchResourceClicked);
-            sr.Show();
-        }
+
         private void btnReserveResource_Click(object sender, EventArgs e)
         {
 
@@ -73,11 +70,7 @@ namespace Biblioteka.Forms
 
         }
 
-        private void btnAddAuthor_Click(object sender, EventArgs e)
-        {
-            AuthorForm addAuthor = new AuthorForm(dbContext, refresh);
-            addAuthor.Show();
-        }
+       
 
         private void btnAddPosition_Click(object sender, EventArgs e)
         {
@@ -89,10 +82,7 @@ namespace Biblioteka.Forms
 
         }
 
-        private void btnEditAuthor_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnEditPosition_Click(object sender, EventArgs e)
         {
@@ -104,10 +94,6 @@ namespace Biblioteka.Forms
 
         }
 
-        private void btnDeleteAuthor_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnDeletePosition_Click(object sender, EventArgs e)
         {
@@ -133,7 +119,68 @@ namespace Biblioteka.Forms
             // todo refresh the listview after add/edit/delete action
         }
 
-        
+        private void btnSearchResource_Click_1(object sender, EventArgs e)
+        {
+            SearchResource sr = new SearchResource(dbContext, searchResourceClicked);
+            sr.Show();
+        }
+
+
+
+        //Authors
+
+        private void btnAddAuthor_Click(object sender, EventArgs e)
+        {
+            AuthorForm addAuthor = new AuthorForm(dbContext, refresh);
+            addAuthor.authorSaved += new EventHandler(authorSaved);
+            addAuthor.Show();
+        }
+
+        private void btnEditAuthor_Click(object sender, EventArgs e)
+        {
+            AuthorForm editAuthor = new AuthorForm(dbContext, refresh, GuiUtils.GetSelected<Author>(lstViewAuthors, authorTagSet));
+            editAuthor.authorSaved += new EventHandler(authorSaved);
+            editAuthor.Show();
+        }
+
+        private void btnDeleteAuthor_Click(object sender, EventArgs e)
+        {
+            Author selectedAuthor = GuiUtils.GetSelected<Author>(lstViewAuthors, authorTagSet);
+
+            if (selectedAuthor != null)
+            {
+                int authorToDeleteId = selectedAuthor.Id;
+                var authorToDelete = dbContext.Authors.Include("Authorship")
+                               .Where(author => author.Id == authorToDeleteId).FirstOrDefault();
+                dbContext.Authors.Remove(authorToDelete);
+                dbContext.SaveChanges();
+                RefreshAuthorListView();
+            }
+        }
+
+        private void btnSearchAuthor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        void authorSaved(object sender, EventArgs e)
+        {
+            RefreshAuthorListView();
+        }
+
+        private void RefreshAuthorListView()
+        {
+            lstViewAuthors.Items.Clear();
+            authorTagSet.Clear();
+            foreach (Author usr in dbContext.Authors.ToList())
+            {
+                string[] row = { usr.Name, usr.Surname };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = usr.GetHashCode();
+                authorTagSet.Add(item.Tag.ToString(), usr);
+                lstViewAuthors.Items.Add(item);
+            }
+        }
 
     }
 }
