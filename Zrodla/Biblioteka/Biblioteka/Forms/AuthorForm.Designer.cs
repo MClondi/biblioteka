@@ -149,7 +149,7 @@
             this.Controls.Add(this.textBoxSurname);
             this.Controls.Add(this.textBoxName);
             this.Name = "AuthorForm";
-            this.Text = "AuthorForm";
+            this.Text = "Autor";
             this.ResumeLayout(false);
             this.PerformLayout();
 

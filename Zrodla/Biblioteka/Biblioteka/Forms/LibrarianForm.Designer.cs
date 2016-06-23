@@ -51,11 +51,17 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnSearchPublisher = new System.Windows.Forms.Button();
+            this.btnDeletePublisher = new System.Windows.Forms.Button();
+            this.btnAddPublisher = new System.Windows.Forms.Button();
+            this.btnEditPublisher = new System.Windows.Forms.Button();
             this.btnSearchPosition = new System.Windows.Forms.Button();
             this.btnSearchAuthor = new System.Windows.Forms.Button();
             this.btnSearchResource = new System.Windows.Forms.Button();
             this.listView2 = new System.Windows.Forms.ListView();
             this.lstViewAuthors = new System.Windows.Forms.ListView();
+            this.authorName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.authorSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView4 = new System.Windows.Forms.ListView();
             this.listView1 = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,8 +69,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.authorName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.authorSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label6 = new System.Windows.Forms.Label();
+            this.lstViewPublishers = new System.Windows.Forms.ListView();
+            this.publisherName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -72,7 +79,7 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(617, 12);
+            this.btnLogout.Location = new System.Drawing.Point(730, 12);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(112, 23);
             this.btnLogout.TabIndex = 6;
@@ -162,7 +169,7 @@
             // 
             // btnDeleteAuthor
             // 
-            this.btnDeleteAuthor.Location = new System.Drawing.Point(148, 86);
+            this.btnDeleteAuthor.Location = new System.Drawing.Point(275, 86);
             this.btnDeleteAuthor.Name = "btnDeleteAuthor";
             this.btnDeleteAuthor.Size = new System.Drawing.Size(112, 23);
             this.btnDeleteAuthor.TabIndex = 20;
@@ -172,7 +179,7 @@
             // 
             // btnDeletePosition
             // 
-            this.btnDeletePosition.Location = new System.Drawing.Point(275, 86);
+            this.btnDeletePosition.Location = new System.Drawing.Point(148, 86);
             this.btnDeletePosition.Name = "btnDeletePosition";
             this.btnDeletePosition.Size = new System.Drawing.Size(112, 23);
             this.btnDeletePosition.TabIndex = 22;
@@ -192,7 +199,7 @@
             // 
             // btnEditAuthor
             // 
-            this.btnEditAuthor.Location = new System.Drawing.Point(148, 56);
+            this.btnEditAuthor.Location = new System.Drawing.Point(275, 56);
             this.btnEditAuthor.Name = "btnEditAuthor";
             this.btnEditAuthor.Size = new System.Drawing.Size(112, 23);
             this.btnEditAuthor.TabIndex = 17;
@@ -202,7 +209,7 @@
             // 
             // btnEditPosition
             // 
-            this.btnEditPosition.Location = new System.Drawing.Point(275, 56);
+            this.btnEditPosition.Location = new System.Drawing.Point(148, 56);
             this.btnEditPosition.Name = "btnEditPosition";
             this.btnEditPosition.Size = new System.Drawing.Size(112, 23);
             this.btnEditPosition.TabIndex = 19;
@@ -222,7 +229,7 @@
             // 
             // btnAddAuthor
             // 
-            this.btnAddAuthor.Location = new System.Drawing.Point(148, 26);
+            this.btnAddAuthor.Location = new System.Drawing.Point(275, 26);
             this.btnAddAuthor.Name = "btnAddAuthor";
             this.btnAddAuthor.Size = new System.Drawing.Size(112, 23);
             this.btnAddAuthor.TabIndex = 13;
@@ -232,7 +239,7 @@
             // 
             // btnAddPosition
             // 
-            this.btnAddPosition.Location = new System.Drawing.Point(275, 26);
+            this.btnAddPosition.Location = new System.Drawing.Point(148, 26);
             this.btnAddPosition.Name = "btnAddPosition";
             this.btnAddPosition.Size = new System.Drawing.Size(112, 23);
             this.btnAddPosition.TabIndex = 16;
@@ -285,6 +292,10 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnSearchPublisher);
+            this.groupBox4.Controls.Add(this.btnDeletePublisher);
+            this.groupBox4.Controls.Add(this.btnAddPublisher);
+            this.groupBox4.Controls.Add(this.btnEditPublisher);
             this.groupBox4.Controls.Add(this.btnSearchPosition);
             this.groupBox4.Controls.Add(this.btnSearchAuthor);
             this.groupBox4.Controls.Add(this.btnSearchResource);
@@ -293,20 +304,60 @@
             this.groupBox4.Controls.Add(this.btnDeleteAuthor);
             this.groupBox4.Controls.Add(this.btnAddPosition);
             this.groupBox4.Controls.Add(this.btnDeletePosition);
-            this.groupBox4.Controls.Add(this.btnAddAuthor);
             this.groupBox4.Controls.Add(this.btnEditResource);
             this.groupBox4.Controls.Add(this.btnEditPosition);
+            this.groupBox4.Controls.Add(this.btnAddAuthor);
             this.groupBox4.Controls.Add(this.btnEditAuthor);
             this.groupBox4.Location = new System.Drawing.Point(328, 265);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(394, 166);
+            this.groupBox4.Size = new System.Drawing.Size(535, 166);
             this.groupBox4.TabIndex = 28;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Baza danych";
             // 
+            // btnSearchPublisher
+            // 
+            this.btnSearchPublisher.Location = new System.Drawing.Point(402, 116);
+            this.btnSearchPublisher.Name = "btnSearchPublisher";
+            this.btnSearchPublisher.Size = new System.Drawing.Size(112, 23);
+            this.btnSearchPublisher.TabIndex = 29;
+            this.btnSearchPublisher.Text = "Szukaj wydawcy";
+            this.btnSearchPublisher.UseVisualStyleBackColor = true;
+            this.btnSearchPublisher.Click += new System.EventHandler(this.btnSearchPublisher_Click);
+            // 
+            // btnDeletePublisher
+            // 
+            this.btnDeletePublisher.Location = new System.Drawing.Point(402, 86);
+            this.btnDeletePublisher.Name = "btnDeletePublisher";
+            this.btnDeletePublisher.Size = new System.Drawing.Size(112, 23);
+            this.btnDeletePublisher.TabIndex = 28;
+            this.btnDeletePublisher.Text = "Usuń wydawcę";
+            this.btnDeletePublisher.UseVisualStyleBackColor = true;
+            this.btnDeletePublisher.Click += new System.EventHandler(this.btnDeletePublisher_Click);
+            // 
+            // btnAddPublisher
+            // 
+            this.btnAddPublisher.Location = new System.Drawing.Point(402, 26);
+            this.btnAddPublisher.Name = "btnAddPublisher";
+            this.btnAddPublisher.Size = new System.Drawing.Size(112, 23);
+            this.btnAddPublisher.TabIndex = 26;
+            this.btnAddPublisher.Text = "Dodaj wydawcę";
+            this.btnAddPublisher.UseVisualStyleBackColor = true;
+            this.btnAddPublisher.Click += new System.EventHandler(this.btnAddPublisher_Click);
+            // 
+            // btnEditPublisher
+            // 
+            this.btnEditPublisher.Location = new System.Drawing.Point(402, 56);
+            this.btnEditPublisher.Name = "btnEditPublisher";
+            this.btnEditPublisher.Size = new System.Drawing.Size(112, 23);
+            this.btnEditPublisher.TabIndex = 27;
+            this.btnEditPublisher.Text = "Edytuj wydawcę";
+            this.btnEditPublisher.UseVisualStyleBackColor = true;
+            this.btnEditPublisher.Click += new System.EventHandler(this.btnEditPublisher_Click);
+            // 
             // btnSearchPosition
             // 
-            this.btnSearchPosition.Location = new System.Drawing.Point(276, 116);
+            this.btnSearchPosition.Location = new System.Drawing.Point(148, 116);
             this.btnSearchPosition.Name = "btnSearchPosition";
             this.btnSearchPosition.Size = new System.Drawing.Size(112, 23);
             this.btnSearchPosition.TabIndex = 25;
@@ -315,7 +366,7 @@
             // 
             // btnSearchAuthor
             // 
-            this.btnSearchAuthor.Location = new System.Drawing.Point(148, 116);
+            this.btnSearchAuthor.Location = new System.Drawing.Point(275, 116);
             this.btnSearchAuthor.Name = "btnSearchAuthor";
             this.btnSearchAuthor.Size = new System.Drawing.Size(112, 23);
             this.btnSearchAuthor.TabIndex = 24;
@@ -335,9 +386,9 @@
             // 
             // listView2
             // 
-            this.listView2.Location = new System.Drawing.Point(603, 63);
+            this.listView2.Location = new System.Drawing.Point(476, 63);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(119, 196);
+            this.listView2.Size = new System.Drawing.Size(112, 196);
             this.listView2.TabIndex = 30;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.List;
@@ -347,12 +398,20 @@
             this.lstViewAuthors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.authorName,
             this.authorSurname});
-            this.lstViewAuthors.Location = new System.Drawing.Point(476, 63);
+            this.lstViewAuthors.Location = new System.Drawing.Point(603, 63);
             this.lstViewAuthors.Name = "lstViewAuthors";
             this.lstViewAuthors.Size = new System.Drawing.Size(112, 196);
             this.lstViewAuthors.TabIndex = 31;
             this.lstViewAuthors.UseCompatibleStateImageBehavior = false;
             this.lstViewAuthors.View = System.Windows.Forms.View.Details;
+            // 
+            // authorName
+            // 
+            this.authorName.Text = "Imię";
+            // 
+            // authorSurname
+            // 
+            this.authorSurname.Text = "Nazwisko";
             // 
             // listView4
             // 
@@ -402,7 +461,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(473, 47);
+            this.label4.Location = new System.Drawing.Point(601, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 37;
@@ -411,25 +470,44 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(601, 47);
+            this.label5.Location = new System.Drawing.Point(474, 47);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 38;
             this.label5.Text = "Pozycje";
             // 
-            // authorName
+            // label6
             // 
-            this.authorName.Text = "Imię";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(728, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 13);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "Wydawcy";
             // 
-            // authorSurname
+            // lstViewPublishers
             // 
-            this.authorSurname.Text = "Nazwisko";
+            this.lstViewPublishers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.publisherName});
+            this.lstViewPublishers.Location = new System.Drawing.Point(730, 63);
+            this.lstViewPublishers.Name = "lstViewPublishers";
+            this.lstViewPublishers.Size = new System.Drawing.Size(112, 196);
+            this.lstViewPublishers.TabIndex = 39;
+            this.lstViewPublishers.UseCompatibleStateImageBehavior = false;
+            this.lstViewPublishers.View = System.Windows.Forms.View.Details;
+            // 
+            // publisherName
+            // 
+            this.publisherName.Text = "Nazwa";
+            this.publisherName.Width = 95;
             // 
             // LibrarianForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 436);
+            this.ClientSize = new System.Drawing.Size(857, 436);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lstViewPublishers);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -494,5 +572,12 @@
         private System.Windows.Forms.ColumnHeader userSurname;
         private System.Windows.Forms.ColumnHeader authorName;
         private System.Windows.Forms.ColumnHeader authorSurname;
+        private System.Windows.Forms.Button btnSearchPublisher;
+        private System.Windows.Forms.Button btnDeletePublisher;
+        private System.Windows.Forms.Button btnAddPublisher;
+        private System.Windows.Forms.Button btnEditPublisher;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ListView lstViewPublishers;
+        private System.Windows.Forms.ColumnHeader publisherName;
     }
 }

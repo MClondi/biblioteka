@@ -17,6 +17,7 @@ namespace Biblioteka.Forms
         LibraryDBContainer dbContext;
         Boolean help;
         private Dictionary<String, Author> authorTagSet = new Dictionary<string, Author>();
+        private Dictionary<String, Publisher> publisherTagSet = new Dictionary<string, Publisher>();
 
         public LibrarianForm(Form parent, LibraryDBContainer dbContext)
         {
@@ -160,9 +161,9 @@ namespace Biblioteka.Forms
 
         private void btnSearchAuthor_Click(object sender, EventArgs e)
         {
-            AuthorForm addAuthor = new AuthorForm(dbContext, true);
-            addAuthor.authorSaved += new EventHandler<List<Author>>(authorSaved);
-            addAuthor.Show();
+            AuthorForm searchAuthor = new AuthorForm(dbContext, true);
+            searchAuthor.authorSaved += new EventHandler<List<Author>>(authorSaved);
+            searchAuthor.Show();
         }
 
         void authorSaved(object sender, List<Author> authors)
@@ -186,6 +187,68 @@ namespace Biblioteka.Forms
                 item.Tag = author.GetHashCode();
                 authorTagSet.Add(item.Tag.ToString(), author);
                 lstViewAuthors.Items.Add(item);
+            }
+        }
+
+        //Publishers
+
+        private void btnAddPublisher_Click(object sender, EventArgs e)
+        {
+            PublisherForm addPublisher = new PublisherForm(dbContext);
+            addPublisher.publisherSaved += new EventHandler<List<Publisher>>(publisherSaved);
+            addPublisher.Show();
+        }
+
+        private void btnEditPublisher_Click(object sender, EventArgs e)
+        {
+            PublisherForm editPublisher = new PublisherForm(dbContext, (Publisher)GuiUtils.GetSelected<Publisher>(lstViewPublishers, publisherTagSet));
+            editPublisher.publisherSaved += new EventHandler<List<Publisher>>(publisherSaved);
+            editPublisher.Show();
+        }
+
+        private void btnDeletePublisher_Click(object sender, EventArgs e)
+        {
+            Publisher selectedPublisher = GuiUtils.GetSelected<Publisher>(lstViewPublishers, publisherTagSet);
+
+            if (selectedPublisher != null)
+            {
+                int publisherToDeleteId = selectedPublisher.Id;
+                var publisherToDelete = dbContext.Publishers
+                               .Where(publisher => publisher.Id == publisherToDeleteId).FirstOrDefault();
+                dbContext.Publishers.Remove(publisherToDelete);
+                dbContext.SaveChanges();
+                RefreshPublisherListView();
+            }
+        }
+
+        private void btnSearchPublisher_Click(object sender, EventArgs e)
+        {
+            PublisherForm searchPublisher = new PublisherForm(dbContext, true);
+            searchPublisher.publisherSaved += new EventHandler<List<Publisher>>(publisherSaved);
+            searchPublisher.Show();
+        }
+
+        void publisherSaved(object sender, List<Publisher> publishers)
+        {
+            RefreshPublisherListView(publishers);
+        }
+
+        private void RefreshPublisherListView(List<Publisher> publishers = null)
+        {
+            if (publishers == null)
+            {
+                publishers = dbContext.Publishers.ToList();
+            }
+
+            lstViewPublishers.Items.Clear();
+            publisherTagSet.Clear();
+            foreach (Publisher publisher in publishers)
+            {
+                string[] row = { publisher.Name };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = publisher.GetHashCode();
+                publisherTagSet.Add(item.Tag.ToString(), publisher);
+                lstViewPublishers.Items.Add(item);
             }
         }
 
