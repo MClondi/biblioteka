@@ -72,9 +72,45 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lstViewPublishers = new System.Windows.Forms.ListView();
             this.publisherName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
+            this.button25 = new System.Windows.Forms.Button();
+            this.button26 = new System.Windows.Forms.Button();
+            this.listView5 = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listView6 = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listView7 = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLogout
@@ -92,9 +128,9 @@
             this.lstViewBooksAndUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.userName,
             this.userSurname});
-            this.lstViewBooksAndUsers.Location = new System.Drawing.Point(12, 63);
+            this.lstViewBooksAndUsers.Location = new System.Drawing.Point(22, 28);
             this.lstViewBooksAndUsers.Name = "lstViewBooksAndUsers";
-            this.lstViewBooksAndUsers.Size = new System.Drawing.Size(143, 196);
+            this.lstViewBooksAndUsers.Size = new System.Drawing.Size(202, 133);
             this.lstViewBooksAndUsers.TabIndex = 7;
             this.lstViewBooksAndUsers.UseCompatibleStateImageBehavior = false;
             this.lstViewBooksAndUsers.View = System.Windows.Forms.View.Details;
@@ -109,7 +145,7 @@
             // 
             // btnSearchUser
             // 
-            this.btnSearchUser.Location = new System.Drawing.Point(17, 25);
+            this.btnSearchUser.Location = new System.Drawing.Point(45, 26);
             this.btnSearchUser.Name = "btnSearchUser";
             this.btnSearchUser.Size = new System.Drawing.Size(112, 24);
             this.btnSearchUser.TabIndex = 8;
@@ -119,7 +155,7 @@
             // 
             // btnBorrowResource
             // 
-            this.btnBorrowResource.Location = new System.Drawing.Point(15, 55);
+            this.btnBorrowResource.Location = new System.Drawing.Point(48, 56);
             this.btnBorrowResource.Name = "btnBorrowResource";
             this.btnBorrowResource.Size = new System.Drawing.Size(112, 24);
             this.btnBorrowResource.TabIndex = 13;
@@ -129,7 +165,7 @@
             // 
             // btnReserveResource
             // 
-            this.btnReserveResource.Location = new System.Drawing.Point(15, 25);
+            this.btnReserveResource.Location = new System.Drawing.Point(48, 26);
             this.btnReserveResource.Name = "btnReserveResource";
             this.btnReserveResource.Size = new System.Drawing.Size(112, 24);
             this.btnReserveResource.TabIndex = 14;
@@ -139,7 +175,7 @@
             // 
             // btnNoteReturn
             // 
-            this.btnNoteReturn.Location = new System.Drawing.Point(15, 115);
+            this.btnNoteReturn.Location = new System.Drawing.Point(48, 116);
             this.btnNoteReturn.Name = "btnNoteReturn";
             this.btnNoteReturn.Size = new System.Drawing.Size(112, 24);
             this.btnNoteReturn.TabIndex = 15;
@@ -149,7 +185,7 @@
             // 
             // btnCancelReservation
             // 
-            this.btnCancelReservation.Location = new System.Drawing.Point(15, 85);
+            this.btnCancelReservation.Location = new System.Drawing.Point(48, 86);
             this.btnCancelReservation.Name = "btnCancelReservation";
             this.btnCancelReservation.Size = new System.Drawing.Size(112, 24);
             this.btnCancelReservation.TabIndex = 16;
@@ -159,7 +195,7 @@
             // 
             // btnDeleteResource
             // 
-            this.btnDeleteResource.Location = new System.Drawing.Point(20, 86);
+            this.btnDeleteResource.Location = new System.Drawing.Point(52, 86);
             this.btnDeleteResource.Name = "btnDeleteResource";
             this.btnDeleteResource.Size = new System.Drawing.Size(112, 23);
             this.btnDeleteResource.TabIndex = 21;
@@ -169,7 +205,7 @@
             // 
             // btnDeleteAuthor
             // 
-            this.btnDeleteAuthor.Location = new System.Drawing.Point(275, 86);
+            this.btnDeleteAuthor.Location = new System.Drawing.Point(18, 86);
             this.btnDeleteAuthor.Name = "btnDeleteAuthor";
             this.btnDeleteAuthor.Size = new System.Drawing.Size(112, 23);
             this.btnDeleteAuthor.TabIndex = 20;
@@ -179,7 +215,7 @@
             // 
             // btnDeletePosition
             // 
-            this.btnDeletePosition.Location = new System.Drawing.Point(148, 86);
+            this.btnDeletePosition.Location = new System.Drawing.Point(246, 87);
             this.btnDeletePosition.Name = "btnDeletePosition";
             this.btnDeletePosition.Size = new System.Drawing.Size(112, 23);
             this.btnDeletePosition.TabIndex = 22;
@@ -189,7 +225,7 @@
             // 
             // btnEditResource
             // 
-            this.btnEditResource.Location = new System.Drawing.Point(20, 56);
+            this.btnEditResource.Location = new System.Drawing.Point(52, 56);
             this.btnEditResource.Name = "btnEditResource";
             this.btnEditResource.Size = new System.Drawing.Size(112, 23);
             this.btnEditResource.TabIndex = 18;
@@ -199,7 +235,7 @@
             // 
             // btnEditAuthor
             // 
-            this.btnEditAuthor.Location = new System.Drawing.Point(275, 56);
+            this.btnEditAuthor.Location = new System.Drawing.Point(18, 56);
             this.btnEditAuthor.Name = "btnEditAuthor";
             this.btnEditAuthor.Size = new System.Drawing.Size(112, 23);
             this.btnEditAuthor.TabIndex = 17;
@@ -209,7 +245,7 @@
             // 
             // btnEditPosition
             // 
-            this.btnEditPosition.Location = new System.Drawing.Point(148, 56);
+            this.btnEditPosition.Location = new System.Drawing.Point(246, 57);
             this.btnEditPosition.Name = "btnEditPosition";
             this.btnEditPosition.Size = new System.Drawing.Size(112, 23);
             this.btnEditPosition.TabIndex = 19;
@@ -219,7 +255,7 @@
             // 
             // btnAddResource
             // 
-            this.btnAddResource.Location = new System.Drawing.Point(20, 26);
+            this.btnAddResource.Location = new System.Drawing.Point(52, 26);
             this.btnAddResource.Name = "btnAddResource";
             this.btnAddResource.Size = new System.Drawing.Size(112, 23);
             this.btnAddResource.TabIndex = 14;
@@ -229,7 +265,7 @@
             // 
             // btnAddAuthor
             // 
-            this.btnAddAuthor.Location = new System.Drawing.Point(275, 26);
+            this.btnAddAuthor.Location = new System.Drawing.Point(18, 26);
             this.btnAddAuthor.Name = "btnAddAuthor";
             this.btnAddAuthor.Size = new System.Drawing.Size(112, 23);
             this.btnAddAuthor.TabIndex = 13;
@@ -239,7 +275,7 @@
             // 
             // btnAddPosition
             // 
-            this.btnAddPosition.Location = new System.Drawing.Point(148, 26);
+            this.btnAddPosition.Location = new System.Drawing.Point(246, 27);
             this.btnAddPosition.Name = "btnAddPosition";
             this.btnAddPosition.Size = new System.Drawing.Size(112, 23);
             this.btnAddPosition.TabIndex = 16;
@@ -252,16 +288,16 @@
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnSearchUser);
-            this.groupBox1.Location = new System.Drawing.Point(12, 265);
+            this.groupBox1.Location = new System.Drawing.Point(22, 167);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(143, 166);
+            this.groupBox1.Size = new System.Drawing.Size(202, 166);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Użytkownicy";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(17, 109);
+            this.button2.Location = new System.Drawing.Point(45, 110);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(112, 48);
             this.button2.TabIndex = 10;
@@ -270,7 +306,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(17, 55);
+            this.button1.Location = new System.Drawing.Point(45, 56);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 48);
             this.button1.TabIndex = 9;
@@ -283,41 +319,33 @@
             this.groupBox3.Controls.Add(this.btnBorrowResource);
             this.groupBox3.Controls.Add(this.btnNoteReturn);
             this.groupBox3.Controls.Add(this.btnCancelReservation);
-            this.groupBox3.Location = new System.Drawing.Point(170, 265);
+            this.groupBox3.Location = new System.Drawing.Point(230, 167);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(142, 166);
+            this.groupBox3.Size = new System.Drawing.Size(202, 166);
             this.groupBox3.TabIndex = 27;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Akcje";
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.btnSearchPublisher);
-            this.groupBox4.Controls.Add(this.btnDeletePublisher);
-            this.groupBox4.Controls.Add(this.btnAddPublisher);
-            this.groupBox4.Controls.Add(this.btnEditPublisher);
             this.groupBox4.Controls.Add(this.btnSearchPosition);
-            this.groupBox4.Controls.Add(this.btnSearchAuthor);
             this.groupBox4.Controls.Add(this.btnSearchResource);
             this.groupBox4.Controls.Add(this.btnDeleteResource);
             this.groupBox4.Controls.Add(this.btnAddResource);
-            this.groupBox4.Controls.Add(this.btnDeleteAuthor);
             this.groupBox4.Controls.Add(this.btnAddPosition);
             this.groupBox4.Controls.Add(this.btnDeletePosition);
             this.groupBox4.Controls.Add(this.btnEditResource);
             this.groupBox4.Controls.Add(this.btnEditPosition);
-            this.groupBox4.Controls.Add(this.btnAddAuthor);
-            this.groupBox4.Controls.Add(this.btnEditAuthor);
-            this.groupBox4.Location = new System.Drawing.Point(328, 265);
+            this.groupBox4.Location = new System.Drawing.Point(438, 167);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(535, 166);
+            this.groupBox4.Size = new System.Drawing.Size(410, 166);
             this.groupBox4.TabIndex = 28;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Baza danych";
             // 
             // btnSearchPublisher
             // 
-            this.btnSearchPublisher.Location = new System.Drawing.Point(402, 116);
+            this.btnSearchPublisher.Location = new System.Drawing.Point(154, 116);
             this.btnSearchPublisher.Name = "btnSearchPublisher";
             this.btnSearchPublisher.Size = new System.Drawing.Size(112, 23);
             this.btnSearchPublisher.TabIndex = 29;
@@ -327,7 +355,7 @@
             // 
             // btnDeletePublisher
             // 
-            this.btnDeletePublisher.Location = new System.Drawing.Point(402, 86);
+            this.btnDeletePublisher.Location = new System.Drawing.Point(154, 86);
             this.btnDeletePublisher.Name = "btnDeletePublisher";
             this.btnDeletePublisher.Size = new System.Drawing.Size(112, 23);
             this.btnDeletePublisher.TabIndex = 28;
@@ -337,7 +365,7 @@
             // 
             // btnAddPublisher
             // 
-            this.btnAddPublisher.Location = new System.Drawing.Point(402, 26);
+            this.btnAddPublisher.Location = new System.Drawing.Point(154, 26);
             this.btnAddPublisher.Name = "btnAddPublisher";
             this.btnAddPublisher.Size = new System.Drawing.Size(112, 23);
             this.btnAddPublisher.TabIndex = 26;
@@ -347,7 +375,7 @@
             // 
             // btnEditPublisher
             // 
-            this.btnEditPublisher.Location = new System.Drawing.Point(402, 56);
+            this.btnEditPublisher.Location = new System.Drawing.Point(154, 56);
             this.btnEditPublisher.Name = "btnEditPublisher";
             this.btnEditPublisher.Size = new System.Drawing.Size(112, 23);
             this.btnEditPublisher.TabIndex = 27;
@@ -357,7 +385,7 @@
             // 
             // btnSearchPosition
             // 
-            this.btnSearchPosition.Location = new System.Drawing.Point(148, 116);
+            this.btnSearchPosition.Location = new System.Drawing.Point(246, 117);
             this.btnSearchPosition.Name = "btnSearchPosition";
             this.btnSearchPosition.Size = new System.Drawing.Size(112, 23);
             this.btnSearchPosition.TabIndex = 25;
@@ -366,7 +394,7 @@
             // 
             // btnSearchAuthor
             // 
-            this.btnSearchAuthor.Location = new System.Drawing.Point(275, 116);
+            this.btnSearchAuthor.Location = new System.Drawing.Point(18, 116);
             this.btnSearchAuthor.Name = "btnSearchAuthor";
             this.btnSearchAuthor.Size = new System.Drawing.Size(112, 23);
             this.btnSearchAuthor.TabIndex = 24;
@@ -376,7 +404,7 @@
             // 
             // btnSearchResource
             // 
-            this.btnSearchResource.Location = new System.Drawing.Point(20, 116);
+            this.btnSearchResource.Location = new System.Drawing.Point(52, 116);
             this.btnSearchResource.Name = "btnSearchResource";
             this.btnSearchResource.Size = new System.Drawing.Size(112, 23);
             this.btnSearchResource.TabIndex = 23;
@@ -386,9 +414,9 @@
             // 
             // listView2
             // 
-            this.listView2.Location = new System.Drawing.Point(476, 63);
+            this.listView2.Location = new System.Drawing.Point(646, 28);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(112, 196);
+            this.listView2.Size = new System.Drawing.Size(202, 133);
             this.listView2.TabIndex = 30;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.List;
@@ -398,9 +426,9 @@
             this.lstViewAuthors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.authorName,
             this.authorSurname});
-            this.lstViewAuthors.Location = new System.Drawing.Point(603, 63);
+            this.lstViewAuthors.Location = new System.Drawing.Point(22, 23);
             this.lstViewAuthors.Name = "lstViewAuthors";
-            this.lstViewAuthors.Size = new System.Drawing.Size(112, 196);
+            this.lstViewAuthors.Size = new System.Drawing.Size(112, 133);
             this.lstViewAuthors.TabIndex = 31;
             this.lstViewAuthors.UseCompatibleStateImageBehavior = false;
             this.lstViewAuthors.View = System.Windows.Forms.View.Details;
@@ -415,18 +443,18 @@
             // 
             // listView4
             // 
-            this.listView4.Location = new System.Drawing.Point(328, 63);
+            this.listView4.Location = new System.Drawing.Point(438, 28);
             this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(132, 196);
+            this.listView4.Size = new System.Drawing.Size(202, 133);
             this.listView4.TabIndex = 32;
             this.listView4.UseCompatibleStateImageBehavior = false;
             this.listView4.View = System.Windows.Forms.View.List;
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(170, 63);
+            this.listView1.Location = new System.Drawing.Point(230, 28);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(142, 196);
+            this.listView1.Size = new System.Drawing.Size(202, 133);
             this.listView1.TabIndex = 33;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -434,7 +462,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 47);
+            this.label1.Location = new System.Drawing.Point(19, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 34;
@@ -443,7 +471,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(167, 47);
+            this.label2.Location = new System.Drawing.Point(227, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 13);
             this.label2.TabIndex = 35;
@@ -452,7 +480,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(325, 47);
+            this.label3.Location = new System.Drawing.Point(435, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.TabIndex = 36;
@@ -461,7 +489,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(601, 47);
+            this.label4.Location = new System.Drawing.Point(19, 7);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 37;
@@ -470,7 +498,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(474, 47);
+            this.label5.Location = new System.Drawing.Point(643, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 38;
@@ -479,7 +507,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(728, 47);
+            this.label6.Location = new System.Drawing.Point(166, 7);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 13);
             this.label6.TabIndex = 40;
@@ -489,9 +517,9 @@
             // 
             this.lstViewPublishers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.publisherName});
-            this.lstViewPublishers.Location = new System.Drawing.Point(730, 63);
+            this.lstViewPublishers.Location = new System.Drawing.Point(160, 23);
             this.lstViewPublishers.Name = "lstViewPublishers";
-            this.lstViewPublishers.Size = new System.Drawing.Size(112, 196);
+            this.lstViewPublishers.Size = new System.Drawing.Size(112, 133);
             this.lstViewPublishers.TabIndex = 39;
             this.lstViewPublishers.UseCompatibleStateImageBehavior = false;
             this.lstViewPublishers.View = System.Windows.Forms.View.Details;
@@ -501,26 +529,343 @@
             this.publisherName.Text = "Nazwa";
             this.publisherName.Width = 95;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(9, 41);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(875, 370);
+            this.tabControl1.TabIndex = 50;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.lstViewBooksAndUsers);
+            this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.groupBox4);
+            this.tabPage1.Controls.Add(this.listView2);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.listView4);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.listView1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(867, 344);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Główne";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.listView7);
+            this.tabPage2.Controls.Add(this.listView6);
+            this.tabPage2.Controls.Add(this.listView5);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Controls.Add(this.lstViewPublishers);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.lstViewAuthors);
+            this.tabPage2.Controls.Add(this.listView3);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(867, 344);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Pomocnicze";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // listView3
+            // 
+            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listView3.Location = new System.Drawing.Point(730, 23);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(112, 133);
+            this.listView3.TabIndex = 52;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Nazwa";
+            this.columnHeader1.Width = 95;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button7);
+            this.groupBox2.Controls.Add(this.button8);
+            this.groupBox2.Controls.Add(this.button9);
+            this.groupBox2.Controls.Add(this.button10);
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.button4);
+            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Controls.Add(this.btnSearchPublisher);
+            this.groupBox2.Controls.Add(this.button19);
+            this.groupBox2.Controls.Add(this.button20);
+            this.groupBox2.Controls.Add(this.btnDeletePublisher);
+            this.groupBox2.Controls.Add(this.btnAddPublisher);
+            this.groupBox2.Controls.Add(this.button21);
+            this.groupBox2.Controls.Add(this.btnSearchAuthor);
+            this.groupBox2.Controls.Add(this.btnAddAuthor);
+            this.groupBox2.Controls.Add(this.btnDeleteAuthor);
+            this.groupBox2.Controls.Add(this.button22);
+            this.groupBox2.Controls.Add(this.btnEditPublisher);
+            this.groupBox2.Controls.Add(this.button23);
+            this.groupBox2.Controls.Add(this.button24);
+            this.groupBox2.Controls.Add(this.btnEditAuthor);
+            this.groupBox2.Controls.Add(this.button25);
+            this.groupBox2.Controls.Add(this.button26);
+            this.groupBox2.Location = new System.Drawing.Point(6, 167);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(855, 166);
+            this.groupBox2.TabIndex = 51;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Baza danych";
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(724, 116);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(112, 23);
+            this.button19.TabIndex = 37;
+            this.button19.Text = "Szukaj kategorii";
+            this.button19.UseVisualStyleBackColor = true;
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(724, 86);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(112, 23);
+            this.button20.TabIndex = 36;
+            this.button20.Text = "Usuń kategorię";
+            this.button20.UseVisualStyleBackColor = true;
+            // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(724, 26);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(112, 23);
+            this.button21.TabIndex = 34;
+            this.button21.Text = "Dodaj kategorię";
+            this.button21.UseVisualStyleBackColor = true;
+            // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(724, 56);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(112, 23);
+            this.button22.TabIndex = 35;
+            this.button22.Text = "Edytuj kategorię";
+            this.button22.UseVisualStyleBackColor = true;
+            // 
+            // button23
+            // 
+            this.button23.Location = new System.Drawing.Point(586, 116);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(112, 23);
+            this.button23.TabIndex = 33;
+            this.button23.Text = "Szukaj rodzaju";
+            this.button23.UseVisualStyleBackColor = true;
+            // 
+            // button24
+            // 
+            this.button24.Location = new System.Drawing.Point(586, 86);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(112, 23);
+            this.button24.TabIndex = 32;
+            this.button24.Text = "Usuń rodzaj";
+            this.button24.UseVisualStyleBackColor = true;
+            // 
+            // button25
+            // 
+            this.button25.Location = new System.Drawing.Point(586, 26);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(112, 23);
+            this.button25.TabIndex = 30;
+            this.button25.Text = "Dodaj rodzaj";
+            this.button25.UseVisualStyleBackColor = true;
+            // 
+            // button26
+            // 
+            this.button26.Location = new System.Drawing.Point(586, 56);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(112, 23);
+            this.button26.TabIndex = 31;
+            this.button26.Text = "Edytuj rodzaj";
+            this.button26.UseVisualStyleBackColor = true;
+            // 
+            // listView5
+            // 
+            this.listView5.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
+            this.listView5.Location = new System.Drawing.Point(592, 23);
+            this.listView5.Name = "listView5";
+            this.listView5.Size = new System.Drawing.Size(112, 133);
+            this.listView5.TabIndex = 54;
+            this.listView5.UseCompatibleStateImageBehavior = false;
+            this.listView5.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Nazwa";
+            this.columnHeader2.Width = 95;
+            // 
+            // listView6
+            // 
+            this.listView6.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3});
+            this.listView6.Location = new System.Drawing.Point(454, 23);
+            this.listView6.Name = "listView6";
+            this.listView6.Size = new System.Drawing.Size(112, 133);
+            this.listView6.TabIndex = 55;
+            this.listView6.UseCompatibleStateImageBehavior = false;
+            this.listView6.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Nazwa";
+            this.columnHeader3.Width = 95;
+            // 
+            // listView7
+            // 
+            this.listView7.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4});
+            this.listView7.Location = new System.Drawing.Point(307, 23);
+            this.listView7.Name = "listView7";
+            this.listView7.Size = new System.Drawing.Size(112, 133);
+            this.listView7.TabIndex = 56;
+            this.listView7.UseCompatibleStateImageBehavior = false;
+            this.listView7.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Nazwa";
+            this.columnHeader4.Width = 95;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(301, 116);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(112, 23);
+            this.button3.TabIndex = 41;
+            this.button3.Text = "Szukaj książki";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(301, 86);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(112, 23);
+            this.button4.TabIndex = 40;
+            this.button4.Text = "Usuń książkę";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(301, 26);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(112, 23);
+            this.button5.TabIndex = 38;
+            this.button5.Text = "Dodaj książkę";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(301, 56);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(112, 23);
+            this.button6.TabIndex = 39;
+            this.button6.Text = "Edytuj książkę";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(448, 116);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(112, 23);
+            this.button7.TabIndex = 45;
+            this.button7.Text = "Szukaj magazynu";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(448, 86);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(112, 23);
+            this.button8.TabIndex = 44;
+            this.button8.Text = "Usuń magazyn";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(448, 26);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(112, 23);
+            this.button9.TabIndex = 42;
+            this.button9.Text = "Dodaj magazyn";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(448, 56);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(112, 23);
+            this.button10.TabIndex = 43;
+            this.button10.Text = "Edytuj magazyn";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(304, 7);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 13);
+            this.label7.TabIndex = 57;
+            this.label7.Text = "Książki";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(451, 7);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 58;
+            this.label8.Text = "Magazyny";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(589, 7);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.TabIndex = 59;
+            this.label9.Text = "Rodzaje";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(727, 7);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.TabIndex = 60;
+            this.label10.Text = "Kategorie";
+            // 
             // LibrarianForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(857, 436);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.lstViewPublishers);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.listView4);
-            this.Controls.Add(this.lstViewAuthors);
-            this.Controls.Add(this.listView2);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lstViewBooksAndUsers);
+            this.ClientSize = new System.Drawing.Size(896, 428);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnLogout);
             this.Name = "LibrarianForm";
             this.Text = "Panel bibliotekarza";
@@ -528,8 +873,13 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -579,5 +929,37 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListView lstViewPublishers;
         private System.Windows.Forms.ColumnHeader publisherName;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ListView listView7;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ListView listView6;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ListView listView5;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }

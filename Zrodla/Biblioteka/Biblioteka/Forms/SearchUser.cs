@@ -13,7 +13,6 @@ namespace Biblioteka.Forms
 {
     public partial class SearchUser : Form
     {
-
         LibraryDBContainer dbContext;
         public event EventHandler<List<User>> searchClicked;
         Boolean help = false;

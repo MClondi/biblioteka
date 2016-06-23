@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteka.DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,33 @@ namespace Biblioteka.Forms
 {
     public partial class PositionForm : Form
     {
-        public PositionForm()
+        LibraryDBContainer dbContext;
+        public event EventHandler<List<Position>> searchClicked;
+        Boolean help = false;
+
+        public PositionForm(LibraryDBContainer dbContext)
         {
+            this.dbContext = dbContext;
             InitializeComponent();
+            InitSpinner();
+        }
+
+        private void InitSpinner()
+        {
+            typeSpinner.Items.Add("Książka");
+            typeSpinner.Items.Add("Gra");
+            typeSpinner.Items.Add("Magazyn");
+            typeSpinner.SelectedIndex = 0;
+        }
+
+        private void PositionForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
