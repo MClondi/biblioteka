@@ -18,6 +18,8 @@ namespace Biblioteka.Forms
         Boolean help;
         private Dictionary<String, Author> authorTagSet = new Dictionary<string, Author>();
         private Dictionary<String, Publisher> publisherTagSet = new Dictionary<string, Publisher>();
+        private Dictionary<String, Genre> genreTagSet = new Dictionary<string, Genre>();
+        private Dictionary<String, Book> bookTagSet = new Dictionary<string, Book>();
 
         public LibrarianForm(Form parent, LibraryDBContainer dbContext)
         {
@@ -173,21 +175,25 @@ namespace Biblioteka.Forms
 
         private void RefreshAuthorListView(List<Author> authors = null)
         {
-            if (authors == null)
-            {
-                authors = dbContext.Authors.ToList();
-            }
+            //if (authors == null)
+            //{
+            //    authors = dbContext.Authors.ToList();
+            //}
 
-            lstViewAuthors.Items.Clear();
-            authorTagSet.Clear();
-            foreach (Author author in authors)
-            {
-                string[] row = { author.Name, author.Surname };
-                ListViewItem item = new ListViewItem(row);
-                item.Tag = author.GetHashCode();
-                authorTagSet.Add(item.Tag.ToString(), author);
-                lstViewAuthors.Items.Add(item);
-            }
+            //lstViewAuthors.Items.Clear();
+            //authorTagSet.Clear();
+            //foreach (Author author in authors)
+            //{
+            //    string[] row = { author.Name, author.Surname };
+            //    ListViewItem item = new ListViewItem(row);
+            //    item.Tag = author.GetHashCode();
+            //    authorTagSet.Add(item.Tag.ToString(), author);
+            //    lstViewAuthors.Items.Add(item);
+
+            //}
+
+
+            GuiUtils.RefreshAuthorListView(dbContext, ref lstViewAuthors, ref authorTagSet, authors);
         }
 
         //Publishers
@@ -251,6 +257,142 @@ namespace Biblioteka.Forms
                 lstViewPublishers.Items.Add(item);
             }
         }
+
+        //Genres
+
+        private void btnAddGenre_Click(object sender, EventArgs e)
+        {
+            GenreForm addGenre = new GenreForm(dbContext);
+            addGenre.genreSaved += new EventHandler<List<Genre>>(genreSaved);
+            addGenre.Show();
+        }
+
+        private void btnEditGenre_Click(object sender, EventArgs e)
+        {
+            GenreForm editGenre = new GenreForm(dbContext, (Genre)GuiUtils.GetSelected<Genre>(lstViewGenres, genreTagSet));
+            editGenre.genreSaved += new EventHandler<List<Genre>>(genreSaved);
+            editGenre.Show();
+        }
+
+        private void btnDeleteGenre_Click(object sender, EventArgs e)
+        {
+            Genre selectedGenre = GuiUtils.GetSelected<Genre>(lstViewGenres, genreTagSet);
+
+            if (selectedGenre != null)
+            {
+                int genreToDeleteId = selectedGenre.Id;
+                var genreToDelete = dbContext.Genres
+                               .Where(genre => genre.Id == genreToDeleteId).FirstOrDefault();
+                dbContext.Genres.Remove(genreToDelete);
+                dbContext.SaveChanges();
+                RefreshGenresListView();
+            }
+        }
+
+        private void btnSearchGenre_Click(object sender, EventArgs e)
+        {
+            GenreForm searchGenre = new GenreForm(dbContext, true);
+            searchGenre.genreSaved += new EventHandler<List<Genre>>(genreSaved);
+            searchGenre.Show();
+        }
+
+        void genreSaved(object sender, List<Genre> genres)
+        {
+            RefreshGenresListView(genres);
+        }
+
+        private void RefreshGenresListView(List<Genre> genres = null)
+        {
+            if (genres == null)
+            {
+                genres = dbContext.Genres.ToList();
+            }
+
+            lstViewGenres.Items.Clear();
+            genreTagSet.Clear();
+            foreach (Genre genre in genres)
+            {
+                string[] row = { genre.Name };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = genre.GetHashCode();
+                genreTagSet.Add(item.Tag.ToString(), genre);
+                lstViewGenres.Items.Add(item);
+            }
+        }
+
+
+        // Books
+ 
+        private void btnAddBook_Click(object sender, EventArgs e)
+        {
+            BookForm addBook = new BookForm(dbContext);
+            addBook.bookSaved += new EventHandler<List<Book>>(bookSaved);
+            addBook.Show();
+        }
+
+        private void btnEditBook_Click(object sender, EventArgs e)
+        {
+            BookForm editBook = new BookForm(dbContext, (Book)GuiUtils.GetSelected<Book>(lstViewBooks, bookTagSet));
+            editBook.bookSaved += new EventHandler<List<Book>>(bookSaved);
+            editBook.Show();
+        }
+
+        private void btnDeleteBook_Click(object sender, EventArgs e)
+        {
+            Book selectedBook = GuiUtils.GetSelected<Book>(lstViewBooks, bookTagSet);
+            dbContext.Authorships.RemoveRange(selectedBook.Authorship);
+
+            if (selectedBook != null)
+            {
+                int bookToDeleteId = selectedBook.Id;
+                var bookToDelete = dbContext.Books.Include("Genre")
+                               .Where(book => book.Id == bookToDeleteId).FirstOrDefault();
+               
+                dbContext.Books.Remove(bookToDelete);
+                dbContext.SaveChanges();
+                RefreshBooksListView();
+            }
+        }
+
+        private void btnSearchBook_Click(object sender, EventArgs e)
+        {
+            BookForm searchBook = new BookForm(dbContext, true);
+            searchBook.bookSaved += new EventHandler<List<Book>>(bookSaved);
+            searchBook.Show();
+        }
+
+        void bookSaved(object sender, List<Book> books)
+        {
+            RefreshBooksListView(books);
+        }
+
+        private void RefreshBooksListView(List<Book> books = null)
+        {
+            if (books == null)
+            {
+                books = dbContext.Books.ToList();
+            }
+
+            lstViewBooks.Items.Clear();
+            bookTagSet.Clear();
+            foreach (Book book in books)
+            {
+                string[] row = { book.Title };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = book.GetHashCode();
+                bookTagSet.Add(item.Tag.ToString(), book);
+                lstViewBooks.Items.Add(item);
+            }
+        }
+
+        // Categories
+
+        private void btnDeleteCategory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
 
     }
 }

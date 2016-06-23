@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteka.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,26 @@ namespace Biblioteka
             }
 
             return entity;
+        }
+
+        public static void RefreshAuthorListView(LibraryDBContainer dbContext, ref ListView lstViewAuthors,
+                                  ref Dictionary<String, Author> authorTagSet, List<Author> authors = null)
+        {
+            if (authors == null)
+            {
+                authors = dbContext.Authors.ToList();
+            }
+
+            lstViewAuthors.Items.Clear();
+            authorTagSet.Clear();
+            foreach (Author author in authors)
+            {
+                string[] row = { author.Name, author.Surname };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = author.GetHashCode();
+                authorTagSet.Add(item.Tag.ToString(), author);
+                lstViewAuthors.Items.Add(item);
+            }
         }
 
         //public static void RefreshListView<T>(ListView lstView, Dictionary<String, T> tagSet, List<string[]> rows)

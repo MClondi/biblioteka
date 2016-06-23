@@ -88,11 +88,23 @@
     <Compile Include="Forms\AuthorForm.Designer.cs">
       <DependentUpon>AuthorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\BookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BookForm.Designer.cs">
+      <DependentUpon>BookForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\BorrowedResources.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\BorrowedResources.Designer.cs">
       <DependentUpon>BorrowedResources.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GenreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenreForm.Designer.cs">
+      <DependentUpon>GenreForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GuestForm.cs">
       <SubType>Form</SubType>
@@ -224,8 +236,14 @@
     <EmbeddedResource Include="Forms\AuthorForm.resx">
       <DependentUpon>AuthorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BookForm.resx">
+      <DependentUpon>BookForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BorrowedResources.resx">
       <DependentUpon>BorrowedResources.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GenreForm.resx">
+      <DependentUpon>GenreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GuestForm.resx">
       <DependentUpon>GuestForm.cs</DependentUpon>
