@@ -114,7 +114,7 @@ namespace Biblioteka.Forms
         {
             // todo populate the list of resources
         }
-        void refresh(object sender, EventArgs e)
+        void refresh(object sender, List<Author> users)
         {
             // todo refresh the listview after add/edit/delete action
         }
@@ -131,15 +131,15 @@ namespace Biblioteka.Forms
 
         private void btnAddAuthor_Click(object sender, EventArgs e)
         {
-            AuthorForm addAuthor = new AuthorForm(dbContext, refresh);
-            addAuthor.authorSaved += new EventHandler(authorSaved);
+            AuthorForm addAuthor = new AuthorForm(dbContext);
+            addAuthor.authorSaved += new EventHandler<List<Author>>(authorSaved);
             addAuthor.Show();
         }
 
         private void btnEditAuthor_Click(object sender, EventArgs e)
         {
-            AuthorForm editAuthor = new AuthorForm(dbContext, refresh, GuiUtils.GetSelected<Author>(lstViewAuthors, authorTagSet));
-            editAuthor.authorSaved += new EventHandler(authorSaved);
+            AuthorForm editAuthor = new AuthorForm(dbContext, (Author) GuiUtils.GetSelected<Author>(lstViewAuthors, authorTagSet));
+            editAuthor.authorSaved += new EventHandler<List<Author>>(authorSaved);
             editAuthor.Show();
         }
 
@@ -160,24 +160,31 @@ namespace Biblioteka.Forms
 
         private void btnSearchAuthor_Click(object sender, EventArgs e)
         {
-
+            AuthorForm addAuthor = new AuthorForm(dbContext, true);
+            addAuthor.authorSaved += new EventHandler<List<Author>>(authorSaved);
+            addAuthor.Show();
         }
 
-        void authorSaved(object sender, EventArgs e)
+        void authorSaved(object sender, List<Author> authors)
         {
-            RefreshAuthorListView();
+            RefreshAuthorListView(authors);
         }
 
-        private void RefreshAuthorListView()
+        private void RefreshAuthorListView(List<Author> authors = null)
         {
+            if (authors == null)
+            {
+                authors = dbContext.Authors.ToList();
+            }
+
             lstViewAuthors.Items.Clear();
             authorTagSet.Clear();
-            foreach (Author usr in dbContext.Authors.ToList())
+            foreach (Author author in authors)
             {
-                string[] row = { usr.Name, usr.Surname };
+                string[] row = { author.Name, author.Surname };
                 ListViewItem item = new ListViewItem(row);
-                item.Tag = usr.GetHashCode();
-                authorTagSet.Add(item.Tag.ToString(), usr);
+                item.Tag = author.GetHashCode();
+                authorTagSet.Add(item.Tag.ToString(), author);
                 lstViewAuthors.Items.Add(item);
             }
         }

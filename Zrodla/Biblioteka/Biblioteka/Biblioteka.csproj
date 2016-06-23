@@ -69,6 +69,7 @@
     <Compile Include="DB\Borrowing.cs">
       <DependentUpon>LibraryDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FormAction.cs" />
     <Compile Include="Forms\AddUser.cs">
       <SubType>Form</SubType>
     </Compile>

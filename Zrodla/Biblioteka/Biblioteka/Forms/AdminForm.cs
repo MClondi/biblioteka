@@ -17,6 +17,7 @@ namespace Biblioteka.Forms
         LibraryDBContainer dbContext;
         Dictionary<String, User> tagSet = new Dictionary<string, User>();
         Boolean help = false;
+
         public AdminForm(Form parent, LibraryDBContainer dbContext)
         {
             InitializeComponent();
