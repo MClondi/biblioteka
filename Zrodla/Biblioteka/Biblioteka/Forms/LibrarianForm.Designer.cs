@@ -75,13 +75,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lstViewBooks = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listView6 = new System.Windows.Forms.ListView();
+            this.lstViewMagazines = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lstViewGenres = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -94,16 +93,10 @@
             this.btnDeleteBook = new System.Windows.Forms.Button();
             this.btnAddBook = new System.Windows.Forms.Button();
             this.btnEditBook = new System.Windows.Forms.Button();
-            this.btnSearchCategory = new System.Windows.Forms.Button();
-            this.btnDeleteCategory = new System.Windows.Forms.Button();
-            this.btnAddCategory = new System.Windows.Forms.Button();
-            this.btnEditCategory = new System.Windows.Forms.Button();
             this.btnSearchGenre = new System.Windows.Forms.Button();
             this.btnDeleteGenre = new System.Windows.Forms.Button();
             this.btnAddGenre = new System.Windows.Forms.Button();
             this.btnEditGenre = new System.Windows.Forms.Button();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -209,7 +202,7 @@
             // 
             this.btnDeleteAuthor.Location = new System.Drawing.Point(18, 86);
             this.btnDeleteAuthor.Name = "btnDeleteAuthor";
-            this.btnDeleteAuthor.Size = new System.Drawing.Size(112, 23);
+            this.btnDeleteAuthor.Size = new System.Drawing.Size(134, 23);
             this.btnDeleteAuthor.TabIndex = 20;
             this.btnDeleteAuthor.Text = "Usuń autora";
             this.btnDeleteAuthor.UseVisualStyleBackColor = true;
@@ -239,7 +232,7 @@
             // 
             this.btnEditAuthor.Location = new System.Drawing.Point(18, 56);
             this.btnEditAuthor.Name = "btnEditAuthor";
-            this.btnEditAuthor.Size = new System.Drawing.Size(112, 23);
+            this.btnEditAuthor.Size = new System.Drawing.Size(134, 23);
             this.btnEditAuthor.TabIndex = 17;
             this.btnEditAuthor.Text = "Edytuj autora";
             this.btnEditAuthor.UseVisualStyleBackColor = true;
@@ -269,7 +262,7 @@
             // 
             this.btnAddAuthor.Location = new System.Drawing.Point(18, 26);
             this.btnAddAuthor.Name = "btnAddAuthor";
-            this.btnAddAuthor.Size = new System.Drawing.Size(112, 23);
+            this.btnAddAuthor.Size = new System.Drawing.Size(134, 23);
             this.btnAddAuthor.TabIndex = 13;
             this.btnAddAuthor.Text = "Dodaj autora";
             this.btnAddAuthor.UseVisualStyleBackColor = true;
@@ -366,9 +359,9 @@
             // 
             // btnSearchPublisher
             // 
-            this.btnSearchPublisher.Location = new System.Drawing.Point(154, 116);
+            this.btnSearchPublisher.Location = new System.Drawing.Point(187, 116);
             this.btnSearchPublisher.Name = "btnSearchPublisher";
-            this.btnSearchPublisher.Size = new System.Drawing.Size(112, 23);
+            this.btnSearchPublisher.Size = new System.Drawing.Size(134, 23);
             this.btnSearchPublisher.TabIndex = 29;
             this.btnSearchPublisher.Text = "Szukaj wydawcy";
             this.btnSearchPublisher.UseVisualStyleBackColor = true;
@@ -376,9 +369,9 @@
             // 
             // btnDeletePublisher
             // 
-            this.btnDeletePublisher.Location = new System.Drawing.Point(154, 86);
+            this.btnDeletePublisher.Location = new System.Drawing.Point(187, 86);
             this.btnDeletePublisher.Name = "btnDeletePublisher";
-            this.btnDeletePublisher.Size = new System.Drawing.Size(112, 23);
+            this.btnDeletePublisher.Size = new System.Drawing.Size(134, 23);
             this.btnDeletePublisher.TabIndex = 28;
             this.btnDeletePublisher.Text = "Usuń wydawcę";
             this.btnDeletePublisher.UseVisualStyleBackColor = true;
@@ -386,9 +379,9 @@
             // 
             // btnAddPublisher
             // 
-            this.btnAddPublisher.Location = new System.Drawing.Point(154, 26);
+            this.btnAddPublisher.Location = new System.Drawing.Point(187, 26);
             this.btnAddPublisher.Name = "btnAddPublisher";
-            this.btnAddPublisher.Size = new System.Drawing.Size(112, 23);
+            this.btnAddPublisher.Size = new System.Drawing.Size(134, 23);
             this.btnAddPublisher.TabIndex = 26;
             this.btnAddPublisher.Text = "Dodaj wydawcę";
             this.btnAddPublisher.UseVisualStyleBackColor = true;
@@ -396,9 +389,9 @@
             // 
             // btnEditPublisher
             // 
-            this.btnEditPublisher.Location = new System.Drawing.Point(154, 56);
+            this.btnEditPublisher.Location = new System.Drawing.Point(187, 56);
             this.btnEditPublisher.Name = "btnEditPublisher";
-            this.btnEditPublisher.Size = new System.Drawing.Size(112, 23);
+            this.btnEditPublisher.Size = new System.Drawing.Size(134, 23);
             this.btnEditPublisher.TabIndex = 27;
             this.btnEditPublisher.Text = "Edytuj wydawcę";
             this.btnEditPublisher.UseVisualStyleBackColor = true;
@@ -408,7 +401,7 @@
             // 
             this.btnSearchAuthor.Location = new System.Drawing.Point(18, 116);
             this.btnSearchAuthor.Name = "btnSearchAuthor";
-            this.btnSearchAuthor.Size = new System.Drawing.Size(112, 23);
+            this.btnSearchAuthor.Size = new System.Drawing.Size(134, 23);
             this.btnSearchAuthor.TabIndex = 24;
             this.btnSearchAuthor.Text = "Szukaj autora";
             this.btnSearchAuthor.UseVisualStyleBackColor = true;
@@ -428,9 +421,9 @@
             this.lstViewAuthors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.authorName,
             this.authorSurname});
-            this.lstViewAuthors.Location = new System.Drawing.Point(22, 23);
+            this.lstViewAuthors.Location = new System.Drawing.Point(24, 23);
             this.lstViewAuthors.Name = "lstViewAuthors";
-            this.lstViewAuthors.Size = new System.Drawing.Size(112, 133);
+            this.lstViewAuthors.Size = new System.Drawing.Size(134, 133);
             this.lstViewAuthors.TabIndex = 31;
             this.lstViewAuthors.UseCompatibleStateImageBehavior = false;
             this.lstViewAuthors.View = System.Windows.Forms.View.Details;
@@ -491,7 +484,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 7);
+            this.label4.Location = new System.Drawing.Point(21, 7);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 37;
@@ -509,7 +502,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(166, 7);
+            this.label6.Location = new System.Drawing.Point(199, 7);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 13);
             this.label6.TabIndex = 40;
@@ -519,9 +512,9 @@
             // 
             this.lstViewPublishers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.publisherName});
-            this.lstViewPublishers.Location = new System.Drawing.Point(160, 23);
+            this.lstViewPublishers.Location = new System.Drawing.Point(193, 23);
             this.lstViewPublishers.Name = "lstViewPublishers";
-            this.lstViewPublishers.Size = new System.Drawing.Size(112, 133);
+            this.lstViewPublishers.Size = new System.Drawing.Size(134, 133);
             this.lstViewPublishers.TabIndex = 39;
             this.lstViewPublishers.UseCompatibleStateImageBehavior = false;
             this.lstViewPublishers.View = System.Windows.Forms.View.Details;
@@ -564,19 +557,17 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.lstViewBooks);
-            this.tabPage2.Controls.Add(this.listView6);
+            this.tabPage2.Controls.Add(this.lstViewMagazines);
             this.tabPage2.Controls.Add(this.lstViewGenres);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.lstViewPublishers);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.lstViewAuthors);
-            this.tabPage2.Controls.Add(this.listView3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -585,20 +576,10 @@
             this.tabPage2.Text = "Pomocnicze";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Enabled = false;
-            this.label10.Location = new System.Drawing.Point(727, 7);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 13);
-            this.label10.TabIndex = 60;
-            this.label10.Text = "Kategorie";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(589, 7);
+            this.label9.Location = new System.Drawing.Point(692, 7);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(46, 13);
             this.label9.TabIndex = 59;
@@ -607,7 +588,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(451, 7);
+            this.label8.Location = new System.Drawing.Point(527, 7);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 58;
@@ -616,7 +597,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(304, 7);
+            this.label7.Location = new System.Drawing.Point(362, 7);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 57;
@@ -626,9 +607,9 @@
             // 
             this.lstViewBooks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4});
-            this.lstViewBooks.Location = new System.Drawing.Point(307, 23);
+            this.lstViewBooks.Location = new System.Drawing.Point(365, 23);
             this.lstViewBooks.Name = "lstViewBooks";
-            this.lstViewBooks.Size = new System.Drawing.Size(112, 133);
+            this.lstViewBooks.Size = new System.Drawing.Size(134, 133);
             this.lstViewBooks.TabIndex = 56;
             this.lstViewBooks.UseCompatibleStateImageBehavior = false;
             this.lstViewBooks.View = System.Windows.Forms.View.Details;
@@ -638,16 +619,16 @@
             this.columnHeader4.Text = "Tytuł";
             this.columnHeader4.Width = 95;
             // 
-            // listView6
+            // lstViewMagazines
             // 
-            this.listView6.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstViewMagazines.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader3});
-            this.listView6.Location = new System.Drawing.Point(454, 23);
-            this.listView6.Name = "listView6";
-            this.listView6.Size = new System.Drawing.Size(112, 133);
-            this.listView6.TabIndex = 55;
-            this.listView6.UseCompatibleStateImageBehavior = false;
-            this.listView6.View = System.Windows.Forms.View.Details;
+            this.lstViewMagazines.Location = new System.Drawing.Point(530, 23);
+            this.lstViewMagazines.Name = "lstViewMagazines";
+            this.lstViewMagazines.Size = new System.Drawing.Size(134, 133);
+            this.lstViewMagazines.TabIndex = 55;
+            this.lstViewMagazines.UseCompatibleStateImageBehavior = false;
+            this.lstViewMagazines.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader3
             // 
@@ -658,9 +639,9 @@
             // 
             this.lstViewGenres.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2});
-            this.lstViewGenres.Location = new System.Drawing.Point(592, 23);
+            this.lstViewGenres.Location = new System.Drawing.Point(695, 23);
             this.lstViewGenres.Name = "lstViewGenres";
-            this.lstViewGenres.Size = new System.Drawing.Size(112, 133);
+            this.lstViewGenres.Size = new System.Drawing.Size(134, 133);
             this.lstViewGenres.TabIndex = 54;
             this.lstViewGenres.UseCompatibleStateImageBehavior = false;
             this.lstViewGenres.View = System.Windows.Forms.View.Details;
@@ -681,15 +662,11 @@
             this.groupBox2.Controls.Add(this.btnAddBook);
             this.groupBox2.Controls.Add(this.btnEditBook);
             this.groupBox2.Controls.Add(this.btnSearchPublisher);
-            this.groupBox2.Controls.Add(this.btnSearchCategory);
-            this.groupBox2.Controls.Add(this.btnDeleteCategory);
             this.groupBox2.Controls.Add(this.btnDeletePublisher);
             this.groupBox2.Controls.Add(this.btnAddPublisher);
-            this.groupBox2.Controls.Add(this.btnAddCategory);
             this.groupBox2.Controls.Add(this.btnSearchAuthor);
             this.groupBox2.Controls.Add(this.btnAddAuthor);
             this.groupBox2.Controls.Add(this.btnDeleteAuthor);
-            this.groupBox2.Controls.Add(this.btnEditCategory);
             this.groupBox2.Controls.Add(this.btnEditPublisher);
             this.groupBox2.Controls.Add(this.btnSearchGenre);
             this.groupBox2.Controls.Add(this.btnDeleteGenre);
@@ -705,45 +682,49 @@
             // 
             // btnSearchMagazine
             // 
-            this.btnSearchMagazine.Location = new System.Drawing.Point(448, 116);
+            this.btnSearchMagazine.Location = new System.Drawing.Point(524, 116);
             this.btnSearchMagazine.Name = "btnSearchMagazine";
-            this.btnSearchMagazine.Size = new System.Drawing.Size(112, 23);
+            this.btnSearchMagazine.Size = new System.Drawing.Size(134, 23);
             this.btnSearchMagazine.TabIndex = 45;
             this.btnSearchMagazine.Text = "Szukaj magazynu";
             this.btnSearchMagazine.UseVisualStyleBackColor = true;
+            this.btnSearchMagazine.Click += new System.EventHandler(this.btnSearchMagazine_Click);
             // 
             // btnDeleteMagazine
             // 
-            this.btnDeleteMagazine.Location = new System.Drawing.Point(448, 86);
+            this.btnDeleteMagazine.Location = new System.Drawing.Point(524, 86);
             this.btnDeleteMagazine.Name = "btnDeleteMagazine";
-            this.btnDeleteMagazine.Size = new System.Drawing.Size(112, 23);
+            this.btnDeleteMagazine.Size = new System.Drawing.Size(134, 23);
             this.btnDeleteMagazine.TabIndex = 44;
             this.btnDeleteMagazine.Text = "Usuń magazyn";
             this.btnDeleteMagazine.UseVisualStyleBackColor = true;
+            this.btnDeleteMagazine.Click += new System.EventHandler(this.btnDeleteMagazine_Click);
             // 
             // btnAddMagazine
             // 
-            this.btnAddMagazine.Location = new System.Drawing.Point(448, 26);
+            this.btnAddMagazine.Location = new System.Drawing.Point(524, 26);
             this.btnAddMagazine.Name = "btnAddMagazine";
-            this.btnAddMagazine.Size = new System.Drawing.Size(112, 23);
+            this.btnAddMagazine.Size = new System.Drawing.Size(134, 23);
             this.btnAddMagazine.TabIndex = 42;
             this.btnAddMagazine.Text = "Dodaj magazyn";
             this.btnAddMagazine.UseVisualStyleBackColor = true;
+            this.btnAddMagazine.Click += new System.EventHandler(this.btnAddMagazine_Click);
             // 
             // btnEditMagazine
             // 
-            this.btnEditMagazine.Location = new System.Drawing.Point(448, 56);
+            this.btnEditMagazine.Location = new System.Drawing.Point(524, 56);
             this.btnEditMagazine.Name = "btnEditMagazine";
-            this.btnEditMagazine.Size = new System.Drawing.Size(112, 23);
+            this.btnEditMagazine.Size = new System.Drawing.Size(134, 23);
             this.btnEditMagazine.TabIndex = 43;
             this.btnEditMagazine.Text = "Edytuj magazyn";
             this.btnEditMagazine.UseVisualStyleBackColor = true;
+            this.btnEditMagazine.Click += new System.EventHandler(this.btnEditMagazine_Click);
             // 
             // btnSearchBook
             // 
-            this.btnSearchBook.Location = new System.Drawing.Point(301, 116);
+            this.btnSearchBook.Location = new System.Drawing.Point(359, 116);
             this.btnSearchBook.Name = "btnSearchBook";
-            this.btnSearchBook.Size = new System.Drawing.Size(112, 23);
+            this.btnSearchBook.Size = new System.Drawing.Size(134, 23);
             this.btnSearchBook.TabIndex = 41;
             this.btnSearchBook.Text = "Szukaj książki";
             this.btnSearchBook.UseVisualStyleBackColor = true;
@@ -751,9 +732,9 @@
             // 
             // btnDeleteBook
             // 
-            this.btnDeleteBook.Location = new System.Drawing.Point(301, 86);
+            this.btnDeleteBook.Location = new System.Drawing.Point(359, 86);
             this.btnDeleteBook.Name = "btnDeleteBook";
-            this.btnDeleteBook.Size = new System.Drawing.Size(112, 23);
+            this.btnDeleteBook.Size = new System.Drawing.Size(134, 23);
             this.btnDeleteBook.TabIndex = 40;
             this.btnDeleteBook.Text = "Usuń książkę";
             this.btnDeleteBook.UseVisualStyleBackColor = true;
@@ -761,9 +742,9 @@
             // 
             // btnAddBook
             // 
-            this.btnAddBook.Location = new System.Drawing.Point(301, 26);
+            this.btnAddBook.Location = new System.Drawing.Point(359, 26);
             this.btnAddBook.Name = "btnAddBook";
-            this.btnAddBook.Size = new System.Drawing.Size(112, 23);
+            this.btnAddBook.Size = new System.Drawing.Size(134, 23);
             this.btnAddBook.TabIndex = 38;
             this.btnAddBook.Text = "Dodaj książkę";
             this.btnAddBook.UseVisualStyleBackColor = true;
@@ -771,60 +752,19 @@
             // 
             // btnEditBook
             // 
-            this.btnEditBook.Location = new System.Drawing.Point(301, 56);
+            this.btnEditBook.Location = new System.Drawing.Point(359, 56);
             this.btnEditBook.Name = "btnEditBook";
-            this.btnEditBook.Size = new System.Drawing.Size(112, 23);
+            this.btnEditBook.Size = new System.Drawing.Size(134, 23);
             this.btnEditBook.TabIndex = 39;
             this.btnEditBook.Text = "Edytuj książkę";
             this.btnEditBook.UseVisualStyleBackColor = true;
             this.btnEditBook.Click += new System.EventHandler(this.btnEditBook_Click);
             // 
-            // btnSearchCategory
-            // 
-            this.btnSearchCategory.Enabled = false;
-            this.btnSearchCategory.Location = new System.Drawing.Point(724, 116);
-            this.btnSearchCategory.Name = "btnSearchCategory";
-            this.btnSearchCategory.Size = new System.Drawing.Size(112, 23);
-            this.btnSearchCategory.TabIndex = 37;
-            this.btnSearchCategory.Text = "Szukaj kategorii";
-            this.btnSearchCategory.UseVisualStyleBackColor = true;
-            // 
-            // btnDeleteCategory
-            // 
-            this.btnDeleteCategory.Enabled = false;
-            this.btnDeleteCategory.Location = new System.Drawing.Point(724, 86);
-            this.btnDeleteCategory.Name = "btnDeleteCategory";
-            this.btnDeleteCategory.Size = new System.Drawing.Size(112, 23);
-            this.btnDeleteCategory.TabIndex = 36;
-            this.btnDeleteCategory.Text = "Usuń kategorię";
-            this.btnDeleteCategory.UseVisualStyleBackColor = true;
-            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
-            // 
-            // btnAddCategory
-            // 
-            this.btnAddCategory.Enabled = false;
-            this.btnAddCategory.Location = new System.Drawing.Point(724, 26);
-            this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.Size = new System.Drawing.Size(112, 23);
-            this.btnAddCategory.TabIndex = 34;
-            this.btnAddCategory.Text = "Dodaj kategorię";
-            this.btnAddCategory.UseVisualStyleBackColor = true;
-            // 
-            // btnEditCategory
-            // 
-            this.btnEditCategory.Enabled = false;
-            this.btnEditCategory.Location = new System.Drawing.Point(724, 56);
-            this.btnEditCategory.Name = "btnEditCategory";
-            this.btnEditCategory.Size = new System.Drawing.Size(112, 23);
-            this.btnEditCategory.TabIndex = 35;
-            this.btnEditCategory.Text = "Edytuj kategorię";
-            this.btnEditCategory.UseVisualStyleBackColor = true;
-            // 
             // btnSearchGenre
             // 
-            this.btnSearchGenre.Location = new System.Drawing.Point(586, 116);
+            this.btnSearchGenre.Location = new System.Drawing.Point(689, 109);
             this.btnSearchGenre.Name = "btnSearchGenre";
-            this.btnSearchGenre.Size = new System.Drawing.Size(112, 23);
+            this.btnSearchGenre.Size = new System.Drawing.Size(134, 23);
             this.btnSearchGenre.TabIndex = 33;
             this.btnSearchGenre.Text = "Szukaj rodzaju";
             this.btnSearchGenre.UseVisualStyleBackColor = true;
@@ -832,9 +772,9 @@
             // 
             // btnDeleteGenre
             // 
-            this.btnDeleteGenre.Location = new System.Drawing.Point(586, 86);
+            this.btnDeleteGenre.Location = new System.Drawing.Point(689, 79);
             this.btnDeleteGenre.Name = "btnDeleteGenre";
-            this.btnDeleteGenre.Size = new System.Drawing.Size(112, 23);
+            this.btnDeleteGenre.Size = new System.Drawing.Size(134, 23);
             this.btnDeleteGenre.TabIndex = 32;
             this.btnDeleteGenre.Text = "Usuń rodzaj";
             this.btnDeleteGenre.UseVisualStyleBackColor = true;
@@ -842,9 +782,9 @@
             // 
             // btnAddGenre
             // 
-            this.btnAddGenre.Location = new System.Drawing.Point(586, 26);
+            this.btnAddGenre.Location = new System.Drawing.Point(689, 19);
             this.btnAddGenre.Name = "btnAddGenre";
-            this.btnAddGenre.Size = new System.Drawing.Size(112, 23);
+            this.btnAddGenre.Size = new System.Drawing.Size(134, 23);
             this.btnAddGenre.TabIndex = 30;
             this.btnAddGenre.Text = "Dodaj rodzaj";
             this.btnAddGenre.UseVisualStyleBackColor = true;
@@ -852,30 +792,13 @@
             // 
             // btnEditGenre
             // 
-            this.btnEditGenre.Location = new System.Drawing.Point(586, 56);
+            this.btnEditGenre.Location = new System.Drawing.Point(689, 49);
             this.btnEditGenre.Name = "btnEditGenre";
-            this.btnEditGenre.Size = new System.Drawing.Size(112, 23);
+            this.btnEditGenre.Size = new System.Drawing.Size(134, 23);
             this.btnEditGenre.TabIndex = 31;
             this.btnEditGenre.Text = "Edytuj rodzaj";
             this.btnEditGenre.UseVisualStyleBackColor = true;
             this.btnEditGenre.Click += new System.EventHandler(this.btnEditGenre_Click);
-            // 
-            // listView3
-            // 
-            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.listView3.Enabled = false;
-            this.listView3.Location = new System.Drawing.Point(730, 23);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(112, 133);
-            this.listView3.TabIndex = 52;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Nazwa";
-            this.columnHeader1.Width = 95;
             // 
             // LibrarianForm
             // 
@@ -950,23 +873,16 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnSearchCategory;
-        private System.Windows.Forms.Button btnDeleteCategory;
-        private System.Windows.Forms.Button btnAddCategory;
-        private System.Windows.Forms.Button btnEditCategory;
         private System.Windows.Forms.Button btnSearchGenre;
         private System.Windows.Forms.Button btnDeleteGenre;
         private System.Windows.Forms.Button btnAddGenre;
         private System.Windows.Forms.Button btnEditGenre;
-        private System.Windows.Forms.ListView listView3;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListView lstViewBooks;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ListView listView6;
+        private System.Windows.Forms.ListView lstViewMagazines;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ListView lstViewGenres;
         private System.Windows.Forms.ColumnHeader columnHeader2;

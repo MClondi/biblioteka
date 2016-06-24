@@ -20,6 +20,7 @@ namespace Biblioteka.Forms
         private Dictionary<String, Publisher> publisherTagSet = new Dictionary<string, Publisher>();
         private Dictionary<String, Genre> genreTagSet = new Dictionary<string, Genre>();
         private Dictionary<String, Book> bookTagSet = new Dictionary<string, Book>();
+        private Dictionary<String, Magazine> magazineTagSet = new Dictionary<string, Magazine>();
 
         public LibrarianForm(Form parent, LibraryDBContainer dbContext)
         {
@@ -152,10 +153,7 @@ namespace Biblioteka.Forms
 
             if (selectedAuthor != null)
             {
-                int authorToDeleteId = selectedAuthor.Id;
-                var authorToDelete = dbContext.Authors.Include("Authorship")
-                               .Where(author => author.Id == authorToDeleteId).FirstOrDefault();
-                dbContext.Authors.Remove(authorToDelete);
+                dbContext.Authors.Remove(selectedAuthor);
                 dbContext.SaveChanges();
                 RefreshAuthorListView();
             }
@@ -218,12 +216,19 @@ namespace Biblioteka.Forms
 
             if (selectedPublisher != null)
             {
-                int publisherToDeleteId = selectedPublisher.Id;
-                var publisherToDelete = dbContext.Publishers
-                               .Where(publisher => publisher.Id == publisherToDeleteId).FirstOrDefault();
-                dbContext.Publishers.Remove(publisherToDelete);
-                dbContext.SaveChanges();
-                RefreshPublisherListView();
+                var books = dbContext.Books.Where(b => b.GenreId == selectedPublisher.Id).FirstOrDefault();
+                var magazines = dbContext.Magazines.Where(m => m.GenreId == selectedPublisher.Id).FirstOrDefault();
+
+                if (books == null && magazines == null)
+                {
+                    dbContext.Publishers.Remove(selectedPublisher);
+                    dbContext.SaveChanges();
+                    RefreshPublisherListView();
+                }
+                else
+                {
+                    MessageBox.Show("Istnieją książki lub magazyny tego wydawcy, nie możesz go usunąć!", "Błąd");
+                }
             }
         }
 
@@ -280,12 +285,18 @@ namespace Biblioteka.Forms
 
             if (selectedGenre != null)
             {
-                int genreToDeleteId = selectedGenre.Id;
-                var genreToDelete = dbContext.Genres
-                               .Where(genre => genre.Id == genreToDeleteId).FirstOrDefault();
-                dbContext.Genres.Remove(genreToDelete);
-                dbContext.SaveChanges();
-                RefreshGenresListView();
+                var books = dbContext.Books.Where(b => b.GenreId == selectedGenre.Id).FirstOrDefault();
+                var magazines = dbContext.Magazines.Where(m => m.GenreId == selectedGenre.Id).FirstOrDefault();
+                if (books == null && magazines == null)
+                {
+                    dbContext.Genres.Remove(selectedGenre);
+                    dbContext.SaveChanges();
+                    RefreshGenresListView();
+                }
+                else
+                {
+                    MessageBox.Show("Istnieją książki lub magazyny tego rodzaju, nie możesz go usunąć!", "Błąd");
+                }
             }
         }
 
@@ -344,11 +355,7 @@ namespace Biblioteka.Forms
 
             if (selectedBook != null)
             {
-                int bookToDeleteId = selectedBook.Id;
-                var bookToDelete = dbContext.Books.Include("Genre")
-                               .Where(book => book.Id == bookToDeleteId).FirstOrDefault();
-               
-                dbContext.Books.Remove(bookToDelete);
+                dbContext.Books.Remove(selectedBook);
                 dbContext.SaveChanges();
                 RefreshBooksListView();
             }
@@ -385,14 +392,73 @@ namespace Biblioteka.Forms
             }
         }
 
-        // Categories
+        // Magazines
 
-        private void btnDeleteCategory_Click(object sender, EventArgs e)
+        private void btnAddMagazine_Click(object sender, EventArgs e)
         {
-
+            MagazineForm addMagazine = new MagazineForm(dbContext);
+            addMagazine.magazineSaved += new EventHandler<List<Magazine>>(magazineSaved);
+            addMagazine.Show();
         }
 
-        
+        private void btnEditMagazine_Click(object sender, EventArgs e)
+        {
+            MagazineForm editMagazine = new MagazineForm(dbContext, (Magazine)GuiUtils.GetSelected<Magazine>(lstViewMagazines, magazineTagSet));
+            editMagazine.magazineSaved += new EventHandler<List<Magazine>>(magazineSaved);
+            editMagazine.Show();
+        }
+
+        private void btnDeleteMagazine_Click(object sender, EventArgs e)
+        {
+            Magazine selectedMagazine = GuiUtils.GetSelected<Magazine>(lstViewMagazines, magazineTagSet);
+
+            if (selectedMagazine != null)
+            {
+                var magazineNumbers = dbContext.Positions.OfType<MagazineNumber>().Where(mn => mn.MagazineId == selectedMagazine.Id).FirstOrDefault();
+
+                if (magazineNumbers == null)
+                {
+                    dbContext.Magazines.Remove(selectedMagazine);
+                    dbContext.SaveChanges();
+                    RefreshMagazinesListView();
+                }
+                else
+                {
+                    MessageBox.Show("Istnieją numery tego magazynu, nie możesz go usunąć!", "Błąd");
+                }
+            }
+        }
+
+        private void btnSearchMagazine_Click(object sender, EventArgs e)
+        {
+            MagazineForm searchMagazine = new MagazineForm(dbContext, true);
+            searchMagazine.magazineSaved += new EventHandler<List<Magazine>>(magazineSaved);
+            searchMagazine.Show();
+        }
+
+        void magazineSaved(object sender, List<Magazine> magazines)
+        {
+            RefreshMagazinesListView(magazines);
+        }
+
+        private void RefreshMagazinesListView(List<Magazine> magazines = null)
+        {
+            if (magazines == null)
+            {
+                magazines = dbContext.Magazines.ToList();
+            }
+
+            lstViewMagazines.Items.Clear();
+            magazineTagSet.Clear();
+            foreach (Magazine magazine in magazines)
+            {
+                string[] row = { magazine.Title };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = magazine.GetHashCode();
+                magazineTagSet.Add(item.Tag.ToString(), magazine);
+                lstViewMagazines.Items.Add(item);
+            }
+        }
 
     }
 }

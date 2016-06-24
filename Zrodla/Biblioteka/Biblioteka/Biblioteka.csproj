@@ -112,6 +112,12 @@
     <Compile Include="Forms\GuestForm.Designer.cs">
       <DependentUpon>GuestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MagazineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MagazineForm.Designer.cs">
+      <DependentUpon>MagazineForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PositionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GuestForm.resx">
       <DependentUpon>GuestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MagazineForm.resx">
+      <DependentUpon>MagazineForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PositionForm.resx">
       <DependentUpon>PositionForm.cs</DependentUpon>

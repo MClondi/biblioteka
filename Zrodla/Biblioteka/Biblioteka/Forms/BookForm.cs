@@ -54,7 +54,8 @@ namespace Biblioteka.Forms
             {
                 genreSpinner.Items.Add(genre.Name);
             }
-            genreSpinner.SelectedIndex = 0;
+            if(genreSpinner.Items.Count > 0)
+                genreSpinner.SelectedIndex = 0;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -134,7 +135,6 @@ namespace Biblioteka.Forms
                 books = tempBooks;
             }
         }
-
 
         private static bool ComapreLists(List<int> arr2, List<int> arr3)
         {
