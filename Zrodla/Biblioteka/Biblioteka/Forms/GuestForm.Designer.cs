@@ -85,7 +85,7 @@
             // 
             // helpButton
             // 
-            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalający na włączenie/wyłączenie pomocy");
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy na wlaczenie/wylaczenie pomocy");
             this.helpButton.Location = new System.Drawing.Point(294, 10);
             this.helpButton.Name = "helpButton";
             this.helpProvider1.SetShowHelp(this.helpButton, true);

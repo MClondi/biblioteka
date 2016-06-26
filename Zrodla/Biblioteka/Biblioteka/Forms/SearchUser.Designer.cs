@@ -58,7 +58,7 @@
             // 
             // buttonExit
             // 
-            this.helpProvider1.SetHelpString(this.buttonExit, "Wciśnij ten przycisk jeżeli chcesz anulować dane i/lub powrócić do poprzedniego o" +
+            this.helpProvider1.SetHelpString(this.buttonExit, "Wcisnij ten przycisk jezeli chcesz anulowac dane i/lub powrocic do poprzedniego o" +
         "kna");
             this.buttonExit.Location = new System.Drawing.Point(177, 339);
             this.buttonExit.Name = "buttonExit";
@@ -71,7 +71,7 @@
             // 
             // buttonSave
             // 
-            this.helpProvider1.SetHelpString(this.buttonSave, "Wciśnij ten przycisk jeżeli chcesz wyszukać użytkownika w bazie danych");
+            this.helpProvider1.SetHelpString(this.buttonSave, "Wcisnij ten przycisk jezeli chcesz wyszukac uzytkownika w bazie danych");
             this.buttonSave.Location = new System.Drawing.Point(15, 339);
             this.buttonSave.Name = "buttonSave";
             this.helpProvider1.SetShowHelp(this.buttonSave, true);
@@ -184,7 +184,7 @@
             // typeSpinner
             // 
             this.typeSpinner.FormattingEnabled = true;
-            this.helpProvider1.SetHelpString(this.typeSpinner, "Tutaj podaj typ konta użytkownika");
+            this.helpProvider1.SetHelpString(this.typeSpinner, "Tutaj podaj typ konta uzytkownika");
             this.typeSpinner.Location = new System.Drawing.Point(102, 39);
             this.typeSpinner.Name = "typeSpinner";
             this.helpProvider1.SetShowHelp(this.typeSpinner, true);
@@ -203,7 +203,7 @@
             // 
             // textBoxPostal
             // 
-            this.helpProvider1.SetHelpString(this.textBoxPostal, "W tym polu podaj kod pocztowy użytkownika którego chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxPostal, "W tym polu podaj kod pocztowy uzytkownika ktorego chcesz znalezc");
             this.textBoxPostal.Location = new System.Drawing.Point(102, 300);
             this.textBoxPostal.Name = "textBoxPostal";
             this.helpProvider1.SetShowHelp(this.textBoxPostal, true);
@@ -212,7 +212,7 @@
             // 
             // textBoxCity
             // 
-            this.helpProvider1.SetHelpString(this.textBoxCity, "W tym polu podaj miasto zameldowania użytkownika którego chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxCity, "W tym polu podaj miasto zameldowania uzytkownika ktorego chcesz znalezc");
             this.textBoxCity.Location = new System.Drawing.Point(102, 274);
             this.textBoxCity.Name = "textBoxCity";
             this.helpProvider1.SetShowHelp(this.textBoxCity, true);
@@ -221,7 +221,7 @@
             // 
             // textBoxApt
             // 
-            this.helpProvider1.SetHelpString(this.textBoxApt, "W tym polu podaj numer mieszkania użytkownika którego chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxApt, "W tym polu podaj numer mieszkania uzytkownika ktorego chcesz znalezc");
             this.textBoxApt.Location = new System.Drawing.Point(102, 248);
             this.textBoxApt.Name = "textBoxApt";
             this.helpProvider1.SetShowHelp(this.textBoxApt, true);
@@ -230,7 +230,7 @@
             // 
             // textBoxStrNum
             // 
-            this.helpProvider1.SetHelpString(this.textBoxStrNum, "W tym polu podaj numer domu użytkownika którego chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxStrNum, "W tym polu podaj numer domu uzytkownika ktorego chcesz znalezc");
             this.textBoxStrNum.Location = new System.Drawing.Point(102, 222);
             this.textBoxStrNum.Name = "textBoxStrNum";
             this.helpProvider1.SetShowHelp(this.textBoxStrNum, true);
@@ -239,7 +239,7 @@
             // 
             // textBoxStreet
             // 
-            this.helpProvider1.SetHelpString(this.textBoxStreet, "W tym polu podaj nazwę ulicy użytkownika którego chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxStreet, "W tym polu podaj nazwe ulicy uzytkownika ktorego chcesz znalezc");
             this.textBoxStreet.Location = new System.Drawing.Point(102, 196);
             this.textBoxStreet.Name = "textBoxStreet";
             this.helpProvider1.SetShowHelp(this.textBoxStreet, true);
@@ -248,7 +248,7 @@
             // 
             // textBoxTel
             // 
-            this.helpProvider1.SetHelpString(this.textBoxTel, "W tym polu podaj numer telefonu użytkownika którego chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxTel, "W tym polu podaj numer telefonu uzytkownika ktorego chcesz znalezc");
             this.textBoxTel.Location = new System.Drawing.Point(102, 170);
             this.textBoxTel.Name = "textBoxTel";
             this.helpProvider1.SetShowHelp(this.textBoxTel, true);
@@ -257,7 +257,7 @@
             // 
             // textBoxSurname
             // 
-            this.helpProvider1.SetHelpString(this.textBoxSurname, "W tym polu podaj nazwisko użytkownika którego chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxSurname, "W tym polu podaj nazwisko uzytkownika ktorego chcesz znalezc");
             this.textBoxSurname.Location = new System.Drawing.Point(102, 144);
             this.textBoxSurname.Name = "textBoxSurname";
             this.helpProvider1.SetShowHelp(this.textBoxSurname, true);
@@ -266,7 +266,7 @@
             // 
             // textBoxName
             // 
-            this.helpProvider1.SetHelpString(this.textBoxName, "W tym polu podaj imie użytkownika którego chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxName, "W tym polu podaj imie uzytkownika ktorego chcesz znalezc");
             this.textBoxName.Location = new System.Drawing.Point(102, 118);
             this.textBoxName.Name = "textBoxName";
             this.helpProvider1.SetShowHelp(this.textBoxName, true);
@@ -275,7 +275,7 @@
             // 
             // textBoxMail
             // 
-            this.helpProvider1.SetHelpString(this.textBoxMail, "W tym polu podaj adres email użytkownika którego chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxMail, "W tym polu podaj adres email użytkownika ktorego chcesz znalezc");
             this.textBoxMail.Location = new System.Drawing.Point(102, 92);
             this.textBoxMail.Name = "textBoxMail";
             this.helpProvider1.SetShowHelp(this.textBoxMail, true);
@@ -284,7 +284,7 @@
             // 
             // textBoxLogin
             // 
-            this.helpProvider1.SetHelpString(this.textBoxLogin, "W tym polu podaj login użytkownika którego chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxLogin, "W tym polu podaj login uzytkownika ktorego chcesz znalezc");
             this.textBoxLogin.Location = new System.Drawing.Point(102, 66);
             this.textBoxLogin.Name = "textBoxLogin";
             this.helpProvider1.SetShowHelp(this.textBoxLogin, true);
@@ -293,8 +293,10 @@
             // 
             // helpButton
             // 
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy wlaczyc/wylaczyc pomoc");
             this.helpButton.Location = new System.Drawing.Point(117, 10);
             this.helpButton.Name = "helpButton";
+            this.helpProvider1.SetShowHelp(this.helpButton, true);
             this.helpButton.Size = new System.Drawing.Size(208, 23);
             this.helpButton.TabIndex = 66;
             this.helpButton.Text = "Pomoc";

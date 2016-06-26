@@ -53,7 +53,7 @@
             // 
             // btnLogin
             // 
-            this.helpProvider1.SetHelpString(this.btnLogin, "Przycisk pozwalający na zalogowanie sie do systemu przy użyciu wprowadzonych wyże" +
+            this.helpProvider1.SetHelpString(this.btnLogin, "Przycisk pozwalajacy na zalogowanie sie do systemu przy uzyciu wprowadzonych wyze" +
         "j  danych");
             this.btnLogin.Location = new System.Drawing.Point(168, 214);
             this.btnLogin.Name = "btnLogin";
@@ -67,7 +67,7 @@
             // txtBxUsername
             // 
             this.txtBxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.helpProvider1.SetHelpString(this.txtBxUsername, "Tutaj wprowadź login, który wybrałes jako login Twojego konta");
+            this.helpProvider1.SetHelpString(this.txtBxUsername, "Tutaj wprowadz login, ktory wybrales jako login Twojego konta");
             this.txtBxUsername.Location = new System.Drawing.Point(128, 144);
             this.txtBxUsername.Name = "txtBxUsername";
             this.helpProvider1.SetShowHelp(this.txtBxUsername, true);
@@ -77,7 +77,7 @@
             // txtBxPassword
             // 
             this.txtBxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.helpProvider1.SetHelpString(this.txtBxPassword, "Tutaj wprowadź hasło które ustawiłes podczas rejestracji konta");
+            this.helpProvider1.SetHelpString(this.txtBxPassword, "Tutaj wprowadz haslo ktore ustawiles podczas rejestracji konta");
             this.txtBxPassword.Location = new System.Drawing.Point(128, 183);
             this.txtBxPassword.Name = "txtBxPassword";
             this.helpProvider1.SetShowHelp(this.txtBxPassword, true);
@@ -106,8 +106,8 @@
             // 
             // btnEnterAsGuest
             // 
-            this.helpProvider1.SetHelpString(this.btnEnterAsGuest, "Po wciśnieciu tego przycisku zostaniesz przeniesiony do okna bibliotecznego jako " +
-        "gość, bedziesz miał możliwość przeglądania zasobów biblioteki");
+            this.helpProvider1.SetHelpString(this.btnEnterAsGuest, "Po wcisnieciu tego przycisku zostaniesz przeniesiony do okna bibliotecznego jako " +
+        "gosc, bedziesz mial mozliwosc przegladania zasobow biblioteki");
             this.btnEnterAsGuest.Location = new System.Drawing.Point(81, 61);
             this.btnEnterAsGuest.Name = "btnEnterAsGuest";
             this.helpProvider1.SetShowHelp(this.btnEnterAsGuest, true);
@@ -129,7 +129,7 @@
             // 
             // btnRegister
             // 
-            this.helpProvider1.SetHelpString(this.btnRegister, "Przycisk pozwalający na złożenie nowego konta");
+            this.helpProvider1.SetHelpString(this.btnRegister, "Przycisk pozwalajacy na zlozenie nowego konta");
             this.btnRegister.Location = new System.Drawing.Point(145, 243);
             this.btnRegister.Name = "btnRegister";
             this.helpProvider1.SetShowHelp(this.btnRegister, true);
@@ -141,9 +141,11 @@
             // 
             // helpButton
             // 
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy wlaczyc/wylaczyc pomoc");
             this.helpButton.Location = new System.Drawing.Point(115, 5);
             this.helpButton.Name = "helpButton";
             this.helpButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.helpProvider1.SetShowHelp(this.helpButton, true);
             this.helpButton.Size = new System.Drawing.Size(152, 23);
             this.helpButton.TabIndex = 9;
             this.helpButton.Text = "Pomoc";

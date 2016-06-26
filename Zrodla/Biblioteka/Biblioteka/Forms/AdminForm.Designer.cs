@@ -28,21 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.btnAddUser = new System.Windows.Forms.Button();
             this.lstViewAllUsers = new System.Windows.Forms.ListView();
+            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.surname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnEditUser = new System.Windows.Forms.Button();
             this.btnDeleteUser = new System.Windows.Forms.Button();
             this.btnSearchUser = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.surname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.helpButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddUser
             // 
-            this.helpProvider1.SetHelpString(this.btnAddUser, "Press this button to add new user");
+            this.helpProvider1.SetHelpString(this.btnAddUser, "Przycisk pozwalajacy na dodanie nowego uzytkownia do systemu. Administrator ma pr" +
+        "awo stworzyc konto komus kto przyjdzie do biblioteki.");
             this.btnAddUser.Location = new System.Drawing.Point(12, 261);
             this.btnAddUser.Name = "btnAddUser";
             this.helpProvider1.SetShowHelp(this.btnAddUser, true);
@@ -54,10 +56,10 @@
             // 
             // lstViewAllUsers
             // 
-            this.helpProvider1.SetHelpString(this.lstViewAllUsers, "This is screen where users are displayed");
             this.lstViewAllUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.name,
             this.surname});
+            this.helpProvider1.SetHelpString(this.lstViewAllUsers, "Ekran na ktorym wyswiatlani sa wszyscy uzytkownicy zarejestrowani w systemie");
             this.lstViewAllUsers.Location = new System.Drawing.Point(12, 51);
             this.lstViewAllUsers.Name = "lstViewAllUsers";
             this.helpProvider1.SetShowHelp(this.lstViewAllUsers, true);
@@ -65,54 +67,6 @@
             this.lstViewAllUsers.TabIndex = 1;
             this.lstViewAllUsers.UseCompatibleStateImageBehavior = false;
             this.lstViewAllUsers.View = System.Windows.Forms.View.Details;
-            // 
-            // btnEditUser
-            // 
-            this.helpProvider1.SetHelpString(this.btnEditUser, "Press this button on chosen user to edit him");
-            this.btnEditUser.Location = new System.Drawing.Point(130, 261);
-            this.btnEditUser.Name = "btnEditUser";
-            this.helpProvider1.SetShowHelp(this.btnEditUser, true);
-            this.btnEditUser.Size = new System.Drawing.Size(112, 23);
-            this.btnEditUser.TabIndex = 2;
-            this.btnEditUser.Text = "Edytuj użytkownika";
-            this.btnEditUser.UseVisualStyleBackColor = true;
-            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
-            // 
-            // btnDeleteUser
-            // 
-            this.helpProvider1.SetHelpString(this.btnDeleteUser, "Press this button on chosen user to remove him");
-            this.btnDeleteUser.Location = new System.Drawing.Point(248, 261);
-            this.btnDeleteUser.Name = "btnDeleteUser";
-            this.helpProvider1.SetShowHelp(this.btnDeleteUser, true);
-            this.btnDeleteUser.Size = new System.Drawing.Size(112, 23);
-            this.btnDeleteUser.TabIndex = 3;
-            this.btnDeleteUser.Text = "Usuń użytkownika";
-            this.btnDeleteUser.UseVisualStyleBackColor = true;
-            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
-            // 
-            // btnSearchUser
-            // 
-            this.helpProvider1.SetHelpString(this.btnSearchUser, "Press this button to search user");
-            this.btnSearchUser.Location = new System.Drawing.Point(366, 261);
-            this.btnSearchUser.Name = "btnSearchUser";
-            this.helpProvider1.SetShowHelp(this.btnSearchUser, true);
-            this.btnSearchUser.Size = new System.Drawing.Size(112, 23);
-            this.btnSearchUser.TabIndex = 4;
-            this.btnSearchUser.Text = "Szukaj użytkownika";
-            this.btnSearchUser.UseVisualStyleBackColor = true;
-            this.btnSearchUser.Click += new System.EventHandler(this.btnSearchUser_Click);
-            // 
-            // btnLogout
-            // 
-            this.helpProvider1.SetHelpString(this.btnLogout, "Press this button to log out from the system");
-            this.btnLogout.Location = new System.Drawing.Point(366, 12);
-            this.btnLogout.Name = "btnLogout";
-            this.helpProvider1.SetShowHelp(this.btnLogout, true);
-            this.btnLogout.Size = new System.Drawing.Size(112, 23);
-            this.btnLogout.TabIndex = 5;
-            this.btnLogout.Text = "Wyloguj się";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // name
             // 
@@ -124,9 +78,58 @@
             this.surname.Text = "Nazwisko";
             this.surname.Width = 119;
             // 
+            // btnEditUser
+            // 
+            this.helpProvider1.SetHelpString(this.btnEditUser, resources.GetString("btnEditUser.HelpString"));
+            this.btnEditUser.Location = new System.Drawing.Point(130, 261);
+            this.btnEditUser.Name = "btnEditUser";
+            this.helpProvider1.SetShowHelp(this.btnEditUser, true);
+            this.btnEditUser.Size = new System.Drawing.Size(112, 23);
+            this.btnEditUser.TabIndex = 2;
+            this.btnEditUser.Text = "Edytuj użytkownika";
+            this.btnEditUser.UseVisualStyleBackColor = true;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
+            // 
+            // btnDeleteUser
+            // 
+            this.helpProvider1.SetHelpString(this.btnDeleteUser, resources.GetString("btnDeleteUser.HelpString"));
+            this.btnDeleteUser.Location = new System.Drawing.Point(248, 261);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.helpProvider1.SetShowHelp(this.btnDeleteUser, true);
+            this.btnDeleteUser.Size = new System.Drawing.Size(112, 23);
+            this.btnDeleteUser.TabIndex = 3;
+            this.btnDeleteUser.Text = "Usuń użytkownika";
+            this.btnDeleteUser.UseVisualStyleBackColor = true;
+            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            // 
+            // btnSearchUser
+            // 
+            this.helpProvider1.SetHelpString(this.btnSearchUser, "Przycisk pozwalajacy znalezc uzytkownika w bazie.");
+            this.btnSearchUser.Location = new System.Drawing.Point(366, 261);
+            this.btnSearchUser.Name = "btnSearchUser";
+            this.helpProvider1.SetShowHelp(this.btnSearchUser, true);
+            this.btnSearchUser.Size = new System.Drawing.Size(112, 23);
+            this.btnSearchUser.TabIndex = 4;
+            this.btnSearchUser.Text = "Szukaj użytkownika";
+            this.btnSearchUser.UseVisualStyleBackColor = true;
+            this.btnSearchUser.Click += new System.EventHandler(this.btnSearchUser_Click);
+            // 
+            // btnLogout
+            // 
+            this.helpProvider1.SetHelpString(this.btnLogout, "Przycisk pozwalajacy wylogowac sie z konta administratora. Po wcisnieciu przycisk" +
+        "u zostaniemy przeniesieni do ekranu logowania.");
+            this.btnLogout.Location = new System.Drawing.Point(366, 12);
+            this.btnLogout.Name = "btnLogout";
+            this.helpProvider1.SetShowHelp(this.btnLogout, true);
+            this.btnLogout.Size = new System.Drawing.Size(112, 23);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Wyloguj się";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // helpButton
             // 
-            this.helpProvider1.SetHelpString(this.helpButton, "This button allows to turn on/off help");
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy wlaczyc/wylaczyc opcje pomocy");
             this.helpButton.Location = new System.Drawing.Point(205, 12);
             this.helpButton.Name = "helpButton";
             this.helpProvider1.SetShowHelp(this.helpButton, true);

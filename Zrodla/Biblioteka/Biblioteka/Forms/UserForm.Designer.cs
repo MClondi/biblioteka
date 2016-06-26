@@ -41,7 +41,7 @@
             // 
             // btnLogout
             // 
-            this.helpProvider1.SetHelpString(this.btnLogout, "Po wciśnieciu tego przycisku zostaniesz wylogowany");
+            this.helpProvider1.SetHelpString(this.btnLogout, "Po wcisnieciu tego przycisku zostaniesz wylogowany");
             this.btnLogout.Location = new System.Drawing.Point(366, 12);
             this.btnLogout.Name = "btnLogout";
             this.helpProvider1.SetShowHelp(this.btnLogout, true);
@@ -53,7 +53,7 @@
             // 
             // lstViewBooksAndUsers
             // 
-            this.helpProvider1.SetHelpString(this.lstViewBooksAndUsers, "Pole na który wyświetlane są wszystkie zasoby biblioteki");
+            this.helpProvider1.SetHelpString(this.lstViewBooksAndUsers, "Pole na ktory wyswietlane sa wszystkie zasoby biblioteki");
             this.lstViewBooksAndUsers.Location = new System.Drawing.Point(12, 51);
             this.lstViewBooksAndUsers.Name = "lstViewBooksAndUsers";
             this.helpProvider1.SetShowHelp(this.lstViewBooksAndUsers, true);
@@ -64,7 +64,7 @@
             // 
             // btnSearchResource
             // 
-            this.helpProvider1.SetHelpString(this.btnSearchResource, "Przycisk pozwalający na szukanie zasobów bibliotecznych");
+            this.helpProvider1.SetHelpString(this.btnSearchResource, "Przycisk pozwalajacy na szukanie zasobow bibliotecznych");
             this.btnSearchResource.Location = new System.Drawing.Point(12, 261);
             this.btnSearchResource.Name = "btnSearchResource";
             this.helpProvider1.SetShowHelp(this.btnSearchResource, true);
@@ -76,7 +76,7 @@
             // 
             // btnReserveResource
             // 
-            this.helpProvider1.SetHelpString(this.btnReserveResource, "Przycisk pozwalający na zarezerwowanie zasobu");
+            this.helpProvider1.SetHelpString(this.btnReserveResource, "Przycisk pozwalajacy na zarezerwowanie zasobu");
             this.btnReserveResource.Location = new System.Drawing.Point(12, 290);
             this.btnReserveResource.Name = "btnReserveResource";
             this.helpProvider1.SetShowHelp(this.btnReserveResource, true);
@@ -88,7 +88,7 @@
             // 
             // btnCheckIfResourceAvailable
             // 
-            this.helpProvider1.SetHelpString(this.btnCheckIfResourceAvailable, "Przycisk pozwalający sprawdzić dostępność zasobów");
+            this.helpProvider1.SetHelpString(this.btnCheckIfResourceAvailable, "Przycisk pozwalajacy sprawdzic dostepnosc zasobow");
             this.btnCheckIfResourceAvailable.Location = new System.Drawing.Point(248, 261);
             this.btnCheckIfResourceAvailable.Name = "btnCheckIfResourceAvailable";
             this.helpProvider1.SetShowHelp(this.btnCheckIfResourceAvailable, true);
@@ -100,7 +100,7 @@
             // 
             // btnUpdateUserAccount
             // 
-            this.helpProvider1.SetHelpString(this.btnUpdateUserAccount, "Przycisk pozwalający na zgłoszenie wniosku o aktualizację karty klienta bibliotek" +
+            this.helpProvider1.SetHelpString(this.btnUpdateUserAccount, "Przycisk pozwalajacy na zgloszenie wniosku o aktualizacje karty klienta bibliotek" +
         "i");
             this.btnUpdateUserAccount.Location = new System.Drawing.Point(366, 261);
             this.btnUpdateUserAccount.Name = "btnUpdateUserAccount";
@@ -113,7 +113,7 @@
             // 
             // btnCheckBorrowedPositions
             // 
-            this.helpProvider1.SetHelpString(this.btnCheckBorrowedPositions, "Przycisk pozwalający przeglądać wypożyczone zasoby");
+            this.helpProvider1.SetHelpString(this.btnCheckBorrowedPositions, "Przycisk pozwalajacy przegladac wypozyczone zasoby");
             this.btnCheckBorrowedPositions.Location = new System.Drawing.Point(130, 261);
             this.btnCheckBorrowedPositions.Name = "btnCheckBorrowedPositions";
             this.helpProvider1.SetShowHelp(this.btnCheckBorrowedPositions, true);
@@ -125,7 +125,7 @@
             // 
             // helpButton
             // 
-            this.helpProvider1.SetHelpString(this.helpButton, "Pozwala włączyć/wyłączyć pomoc");
+            this.helpProvider1.SetHelpString(this.helpButton, "Pozwala wlaczyc/wylaczyc pomoc");
             this.helpButton.Location = new System.Drawing.Point(190, 12);
             this.helpButton.Name = "helpButton";
             this.helpProvider1.SetShowHelp(this.helpButton, true);

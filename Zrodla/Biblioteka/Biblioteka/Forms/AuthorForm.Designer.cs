@@ -62,7 +62,7 @@
             // 
             // textBoxSurname
             // 
-            this.helpProvider1.SetHelpString(this.textBoxSurname, "Tutaj wprowadź nazwisko autora ");
+            this.helpProvider1.SetHelpString(this.textBoxSurname, "Tutaj wprowadz nazwisko autora ");
             this.textBoxSurname.Location = new System.Drawing.Point(102, 60);
             this.textBoxSurname.Name = "textBoxSurname";
             this.helpProvider1.SetShowHelp(this.textBoxSurname, true);
@@ -71,7 +71,7 @@
             // 
             // textBoxName
             // 
-            this.helpProvider1.SetHelpString(this.textBoxName, "Tutaj wprowadź imię autora");
+            this.helpProvider1.SetHelpString(this.textBoxName, "Tutaj wprowadź imie autora");
             this.textBoxName.Location = new System.Drawing.Point(102, 34);
             this.textBoxName.Name = "textBoxName";
             this.helpProvider1.SetShowHelp(this.textBoxName, true);
@@ -80,7 +80,7 @@
             // 
             // dateTimePicker1
             // 
-            this.helpProvider1.SetHelpString(this.dateTimePicker1, "Tutaj wprowadź datę urodzenia autora");
+            this.helpProvider1.SetHelpString(this.dateTimePicker1, "Tutaj wprowadz date urodzenia autora");
             this.dateTimePicker1.Location = new System.Drawing.Point(102, 86);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.helpProvider1.SetShowHelp(this.dateTimePicker1, true);
@@ -99,8 +99,8 @@
             // 
             // buttonExit
             // 
-            this.helpProvider1.SetHelpString(this.buttonExit, "Przycisk pozwalający na anulowanie wprowadzonych zmian, automatycznie wyłącza opc" +
-        "ję dodawania autora");
+            this.helpProvider1.SetHelpString(this.buttonExit, "Przycisk pozwalajacy na anulowanie wprowadzonych zmian jezeli nie zostaly zapisan" +
+        "e, automatycznie wylacza opcje dodawania autora");
             this.buttonExit.Location = new System.Drawing.Point(177, 114);
             this.buttonExit.Name = "buttonExit";
             this.helpProvider1.SetShowHelp(this.buttonExit, true);
@@ -112,7 +112,7 @@
             // 
             // buttonSave
             // 
-            this.helpProvider1.SetHelpString(this.buttonSave, "Przycisk zapisujący zmiany i dodający autora do listy autorów");
+            this.helpProvider1.SetHelpString(this.buttonSave, "Przycisk zapisujący zmiany i dodajacy autora do listy autorow");
             this.buttonSave.Location = new System.Drawing.Point(15, 114);
             this.buttonSave.Name = "buttonSave";
             this.helpProvider1.SetShowHelp(this.buttonSave, true);
@@ -124,7 +124,7 @@
             // 
             // helpButton
             // 
-            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalający na włączenie/wyłączenie pomocy");
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy na wlaczenie/wylaczenie pomocy");
             this.helpButton.Location = new System.Drawing.Point(102, 5);
             this.helpButton.Name = "helpButton";
             this.helpProvider1.SetShowHelp(this.helpButton, true);

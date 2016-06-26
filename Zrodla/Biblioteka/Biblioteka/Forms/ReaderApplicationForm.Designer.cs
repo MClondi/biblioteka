@@ -132,7 +132,7 @@
             // 
             // textBoxPostal
             // 
-            this.helpProvider1.SetHelpString(this.textBoxPostal, "W tym polu podaj kod pocztowy, który zostanie przypisany do karty");
+            this.helpProvider1.SetHelpString(this.textBoxPostal, "W tym polu podaj kod pocztowy, ktory zostanie przypisany do karty");
             this.textBoxPostal.Location = new System.Drawing.Point(102, 219);
             this.textBoxPostal.Name = "textBoxPostal";
             this.helpProvider1.SetShowHelp(this.textBoxPostal, true);
@@ -141,7 +141,7 @@
             // 
             // textBoxCity
             // 
-            this.helpProvider1.SetHelpString(this.textBoxCity, "W tym polu podaj nazwę miasta, który zostanie przypisany do karty");
+            this.helpProvider1.SetHelpString(this.textBoxCity, "W tym polu podaj nazwe miasta, ktore zostanie przypisane do karty");
             this.textBoxCity.Location = new System.Drawing.Point(102, 193);
             this.textBoxCity.Name = "textBoxCity";
             this.helpProvider1.SetShowHelp(this.textBoxCity, true);
@@ -150,7 +150,7 @@
             // 
             // textBoxApt
             // 
-            this.helpProvider1.SetHelpString(this.textBoxApt, "W tym polu podaj numer mieszkania, który zostanie przypisany do karty");
+            this.helpProvider1.SetHelpString(this.textBoxApt, "W tym polu podaj numer mieszkania, ktory zostanie przypisany do karty");
             this.textBoxApt.Location = new System.Drawing.Point(102, 167);
             this.textBoxApt.Name = "textBoxApt";
             this.helpProvider1.SetShowHelp(this.textBoxApt, true);
@@ -159,7 +159,7 @@
             // 
             // textBoxStrNum
             // 
-            this.helpProvider1.SetHelpString(this.textBoxStrNum, "W tym polu podaj numer domu, który zostanie przypisany do karty");
+            this.helpProvider1.SetHelpString(this.textBoxStrNum, "W tym polu podaj numer domu, ktory zostanie przypisany do karty");
             this.textBoxStrNum.Location = new System.Drawing.Point(102, 141);
             this.textBoxStrNum.Name = "textBoxStrNum";
             this.helpProvider1.SetShowHelp(this.textBoxStrNum, true);
@@ -168,7 +168,7 @@
             // 
             // textBoxStreet
             // 
-            this.helpProvider1.SetHelpString(this.textBoxStreet, "W tym polu podaj nazwę ulicy, który zostanie przypisany do karty");
+            this.helpProvider1.SetHelpString(this.textBoxStreet, "W tym polu podaj nazwe ulicy, ktora zostanie przypisana do karty");
             this.textBoxStreet.Location = new System.Drawing.Point(102, 115);
             this.textBoxStreet.Name = "textBoxStreet";
             this.helpProvider1.SetShowHelp(this.textBoxStreet, true);
@@ -177,7 +177,7 @@
             // 
             // textBoxTel
             // 
-            this.helpProvider1.SetHelpString(this.textBoxTel, "W tym polu podaj numer telefonu, który zostanie przypisany do karty");
+            this.helpProvider1.SetHelpString(this.textBoxTel, "W tym polu podaj numer telefonu, ktory zostanie przypisany do karty");
             this.textBoxTel.Location = new System.Drawing.Point(102, 89);
             this.textBoxTel.Name = "textBoxTel";
             this.helpProvider1.SetShowHelp(this.textBoxTel, true);
@@ -186,7 +186,7 @@
             // 
             // textBoxSurname
             // 
-            this.helpProvider1.SetHelpString(this.textBoxSurname, "W tym polu wprowadź Twoje nazwisko, nazwisko to zostanie przypisane do karty");
+            this.helpProvider1.SetHelpString(this.textBoxSurname, "W tym polu wprowadz Twoje nazwisko, nazwisko to zostanie przypisane do karty");
             this.textBoxSurname.Location = new System.Drawing.Point(102, 63);
             this.textBoxSurname.Name = "textBoxSurname";
             this.helpProvider1.SetShowHelp(this.textBoxSurname, true);
@@ -195,7 +195,7 @@
             // 
             // textBoxName
             // 
-            this.helpProvider1.SetHelpString(this.textBoxName, "W tym polu wprowadź Twoje imię, imię to zostanie przypisane do karty");
+            this.helpProvider1.SetHelpString(this.textBoxName, "W tym polu wprowadz Twoje imię, imie to zostanie przypisane do karty");
             this.textBoxName.Location = new System.Drawing.Point(102, 37);
             this.textBoxName.Name = "textBoxName";
             this.helpProvider1.SetShowHelp(this.textBoxName, true);
@@ -204,7 +204,7 @@
             // 
             // send
             // 
-            this.helpProvider1.SetHelpString(this.send, "Wciśnij ten przycisk aby wysłać zgłoszenie założenia konta");
+            this.helpProvider1.SetHelpString(this.send, "Wcisnij ten przycisk aby wyslac zgloszenie zalozenia konta");
             this.send.Location = new System.Drawing.Point(128, 257);
             this.send.Name = "send";
             this.helpProvider1.SetShowHelp(this.send, true);
@@ -216,7 +216,7 @@
             // 
             // cancel
             // 
-            this.helpProvider1.SetHelpString(this.cancel, "Wciśnij ten przycisk aby anulować wprowadzone dane i/lub powrócić do poprzedniego" +
+            this.helpProvider1.SetHelpString(this.cancel, "Wcisnij ten przycisk aby anulowac wprowadzone dane i/lub powrocic do poprzedniego" +
         " okna");
             this.cancel.Location = new System.Drawing.Point(250, 257);
             this.cancel.Name = "cancel";
@@ -229,7 +229,7 @@
             // 
             // helpButton
             // 
-            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalający na włączenie/wyłączenie pomocy");
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy na wlaczenie/wylaczenie pomocy");
             this.helpButton.Location = new System.Drawing.Point(103, 8);
             this.helpButton.Name = "helpButton";
             this.helpProvider1.SetShowHelp(this.helpButton, true);

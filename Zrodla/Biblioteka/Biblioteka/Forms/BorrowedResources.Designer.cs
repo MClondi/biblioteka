@@ -36,7 +36,7 @@
             // 
             // listView1
             // 
-            this.helpProvider1.SetHelpString(this.listView1, "Lista wypożyczonych zasobów przez użytkownika");
+            this.helpProvider1.SetHelpString(this.listView1, "Lista wypozyczonych zasobow przez uzytkownika");
             this.listView1.Location = new System.Drawing.Point(12, 39);
             this.listView1.Name = "listView1";
             this.helpProvider1.SetShowHelp(this.listView1, true);
@@ -47,7 +47,7 @@
             // 
             // button1
             // 
-            this.helpProvider1.SetHelpString(this.button1, "Przycisk pozwalający zamknąć okno wypożyczonych zasobów");
+            this.helpProvider1.SetHelpString(this.button1, "Przycisk pozwalajacy zamknac okno wypozyczonych zasobow");
             this.button1.Location = new System.Drawing.Point(12, 254);
             this.button1.Name = "button1";
             this.helpProvider1.SetShowHelp(this.button1, true);
@@ -59,7 +59,7 @@
             // 
             // helpButton
             // 
-            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalający włączyć/wyłączyć pomoc");
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy wlaczyc/wylaczyc pomoc");
             this.helpButton.Location = new System.Drawing.Point(12, 13);
             this.helpButton.Name = "helpButton";
             this.helpButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

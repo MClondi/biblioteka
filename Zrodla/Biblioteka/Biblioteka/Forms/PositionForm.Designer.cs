@@ -52,12 +52,16 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxMail = new System.Windows.Forms.TextBox();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.helpProvider = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // buttonExit
             // 
+            this.helpProvider.SetHelpString(this.buttonExit, "Anuluj wprowadzone dane i cofnij sie do poprzedniego ekranu");
             this.buttonExit.Location = new System.Drawing.Point(180, 345);
             this.buttonExit.Name = "buttonExit";
+            this.helpProvider.SetShowHelp(this.buttonExit, true);
             this.buttonExit.Size = new System.Drawing.Size(148, 23);
             this.buttonExit.TabIndex = 89;
             this.buttonExit.Text = "Anuluj";
@@ -66,8 +70,10 @@
             // 
             // buttonSave
             // 
+            this.helpProvider.SetHelpString(this.buttonSave, "Wyszukaj uzytkownika w bazie danych na podstawie wprowadzonych informacji");
             this.buttonSave.Location = new System.Drawing.Point(18, 345);
             this.buttonSave.Name = "buttonSave";
+            this.helpProvider.SetShowHelp(this.buttonSave, true);
             this.buttonSave.Size = new System.Drawing.Size(136, 23);
             this.buttonSave.TabIndex = 88;
             this.buttonSave.Text = "Szukaj";
@@ -176,8 +182,10 @@
             // typeSpinner
             // 
             this.typeSpinner.FormattingEnabled = true;
+            this.helpProvider.SetHelpString(this.typeSpinner, "Tutaj wprowadz typ uzytkownika");
             this.typeSpinner.Location = new System.Drawing.Point(105, 45);
             this.typeSpinner.Name = "typeSpinner";
+            this.helpProvider.SetShowHelp(this.typeSpinner, true);
             this.typeSpinner.Size = new System.Drawing.Size(223, 21);
             this.typeSpinner.TabIndex = 77;
             // 
@@ -193,79 +201,112 @@
             // 
             // textBoxPostal
             // 
+            this.helpProvider.SetHelpString(this.textBoxPostal, "Tutaj wprowadz kod pocztowy miasta zameldowania uzytkownika");
             this.textBoxPostal.Location = new System.Drawing.Point(105, 306);
             this.textBoxPostal.Name = "textBoxPostal";
+            this.helpProvider.SetShowHelp(this.textBoxPostal, true);
             this.textBoxPostal.Size = new System.Drawing.Size(223, 20);
             this.textBoxPostal.TabIndex = 75;
             // 
             // textBoxCity
             // 
+            this.helpProvider.SetHelpString(this.textBoxCity, "Tutaj wprowadz miasto zamieszkania uzytkownika");
             this.textBoxCity.Location = new System.Drawing.Point(105, 280);
             this.textBoxCity.Name = "textBoxCity";
+            this.helpProvider.SetShowHelp(this.textBoxCity, true);
             this.textBoxCity.Size = new System.Drawing.Size(223, 20);
             this.textBoxCity.TabIndex = 74;
             // 
             // textBoxApt
             // 
+            this.helpProvider.SetHelpString(this.textBoxApt, "Tutaj wprowadz numer mieszkania uzytkownika");
             this.textBoxApt.Location = new System.Drawing.Point(105, 254);
             this.textBoxApt.Name = "textBoxApt";
+            this.helpProvider.SetShowHelp(this.textBoxApt, true);
             this.textBoxApt.Size = new System.Drawing.Size(223, 20);
             this.textBoxApt.TabIndex = 73;
             // 
             // textBoxStrNum
             // 
+            this.helpProvider.SetHelpString(this.textBoxStrNum, "Tutaj wprowadz numer domu uzytkownika");
             this.textBoxStrNum.Location = new System.Drawing.Point(105, 228);
             this.textBoxStrNum.Name = "textBoxStrNum";
+            this.helpProvider.SetShowHelp(this.textBoxStrNum, true);
             this.textBoxStrNum.Size = new System.Drawing.Size(223, 20);
             this.textBoxStrNum.TabIndex = 72;
             // 
             // textBoxStreet
             // 
+            this.helpProvider.SetHelpString(this.textBoxStreet, "Tutaj wprowadz nazwe ulicy uzytkownika");
             this.textBoxStreet.Location = new System.Drawing.Point(105, 202);
             this.textBoxStreet.Name = "textBoxStreet";
+            this.helpProvider.SetShowHelp(this.textBoxStreet, true);
             this.textBoxStreet.Size = new System.Drawing.Size(223, 20);
             this.textBoxStreet.TabIndex = 71;
             // 
             // textBoxTel
             // 
+            this.helpProvider.SetHelpString(this.textBoxTel, "Tutaj wprowadz numer telefonu uzytkownika");
             this.textBoxTel.Location = new System.Drawing.Point(105, 176);
             this.textBoxTel.Name = "textBoxTel";
+            this.helpProvider.SetShowHelp(this.textBoxTel, true);
             this.textBoxTel.Size = new System.Drawing.Size(223, 20);
             this.textBoxTel.TabIndex = 70;
             // 
             // textBoxSurname
             // 
+            this.helpProvider.SetHelpString(this.textBoxSurname, "Tutaj wprowadz nazwisko uzytkownika");
             this.textBoxSurname.Location = new System.Drawing.Point(105, 150);
             this.textBoxSurname.Name = "textBoxSurname";
+            this.helpProvider.SetShowHelp(this.textBoxSurname, true);
             this.textBoxSurname.Size = new System.Drawing.Size(223, 20);
             this.textBoxSurname.TabIndex = 69;
             // 
             // textBoxName
             // 
+            this.helpProvider.SetHelpString(this.textBoxName, "Tutaj wprowadz imie uzytkownika");
             this.textBoxName.Location = new System.Drawing.Point(105, 124);
             this.textBoxName.Name = "textBoxName";
+            this.helpProvider.SetShowHelp(this.textBoxName, true);
             this.textBoxName.Size = new System.Drawing.Size(223, 20);
             this.textBoxName.TabIndex = 68;
             // 
             // textBoxMail
             // 
+            this.helpProvider.SetHelpString(this.textBoxMail, "Tutaj wprowadz adres email uzytkownika");
             this.textBoxMail.Location = new System.Drawing.Point(105, 98);
             this.textBoxMail.Name = "textBoxMail";
+            this.helpProvider.SetShowHelp(this.textBoxMail, true);
             this.textBoxMail.Size = new System.Drawing.Size(223, 20);
             this.textBoxMail.TabIndex = 67;
             // 
             // textBoxLogin
             // 
+            this.helpProvider.SetHelpString(this.textBoxLogin, "Tutaj wprowadz login uzytkownika");
             this.textBoxLogin.Location = new System.Drawing.Point(105, 72);
             this.textBoxLogin.Name = "textBoxLogin";
+            this.helpProvider.SetShowHelp(this.textBoxLogin, true);
             this.textBoxLogin.Size = new System.Drawing.Size(223, 20);
             this.textBoxLogin.TabIndex = 66;
+            // 
+            // helpButton
+            // 
+            this.helpProvider.SetHelpString(this.helpButton, "Przycisk pozwalajacy wlaczyc/wylaczyc pomoc");
+            this.helpButton.Location = new System.Drawing.Point(196, 12);
+            this.helpButton.Name = "helpButton";
+            this.helpProvider.SetShowHelp(this.helpButton, true);
+            this.helpButton.Size = new System.Drawing.Size(132, 23);
+            this.helpButton.TabIndex = 90;
+            this.helpButton.Text = "Pomoc";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
             // 
             // PositionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 380);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.label9);
@@ -324,6 +365,8 @@
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxMail;
         private System.Windows.Forms.TextBox textBoxLogin;
+        private System.Windows.Forms.Button helpButton;
+        private System.Windows.Forms.HelpProvider helpProvider;
 
     }
 }

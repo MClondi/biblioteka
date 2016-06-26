@@ -47,7 +47,7 @@
             // comboBoxType
             // 
             this.comboBoxType.FormattingEnabled = true;
-            this.helpProvider1.SetHelpString(this.comboBoxType, "W tym polu wprowadź typ zasobu który chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.comboBoxType, "W tym polu wprowadz typ zasobu ktory chcesz znalezc");
             this.comboBoxType.Location = new System.Drawing.Point(134, 40);
             this.comboBoxType.Name = "comboBoxType";
             this.helpProvider1.SetShowHelp(this.comboBoxType, true);
@@ -57,7 +57,7 @@
             // 
             // textBoxTitle
             // 
-            this.helpProvider1.SetHelpString(this.textBoxTitle, "W tym polu wprowadź tytuł zasobu który chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxTitle, "W tym polu wprowadz tytul zasobu ktory chcesz znalezc");
             this.textBoxTitle.Location = new System.Drawing.Point(134, 67);
             this.textBoxTitle.Name = "textBoxTitle";
             this.helpProvider1.SetShowHelp(this.textBoxTitle, true);
@@ -66,7 +66,7 @@
             // 
             // textBoxAuthorName
             // 
-            this.helpProvider1.SetHelpString(this.textBoxAuthorName, "W tym polu wprowadź imię autora zasobu który chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxAuthorName, "W tym polu wprowadz imie autora zasobu ktory chcesz znalezc");
             this.textBoxAuthorName.Location = new System.Drawing.Point(134, 93);
             this.textBoxAuthorName.Name = "textBoxAuthorName";
             this.helpProvider1.SetShowHelp(this.textBoxAuthorName, true);
@@ -75,7 +75,7 @@
             // 
             // textBoxAuthorSurname
             // 
-            this.helpProvider1.SetHelpString(this.textBoxAuthorSurname, "W tym polu wprowadź nazwisko autora zasobu który chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxAuthorSurname, "W tym polu wprowadz nazwisko autora zasobu ktory chcesz znalezc");
             this.textBoxAuthorSurname.Location = new System.Drawing.Point(134, 119);
             this.textBoxAuthorSurname.Name = "textBoxAuthorSurname";
             this.helpProvider1.SetShowHelp(this.textBoxAuthorSurname, true);
@@ -130,7 +130,7 @@
             // 
             // textBoxPublisher
             // 
-            this.helpProvider1.SetHelpString(this.textBoxPublisher, "W tym polu wprowadź wydawcę/producenta zasobu który chcesz znaleźć");
+            this.helpProvider1.SetHelpString(this.textBoxPublisher, "W tym polu wprowadz wydawce/producenta zasobu ktory chcesz znalezc");
             this.textBoxPublisher.Location = new System.Drawing.Point(134, 145);
             this.textBoxPublisher.Name = "textBoxPublisher";
             this.helpProvider1.SetShowHelp(this.textBoxPublisher, true);
@@ -139,7 +139,7 @@
             // 
             // button1
             // 
-            this.helpProvider1.SetHelpString(this.button1, "Wciśnij ten przycisk aby anulować wprowadzone dane i/lub cofnąć się do poprzednie" +
+            this.helpProvider1.SetHelpString(this.button1, "Wcisnij ten przycisk aby anulowac wprowadzone dane i/lub cofnac sie do poprzednie" +
         "go okna");
             this.button1.Location = new System.Drawing.Point(291, 181);
             this.button1.Name = "button1";
@@ -152,8 +152,8 @@
             // 
             // button2
             // 
-            this.helpProvider1.SetHelpString(this.button2, "Wciśnij ten przycisk aby wyszukać wprowadzone dane w bazie danych");
-            this.button2.Location = new System.Drawing.Point(210, 181);
+            this.helpProvider1.SetHelpString(this.button2, "Wcisnij ten przycisk aby wyszukac wprowadzone dane w bazie danych");
+            this.button2.Location = new System.Drawing.Point(209, 181);
             this.button2.Name = "button2";
             this.helpProvider1.SetShowHelp(this.button2, true);
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -164,7 +164,7 @@
             // 
             // helpButton
             // 
-            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalający włączyć/wyłączyć pomoc");
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajzcy wlaczyc/wylaczyc pomoc");
             this.helpButton.Location = new System.Drawing.Point(164, 4);
             this.helpButton.Name = "helpButton";
             this.helpProvider1.SetShowHelp(this.helpButton, true);

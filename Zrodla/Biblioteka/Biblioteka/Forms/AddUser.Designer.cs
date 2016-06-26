@@ -60,7 +60,7 @@
             // 
             // textBoxLogin
             // 
-            this.helpProvider1.SetHelpString(this.textBoxLogin, "Tutaj wprowadź login do swojego konta, loginem będziesz posługiwał się w momencie" +
+            this.helpProvider1.SetHelpString(this.textBoxLogin, "Tutaj wprowadz login do swojego konta, loginem bedziesz poslugiwal się w momencie" +
         " logowania");
             this.textBoxLogin.Location = new System.Drawing.Point(102, 59);
             this.textBoxLogin.Name = "textBoxLogin";
@@ -70,7 +70,7 @@
             // 
             // textBoxPassword
             // 
-            this.helpProvider1.SetHelpString(this.textBoxPassword, "Tutaj wprowadź hasło do konta, hasło będzie wymagane zawsze podczas logowania");
+            this.helpProvider1.SetHelpString(this.textBoxPassword, "Tutaj wprowadz haslo do konta, haslo bedzie wymagane zawsze podczas logowania");
             this.textBoxPassword.Location = new System.Drawing.Point(102, 85);
             this.textBoxPassword.Name = "textBoxPassword";
             this.helpProvider1.SetShowHelp(this.textBoxPassword, true);
@@ -88,8 +88,8 @@
             // 
             // textBoxMail
             // 
-            this.helpProvider1.SetHelpString(this.textBoxMail, "W tym polu podaj email z ktorym powiazane będzie konto, na podany email przyjdzie" +
-        " link aktywujący");
+            this.helpProvider1.SetHelpString(this.textBoxMail, "W tym polu podaj email z ktorym powiazane bedzie konto, na podany email przyjdzie" +
+        " link aktywujacy");
             this.textBoxMail.Location = new System.Drawing.Point(102, 111);
             this.textBoxMail.Name = "textBoxMail";
             this.helpProvider1.SetShowHelp(this.textBoxMail, true);
@@ -116,7 +116,7 @@
             // 
             // textBoxStrNum
             // 
-            this.helpProvider1.SetHelpString(this.textBoxStrNum, "W tym polu podaj numer domu w ktorym jesteś zameldowany");
+            this.helpProvider1.SetHelpString(this.textBoxStrNum, "W tym polu podaj numer domu w ktorym jestes zameldowany");
             this.textBoxStrNum.Location = new System.Drawing.Point(102, 241);
             this.textBoxStrNum.Name = "textBoxStrNum";
             this.helpProvider1.SetShowHelp(this.textBoxStrNum, true);
@@ -126,7 +126,7 @@
             // textBoxStreet
             // 
             this.textBoxStreet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.helpProvider1.SetHelpString(this.textBoxStreet, "W tym polu podaj nazwę ulicy na której jesteś zameldowany");
+            this.helpProvider1.SetHelpString(this.textBoxStreet, "W tym polu podaj nazwe ulicy na której jesteś zameldowany");
             this.textBoxStreet.Location = new System.Drawing.Point(102, 215);
             this.textBoxStreet.Name = "textBoxStreet";
             this.helpProvider1.SetShowHelp(this.textBoxStreet, true);
@@ -135,7 +135,7 @@
             // 
             // textBoxPostal
             // 
-            this.helpProvider1.SetHelpString(this.textBoxPostal, "W tym polu podaj kod pocztowy miasta w którym jesteś zameldowany");
+            this.helpProvider1.SetHelpString(this.textBoxPostal, "W tym polu podaj kod pocztowy miasta w ktorym jestes zameldowany");
             this.textBoxPostal.Location = new System.Drawing.Point(102, 319);
             this.textBoxPostal.Name = "textBoxPostal";
             this.helpProvider1.SetShowHelp(this.textBoxPostal, true);
@@ -144,7 +144,7 @@
             // 
             // textBoxCity
             // 
-            this.helpProvider1.SetHelpString(this.textBoxCity, "W tym polu podaj miasto w którym jesteś zameldowany");
+            this.helpProvider1.SetHelpString(this.textBoxCity, "W tym polu podaj miasto w ktorym jestes zameldowany");
             this.textBoxCity.Location = new System.Drawing.Point(102, 293);
             this.textBoxCity.Name = "textBoxCity";
             this.helpProvider1.SetShowHelp(this.textBoxCity, true);
@@ -153,7 +153,7 @@
             // 
             // textBoxApt
             // 
-            this.helpProvider1.SetHelpString(this.textBoxApt, "W tym polu podaj numer mieszkania w którym jestes zameldowany");
+            this.helpProvider1.SetHelpString(this.textBoxApt, "W tym polu podaj numer mieszkania w ktorym jestes zameldowany");
             this.textBoxApt.Location = new System.Drawing.Point(102, 267);
             this.textBoxApt.Name = "textBoxApt";
             this.helpProvider1.SetShowHelp(this.textBoxApt, true);
@@ -175,7 +175,7 @@
             // typeSpinner
             // 
             this.typeSpinner.FormattingEnabled = true;
-            this.helpProvider1.SetHelpString(this.typeSpinner, "Tutaj wybierz typ konta, typ A - administrator, L - bibliotekarz, U - użytkownik");
+            this.helpProvider1.SetHelpString(this.typeSpinner, "Tutaj wybierz typ konta, typ A - administrator, L - bibliotekarz, U - uzytkownik");
             this.typeSpinner.Location = new System.Drawing.Point(102, 32);
             this.typeSpinner.Name = "typeSpinner";
             this.helpProvider1.SetShowHelp(this.typeSpinner, true);
@@ -321,7 +321,7 @@
             // 
             // helpButton
             // 
-            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalający włączyć/wyłączyć pomoc");
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy wlaczyc/wylaczyc opcje pomocy");
             this.helpButton.Location = new System.Drawing.Point(102, 3);
             this.helpButton.Name = "helpButton";
             this.helpProvider1.SetShowHelp(this.helpButton, true);

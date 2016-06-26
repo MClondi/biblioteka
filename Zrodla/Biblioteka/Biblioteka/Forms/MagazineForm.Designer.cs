@@ -38,13 +38,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBoxName = new System.Windows.Forms.TextBox();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // genreSpinner
             // 
             this.genreSpinner.FormattingEnabled = true;
+            this.helpProvider1.SetHelpString(this.genreSpinner, "Wybierz rodzaj magazynu");
             this.genreSpinner.Location = new System.Drawing.Point(102, 95);
             this.genreSpinner.Name = "genreSpinner";
+            this.helpProvider1.SetShowHelp(this.genreSpinner, true);
             this.genreSpinner.Size = new System.Drawing.Size(223, 21);
             this.genreSpinner.TabIndex = 73;
             // 
@@ -60,8 +64,10 @@
             // 
             // buttonExit
             // 
+            this.helpProvider1.SetHelpString(this.buttonExit, "Anuluj wprowadzone zmiany jezeli nie zostaly zapisane i/lub zamkni okno.");
             this.buttonExit.Location = new System.Drawing.Point(177, 127);
             this.buttonExit.Name = "buttonExit";
+            this.helpProvider1.SetShowHelp(this.buttonExit, true);
             this.buttonExit.Size = new System.Drawing.Size(148, 23);
             this.buttonExit.TabIndex = 71;
             this.buttonExit.Text = "Anuluj";
@@ -70,8 +76,10 @@
             // 
             // buttonSave
             // 
+            this.helpProvider1.SetHelpString(this.buttonSave, "Zapisz wprowadzone zmiany i dodaj magazyn do bazy danych");
             this.buttonSave.Location = new System.Drawing.Point(15, 127);
             this.buttonSave.Name = "buttonSave";
+            this.helpProvider1.SetShowHelp(this.buttonSave, true);
             this.buttonSave.Size = new System.Drawing.Size(136, 23);
             this.buttonSave.TabIndex = 70;
             this.buttonSave.Text = "Zapisz";
@@ -98,8 +106,10 @@
             // publisherSpinner
             // 
             this.publisherSpinner.FormattingEnabled = true;
+            this.helpProvider1.SetHelpString(this.publisherSpinner, "Wybierz wydawce magayznu");
             this.publisherSpinner.Location = new System.Drawing.Point(102, 68);
             this.publisherSpinner.Name = "publisherSpinner";
+            this.helpProvider1.SetShowHelp(this.publisherSpinner, true);
             this.publisherSpinner.Size = new System.Drawing.Size(223, 21);
             this.publisherSpinner.TabIndex = 75;
             // 
@@ -125,16 +135,31 @@
             // 
             // txtBoxName
             // 
+            this.helpProvider1.SetHelpString(this.txtBoxName, "Wprowadz nazwe magazynu ktory chcesz dodac do bazy danych");
             this.txtBoxName.Location = new System.Drawing.Point(102, 42);
             this.txtBoxName.Name = "txtBoxName";
+            this.helpProvider1.SetShowHelp(this.txtBoxName, true);
             this.txtBoxName.Size = new System.Drawing.Size(223, 20);
             this.txtBoxName.TabIndex = 76;
+            // 
+            // helpButton
+            // 
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy wlaczyc/wylaczyc pomoc");
+            this.helpButton.Location = new System.Drawing.Point(189, 12);
+            this.helpButton.Name = "helpButton";
+            this.helpProvider1.SetShowHelp(this.helpButton, true);
+            this.helpButton.Size = new System.Drawing.Size(136, 23);
+            this.helpButton.TabIndex = 78;
+            this.helpButton.Text = "Pomoc";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // MagazineForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 162);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBoxName);
             this.Controls.Add(this.publisherSpinner);
@@ -164,5 +189,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBoxName;
+        private System.Windows.Forms.Button helpButton;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

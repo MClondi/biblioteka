@@ -97,6 +97,8 @@
             this.btnDeleteGenre = new System.Windows.Forms.Button();
             this.btnAddGenre = new System.Windows.Forms.Button();
             this.btnEditGenre = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.helpButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -108,8 +110,10 @@
             // 
             // btnLogout
             // 
+            this.helpProvider1.SetHelpString(this.btnLogout, "Przycisk pozwalajacy wylogowac sie z aktualnie zalogowanego konta");
             this.btnLogout.Location = new System.Drawing.Point(730, 12);
             this.btnLogout.Name = "btnLogout";
+            this.helpProvider1.SetShowHelp(this.btnLogout, true);
             this.btnLogout.Size = new System.Drawing.Size(112, 23);
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "Wyloguj sie";
@@ -121,8 +125,10 @@
             this.lstViewBooksAndUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.userName,
             this.userSurname});
+            this.helpProvider1.SetHelpString(this.lstViewBooksAndUsers, "Ekran przedstawiajacy uzytkownikow zarejestrowanych w bibliotece");
             this.lstViewBooksAndUsers.Location = new System.Drawing.Point(22, 28);
             this.lstViewBooksAndUsers.Name = "lstViewBooksAndUsers";
+            this.helpProvider1.SetShowHelp(this.lstViewBooksAndUsers, true);
             this.lstViewBooksAndUsers.Size = new System.Drawing.Size(202, 133);
             this.lstViewBooksAndUsers.TabIndex = 7;
             this.lstViewBooksAndUsers.UseCompatibleStateImageBehavior = false;
@@ -140,8 +146,10 @@
             // 
             // btnSearchUser
             // 
+            this.helpProvider1.SetHelpString(this.btnSearchUser, "Przycisk pozwalajacy wyszukac uzytkownika w bazie danych");
             this.btnSearchUser.Location = new System.Drawing.Point(45, 26);
             this.btnSearchUser.Name = "btnSearchUser";
+            this.helpProvider1.SetShowHelp(this.btnSearchUser, true);
             this.btnSearchUser.Size = new System.Drawing.Size(112, 24);
             this.btnSearchUser.TabIndex = 8;
             this.btnSearchUser.Text = "Szukaj użytkownika";
@@ -150,8 +158,10 @@
             // 
             // btnBorrowResource
             // 
+            this.helpProvider1.SetHelpString(this.btnBorrowResource, "Przycisk pozwalajacy wypozyczyc zasob, ktory zostanie przypisane do uzytkownika");
             this.btnBorrowResource.Location = new System.Drawing.Point(48, 56);
             this.btnBorrowResource.Name = "btnBorrowResource";
+            this.helpProvider1.SetShowHelp(this.btnBorrowResource, true);
             this.btnBorrowResource.Size = new System.Drawing.Size(112, 24);
             this.btnBorrowResource.TabIndex = 13;
             this.btnBorrowResource.Text = "Wypożycz zasób";
@@ -160,8 +170,10 @@
             // 
             // btnReserveResource
             // 
+            this.helpProvider1.SetHelpString(this.btnReserveResource, "Przycisk pozwalajacy zarezerwowac zasob");
             this.btnReserveResource.Location = new System.Drawing.Point(48, 26);
             this.btnReserveResource.Name = "btnReserveResource";
+            this.helpProvider1.SetShowHelp(this.btnReserveResource, true);
             this.btnReserveResource.Size = new System.Drawing.Size(112, 24);
             this.btnReserveResource.TabIndex = 14;
             this.btnReserveResource.Text = "Zarezerwuj zasób";
@@ -170,8 +182,10 @@
             // 
             // btnNoteReturn
             // 
+            this.helpProvider1.SetHelpString(this.btnNoteReturn, "Przycisk pozwalajacy zaksiegowac zwrot ksiazki wypozyczonej przez uzytkownika");
             this.btnNoteReturn.Location = new System.Drawing.Point(48, 116);
             this.btnNoteReturn.Name = "btnNoteReturn";
+            this.helpProvider1.SetShowHelp(this.btnNoteReturn, true);
             this.btnNoteReturn.Size = new System.Drawing.Size(112, 24);
             this.btnNoteReturn.TabIndex = 15;
             this.btnNoteReturn.Text = "Zaksięguj zwrot";
@@ -180,8 +194,10 @@
             // 
             // btnCancelReservation
             // 
+            this.helpProvider1.SetHelpString(this.btnCancelReservation, "Przycisk pozwalajacy usunac rezerwacje uzytkownika");
             this.btnCancelReservation.Location = new System.Drawing.Point(48, 86);
             this.btnCancelReservation.Name = "btnCancelReservation";
+            this.helpProvider1.SetShowHelp(this.btnCancelReservation, true);
             this.btnCancelReservation.Size = new System.Drawing.Size(112, 24);
             this.btnCancelReservation.TabIndex = 16;
             this.btnCancelReservation.Text = "Usuń rezerwację";
@@ -190,8 +206,10 @@
             // 
             // btnDeleteResource
             // 
+            this.helpProvider1.SetHelpString(this.btnDeleteResource, "Przycisk pozwalajacy usunac istniejacy zasob");
             this.btnDeleteResource.Location = new System.Drawing.Point(52, 86);
             this.btnDeleteResource.Name = "btnDeleteResource";
+            this.helpProvider1.SetShowHelp(this.btnDeleteResource, true);
             this.btnDeleteResource.Size = new System.Drawing.Size(112, 23);
             this.btnDeleteResource.TabIndex = 21;
             this.btnDeleteResource.Text = "Usuń zasób";
@@ -200,8 +218,10 @@
             // 
             // btnDeleteAuthor
             // 
+            this.helpProvider1.SetHelpString(this.btnDeleteAuthor, "Przycisk pozwalajacy usunac istniejacego autora");
             this.btnDeleteAuthor.Location = new System.Drawing.Point(18, 86);
             this.btnDeleteAuthor.Name = "btnDeleteAuthor";
+            this.helpProvider1.SetShowHelp(this.btnDeleteAuthor, true);
             this.btnDeleteAuthor.Size = new System.Drawing.Size(134, 23);
             this.btnDeleteAuthor.TabIndex = 20;
             this.btnDeleteAuthor.Text = "Usuń autora";
@@ -210,8 +230,10 @@
             // 
             // btnDeletePosition
             // 
+            this.helpProvider1.SetHelpString(this.btnDeletePosition, "Przycisk pozwalajacy usunac istniejaca pozycje");
             this.btnDeletePosition.Location = new System.Drawing.Point(246, 87);
             this.btnDeletePosition.Name = "btnDeletePosition";
+            this.helpProvider1.SetShowHelp(this.btnDeletePosition, true);
             this.btnDeletePosition.Size = new System.Drawing.Size(112, 23);
             this.btnDeletePosition.TabIndex = 22;
             this.btnDeletePosition.Text = "Usuń pozycję";
@@ -220,8 +242,10 @@
             // 
             // btnEditResource
             // 
+            this.helpProvider1.SetHelpString(this.btnEditResource, "Przycisk pozwalajacy edytowac istniejacy zasob");
             this.btnEditResource.Location = new System.Drawing.Point(52, 56);
             this.btnEditResource.Name = "btnEditResource";
+            this.helpProvider1.SetShowHelp(this.btnEditResource, true);
             this.btnEditResource.Size = new System.Drawing.Size(112, 23);
             this.btnEditResource.TabIndex = 18;
             this.btnEditResource.Text = "Edytuj zasób";
@@ -230,8 +254,10 @@
             // 
             // btnEditAuthor
             // 
+            this.helpProvider1.SetHelpString(this.btnEditAuthor, "Przycisk pozwalajacy edytowac isniejacego autora");
             this.btnEditAuthor.Location = new System.Drawing.Point(18, 56);
             this.btnEditAuthor.Name = "btnEditAuthor";
+            this.helpProvider1.SetShowHelp(this.btnEditAuthor, true);
             this.btnEditAuthor.Size = new System.Drawing.Size(134, 23);
             this.btnEditAuthor.TabIndex = 17;
             this.btnEditAuthor.Text = "Edytuj autora";
@@ -240,8 +266,10 @@
             // 
             // btnEditPosition
             // 
+            this.helpProvider1.SetHelpString(this.btnEditPosition, "Przycisk pozwalajacy edytowac istniejaca pozycje");
             this.btnEditPosition.Location = new System.Drawing.Point(246, 57);
             this.btnEditPosition.Name = "btnEditPosition";
+            this.helpProvider1.SetShowHelp(this.btnEditPosition, true);
             this.btnEditPosition.Size = new System.Drawing.Size(112, 23);
             this.btnEditPosition.TabIndex = 19;
             this.btnEditPosition.Text = "Edytuj pozycję";
@@ -250,8 +278,10 @@
             // 
             // btnAddResource
             // 
+            this.helpProvider1.SetHelpString(this.btnAddResource, "Przycisk pozwalajacy dodac nowy zasob");
             this.btnAddResource.Location = new System.Drawing.Point(52, 26);
             this.btnAddResource.Name = "btnAddResource";
+            this.helpProvider1.SetShowHelp(this.btnAddResource, true);
             this.btnAddResource.Size = new System.Drawing.Size(112, 23);
             this.btnAddResource.TabIndex = 14;
             this.btnAddResource.Text = "Dodaj zasób";
@@ -260,8 +290,10 @@
             // 
             // btnAddAuthor
             // 
+            this.helpProvider1.SetHelpString(this.btnAddAuthor, "Przycisk pozwalajacy dodac nowego autora");
             this.btnAddAuthor.Location = new System.Drawing.Point(18, 26);
             this.btnAddAuthor.Name = "btnAddAuthor";
+            this.helpProvider1.SetShowHelp(this.btnAddAuthor, true);
             this.btnAddAuthor.Size = new System.Drawing.Size(134, 23);
             this.btnAddAuthor.TabIndex = 13;
             this.btnAddAuthor.Text = "Dodaj autora";
@@ -270,8 +302,10 @@
             // 
             // btnAddPosition
             // 
+            this.helpProvider1.SetHelpString(this.btnAddPosition, "Przycisk pozwalajacy dodac nowa pozycje ");
             this.btnAddPosition.Location = new System.Drawing.Point(246, 27);
             this.btnAddPosition.Name = "btnAddPosition";
+            this.helpProvider1.SetShowHelp(this.btnAddPosition, true);
             this.btnAddPosition.Size = new System.Drawing.Size(112, 23);
             this.btnAddPosition.TabIndex = 16;
             this.btnAddPosition.Text = "Dodaj pozycję";
@@ -292,8 +326,10 @@
             // 
             // button2
             // 
+            this.helpProvider1.SetHelpString(this.button2, "Przycisk pozwalajacy sprawdzic zarezerwowane zasoby przez uzytkownika");
             this.button2.Location = new System.Drawing.Point(45, 110);
             this.button2.Name = "button2";
+            this.helpProvider1.SetShowHelp(this.button2, true);
             this.button2.Size = new System.Drawing.Size(112, 48);
             this.button2.TabIndex = 10;
             this.button2.Text = "Sprawdź zarezerwowane zasoby";
@@ -301,8 +337,10 @@
             // 
             // button1
             // 
+            this.helpProvider1.SetHelpString(this.button1, "Przycisk pozwalajacy sprawdzic zasoby wypozyczone przez uzytkownika");
             this.button1.Location = new System.Drawing.Point(45, 56);
             this.button1.Name = "button1";
+            this.helpProvider1.SetShowHelp(this.button1, true);
             this.button1.Size = new System.Drawing.Size(112, 48);
             this.button1.TabIndex = 9;
             this.button1.Text = "Sprawdź wypożyczone zasoby";
@@ -340,8 +378,10 @@
             // 
             // btnSearchPosition
             // 
+            this.helpProvider1.SetHelpString(this.btnSearchPosition, "Przycisk pozwalajacy wyszukac istniejacej pozycji w bazie");
             this.btnSearchPosition.Location = new System.Drawing.Point(246, 117);
             this.btnSearchPosition.Name = "btnSearchPosition";
+            this.helpProvider1.SetShowHelp(this.btnSearchPosition, true);
             this.btnSearchPosition.Size = new System.Drawing.Size(112, 23);
             this.btnSearchPosition.TabIndex = 25;
             this.btnSearchPosition.Text = "Szukaj pozycji";
@@ -349,8 +389,10 @@
             // 
             // btnSearchResource
             // 
+            this.helpProvider1.SetHelpString(this.btnSearchResource, "Przycisk pozwalajacy wyszukac zasobu w bazie danych");
             this.btnSearchResource.Location = new System.Drawing.Point(52, 116);
             this.btnSearchResource.Name = "btnSearchResource";
+            this.helpProvider1.SetShowHelp(this.btnSearchResource, true);
             this.btnSearchResource.Size = new System.Drawing.Size(112, 23);
             this.btnSearchResource.TabIndex = 23;
             this.btnSearchResource.Text = "Szukaj zasobu";
@@ -359,8 +401,10 @@
             // 
             // btnSearchPublisher
             // 
+            this.helpProvider1.SetHelpString(this.btnSearchPublisher, "Przycisk pozwalajacy wyszukac istniejacego wydawcy");
             this.btnSearchPublisher.Location = new System.Drawing.Point(187, 116);
             this.btnSearchPublisher.Name = "btnSearchPublisher";
+            this.helpProvider1.SetShowHelp(this.btnSearchPublisher, true);
             this.btnSearchPublisher.Size = new System.Drawing.Size(134, 23);
             this.btnSearchPublisher.TabIndex = 29;
             this.btnSearchPublisher.Text = "Szukaj wydawcy";
@@ -369,8 +413,10 @@
             // 
             // btnDeletePublisher
             // 
+            this.helpProvider1.SetHelpString(this.btnDeletePublisher, "Przycisk pozwalajacy usunac istniejacego wydawce");
             this.btnDeletePublisher.Location = new System.Drawing.Point(187, 86);
             this.btnDeletePublisher.Name = "btnDeletePublisher";
+            this.helpProvider1.SetShowHelp(this.btnDeletePublisher, true);
             this.btnDeletePublisher.Size = new System.Drawing.Size(134, 23);
             this.btnDeletePublisher.TabIndex = 28;
             this.btnDeletePublisher.Text = "Usuń wydawcę";
@@ -379,8 +425,10 @@
             // 
             // btnAddPublisher
             // 
+            this.helpProvider1.SetHelpString(this.btnAddPublisher, "Przycisk pozwalajacy dodac nowego wydawce");
             this.btnAddPublisher.Location = new System.Drawing.Point(187, 26);
             this.btnAddPublisher.Name = "btnAddPublisher";
+            this.helpProvider1.SetShowHelp(this.btnAddPublisher, true);
             this.btnAddPublisher.Size = new System.Drawing.Size(134, 23);
             this.btnAddPublisher.TabIndex = 26;
             this.btnAddPublisher.Text = "Dodaj wydawcę";
@@ -389,8 +437,10 @@
             // 
             // btnEditPublisher
             // 
+            this.helpProvider1.SetHelpString(this.btnEditPublisher, "Przycisk pozwalajacy edytowac isniejacego wydawce");
             this.btnEditPublisher.Location = new System.Drawing.Point(187, 56);
             this.btnEditPublisher.Name = "btnEditPublisher";
+            this.helpProvider1.SetShowHelp(this.btnEditPublisher, true);
             this.btnEditPublisher.Size = new System.Drawing.Size(134, 23);
             this.btnEditPublisher.TabIndex = 27;
             this.btnEditPublisher.Text = "Edytuj wydawcę";
@@ -399,8 +449,10 @@
             // 
             // btnSearchAuthor
             // 
+            this.helpProvider1.SetHelpString(this.btnSearchAuthor, "Przycisk pozwalajacy wyszukac istniejacego autora");
             this.btnSearchAuthor.Location = new System.Drawing.Point(18, 116);
             this.btnSearchAuthor.Name = "btnSearchAuthor";
+            this.helpProvider1.SetShowHelp(this.btnSearchAuthor, true);
             this.btnSearchAuthor.Size = new System.Drawing.Size(134, 23);
             this.btnSearchAuthor.TabIndex = 24;
             this.btnSearchAuthor.Text = "Szukaj autora";
@@ -409,8 +461,10 @@
             // 
             // listView2
             // 
+            this.helpProvider1.SetHelpString(this.listView2, "Lista pozycji znajdujacych sie w bibliotece");
             this.listView2.Location = new System.Drawing.Point(646, 28);
             this.listView2.Name = "listView2";
+            this.helpProvider1.SetShowHelp(this.listView2, true);
             this.listView2.Size = new System.Drawing.Size(202, 133);
             this.listView2.TabIndex = 30;
             this.listView2.UseCompatibleStateImageBehavior = false;
@@ -421,8 +475,10 @@
             this.lstViewAuthors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.authorName,
             this.authorSurname});
+            this.helpProvider1.SetHelpString(this.lstViewAuthors, "Lista autorow ktorych ksiazki znajduja sie w bazie");
             this.lstViewAuthors.Location = new System.Drawing.Point(24, 23);
             this.lstViewAuthors.Name = "lstViewAuthors";
+            this.helpProvider1.SetShowHelp(this.lstViewAuthors, true);
             this.lstViewAuthors.Size = new System.Drawing.Size(134, 133);
             this.lstViewAuthors.TabIndex = 31;
             this.lstViewAuthors.UseCompatibleStateImageBehavior = false;
@@ -438,8 +494,10 @@
             // 
             // listView4
             // 
+            this.helpProvider1.SetHelpString(this.listView4, "Lista zasobow wystepujacych w bibliotece");
             this.listView4.Location = new System.Drawing.Point(438, 28);
             this.listView4.Name = "listView4";
+            this.helpProvider1.SetShowHelp(this.listView4, true);
             this.listView4.Size = new System.Drawing.Size(202, 133);
             this.listView4.TabIndex = 32;
             this.listView4.UseCompatibleStateImageBehavior = false;
@@ -447,8 +505,10 @@
             // 
             // listView1
             // 
+            this.helpProvider1.SetHelpString(this.listView1, "Lista przedstawiajaca zasoby przypisane do uzytkownika");
             this.listView1.Location = new System.Drawing.Point(230, 28);
             this.listView1.Name = "listView1";
+            this.helpProvider1.SetShowHelp(this.listView1, true);
             this.listView1.Size = new System.Drawing.Size(202, 133);
             this.listView1.TabIndex = 33;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -512,8 +572,10 @@
             // 
             this.lstViewPublishers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.publisherName});
+            this.helpProvider1.SetHelpString(this.lstViewPublishers, "Lista wydawcow, ktorych zasoby znajduja sie w bazie");
             this.lstViewPublishers.Location = new System.Drawing.Point(193, 23);
             this.lstViewPublishers.Name = "lstViewPublishers";
+            this.helpProvider1.SetShowHelp(this.lstViewPublishers, true);
             this.lstViewPublishers.Size = new System.Drawing.Size(134, 133);
             this.lstViewPublishers.TabIndex = 39;
             this.lstViewPublishers.UseCompatibleStateImageBehavior = false;
@@ -528,9 +590,11 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.helpProvider1.SetHelpString(this.tabControl1, "");
             this.tabControl1.Location = new System.Drawing.Point(9, 41);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
+            this.helpProvider1.SetShowHelp(this.tabControl1, true);
             this.tabControl1.Size = new System.Drawing.Size(875, 370);
             this.tabControl1.TabIndex = 50;
             // 
@@ -607,8 +671,10 @@
             // 
             this.lstViewBooks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4});
+            this.helpProvider1.SetHelpString(this.lstViewBooks, "Lista ksiazek znajdujacych sie w bibliotece");
             this.lstViewBooks.Location = new System.Drawing.Point(365, 23);
             this.lstViewBooks.Name = "lstViewBooks";
+            this.helpProvider1.SetShowHelp(this.lstViewBooks, true);
             this.lstViewBooks.Size = new System.Drawing.Size(134, 133);
             this.lstViewBooks.TabIndex = 56;
             this.lstViewBooks.UseCompatibleStateImageBehavior = false;
@@ -623,8 +689,10 @@
             // 
             this.lstViewMagazines.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader3});
+            this.helpProvider1.SetHelpString(this.lstViewMagazines, "Lista magazynow znajdujacych sie w bibliotece");
             this.lstViewMagazines.Location = new System.Drawing.Point(530, 23);
             this.lstViewMagazines.Name = "lstViewMagazines";
+            this.helpProvider1.SetShowHelp(this.lstViewMagazines, true);
             this.lstViewMagazines.Size = new System.Drawing.Size(134, 133);
             this.lstViewMagazines.TabIndex = 55;
             this.lstViewMagazines.UseCompatibleStateImageBehavior = false;
@@ -639,8 +707,10 @@
             // 
             this.lstViewGenres.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2});
+            this.helpProvider1.SetHelpString(this.lstViewGenres, "Rodzaje zasobow znajdujacych sie w biblitoece");
             this.lstViewGenres.Location = new System.Drawing.Point(695, 23);
             this.lstViewGenres.Name = "lstViewGenres";
+            this.helpProvider1.SetShowHelp(this.lstViewGenres, true);
             this.lstViewGenres.Size = new System.Drawing.Size(134, 133);
             this.lstViewGenres.TabIndex = 54;
             this.lstViewGenres.UseCompatibleStateImageBehavior = false;
@@ -682,8 +752,10 @@
             // 
             // btnSearchMagazine
             // 
+            this.helpProvider1.SetHelpString(this.btnSearchMagazine, "Przycisk pozwalajacy wyszukac istniejacego magazynu");
             this.btnSearchMagazine.Location = new System.Drawing.Point(524, 116);
             this.btnSearchMagazine.Name = "btnSearchMagazine";
+            this.helpProvider1.SetShowHelp(this.btnSearchMagazine, true);
             this.btnSearchMagazine.Size = new System.Drawing.Size(134, 23);
             this.btnSearchMagazine.TabIndex = 45;
             this.btnSearchMagazine.Text = "Szukaj magazynu";
@@ -692,8 +764,10 @@
             // 
             // btnDeleteMagazine
             // 
+            this.helpProvider1.SetHelpString(this.btnDeleteMagazine, "Przycisk pozwalajacy usunac istniejacy magazyn");
             this.btnDeleteMagazine.Location = new System.Drawing.Point(524, 86);
             this.btnDeleteMagazine.Name = "btnDeleteMagazine";
+            this.helpProvider1.SetShowHelp(this.btnDeleteMagazine, true);
             this.btnDeleteMagazine.Size = new System.Drawing.Size(134, 23);
             this.btnDeleteMagazine.TabIndex = 44;
             this.btnDeleteMagazine.Text = "Usuń magazyn";
@@ -702,8 +776,10 @@
             // 
             // btnAddMagazine
             // 
+            this.helpProvider1.SetHelpString(this.btnAddMagazine, "Przycisk pozwalajacy dodac nowy magazyn");
             this.btnAddMagazine.Location = new System.Drawing.Point(524, 26);
             this.btnAddMagazine.Name = "btnAddMagazine";
+            this.helpProvider1.SetShowHelp(this.btnAddMagazine, true);
             this.btnAddMagazine.Size = new System.Drawing.Size(134, 23);
             this.btnAddMagazine.TabIndex = 42;
             this.btnAddMagazine.Text = "Dodaj magazyn";
@@ -712,8 +788,10 @@
             // 
             // btnEditMagazine
             // 
+            this.helpProvider1.SetHelpString(this.btnEditMagazine, "Przycisk pozwalajacy edytowac istniejaca magazyn");
             this.btnEditMagazine.Location = new System.Drawing.Point(524, 56);
             this.btnEditMagazine.Name = "btnEditMagazine";
+            this.helpProvider1.SetShowHelp(this.btnEditMagazine, true);
             this.btnEditMagazine.Size = new System.Drawing.Size(134, 23);
             this.btnEditMagazine.TabIndex = 43;
             this.btnEditMagazine.Text = "Edytuj magazyn";
@@ -722,8 +800,10 @@
             // 
             // btnSearchBook
             // 
+            this.helpProvider1.SetHelpString(this.btnSearchBook, "Przycisk pozwalajacy wyszukac istniejacej ksiazki");
             this.btnSearchBook.Location = new System.Drawing.Point(359, 116);
             this.btnSearchBook.Name = "btnSearchBook";
+            this.helpProvider1.SetShowHelp(this.btnSearchBook, true);
             this.btnSearchBook.Size = new System.Drawing.Size(134, 23);
             this.btnSearchBook.TabIndex = 41;
             this.btnSearchBook.Text = "Szukaj książki";
@@ -732,8 +812,10 @@
             // 
             // btnDeleteBook
             // 
+            this.helpProvider1.SetHelpString(this.btnDeleteBook, "Przycisk pozwalajacy usunac istniejaca ksiazke");
             this.btnDeleteBook.Location = new System.Drawing.Point(359, 86);
             this.btnDeleteBook.Name = "btnDeleteBook";
+            this.helpProvider1.SetShowHelp(this.btnDeleteBook, true);
             this.btnDeleteBook.Size = new System.Drawing.Size(134, 23);
             this.btnDeleteBook.TabIndex = 40;
             this.btnDeleteBook.Text = "Usuń książkę";
@@ -742,8 +824,10 @@
             // 
             // btnAddBook
             // 
+            this.helpProvider1.SetHelpString(this.btnAddBook, "Przycisk pozwalajacy dodac nowa ksiazke");
             this.btnAddBook.Location = new System.Drawing.Point(359, 26);
             this.btnAddBook.Name = "btnAddBook";
+            this.helpProvider1.SetShowHelp(this.btnAddBook, true);
             this.btnAddBook.Size = new System.Drawing.Size(134, 23);
             this.btnAddBook.TabIndex = 38;
             this.btnAddBook.Text = "Dodaj książkę";
@@ -752,8 +836,10 @@
             // 
             // btnEditBook
             // 
+            this.helpProvider1.SetHelpString(this.btnEditBook, "Przycisk pozwalajacy edytowac istniejaca ksiazek");
             this.btnEditBook.Location = new System.Drawing.Point(359, 56);
             this.btnEditBook.Name = "btnEditBook";
+            this.helpProvider1.SetShowHelp(this.btnEditBook, true);
             this.btnEditBook.Size = new System.Drawing.Size(134, 23);
             this.btnEditBook.TabIndex = 39;
             this.btnEditBook.Text = "Edytuj książkę";
@@ -762,8 +848,10 @@
             // 
             // btnSearchGenre
             // 
-            this.btnSearchGenre.Location = new System.Drawing.Point(689, 109);
+            this.helpProvider1.SetHelpString(this.btnSearchGenre, "Przycisk pozwalajacy wyszukac istniejacego rodzaju");
+            this.btnSearchGenre.Location = new System.Drawing.Point(689, 116);
             this.btnSearchGenre.Name = "btnSearchGenre";
+            this.helpProvider1.SetShowHelp(this.btnSearchGenre, true);
             this.btnSearchGenre.Size = new System.Drawing.Size(134, 23);
             this.btnSearchGenre.TabIndex = 33;
             this.btnSearchGenre.Text = "Szukaj rodzaju";
@@ -772,8 +860,10 @@
             // 
             // btnDeleteGenre
             // 
-            this.btnDeleteGenre.Location = new System.Drawing.Point(689, 79);
+            this.helpProvider1.SetHelpString(this.btnDeleteGenre, "Przycisk pozwalajacy usunac istniejacy rodzaj");
+            this.btnDeleteGenre.Location = new System.Drawing.Point(689, 86);
             this.btnDeleteGenre.Name = "btnDeleteGenre";
+            this.helpProvider1.SetShowHelp(this.btnDeleteGenre, true);
             this.btnDeleteGenre.Size = new System.Drawing.Size(134, 23);
             this.btnDeleteGenre.TabIndex = 32;
             this.btnDeleteGenre.Text = "Usuń rodzaj";
@@ -782,8 +872,10 @@
             // 
             // btnAddGenre
             // 
-            this.btnAddGenre.Location = new System.Drawing.Point(689, 19);
+            this.helpProvider1.SetHelpString(this.btnAddGenre, "Przycisk pozwalajacy dodac nowy rodzaj");
+            this.btnAddGenre.Location = new System.Drawing.Point(689, 26);
             this.btnAddGenre.Name = "btnAddGenre";
+            this.helpProvider1.SetShowHelp(this.btnAddGenre, true);
             this.btnAddGenre.Size = new System.Drawing.Size(134, 23);
             this.btnAddGenre.TabIndex = 30;
             this.btnAddGenre.Text = "Dodaj rodzaj";
@@ -792,19 +884,34 @@
             // 
             // btnEditGenre
             // 
-            this.btnEditGenre.Location = new System.Drawing.Point(689, 49);
+            this.helpProvider1.SetHelpString(this.btnEditGenre, "Przycisk pozwalajacy edytowac istniejaca rodzaj");
+            this.btnEditGenre.Location = new System.Drawing.Point(689, 55);
             this.btnEditGenre.Name = "btnEditGenre";
+            this.helpProvider1.SetShowHelp(this.btnEditGenre, true);
             this.btnEditGenre.Size = new System.Drawing.Size(134, 23);
             this.btnEditGenre.TabIndex = 31;
             this.btnEditGenre.Text = "Edytuj rodzaj";
             this.btnEditGenre.UseVisualStyleBackColor = true;
             this.btnEditGenre.Click += new System.EventHandler(this.btnEditGenre_Click);
             // 
+            // helpButton
+            // 
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy wlaczyc/wylaczyc pomoc");
+            this.helpButton.Location = new System.Drawing.Point(546, 12);
+            this.helpButton.Name = "helpButton";
+            this.helpProvider1.SetShowHelp(this.helpButton, true);
+            this.helpButton.Size = new System.Drawing.Size(165, 23);
+            this.helpButton.TabIndex = 51;
+            this.helpButton.Text = "Pomoc";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
             // LibrarianForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 428);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnLogout);
             this.Name = "LibrarianForm";
@@ -894,5 +1001,7 @@
         private System.Windows.Forms.Button btnDeleteBook;
         private System.Windows.Forms.Button btnAddBook;
         private System.Windows.Forms.Button btnEditBook;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Button helpButton;
     }
 }
