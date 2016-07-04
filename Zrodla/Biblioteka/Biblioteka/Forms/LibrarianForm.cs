@@ -421,23 +421,38 @@ namespace Biblioteka.Forms
         private void btnAddPosition_Click(object sender, EventArgs e)
         {
             PositionForm addPosition = new PositionForm(dbContext);
-           // addMagazine.magazineSaved += new EventHandler<List<Magazine>>(magazineSaved);
             addPosition.Show();
         }
 
         private void btnEditPosition_Click(object sender, EventArgs e)
         {
-
+            PositionForm editPosition = new PositionForm(dbContext, (Position)GuiUtils.GetSelected<Position>(lstViewPositions, positionTagSet));
+            editPosition.Show();
         }
 
         private void btnDeletePosition_Click(object sender, EventArgs e)
         {
+            Position selectedPosition = GuiUtils.GetSelected<Position>(lstViewPositions, positionTagSet);
 
+            if (selectedPosition != null)
+            {
+                dbContext.Positions.Remove(selectedPosition);
+                dbContext.SaveChanges();
+            }
         }
 
         private void btnSearchPosition_Click(object sender, EventArgs e)
         {
-
+            lstViewPositions.Items.Clear();
+            positionTagSet.Clear();
+            foreach (Position position in dbContext.Positions)
+            {
+                string[] row = { position.PositionId.ToString() };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = position.GetHashCode();
+                positionTagSet.Add(item.Tag.ToString(), position);
+                lstViewPositions.Items.Add(item);
+            }
         }
 
         

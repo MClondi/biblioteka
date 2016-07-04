@@ -14,7 +14,10 @@ namespace Biblioteka.Forms
     public partial class PositionForm : Form
     {
         private delegate void AddPosition();
+        private delegate void EditPosition(Position positionToEdit);
         private AddPosition addPosition;
+        private EditPosition editPosition;
+
         private Book selectedBook = null;
         private Dictionary<String, Book> searchBookTagSet = new Dictionary<string, Book>();
         private Dictionary<String, Book> selectedBookTagSet = new Dictionary<string, Book>();
@@ -30,6 +33,8 @@ namespace Biblioteka.Forms
             this.editedPosition = editedPosition;
             this.formAction = FormAction.Edit;
             InitSpinner();
+            InitControls(editedPosition);
+            SetControls(typeSpinner.SelectedIndex);
          //   genreSpinner.Text = editedBook.Genre.Name;
         }
 
@@ -80,8 +85,11 @@ namespace Biblioteka.Forms
             {
                 case FormAction.Add:
                     addPosition();
+                    MessageBox.Show("Dodano pozycję", "Informacja");
                     break;
                 case FormAction.Edit:
+                    editPosition(editedPosition);
+                    MessageBox.Show("Edytowano pozycję", "Informacja");
                     break;
                 case FormAction.Search:
                     break;
@@ -148,8 +156,10 @@ namespace Biblioteka.Forms
             dbContext.Positions.Add(book);
         }
 
-        private void EditBook(BookEdition editedBook)
+        private void EditBook(Position position)
         {
+            BookEdition editedBook = (BookEdition) position; 
+
             editedBook.ISBN = txbBoxIsbn.Text;
             editedBook.PublicationDate = datePicker.Value;
             editedBook.Number = 1;
@@ -164,11 +174,13 @@ namespace Biblioteka.Forms
             dbContext.Positions.Add(game);
         }
 
-        private void EditGame(Game editedGame)
+        private void EditGame(Position position)
         {
+            Game editedGame = (Game)position;
+
             editedGame.Name = txtBoxName.Text;
             editedGame.Producer = txtBoxProducer.Text;
-            editedGame.Edition = txtBoxProducer.Text;
+            editedGame.Edition = txtBoxEdition.Text;
             editedGame.Genre = dbContext.Genres.Where(g => g.Name == genreSpinner.Text).FirstOrDefault();
         }
 
@@ -179,8 +191,9 @@ namespace Biblioteka.Forms
             dbContext.Positions.Add(magazineNumber);
         }
 
-        private void EditMagazineNumber(MagazineNumber editedMagazineNumber)
+        private void EditMagazineNumber(Position position)
         {
+            MagazineNumber editedMagazineNumber = (MagazineNumber)position;
             editedMagazineNumber.PublicationDate = datePicker.Value;
             editedMagazineNumber.Number = Int32.Parse(txtBoxNumber.Text);
             editedMagazineNumber.Magazine = dbContext.Magazines.Where(m => m.Title == magazineSpinner.Text).FirstOrDefault();
@@ -194,14 +207,17 @@ namespace Biblioteka.Forms
                 case 0:
                     SetBookView();
                     addPosition = AddBook;
+                    editPosition = EditBook;
                     break;
                 case 1:
                     SetGameView();
                     addPosition = AddGame;
+                    editPosition = EditGame;
                     break; 
                 case 2:
                     SetMagazineView();
                     addPosition = AddMagazineNumber;
+                    editPosition = EditMagazineNumber;
                     break;
             }
         }
@@ -264,6 +280,57 @@ namespace Biblioteka.Forms
         private void typeSpinner_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetControls(typeSpinner.SelectedIndex);
+        }
+
+        private void InitControls(Position position)
+        {
+            if(position is BookEdition)
+            {
+                typeSpinner.SelectedIndex = 0;
+                InitBookControls(position);
+            }
+            else if (position is Game)
+            {
+                typeSpinner.SelectedIndex = 1;
+                InitGameControls(position);
+            }
+            else if (position is MagazineNumber)
+            {
+                typeSpinner.SelectedIndex = 2;
+                InitMagazineNumberControls(position);
+            }
+
+            typeSpinner.Enabled = false;
+        }
+
+        private void InitBookControls(Position position)
+        {
+            BookEdition book = (BookEdition)position;
+
+            txbBoxIsbn.Text = book.ISBN;
+            datePicker.Value = (DateTime) book.PublicationDate;
+            selectedBook = book.Book;
+            RefreshSelectedBookListView();
+            txtBoxNumber.Text = "1";
+
+        }
+
+        private void InitGameControls(Position position)
+        {
+            Game game = (Game)position;
+
+            txtBoxName.Text = game.Name;
+            txtBoxProducer.Text = game.Producer;
+            txtBoxEdition.Text = game.Edition;
+            genreSpinner.Text = game.Genre.Name;
+        }
+
+        private void InitMagazineNumberControls(Position position)
+        {
+            MagazineNumber magazineNumber = (MagazineNumber)position;
+
+            txtBoxNumber.Text = magazineNumber.Number.ToString();
+            magazineSpinner.Text = magazineNumber.Magazine.Title;
         }
     }
 }
