@@ -99,6 +99,7 @@
             this.btnEditGenre = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.helpButton = new System.Windows.Forms.Button();
+            this.btnRaport = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -898,20 +899,31 @@
             // helpButton
             // 
             this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy wlaczyc/wylaczyc pomoc");
-            this.helpButton.Location = new System.Drawing.Point(546, 12);
+            this.helpButton.Location = new System.Drawing.Point(584, 12);
             this.helpButton.Name = "helpButton";
             this.helpProvider1.SetShowHelp(this.helpButton, true);
-            this.helpButton.Size = new System.Drawing.Size(165, 23);
+            this.helpButton.Size = new System.Drawing.Size(140, 23);
             this.helpButton.TabIndex = 51;
             this.helpButton.Text = "Pomoc";
             this.helpButton.UseVisualStyleBackColor = true;
             this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
+            // btnRaport
+            // 
+            this.btnRaport.Location = new System.Drawing.Point(451, 11);
+            this.btnRaport.Name = "btnRaport";
+            this.btnRaport.Size = new System.Drawing.Size(127, 23);
+            this.btnRaport.TabIndex = 52;
+            this.btnRaport.Text = "Generuj raport";
+            this.btnRaport.UseVisualStyleBackColor = true;
+            this.btnRaport.Click += new System.EventHandler(this.btnRaport_Click);
             // 
             // LibrarianForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 428);
+            this.Controls.Add(this.btnRaport);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnLogout);
@@ -1004,5 +1016,6 @@
         private System.Windows.Forms.Button btnEditBook;
         private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.Button helpButton;
+        private System.Windows.Forms.Button btnRaport;
     }
 }

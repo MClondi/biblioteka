@@ -56,7 +56,6 @@
             this.buttonExit = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.helpButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -333,13 +332,6 @@
             this.helpButton.UseVisualStyleBackColor = true;
             this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(102, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(223, 20);
-            this.textBox1.TabIndex = 10;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -382,7 +374,6 @@
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.textBoxMail);
             this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBoxLogin);
             this.Name = "AddUser";
             this.Text = "Dodaj użytkownika";
@@ -421,7 +412,6 @@
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.Button helpButton;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label13;
 
     }

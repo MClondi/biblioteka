@@ -481,6 +481,12 @@ namespace Biblioteka.Forms
             }
         }
 
+        private void btnRaport_Click(object sender, EventArgs e)
+        {
+            ReportForm form = new ReportForm();
+            form.Show();
+        }
+
 
 
 
