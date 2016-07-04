@@ -56,6 +56,8 @@
             this.buttonExit = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.helpButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxLogin
@@ -331,6 +333,23 @@
             this.helpButton.UseVisualStyleBackColor = true;
             this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(102, 59);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(223, 20);
+            this.textBox1.TabIndex = 10;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(10, 66);
+            this.label13.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(33, 13);
+            this.label13.TabIndex = 27;
+            this.label13.Text = "Login";
+            // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,6 +368,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.typeSpinner);
             this.Controls.Add(this.label11);
@@ -362,6 +382,7 @@
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.textBoxMail);
             this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBoxLogin);
             this.Name = "AddUser";
             this.Text = "Dodaj użytkownika";
@@ -400,6 +421,8 @@
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.Button helpButton;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label13;
 
     }
 }

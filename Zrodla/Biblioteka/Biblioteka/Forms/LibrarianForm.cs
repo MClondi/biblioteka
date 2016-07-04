@@ -21,6 +21,7 @@ namespace Biblioteka.Forms
         private Dictionary<String, Genre> genreTagSet = new Dictionary<string, Genre>();
         private Dictionary<String, Book> bookTagSet = new Dictionary<string, Book>();
         private Dictionary<String, Magazine> magazineTagSet = new Dictionary<string, Magazine>();
+        private Dictionary<String, Position> positionTagSet = new Dictionary<string, Position>();
 
         public LibrarianForm(Form parent, LibraryDBContainer dbContext)
         {
@@ -76,10 +77,7 @@ namespace Biblioteka.Forms
 
        
 
-        private void btnAddPosition_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnEditResource_Click(object sender, EventArgs e)
         {
@@ -88,21 +86,11 @@ namespace Biblioteka.Forms
 
 
 
-        private void btnEditPosition_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnDeleteResource_Click(object sender, EventArgs e)
         {
 
         }
 
-
-        private void btnDeletePosition_Click(object sender, EventArgs e)
-        {
-
-        }
 
         void searchUserClicked(object sender, List<User> searchResults)
         {
@@ -173,24 +161,6 @@ namespace Biblioteka.Forms
 
         private void RefreshAuthorListView(List<Author> authors = null)
         {
-            //if (authors == null)
-            //{
-            //    authors = dbContext.Authors.ToList();
-            //}
-
-            //lstViewAuthors.Items.Clear();
-            //authorTagSet.Clear();
-            //foreach (Author author in authors)
-            //{
-            //    string[] row = { author.Name, author.Surname };
-            //    ListViewItem item = new ListViewItem(row);
-            //    item.Tag = author.GetHashCode();
-            //    authorTagSet.Add(item.Tag.ToString(), author);
-            //    lstViewAuthors.Items.Add(item);
-
-            //}
-
-
             GuiUtils.RefreshAuthorListView(dbContext, ref lstViewAuthors, ref authorTagSet, authors);
         }
 
@@ -375,21 +345,7 @@ namespace Biblioteka.Forms
 
         private void RefreshBooksListView(List<Book> books = null)
         {
-            if (books == null)
-            {
-                books = dbContext.Books.ToList();
-            }
-
-            lstViewBooks.Items.Clear();
-            bookTagSet.Clear();
-            foreach (Book book in books)
-            {
-                string[] row = { book.Title };
-                ListViewItem item = new ListViewItem(row);
-                item.Tag = book.GetHashCode();
-                bookTagSet.Add(item.Tag.ToString(), book);
-                lstViewBooks.Items.Add(item);
-            }
+            GuiUtils.RefreshBookListView(dbContext, ref lstViewBooks, ref bookTagSet, books);
         }
 
         // Magazines
@@ -460,6 +416,37 @@ namespace Biblioteka.Forms
             }
         }
 
+        // Positions
+
+        private void btnAddPosition_Click(object sender, EventArgs e)
+        {
+            PositionForm addPosition = new PositionForm(dbContext);
+           // addMagazine.magazineSaved += new EventHandler<List<Magazine>>(magazineSaved);
+            addPosition.Show();
+        }
+
+        private void btnEditPosition_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeletePosition_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearchPosition_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+
+
+
+
+
         private void helpButton_Click(object sender, EventArgs e)
         {
             help = !help;
@@ -478,6 +465,9 @@ namespace Biblioteka.Forms
                 this.MinimizeBox = false;
             }
         }
+
+
+
 
     }
 }

@@ -181,7 +181,7 @@ namespace Biblioteka.Forms
             }
             else
             {
-                addedAuthors.Add((Author)GuiUtils.GetSelected<Author>(lstViewSearchAuthor, searchAuthorTagSet));
+                addedAuthors.Add(authorToAdd);
                 RefreshAddedAuthorListView();
             }            
         }

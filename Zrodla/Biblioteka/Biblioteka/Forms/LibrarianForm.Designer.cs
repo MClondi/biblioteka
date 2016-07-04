@@ -58,7 +58,7 @@
             this.btnAddPublisher = new System.Windows.Forms.Button();
             this.btnEditPublisher = new System.Windows.Forms.Button();
             this.btnSearchAuthor = new System.Windows.Forms.Button();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.lstViewPositions = new System.Windows.Forms.ListView();
             this.lstViewAuthors = new System.Windows.Forms.ListView();
             this.authorName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.authorSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -386,6 +386,7 @@
             this.btnSearchPosition.TabIndex = 25;
             this.btnSearchPosition.Text = "Szukaj pozycji";
             this.btnSearchPosition.UseVisualStyleBackColor = true;
+            this.btnSearchPosition.Click += new System.EventHandler(this.btnSearchPosition_Click);
             // 
             // btnSearchResource
             // 
@@ -459,16 +460,16 @@
             this.btnSearchAuthor.UseVisualStyleBackColor = true;
             this.btnSearchAuthor.Click += new System.EventHandler(this.btnSearchAuthor_Click);
             // 
-            // listView2
+            // lstViewPositions
             // 
-            this.helpProvider1.SetHelpString(this.listView2, "Lista pozycji znajdujacych sie w bibliotece");
-            this.listView2.Location = new System.Drawing.Point(646, 28);
-            this.listView2.Name = "listView2";
-            this.helpProvider1.SetShowHelp(this.listView2, true);
-            this.listView2.Size = new System.Drawing.Size(202, 133);
-            this.listView2.TabIndex = 30;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.List;
+            this.helpProvider1.SetHelpString(this.lstViewPositions, "Lista pozycji znajdujacych sie w bibliotece");
+            this.lstViewPositions.Location = new System.Drawing.Point(646, 28);
+            this.lstViewPositions.Name = "lstViewPositions";
+            this.helpProvider1.SetShowHelp(this.lstViewPositions, true);
+            this.lstViewPositions.Size = new System.Drawing.Size(202, 133);
+            this.lstViewPositions.TabIndex = 30;
+            this.lstViewPositions.UseCompatibleStateImageBehavior = false;
+            this.lstViewPositions.View = System.Windows.Forms.View.List;
             // 
             // lstViewAuthors
             // 
@@ -605,7 +606,7 @@
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.groupBox4);
-            this.tabPage1.Controls.Add(this.listView2);
+            this.tabPage1.Controls.Add(this.lstViewPositions);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.listView4);
@@ -956,7 +957,7 @@
         private System.Windows.Forms.Button btnSearchAuthor;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView lstViewPositions;
         private System.Windows.Forms.ListView lstViewAuthors;
         private System.Windows.Forms.ListView listView4;
         private System.Windows.Forms.ListView listView1;

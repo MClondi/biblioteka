@@ -44,6 +44,27 @@ namespace Biblioteka
             }
         }
 
+        public static void RefreshBookListView(LibraryDBContainer dbContext, ref ListView lstViewBooks,
+                                  ref Dictionary<String, Book> bookTagSet, List<Book> books = null)
+        {
+            if (books == null)
+            {
+                books = dbContext.Books.ToList();
+            }
+
+            lstViewBooks.Items.Clear();
+            bookTagSet.Clear();
+            foreach (Book book in books)
+            {
+                string[] row = { book.Title };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = book.GetHashCode();
+                bookTagSet.Add(item.Tag.ToString(), book);
+                lstViewBooks.Items.Add(item);
+            }
+        }
+
+
         //public static void RefreshListView<T>(ListView lstView, Dictionary<String, T> tagSet, List<string[]> rows)
         //{
         //    lstView.Items.Clear();
