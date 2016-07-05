@@ -126,7 +126,6 @@
             // 
             // textBoxStreet
             // 
-            this.textBoxStreet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.helpProvider1.SetHelpString(this.textBoxStreet, "W tym polu podaj nazwe ulicy na której jesteś zameldowany");
             this.textBoxStreet.Location = new System.Drawing.Point(102, 215);
             this.textBoxStreet.Name = "textBoxStreet";

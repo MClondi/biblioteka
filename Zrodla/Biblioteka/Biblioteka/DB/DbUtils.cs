@@ -12,12 +12,36 @@ namespace Biblioteka
 
     class DbUtils
     {
-        public static void AddReader(LibraryDBContainer dbContext, String login, String password, String name, String surname, String mail, String phone, String street, String houseNum, String aptNum, String city, String postal)
+        public static User AddReader(LibraryDBContainer dbContext, String login, String password, String name, String surname, String mail, String phone, String street, String houseNum, String aptNum, String city, String postal)
         {
             var user = AddUser("U", dbContext, login, password, name, surname, mail);
              
             if (user != null)
             {
+                if (!phone.All(Char.IsDigit))
+                {
+                    MessageBox.Show("Telefon nie zawiera tylko cyfr");
+                    dbContext.Users.Remove(user);
+                    dbContext.SaveChanges();
+                    return null;
+                }
+
+                if (!postal.All(x => Char.IsDigit(x) || x == '-'))
+                {
+                    MessageBox.Show("Nieprawidłowy kod pocztowy");
+                    dbContext.Users.Remove(user);
+                    dbContext.SaveChanges();
+                    return null;
+                }
+
+                if (!houseNum.All(Char.IsDigit))
+                {
+                    MessageBox.Show("Numer domu nie zawiera tylko cyfr");
+                    dbContext.Users.Remove(user);
+                    dbContext.SaveChanges();
+                    return null;
+                }
+
                         var newReader = new Reader
                         {
                             PhoneNumber = phone,
@@ -34,6 +58,8 @@ namespace Biblioteka
                         dbContext.Readers.Add(newReader);
                         dbContext.SaveChanges();
              }
+
+            return user;
         }
 
         public static User AddUser(String type, LibraryDBContainer dbContext, String login, String password, String name, String surname, String mail)
@@ -47,6 +73,12 @@ namespace Biblioteka
             if (dbContext.Users.Any(x => x.Login == login))
             {
                 MessageBox.Show("Użytkownik o podanym loginie istnieje!");
+                return null;
+            }
+
+            if (! mail.Contains("@"))
+            {
+                MessageBox.Show("Email nieprawidłowy!");
                 return null;
             }
 

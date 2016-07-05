@@ -31,7 +31,7 @@ namespace Biblioteka.Forms
             switch (comboBoxReports.SelectedIndex)
             {
                 case 0:
-                    textBoxReport.Text = "ID\tData wypożyczenia\Data zwrotu\tId zasobu\tCzytelnik\tID\n";
+                    textBoxReport.Text = "ID\tData wypożyczenia\tData zwrotu\tId zasobu\tCzytelnik\tID\n";
                     generateReturns();
                     break;
                 case 1:

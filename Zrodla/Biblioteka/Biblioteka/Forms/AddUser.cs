@@ -108,16 +108,16 @@ namespace Biblioteka.Forms
                 switch (typeSpinner.SelectedIndex)
                 {
                     case 0:
-                        DbUtils.AddReader(dbContext, textBoxLogin.Text, textBoxPassword.Text, 
+                        editedUser = DbUtils.AddReader(dbContext, textBoxLogin.Text, textBoxPassword.Text, 
                             textBoxName.Text, textBoxSurname.Text, textBoxMail.Text, textBoxTel.Text, textBoxStreet.Text, 
                             textBoxStrNum.Text, textBoxApt.Text, textBoxCity.Text, textBoxPostal.Text);
                         break;
                     case 1:
-                        DbUtils.AddUser("L", dbContext, textBoxLogin.Text, textBoxPassword.Text,
+                        editedUser = DbUtils.AddUser("L", dbContext, textBoxLogin.Text, textBoxPassword.Text,
                             textBoxName.Text, textBoxSurname.Text, textBoxMail.Text);
                         break;
                     case 2:
-                        DbUtils.AddUser("A", dbContext, textBoxLogin.Text, textBoxPassword.Text, 
+                        editedUser = DbUtils.AddUser("A", dbContext, textBoxLogin.Text, textBoxPassword.Text, 
                             textBoxName.Text, textBoxSurname.Text, textBoxMail.Text);
                         break;
                 }
@@ -129,7 +129,11 @@ namespace Biblioteka.Forms
                 userSaved(this, e);
             }
 
-            this.Close();
+            if(editedUser != null)
+            {
+                this.Close();
+            }
+            
         }
 
         private void readerComponents(bool isShow)
