@@ -31,13 +31,8 @@ namespace Biblioteka.Forms
             switch (comboBoxReports.SelectedIndex)
             {
                 case 0:
-                    textBoxReport.Text = "ID\tData wypożyczenia\\Data zwrotu\tId zasobu\tCzytelnik\tID\n";
-                    var lastMonth = DateTime.Now;
-                    lastMonth = lastMonth.AddMonths(-1);
-                    dbContext.Borrowings
-                        .Where(x => x.ReturnDate != null)
-                        .Where(x => x.ReturnDate > lastMonth).ToList()
-                        .ForEach(x => textBoxReport.Text += (x.Id + "\t" + x.BorrowingDate + "\t" + x.ReturnDate + "\t" + x.ResourceId + "\t" + x.User.Name + x.User.Surname + "\t" + x.User.Id + "\n"));
+                    textBoxReport.Text = "ID\tData wypożyczenia\Data zwrotu\tId zasobu\tCzytelnik\tID\n";
+                    generateReturns();
                     break;
                 case 1:
                     textBoxReport.Text = "ID\tData wypożyczenia\tTermin\tId zasobu\tCzytelnik\tID\n";
@@ -50,6 +45,16 @@ namespace Biblioteka.Forms
                     dbContext.Readers.ToList()
                         .ForEach(x => textBoxReport.Text += (x.User.Name + "\t" + x.User.Surname + "\t" + x.City + "\t" + x.HouseNumber + "/" + x.ApartmentNumber + "\t" + x.Borrowing.Count + "\t" + x.Reservation.Count + "\t" +  x.Debt + "\n"));
                     break;
+            }
+            if (comboBoxReports.SelectedIndex == 0)
+            {
+                dateTimePicker1.Enabled = true;
+                dateTimePicker2.Enabled = true;
+            }
+            else
+            {
+                dateTimePicker1.Enabled = false;
+                dateTimePicker2.Enabled = false;
             }
         }
 
@@ -71,6 +76,28 @@ namespace Biblioteka.Forms
                     myStream.Close();
                 }
             }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            generateReturns();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            generateReturns();
+        }
+
+        private void generateReturns()
+        {
+            var from = dateTimePicker1.Value;
+            var to = dateTimePicker2.Value;
+            dbContext.Borrowings
+                .Where(x => x.ReturnDate != null)
+                .Where(x => x.ReturnDate > from)
+                .Where(x => x.ReturnDate < to).ToList()
+                .ForEach(x => textBoxReport.Text += (x.Id + "\t" + x.BorrowingDate + "\t" + x.ReturnDate + "\t" + x.ResourceId + "\t" + x.User.Name + x.User.Surname + "\t" + x.User.Id + "\n"));
+                   
         }
     }
 }
