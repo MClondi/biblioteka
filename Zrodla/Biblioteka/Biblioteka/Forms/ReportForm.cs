@@ -31,7 +31,7 @@ namespace Biblioteka.Forms
             switch (comboBoxReports.SelectedIndex)
             {
                 case 0:
-                    textBoxReport.Text = "ID\tData wypożyczenia\Data zwrotu\tId zasobu\tCzytelnik\tID\n";
+                    textBoxReport.Text = "ID\tData wypożyczenia\\Data zwrotu\tId zasobu\tCzytelnik\tID\n";
                     var lastMonth = DateTime.Now;
                     lastMonth = lastMonth.AddMonths(-1);
                     dbContext.Borrowings

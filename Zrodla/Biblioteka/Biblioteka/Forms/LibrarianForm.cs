@@ -442,12 +442,37 @@ namespace Biblioteka.Forms
         }
 
         private void btnSearchPosition_Click(object sender, EventArgs e)
+        {       
+            PositionForm searchPosition = new PositionForm(dbContext, true);
+            searchPosition.positionSaved += new EventHandler<List<Position>>(positionSaved);
+            searchPosition.Show();
+        }
+
+        void positionSaved(object sender, List<Position> positions)
+        {
+            if(positions != null)
+            {
+                if(positions.ElementAt(0) is BookEdition)
+                    RefreshBookEditions(positions);
+                else if (positions.ElementAt(0) is Game)
+                    RefreshGames(positions);
+                else if (positions.ElementAt(0) is MagazineNumber)
+                    RefreshMagazineNumbers(positions);
+            }
+        }
+        
+        private void RefreshBookEditions(List<Position> positions)
         {
             lstViewPositions.Items.Clear();
+            lstViewPositions.Columns.Clear();
+            lstViewPositions.Columns.Add("Tytuł");
+            lstViewPositions.Columns.Add("ISBN");
             positionTagSet.Clear();
-            foreach (Position position in dbContext.Positions)
+            foreach (Position position in positions)
             {
-                string[] row = { position.PositionId.ToString() };
+                BookEdition be = (BookEdition)position;
+
+                string[] row = { be.Book.Title, be.ISBN };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = position.GetHashCode();
                 positionTagSet.Add(item.Tag.ToString(), position);
@@ -455,8 +480,42 @@ namespace Biblioteka.Forms
             }
         }
 
-        
+        private void RefreshGames(List<Position> positions)
+        {
+            lstViewPositions.Items.Clear();
+            lstViewPositions.Columns.Clear();
+            lstViewPositions.Columns.Add("Nazwa");
+            positionTagSet.Clear();
+            foreach (Position position in positions)
+            {
+                Game g = (Game)position;
 
+                string[] row = { g.Name };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = position.GetHashCode();
+                positionTagSet.Add(item.Tag.ToString(), position);
+                lstViewPositions.Items.Add(item);
+            }
+        }
+
+        private void RefreshMagazineNumbers(List<Position> positions)
+        {
+            lstViewPositions.Items.Clear();
+            lstViewPositions.Columns.Clear();
+            lstViewPositions.Columns.Add("Magazyn");
+            lstViewPositions.Columns.Add("Data publikacji");
+            positionTagSet.Clear();
+            foreach (Position position in positions)
+            {
+                MagazineNumber mn = (MagazineNumber)position;
+
+                string[] row = { mn.Magazine.Title, mn.PublicationDate.ToString() };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = position.GetHashCode();
+                positionTagSet.Add(item.Tag.ToString(), position);
+                lstViewPositions.Items.Add(item);
+            }
+        }
 
 
 
@@ -483,7 +542,7 @@ namespace Biblioteka.Forms
 
         private void btnRaport_Click(object sender, EventArgs e)
         {
-            ReportForm form = new ReportForm();
+            ReportForm form = new ReportForm(dbContext);
             form.Show();
         }
 

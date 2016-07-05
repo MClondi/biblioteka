@@ -15,8 +15,11 @@ namespace Biblioteka.Forms
     {
         private delegate void AddPosition();
         private delegate void EditPosition(Position positionToEdit);
+        private delegate void SearchPosition(out List<Position> positions);
+
         private AddPosition addPosition;
         private EditPosition editPosition;
+        private SearchPosition searchPosition;
 
         private Book selectedBook = null;
         private Dictionary<String, Book> searchBookTagSet = new Dictionary<string, Book>();
@@ -44,9 +47,10 @@ namespace Biblioteka.Forms
             if (searchPosition)
             {
                 buttonSave.Text = "Wyszukaj";
-                typeSpinner.Items.Add("Dowolny");
                 publisherSpinner.Items.Add("Dowolny");
                 genreSpinner.Items.Add("Dowolny");
+                datePicker.ShowCheckBox = true;
+                datePicker.Checked = false;  
             }
             this.dbContext = dbContext;
             this.formAction = searchPosition ? FormAction.Search : FormAction.Add;
@@ -81,6 +85,8 @@ namespace Biblioteka.Forms
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            List<Position> positions = null;
+
             switch (formAction)
             {
                 case FormAction.Add:
@@ -92,10 +98,13 @@ namespace Biblioteka.Forms
                     MessageBox.Show("Edytowano pozycję", "Informacja");
                     break;
                 case FormAction.Search:
+                    searchPosition(out positions);
                     break;
             }
 
             dbContext.SaveChanges();
+            if(positionSaved != null)
+                positionSaved(this, positions);
             this.Close();
         }
 
@@ -167,6 +176,23 @@ namespace Biblioteka.Forms
             editedBook.Book = selectedBook;
         }
 
+        private void SearchBook(out List<Position> positions)
+        {
+            List<BookEdition> searchedPositions = new List<BookEdition>();
+
+            searchedPositions = dbContext.Positions.Include("Book").Include("Publisher").OfType<BookEdition>()
+                .Where(b => txbBoxIsbn.Text.Trim() == String.Empty ? true : b.ISBN == txbBoxIsbn.Text)
+                .Where(b => !datePicker.Checked ? true : b.PublicationDate.Value.Year == datePicker.Value.Year &&
+                                                             b.PublicationDate.Value.Month == datePicker.Value.Month &&
+                                                             b.PublicationDate.Value.Day == datePicker.Value.Day)
+                .Where(b => publisherSpinner.SelectedIndex == 0 ? true : b.Publisher.Name == publisherSpinner.Text)
+                .Where(b => selectedBook == null ? true : b.Book.Equals(selectedBook))
+                .ToList();
+
+            positions = new List<Position>();
+            positions.AddRange(searchedPositions);
+        }
+
         private void AddGame()
         {
             Game game = new Game();
@@ -184,6 +210,21 @@ namespace Biblioteka.Forms
             editedGame.Genre = dbContext.Genres.Where(g => g.Name == genreSpinner.Text).FirstOrDefault();
         }
 
+        private void SearchGame(out List<Position> positions)
+        {
+            List<Game> searchedPositions = new List<Game>();
+
+            searchedPositions = dbContext.Positions.Include("Genre").OfType<Game>()
+                .Where(g => txtBoxName.Text.Trim() == String.Empty ? true : g.Name == txtBoxName.Text)
+                .Where(g => txtBoxProducer.Text.Trim() == String.Empty ? true : g.Producer == txtBoxProducer.Text)
+                .Where(g => txtBoxEdition.Text.Trim() == String.Empty ? true : g.Edition == txtBoxEdition.Text)
+                .Where(b => genreSpinner.SelectedIndex == 0 ? true : b.Genre.Name == genreSpinner.Text)
+                .ToList();
+
+            positions = new List<Position>();
+            positions.AddRange(searchedPositions);            
+        }
+
         private void AddMagazineNumber()
         {
             MagazineNumber magazineNumber = new MagazineNumber();
@@ -199,6 +240,23 @@ namespace Biblioteka.Forms
             editedMagazineNumber.Magazine = dbContext.Magazines.Where(m => m.Title == magazineSpinner.Text).FirstOrDefault();
         }
 
+        private void SearchMagazineNumber(out List<Position> positions)
+        {
+            List<MagazineNumber> searchedPositions = new List<MagazineNumber>();
+            int number = Int32.Parse(txtBoxNumber.Text);
+
+            searchedPositions = dbContext.Positions.Include("Magazine").OfType<MagazineNumber>()
+                .Where(m => !datePicker.Checked ? true : m.PublicationDate.Value.Year == datePicker.Value.Year &&
+                                                             m.PublicationDate.Value.Month == datePicker.Value.Month &&
+                                                             m.PublicationDate.Value.Day == datePicker.Value.Day)
+                .Where(m => txtBoxNumber.Text.Trim() == String.Empty ? true : m.Number == number)
+                .Where(m => magazineSpinner.SelectedIndex == 0 ? true : m.Magazine.Title == magazineSpinner.Text)
+                .ToList();
+
+            positions = new List<Position>();
+            positions.AddRange(searchedPositions);
+        }
+
         private void SetControls(int index)
         {
             EnableAllControls();
@@ -208,16 +266,19 @@ namespace Biblioteka.Forms
                     SetBookView();
                     addPosition = AddBook;
                     editPosition = EditBook;
+                    searchPosition = SearchBook;
                     break;
                 case 1:
                     SetGameView();
                     addPosition = AddGame;
                     editPosition = EditGame;
+                    searchPosition = SearchGame;
                     break; 
                 case 2:
                     SetMagazineView();
                     addPosition = AddMagazineNumber;
                     editPosition = EditMagazineNumber;
+                    searchPosition = SearchMagazineNumber;
                     break;
             }
         }

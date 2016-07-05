@@ -470,7 +470,7 @@
             this.lstViewPositions.Size = new System.Drawing.Size(202, 133);
             this.lstViewPositions.TabIndex = 30;
             this.lstViewPositions.UseCompatibleStateImageBehavior = false;
-            this.lstViewPositions.View = System.Windows.Forms.View.List;
+            this.lstViewPositions.View = System.Windows.Forms.View.Details;
             // 
             // lstViewAuthors
             // 
