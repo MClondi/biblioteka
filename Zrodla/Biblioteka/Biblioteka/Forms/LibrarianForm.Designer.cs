@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnLogout = new System.Windows.Forms.Button();
-            this.lstViewBooksAndUsers = new System.Windows.Forms.ListView();
+            this.lstViewUsers = new System.Windows.Forms.ListView();
             this.userName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.userSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnSearchUser = new System.Windows.Forms.Button();
@@ -47,9 +47,9 @@
             this.btnAddAuthor = new System.Windows.Forms.Button();
             this.btnAddPosition = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnShowBorrowings = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnSearchPosition = new System.Windows.Forms.Button();
             this.btnSearchResource = new System.Windows.Forms.Button();
@@ -63,7 +63,7 @@
             this.authorName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.authorSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lstViewResources = new System.Windows.Forms.ListView();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstViewActions = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -121,19 +121,19 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // lstViewBooksAndUsers
+            // lstViewUsers
             // 
-            this.lstViewBooksAndUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstViewUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.userName,
             this.userSurname});
-            this.helpProvider1.SetHelpString(this.lstViewBooksAndUsers, "Ekran przedstawiajacy uzytkownikow zarejestrowanych w bibliotece");
-            this.lstViewBooksAndUsers.Location = new System.Drawing.Point(22, 28);
-            this.lstViewBooksAndUsers.Name = "lstViewBooksAndUsers";
-            this.helpProvider1.SetShowHelp(this.lstViewBooksAndUsers, true);
-            this.lstViewBooksAndUsers.Size = new System.Drawing.Size(202, 133);
-            this.lstViewBooksAndUsers.TabIndex = 7;
-            this.lstViewBooksAndUsers.UseCompatibleStateImageBehavior = false;
-            this.lstViewBooksAndUsers.View = System.Windows.Forms.View.Details;
+            this.helpProvider1.SetHelpString(this.lstViewUsers, "Ekran przedstawiajacy uzytkownikow zarejestrowanych w bibliotece");
+            this.lstViewUsers.Location = new System.Drawing.Point(22, 28);
+            this.lstViewUsers.Name = "lstViewUsers";
+            this.helpProvider1.SetShowHelp(this.lstViewUsers, true);
+            this.lstViewUsers.Size = new System.Drawing.Size(202, 133);
+            this.lstViewUsers.TabIndex = 7;
+            this.lstViewUsers.UseCompatibleStateImageBehavior = false;
+            this.lstViewUsers.View = System.Windows.Forms.View.Details;
             // 
             // userName
             // 
@@ -160,10 +160,10 @@
             // btnBorrowResource
             // 
             this.helpProvider1.SetHelpString(this.btnBorrowResource, "Przycisk pozwalajacy wypozyczyc zasob, ktory zostanie przypisane do uzytkownika");
-            this.btnBorrowResource.Location = new System.Drawing.Point(48, 56);
+            this.btnBorrowResource.Location = new System.Drawing.Point(15, 70);
             this.btnBorrowResource.Name = "btnBorrowResource";
             this.helpProvider1.SetShowHelp(this.btnBorrowResource, true);
-            this.btnBorrowResource.Size = new System.Drawing.Size(112, 24);
+            this.btnBorrowResource.Size = new System.Drawing.Size(84, 37);
             this.btnBorrowResource.TabIndex = 13;
             this.btnBorrowResource.Text = "Wypożycz zasób";
             this.btnBorrowResource.UseVisualStyleBackColor = true;
@@ -172,10 +172,10 @@
             // btnReserveResource
             // 
             this.helpProvider1.SetHelpString(this.btnReserveResource, "Przycisk pozwalajacy zarezerwowac zasob");
-            this.btnReserveResource.Location = new System.Drawing.Point(48, 26);
+            this.btnReserveResource.Location = new System.Drawing.Point(105, 70);
             this.btnReserveResource.Name = "btnReserveResource";
             this.helpProvider1.SetShowHelp(this.btnReserveResource, true);
-            this.btnReserveResource.Size = new System.Drawing.Size(112, 24);
+            this.btnReserveResource.Size = new System.Drawing.Size(82, 37);
             this.btnReserveResource.TabIndex = 14;
             this.btnReserveResource.Text = "Zarezerwuj zasób";
             this.btnReserveResource.UseVisualStyleBackColor = true;
@@ -184,10 +184,10 @@
             // btnNoteReturn
             // 
             this.helpProvider1.SetHelpString(this.btnNoteReturn, "Przycisk pozwalajacy zaksiegowac zwrot ksiazki wypozyczonej przez uzytkownika");
-            this.btnNoteReturn.Location = new System.Drawing.Point(48, 116);
+            this.btnNoteReturn.Location = new System.Drawing.Point(15, 113);
             this.btnNoteReturn.Name = "btnNoteReturn";
             this.helpProvider1.SetShowHelp(this.btnNoteReturn, true);
-            this.btnNoteReturn.Size = new System.Drawing.Size(112, 24);
+            this.btnNoteReturn.Size = new System.Drawing.Size(84, 37);
             this.btnNoteReturn.TabIndex = 15;
             this.btnNoteReturn.Text = "Zaksięguj zwrot";
             this.btnNoteReturn.UseVisualStyleBackColor = true;
@@ -196,10 +196,10 @@
             // btnCancelReservation
             // 
             this.helpProvider1.SetHelpString(this.btnCancelReservation, "Przycisk pozwalajacy usunac rezerwacje uzytkownika");
-            this.btnCancelReservation.Location = new System.Drawing.Point(48, 86);
+            this.btnCancelReservation.Location = new System.Drawing.Point(105, 113);
             this.btnCancelReservation.Name = "btnCancelReservation";
             this.helpProvider1.SetShowHelp(this.btnCancelReservation, true);
-            this.btnCancelReservation.Size = new System.Drawing.Size(112, 24);
+            this.btnCancelReservation.Size = new System.Drawing.Size(82, 37);
             this.btnCancelReservation.TabIndex = 16;
             this.btnCancelReservation.Text = "Usuń rezerwację";
             this.btnCancelReservation.UseVisualStyleBackColor = true;
@@ -315,50 +315,51 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnSearchUser);
             this.groupBox1.Location = new System.Drawing.Point(22, 167);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(202, 166);
+            this.groupBox1.Size = new System.Drawing.Size(202, 64);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Użytkownicy";
             // 
-            // button2
-            // 
-            this.helpProvider1.SetHelpString(this.button2, "Przycisk pozwalajacy sprawdzic zarezerwowane zasoby przez uzytkownika");
-            this.button2.Location = new System.Drawing.Point(45, 110);
-            this.button2.Name = "button2";
-            this.helpProvider1.SetShowHelp(this.button2, true);
-            this.button2.Size = new System.Drawing.Size(112, 48);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Sprawdź zarezerwowane zasoby";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.helpProvider1.SetHelpString(this.button1, "Przycisk pozwalajacy sprawdzic zasoby wypozyczone przez uzytkownika");
-            this.button1.Location = new System.Drawing.Point(45, 56);
-            this.button1.Name = "button1";
-            this.helpProvider1.SetShowHelp(this.button1, true);
-            this.button1.Size = new System.Drawing.Size(112, 48);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Sprawdź wypożyczone zasoby";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnShowBorrowings);
+            this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.btnReserveResource);
             this.groupBox3.Controls.Add(this.btnBorrowResource);
             this.groupBox3.Controls.Add(this.btnNoteReturn);
             this.groupBox3.Controls.Add(this.btnCancelReservation);
             this.groupBox3.Location = new System.Drawing.Point(230, 167);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(202, 166);
+            this.groupBox3.Size = new System.Drawing.Size(202, 171);
             this.groupBox3.TabIndex = 27;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Akcje";
+            // 
+            // btnShowBorrowings
+            // 
+            this.helpProvider1.SetHelpString(this.btnShowBorrowings, "Przycisk pozwalajacy zaksiegowac zwrot ksiazki wypozyczonej przez uzytkownika");
+            this.btnShowBorrowings.Location = new System.Drawing.Point(15, 27);
+            this.btnShowBorrowings.Name = "btnShowBorrowings";
+            this.helpProvider1.SetShowHelp(this.btnShowBorrowings, true);
+            this.btnShowBorrowings.Size = new System.Drawing.Size(84, 37);
+            this.btnShowBorrowings.TabIndex = 18;
+            this.btnShowBorrowings.Text = "Pokaż wypożyczenia";
+            this.btnShowBorrowings.UseVisualStyleBackColor = true;
+            this.btnShowBorrowings.Click += new System.EventHandler(this.btnShowBorrowings_Click);
+            // 
+            // button3
+            // 
+            this.helpProvider1.SetHelpString(this.button3, "Przycisk pozwalajacy zaksiegowac zwrot ksiazki wypozyczonej przez uzytkownika");
+            this.button3.Location = new System.Drawing.Point(105, 26);
+            this.button3.Name = "button3";
+            this.helpProvider1.SetShowHelp(this.button3, true);
+            this.button3.Size = new System.Drawing.Size(84, 37);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "Pokaż rezerwacje";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -372,7 +373,7 @@
             this.groupBox4.Controls.Add(this.btnEditPosition);
             this.groupBox4.Location = new System.Drawing.Point(438, 167);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(410, 166);
+            this.groupBox4.Size = new System.Drawing.Size(410, 171);
             this.groupBox4.TabIndex = 28;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Baza danych";
@@ -505,16 +506,16 @@
             this.lstViewResources.UseCompatibleStateImageBehavior = false;
             this.lstViewResources.View = System.Windows.Forms.View.Details;
             // 
-            // listView1
+            // lstViewActions
             // 
-            this.helpProvider1.SetHelpString(this.listView1, "Lista przedstawiajaca zasoby przypisane do uzytkownika");
-            this.listView1.Location = new System.Drawing.Point(230, 28);
-            this.listView1.Name = "listView1";
-            this.helpProvider1.SetShowHelp(this.listView1, true);
-            this.listView1.Size = new System.Drawing.Size(202, 133);
-            this.listView1.TabIndex = 33;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.helpProvider1.SetHelpString(this.lstViewActions, "Lista przedstawiajaca zasoby przypisane do uzytkownika");
+            this.lstViewActions.Location = new System.Drawing.Point(230, 28);
+            this.lstViewActions.Name = "lstViewActions";
+            this.helpProvider1.SetShowHelp(this.lstViewActions, true);
+            this.lstViewActions.Size = new System.Drawing.Size(202, 133);
+            this.lstViewActions.TabIndex = 33;
+            this.lstViewActions.UseCompatibleStateImageBehavior = false;
+            this.lstViewActions.View = System.Windows.Forms.View.Details;
             // 
             // label1
             // 
@@ -603,7 +604,7 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.lstViewBooksAndUsers);
+            this.tabPage1.Controls.Add(this.lstViewUsers);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.groupBox4);
@@ -612,7 +613,7 @@
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.lstViewResources);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.listView1);
+            this.tabPage1.Controls.Add(this.lstViewActions);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -922,7 +923,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 428);
+            this.ClientSize = new System.Drawing.Size(896, 415);
             this.Controls.Add(this.btnRaport);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.tabControl1);
@@ -946,7 +947,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.ListView lstViewBooksAndUsers;
+        private System.Windows.Forms.ListView lstViewUsers;
         private System.Windows.Forms.Button btnSearchUser;
         private System.Windows.Forms.Button btnBorrowResource;
         private System.Windows.Forms.Button btnReserveResource;
@@ -967,12 +968,10 @@
         private System.Windows.Forms.Button btnSearchResource;
         private System.Windows.Forms.Button btnSearchPosition;
         private System.Windows.Forms.Button btnSearchAuthor;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListView lstViewPositions;
         private System.Windows.Forms.ListView lstViewAuthors;
         private System.Windows.Forms.ListView lstViewResources;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstViewActions;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -1017,5 +1016,7 @@
         private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.Button helpButton;
         private System.Windows.Forms.Button btnRaport;
+        private System.Windows.Forms.Button btnShowBorrowings;
+        private System.Windows.Forms.Button button3;
     }
 }

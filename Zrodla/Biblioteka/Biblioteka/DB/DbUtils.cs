@@ -100,27 +100,44 @@ namespace Biblioteka
     
         public static bool IsResourceBorrowed(LibraryDBContainer dbContext, Resource resource)
         {
-            var resources = from r in dbContext.Resources
-                            where r.PositionId == resource.PositionId
-                            select r;
+            List<Borrowing> borrowings = dbContext.Borrowings
+                                            .Include("User")
+                                            .Include("Reader")
+                                            .Include("Resource")
+                                            .Where(b => b.ResourceId == resource.Id)
+                                            .Where(b => b.ReturnDate == null)
+                                            .ToList();
 
-            foreach (Resource res in resources)
+            if(borrowings != null)
             {
-                var bor = from b in dbContext.Borrowings
-                          where b.ResourceId == res.Id
-                          select b;
-
-                foreach (Borrowing b in bor)
-                {
-                    if (b.ReturnDate > DateTime.Now)
-                    {
-                        return true;
-                    }
-                }
+                if (borrowings.Count >= resource.Amount)
+                    return true;
             }
 
             return false;
+        }
 
+        public static bool IsResourceReserved(LibraryDBContainer dbContext, Resource resource)
+        {
+            foreach (Reservation reservation in dbContext.Reservations)
+            {
+                if (reservation.ResourceId == resource.Id && reservation.RealizationDate > DateTime.Now)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public static bool IsResourceReservedForUser(LibraryDBContainer dbContext, Resource resource, Reader user)
+        {
+            foreach (Reservation reservation in dbContext.Reservations)
+            {
+                if (reservation.ResourceId == resource.Id && reservation.RealizationDate > DateTime.Now)
+                    if(reservation.ReaderId == user.Id)
+                        return true;
+            }
+
+            return false;
         }
     }
 }

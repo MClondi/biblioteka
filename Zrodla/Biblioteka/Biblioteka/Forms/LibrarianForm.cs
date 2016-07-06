@@ -13,6 +13,7 @@ namespace Biblioteka.Forms
 {
     public partial class LibrarianForm : Form
     {
+        private User librarian;
         Form parent;
         LibraryDBContainer dbContext;
         Boolean help;
@@ -23,15 +24,18 @@ namespace Biblioteka.Forms
         private Dictionary<String, Magazine> magazineTagSet = new Dictionary<string, Magazine>();
         private Dictionary<String, Position> positionTagSet = new Dictionary<string, Position>();
         private Dictionary<String, Resource> resourceTagSet = new Dictionary<string, Resource>();
+        private Dictionary<String, User> userTagSet = new Dictionary<string, User>();
+        private Dictionary<String, Borrowing> borrowingTagSet = new Dictionary<string, Borrowing>();
 
         List<Position> cachedPositions;
         List<Resource> cachedResources;
 
-        public LibrarianForm(Form parent, LibraryDBContainer dbContext)
+        public LibrarianForm(Form parent, LibraryDBContainer dbContext, User librarian)
         {
             parent.Hide();
             this.parent = parent;
             this.dbContext = dbContext;
+            this.librarian = librarian;
             InitializeComponent();
         }
 
@@ -53,40 +57,220 @@ namespace Biblioteka.Forms
             SearchUser searchUserForm = new SearchUser(dbContext, searchUserClicked);
             searchUserForm.Show();
         }
+        
+        void searchUserClicked(object sender, List<User> searchResults)
+        {
+            userTagSet.Clear();
+            lstViewUsers.Items.Clear();
+            foreach (User usr in searchResults)
+            {
+                string[] row = { usr.Name, usr.Surname };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = usr.GetHashCode();
+                userTagSet.Add(item.Tag.ToString(), usr);
+                lstViewUsers.Items.Add(item);
+            }
+        }
+
+        // Akcje
+
+        private void btnShowBorrowings_Click(object sender, EventArgs e)
+        {
+            ResourceOrUserForm choiceForm = new ResourceOrUserForm();
+            choiceForm.ShowDialog(); 
+
+            if (choiceForm.Choice)
+                ShowBorrowingsForUser();
+            else
+                ShowBorrowingsForResource();            
+        }
+
+        private void ShowBorrowingsForUser()
+        {
+            User temp = GuiUtils.GetSelected<User>(lstViewUsers, userTagSet);
+            Reader reader = null;
+
+            if (temp != null)
+                reader = temp.Reader;
+
+            if (reader != null)
+            {
+                ShowBorrowings(reader);
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano czytelnika!", "Błąd");
+            }
+        }
+
+        private void ShowBorrowingsForResource()
+        {
+            Resource resource = GuiUtils.GetSelected<Resource>(lstViewResources, resourceTagSet);
+
+            if (resource != null)
+            {
+                ShowBorrowings(resource);
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano zasobu!", "Błąd");
+            }
+        }
+
+        private void ShowBorrowings(Reader reader)
+        {
+            borrowingTagSet.Clear();
+            lstViewActions.Items.Clear();
+            lstViewActions.Columns.Clear();
+            lstViewActions.Columns.Add("Tytuł");
+            lstViewActions.Columns.Add("Autor");
+            lstViewActions.Columns.Add("Data publikacji");
+            lstViewActions.Columns.Add("Data wypożyczenia");
+            lstViewActions.Columns.Add("Termin zwrotu");
+
+            List<Borrowing> borrowings = dbContext.Borrowings
+                                            .Include("Reader")
+                                            .Include("User")
+                                            .Include("Resource")
+                                            .Where(b => b.ReaderId == reader.Id)
+                                            .Where(b => b.ReturnDate == null)
+                                            .ToList();
+
+            foreach(Borrowing borrowing in borrowings)
+            {
+                string[] row = null;
+                switch(borrowing.Resource.Category)
+                {
+                    case "K":
+                        row = GenerateBookRow(borrowing);
+                        break;
+                    case "G":
+                        row = GenerateGameRow(borrowing);
+                        break;
+                    case "M":
+                        row = GenerateMagazineNumberRow(borrowing);
+                        break;
+                }
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = borrowing.GetHashCode();
+                borrowingTagSet.Add(item.Tag.ToString(), borrowing);
+                lstViewActions.Items.Add(item);
+            }
+        }
+
+        private void ShowBorrowings(Resource resource)
+        {
+            borrowingTagSet.Clear();
+            lstViewActions.Items.Clear();
+            lstViewActions.Columns.Clear();
+            lstViewActions.Columns.Add("Użytkownik");
+            lstViewActions.Columns.Add("Data wypożyczenia");
+            lstViewActions.Columns.Add("Termin zwrotu");
+
+            List<Borrowing> borrowings = dbContext.Borrowings
+                                            .Include("Reader")
+                                            .Include("User")
+                                            .Include("Resource")
+                                            .Where(b => b.ResourceId == resource.Id)
+                                            .Where(b => b.ReturnDate == null)
+                                            .ToList();
+
+            foreach (Borrowing borrowing in borrowings)
+            {
+                string[] row = { borrowing.User.Name + " " + borrowing.User.Surname, borrowing.BorrowingDate.ToString(), borrowing.ReturnTerm.ToString() };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = borrowing.GetHashCode();
+                borrowingTagSet.Add(item.Tag.ToString(), borrowing);
+                lstViewActions.Items.Add(item);
+            }
+        }
+
+        private string[] GenerateBookRow(Borrowing borrowing)
+        {
+            BookEdition book = (BookEdition) borrowing.Resource.Position;
+            string authors = "";
+            foreach(Authorship authorship in book.Book.Authorship)
+            {
+                authors += authorship.Author.Name + " " + authorship.Author.Surname + "; ";
+            }
+
+            string[] row = { book.Book.Title, authors, "", borrowing.BorrowingDate.ToString(), borrowing.ReturnTerm.ToString() };
+            
+            return row;
+        }
+
+        private string[] GenerateGameRow(Borrowing borrowing)
+        {
+            Game game = (Game)borrowing.Resource.Position;            
+            string[] row = { game.Name, "", "", borrowing.BorrowingDate.ToString(), borrowing.ReturnTerm.ToString() };
+
+            return row;
+        }
+
+        private string[] GenerateMagazineNumberRow(Borrowing borrowing)
+        {
+            MagazineNumber magazineNumber = (MagazineNumber)borrowing.Resource.Position;
+            string[] row = { magazineNumber.Magazine.Title, "", magazineNumber.PublicationDate.ToString(), borrowing.BorrowingDate.ToString(), borrowing.ReturnTerm.ToString() };
+
+            return row;
+        }
+
+        private void btnBorrowResource_Click(object sender, EventArgs e)
+        {
+            User temp = GuiUtils.GetSelected<User>(lstViewUsers, userTagSet);
+            Reader reader = null;
+
+            if (temp != null)
+                reader = temp.Reader;
+
+            Resource resource = GuiUtils.GetSelected<Resource>(lstViewResources, resourceTagSet);
+
+            if (reader != null && resource != null)
+            {
+                BorrowingForm addBorrowing = new BorrowingForm(dbContext, resource, reader, librarian);
+                addBorrowing.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano czytelnika i/lub zasobu!", "Błąd");
+            }
+        }
+
+        private void btnNoteReturn_Click(object sender, EventArgs e)
+        {
+            Borrowing borrowing = GuiUtils.GetSelected<Borrowing>(lstViewActions, borrowingTagSet);
+
+            if(borrowing != null)
+            {
+                borrowing.ReturnDate = DateTime.Now;
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano wypożyczenia!", "Błąd");
+                return;
+            }
+
+            dbContext.SaveChanges();
+            MessageBox.Show("Zaksięgowano wypożyczenie.", "Informacja");
+        }
+
+
+
 
         private void btnReserveResource_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnBorrowResource_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btnCancelReservation_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnNoteReturn_Click(object sender, EventArgs e)
-        {
+       
 
-        }
-
-
-
-
-        void searchUserClicked(object sender, List<User> searchResults)
-        {
-            lstViewBooksAndUsers.Items.Clear();
-            foreach (User usr in searchResults)
-            {
-                string[] row = { usr.Name, usr.Surname };
-                ListViewItem item = new ListViewItem(row);
-                lstViewBooksAndUsers.Items.Add(item);
-            }
-        }
         
         void refresh(object sender, List<Author> users)
         {
@@ -632,6 +816,10 @@ namespace Biblioteka.Forms
             ReportForm form = new ReportForm(dbContext);
             form.Show();
         }
+
+      
+
+        
 
 
 

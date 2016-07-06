@@ -49,7 +49,7 @@ namespace Biblioteka.Forms
                         new UserForm(this, context, query.First()).Show();
                         break;
                     case "L":
-                        new LibrarianForm(this, context).Show();
+                        new LibrarianForm(this, context, query.First()).Show();
                         break;
                     default:
                         break;
