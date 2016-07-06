@@ -49,7 +49,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnShowBorrowings = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnShowReservations = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnSearchPosition = new System.Windows.Forms.Button();
             this.btnSearchResource = new System.Windows.Forms.Button();
@@ -100,6 +100,7 @@
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.helpButton = new System.Windows.Forms.Button();
             this.btnRaport = new System.Windows.Forms.Button();
+            this.btnShowReaderApplications = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -315,10 +316,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnShowReaderApplications);
             this.groupBox1.Controls.Add(this.btnSearchUser);
             this.groupBox1.Location = new System.Drawing.Point(22, 167);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(202, 64);
+            this.groupBox1.Size = new System.Drawing.Size(202, 110);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Użytkownicy";
@@ -326,7 +328,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnShowBorrowings);
-            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Controls.Add(this.btnShowReservations);
             this.groupBox3.Controls.Add(this.btnReserveResource);
             this.groupBox3.Controls.Add(this.btnBorrowResource);
             this.groupBox3.Controls.Add(this.btnNoteReturn);
@@ -350,16 +352,17 @@
             this.btnShowBorrowings.UseVisualStyleBackColor = true;
             this.btnShowBorrowings.Click += new System.EventHandler(this.btnShowBorrowings_Click);
             // 
-            // button3
+            // btnShowReservations
             // 
-            this.helpProvider1.SetHelpString(this.button3, "Przycisk pozwalajacy zaksiegowac zwrot ksiazki wypozyczonej przez uzytkownika");
-            this.button3.Location = new System.Drawing.Point(105, 26);
-            this.button3.Name = "button3";
-            this.helpProvider1.SetShowHelp(this.button3, true);
-            this.button3.Size = new System.Drawing.Size(84, 37);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Pokaż rezerwacje";
-            this.button3.UseVisualStyleBackColor = true;
+            this.helpProvider1.SetHelpString(this.btnShowReservations, "Przycisk pozwalajacy zaksiegowac zwrot ksiazki wypozyczonej przez uzytkownika");
+            this.btnShowReservations.Location = new System.Drawing.Point(105, 26);
+            this.btnShowReservations.Name = "btnShowReservations";
+            this.helpProvider1.SetShowHelp(this.btnShowReservations, true);
+            this.btnShowReservations.Size = new System.Drawing.Size(84, 37);
+            this.btnShowReservations.TabIndex = 17;
+            this.btnShowReservations.Text = "Pokaż rezerwacje";
+            this.btnShowReservations.UseVisualStyleBackColor = true;
+            this.btnShowReservations.Click += new System.EventHandler(this.btnShowReservations_Click);
             // 
             // groupBox4
             // 
@@ -919,6 +922,17 @@
             this.btnRaport.UseVisualStyleBackColor = true;
             this.btnRaport.Click += new System.EventHandler(this.btnRaport_Click);
             // 
+            // btnShowReaderApplications
+            // 
+            this.helpProvider1.SetHelpString(this.btnShowReaderApplications, "Przycisk pozwalajacy wyszukac uzytkownika w bazie danych");
+            this.btnShowReaderApplications.Location = new System.Drawing.Point(45, 57);
+            this.btnShowReaderApplications.Name = "btnShowReaderApplications";
+            this.helpProvider1.SetShowHelp(this.btnShowReaderApplications, true);
+            this.btnShowReaderApplications.Size = new System.Drawing.Size(112, 44);
+            this.btnShowReaderApplications.TabIndex = 9;
+            this.btnShowReaderApplications.Text = "Przeglądaj wnioski o aktualizację danych";
+            this.btnShowReaderApplications.UseVisualStyleBackColor = true;
+            // 
             // LibrarianForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1017,6 +1031,7 @@
         private System.Windows.Forms.Button helpButton;
         private System.Windows.Forms.Button btnRaport;
         private System.Windows.Forms.Button btnShowBorrowings;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnShowReservations;
+        private System.Windows.Forms.Button btnShowReaderApplications;
     }
 }

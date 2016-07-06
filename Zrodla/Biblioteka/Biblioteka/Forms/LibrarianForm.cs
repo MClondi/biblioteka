@@ -26,6 +26,7 @@ namespace Biblioteka.Forms
         private Dictionary<String, Resource> resourceTagSet = new Dictionary<string, Resource>();
         private Dictionary<String, User> userTagSet = new Dictionary<string, User>();
         private Dictionary<String, Borrowing> borrowingTagSet = new Dictionary<string, Borrowing>();
+        private Dictionary<String, Reservation> reservationTagSet = new Dictionary<string, Reservation>();
 
         List<Position> cachedPositions;
         List<Resource> cachedResources;
@@ -177,7 +178,7 @@ namespace Biblioteka.Forms
 
             foreach (Borrowing borrowing in borrowings)
             {
-                string[] row = { borrowing.User.Name + " " + borrowing.User.Surname, borrowing.BorrowingDate.ToString(), borrowing.ReturnTerm.ToString() };
+                string[] row = { borrowing.Reader.User.Name + " " + borrowing.Reader.User.Surname, borrowing.BorrowingDate.ToString(), borrowing.ReturnTerm.ToString() };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = borrowing.GetHashCode();
                 borrowingTagSet.Add(item.Tag.ToString(), borrowing);
@@ -199,6 +200,20 @@ namespace Biblioteka.Forms
             return row;
         }
 
+        private string[] GenerateBookRow(Reservation reservation)
+        {
+            BookEdition book = (BookEdition)reservation.Resource.Position;
+            string authors = "";
+            foreach (Authorship authorship in book.Book.Authorship)
+            {
+                authors += authorship.Author.Name + " " + authorship.Author.Surname + "; ";
+            }
+
+            string[] row = { book.Book.Title, authors, "", reservation.RealizationDate.ToString() };
+
+            return row;
+        }
+
         private string[] GenerateGameRow(Borrowing borrowing)
         {
             Game game = (Game)borrowing.Resource.Position;            
@@ -207,10 +222,26 @@ namespace Biblioteka.Forms
             return row;
         }
 
+        private string[] GenerateGameRow(Reservation reservation)
+        {
+            Game game = (Game)reservation.Resource.Position;
+            string[] row = { game.Name, "", "", reservation.RealizationDate.ToString() };
+
+            return row;
+        }
+
         private string[] GenerateMagazineNumberRow(Borrowing borrowing)
         {
             MagazineNumber magazineNumber = (MagazineNumber)borrowing.Resource.Position;
             string[] row = { magazineNumber.Magazine.Title, "", magazineNumber.PublicationDate.ToString(), borrowing.BorrowingDate.ToString(), borrowing.ReturnTerm.ToString() };
+
+            return row;
+        }
+
+        private string[] GenerateMagazineNumberRow(Reservation reservation)
+        {
+            MagazineNumber magazineNumber = (MagazineNumber)reservation.Resource.Position;
+            string[] row = { magazineNumber.Magazine.Title, "", magazineNumber.PublicationDate.ToString(), reservation.RealizationDate.ToString() };
 
             return row;
         }
@@ -255,18 +286,150 @@ namespace Biblioteka.Forms
         }
 
 
+        private void btnShowReservations_Click(object sender, EventArgs e)
+        {
+            ResourceOrUserForm choiceForm = new ResourceOrUserForm();
+            choiceForm.ShowDialog();
 
+            if (choiceForm.Choice)
+                ShowReservationsForUser();
+            else
+                ShowReservationsForResource();   
+        }
+
+        private void ShowReservationsForUser()
+        {
+            User temp = GuiUtils.GetSelected<User>(lstViewUsers, userTagSet);
+            Reader reader = null;
+
+            if (temp != null)
+                reader = temp.Reader;
+
+            if (reader != null)
+            {
+                ShowReservations(reader);
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano czytelnika!", "Błąd");
+            }
+        }
+
+        private void ShowReservationsForResource()
+        {
+            Resource resource = GuiUtils.GetSelected<Resource>(lstViewResources, resourceTagSet);
+
+            if (resource != null)
+            {
+                ShowReservations(resource);
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano zasobu!", "Błąd");
+            }
+        }
+
+        private void ShowReservations(Reader reader)
+        {
+            reservationTagSet.Clear();
+            lstViewActions.Items.Clear();
+            lstViewActions.Columns.Clear();
+            lstViewActions.Columns.Add("Tytuł");
+            lstViewActions.Columns.Add("Autor");
+            lstViewActions.Columns.Add("Data publikacji");
+            lstViewActions.Columns.Add("Data realizacji");
+
+            List<Reservation> reservations = dbContext.Reservations
+                                            .Include("Reader")
+                                            .Include("Resource")
+                                            .Where(r => r.ReaderId == reader.Id)
+                                            .Where(r => r.RealizationDate > DateTime.Now)
+                                            .ToList();
+
+            foreach (Reservation reservation in reservations)
+            {
+                string[] row = null;
+                switch (reservation.Resource.Category)
+                {
+                    case "K":
+                        row = GenerateBookRow(reservation);
+                        break;
+                    case "G":
+                        row = GenerateGameRow(reservation);
+                        break;
+                    case "M":
+                        row = GenerateMagazineNumberRow(reservation);
+                        break;
+                }
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = reservation.GetHashCode();
+                reservationTagSet.Add(item.Tag.ToString(), reservation);
+                lstViewActions.Items.Add(item);
+            }
+        }
+
+        private void ShowReservations(Resource resource)
+        {
+            reservationTagSet.Clear();
+            lstViewActions.Items.Clear();
+            lstViewActions.Columns.Clear();
+            lstViewActions.Columns.Add("Użytkownik");
+            lstViewActions.Columns.Add("Data realizacji");
+
+            List<Reservation> reservations = dbContext.Reservations
+                                            .Include("Reader")
+                                            .Include("Resource")
+                                            .Where(r => r.ResourceId == resource.Id)
+                                            .Where(r => r.RealizationDate > DateTime.Now)
+                                            .ToList();
+
+            foreach (Reservation reservation in reservations)
+            {
+                string[] row = { reservation.Reader.User.Name + " " + reservation.Reader.User.Surname, reservation.RealizationDate.ToString() };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = reservation.GetHashCode();
+                reservationTagSet.Add(item.Tag.ToString(), reservation);
+                lstViewActions.Items.Add(item);
+            }
+        }
 
         private void btnReserveResource_Click(object sender, EventArgs e)
         {
+            User temp = GuiUtils.GetSelected<User>(lstViewUsers, userTagSet);
+            Reader reader = null;
 
-        }
+            if (temp != null)
+                reader = temp.Reader;
 
-       
+            Resource resource = GuiUtils.GetSelected<Resource>(lstViewResources, resourceTagSet);
+
+            if (reader != null && resource != null)
+            {
+                ReservationForm addReservation = new ReservationForm(dbContext, resource, reader, librarian);
+                addReservation.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano czytelnika i/lub zasobu!", "Błąd");
+            }
+        }       
 
         private void btnCancelReservation_Click(object sender, EventArgs e)
         {
+            Reservation reservation = GuiUtils.GetSelected<Reservation>(lstViewActions, reservationTagSet);
 
+            if (reservation != null)
+            {
+                dbContext.Reservations.Remove(reservation);
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano rezerwacji!", "Błąd");
+                return;
+            }
+
+            dbContext.SaveChanges();
+            MessageBox.Show("Usunięto rezerwację.", "Informacja");
         }
 
        
@@ -816,6 +979,8 @@ namespace Biblioteka.Forms
             ReportForm form = new ReportForm(dbContext);
             form.Show();
         }
+
+   
 
       
 
