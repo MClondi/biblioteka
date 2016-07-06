@@ -98,7 +98,7 @@ namespace Biblioteka
             return newUser;
         }
     
-        public static bool IsResourceBorrowed(LibraryDBContainer dbContext, Position resource)
+        public static bool IsResourceBorrowed(LibraryDBContainer dbContext, Resource resource)
         {
             var resources = from r in dbContext.Resources
                             where r.PositionId == resource.PositionId

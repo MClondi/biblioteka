@@ -62,7 +62,7 @@
             this.lstViewAuthors = new System.Windows.Forms.ListView();
             this.authorName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.authorSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listView4 = new System.Windows.Forms.ListView();
+            this.lstViewResources = new System.Windows.Forms.ListView();
             this.listView1 = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -494,16 +494,16 @@
             // 
             this.authorSurname.Text = "Nazwisko";
             // 
-            // listView4
+            // lstViewResources
             // 
-            this.helpProvider1.SetHelpString(this.listView4, "Lista zasobow wystepujacych w bibliotece");
-            this.listView4.Location = new System.Drawing.Point(438, 28);
-            this.listView4.Name = "listView4";
-            this.helpProvider1.SetShowHelp(this.listView4, true);
-            this.listView4.Size = new System.Drawing.Size(202, 133);
-            this.listView4.TabIndex = 32;
-            this.listView4.UseCompatibleStateImageBehavior = false;
-            this.listView4.View = System.Windows.Forms.View.List;
+            this.helpProvider1.SetHelpString(this.lstViewResources, "Lista zasobow wystepujacych w bibliotece");
+            this.lstViewResources.Location = new System.Drawing.Point(438, 28);
+            this.lstViewResources.Name = "lstViewResources";
+            this.helpProvider1.SetShowHelp(this.lstViewResources, true);
+            this.lstViewResources.Size = new System.Drawing.Size(202, 133);
+            this.lstViewResources.TabIndex = 32;
+            this.lstViewResources.UseCompatibleStateImageBehavior = false;
+            this.lstViewResources.View = System.Windows.Forms.View.Details;
             // 
             // listView1
             // 
@@ -610,7 +610,7 @@
             this.tabPage1.Controls.Add(this.lstViewPositions);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.listView4);
+            this.tabPage1.Controls.Add(this.lstViewResources);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.listView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -971,7 +971,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListView lstViewPositions;
         private System.Windows.Forms.ListView lstViewAuthors;
-        private System.Windows.Forms.ListView listView4;
+        private System.Windows.Forms.ListView lstViewResources;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

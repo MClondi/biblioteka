@@ -54,8 +54,6 @@
             this.txtBoxProducer = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtBoxEdition = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtBoxNumber = new System.Windows.Forms.TextBox();
             this.magazineSpinner = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.genreSpinner = new System.Windows.Forms.ComboBox();
@@ -300,23 +298,6 @@
             this.txtBoxEdition.Size = new System.Drawing.Size(223, 20);
             this.txtBoxEdition.TabIndex = 90;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 292);
-            this.label9.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 13);
-            this.label9.TabIndex = 93;
-            this.label9.Text = "Liczebność";
-            // 
-            // txtBoxNumber
-            // 
-            this.txtBoxNumber.Location = new System.Drawing.Point(102, 285);
-            this.txtBoxNumber.Name = "txtBoxNumber";
-            this.txtBoxNumber.Size = new System.Drawing.Size(223, 20);
-            this.txtBoxNumber.TabIndex = 92;
-            // 
             // magazineSpinner
             // 
             this.magazineSpinner.FormattingEnabled = true;
@@ -362,8 +343,6 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.magazineSpinner);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtBoxNumber);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtBoxEdition);
             this.Controls.Add(this.label4);
@@ -423,8 +402,6 @@
         private System.Windows.Forms.TextBox txtBoxProducer;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtBoxEdition;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtBoxNumber;
         private System.Windows.Forms.ComboBox magazineSpinner;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox genreSpinner;

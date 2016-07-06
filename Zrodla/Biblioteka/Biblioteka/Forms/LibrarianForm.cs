@@ -22,6 +22,10 @@ namespace Biblioteka.Forms
         private Dictionary<String, Book> bookTagSet = new Dictionary<string, Book>();
         private Dictionary<String, Magazine> magazineTagSet = new Dictionary<string, Magazine>();
         private Dictionary<String, Position> positionTagSet = new Dictionary<string, Position>();
+        private Dictionary<String, Resource> resourceTagSet = new Dictionary<string, Resource>();
+
+        List<Position> cachedPositions;
+        List<Resource> cachedResources;
 
         public LibrarianForm(Form parent, LibraryDBContainer dbContext)
         {
@@ -70,26 +74,7 @@ namespace Biblioteka.Forms
 
         }
 
-        private void btnAddResource_Click(object sender, EventArgs e)
-        {
 
-        }
-
-       
-
-
-
-        private void btnEditResource_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void btnDeleteResource_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         void searchUserClicked(object sender, List<User> searchResults)
@@ -102,20 +87,12 @@ namespace Biblioteka.Forms
                 lstViewBooksAndUsers.Items.Add(item);
             }
         }
-        void searchResourceClicked(object sender, List<Position> results)
-        {
-            // todo populate the list of resources
-        }
+        
         void refresh(object sender, List<Author> users)
         {
             // todo refresh the listview after add/edit/delete action
         }
 
-        private void btnSearchResource_Click_1(object sender, EventArgs e)
-        {
-            SearchResource sr = new SearchResource(dbContext, searchResourceClicked);
-            sr.Show();
-        }
 
 
 
@@ -437,8 +414,10 @@ namespace Biblioteka.Forms
             if (selectedPosition != null)
             {
                 dbContext.Positions.Remove(selectedPosition);
+                cachedPositions.Remove(selectedPosition);
                 dbContext.SaveChanges();
             }
+            positionSaved(sender, cachedPositions);
         }
 
         private void btnSearchPosition_Click(object sender, EventArgs e)
@@ -450,20 +429,24 @@ namespace Biblioteka.Forms
 
         void positionSaved(object sender, List<Position> positions)
         {
+            lstViewPositions.Items.Clear();
+            cachedPositions = positions;
             if(positions != null)
             {
-                if(positions.ElementAt(0) is BookEdition)
-                    RefreshBookEditions(positions);
-                else if (positions.ElementAt(0) is Game)
-                    RefreshGames(positions);
-                else if (positions.ElementAt(0) is MagazineNumber)
-                    RefreshMagazineNumbers(positions);
+                if (positions.Count > 0)
+                {
+                    if (positions.ElementAt(0) is BookEdition)
+                        RefreshBookEditions(positions);
+                    else if (positions.ElementAt(0) is Game)
+                        RefreshGames(positions);
+                    else if (positions.ElementAt(0) is MagazineNumber)
+                        RefreshMagazineNumbers(positions);
+                }
             }
         }
         
         private void RefreshBookEditions(List<Position> positions)
         {
-            lstViewPositions.Items.Clear();
             lstViewPositions.Columns.Clear();
             lstViewPositions.Columns.Add("Tytuł");
             lstViewPositions.Columns.Add("ISBN");
@@ -482,7 +465,6 @@ namespace Biblioteka.Forms
 
         private void RefreshGames(List<Position> positions)
         {
-            lstViewPositions.Items.Clear();
             lstViewPositions.Columns.Clear();
             lstViewPositions.Columns.Add("Nazwa");
             positionTagSet.Clear();
@@ -500,7 +482,6 @@ namespace Biblioteka.Forms
 
         private void RefreshMagazineNumbers(List<Position> positions)
         {
-            lstViewPositions.Items.Clear();
             lstViewPositions.Columns.Clear();
             lstViewPositions.Columns.Add("Magazyn");
             lstViewPositions.Columns.Add("Data publikacji");
@@ -517,9 +498,115 @@ namespace Biblioteka.Forms
             }
         }
 
+        // Resources
 
 
+        private void btnAddResource_Click(object sender, EventArgs e)
+        {
+            ResourceForm addResource = new ResourceForm(dbContext, (Position)GuiUtils.GetSelected<Position>(lstViewPositions, positionTagSet));
+            if(!addResource.IsDisposed)
+                addResource.Show();
+        }
 
+        private void btnEditResource_Click(object sender, EventArgs e)
+        {
+            ResourceForm editResource = new ResourceForm(dbContext, (Resource)GuiUtils.GetSelected<Resource>(lstViewResources, resourceTagSet));
+            editResource.Show();
+        }
+
+        private void btnDeleteResource_Click(object sender, EventArgs e)
+        {
+            Resource selectedResource = GuiUtils.GetSelected<Resource>(lstViewResources, resourceTagSet);
+
+            if (selectedResource != null)
+            {
+                dbContext.Resources.Remove(selectedResource);
+                cachedResources.Remove(selectedResource);
+                dbContext.SaveChanges();
+            }
+
+            searchResourceClicked(sender, cachedResources);
+        }
+
+        private void btnSearchResource_Click_1(object sender, EventArgs e)
+        {
+            SearchResource sr = new SearchResource(dbContext, searchResourceClicked);
+            sr.Show();
+        }
+
+        void searchResourceClicked(object sender, List<Resource> results)
+        {
+            lstViewResources.Items.Clear();
+            cachedResources = results;
+            if (results != null)
+            {
+                if (results.Count > 0)
+                {
+                    if (results.ElementAt(0).Position is BookEdition)
+                        RefreshBookResources(results);
+                    else if (results.ElementAt(0).Position is Game)
+                        RefreshGameResources(results);
+                    else if (results.ElementAt(0).Position is MagazineNumber)
+                        RefreshMagazineNumberResources(results);
+                }
+            }            
+        }
+
+        private void RefreshBookResources(List<Resource> resources)
+        {
+            lstViewResources.Columns.Clear();
+            lstViewResources.Columns.Add("Ilość");
+            lstViewResources.Columns.Add("Tytuł");
+            lstViewResources.Columns.Add("ISBN");
+            resourceTagSet.Clear();
+            foreach (Resource resource in resources)
+            {
+                BookEdition be = (BookEdition)resource.Position;
+
+                string[] row = { resource.Amount.ToString(), be.Book.Title, be.ISBN };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = resource.GetHashCode();
+                resourceTagSet.Add(item.Tag.ToString(), resource);
+                lstViewResources.Items.Add(item);
+            }
+        }
+
+        private void RefreshGameResources(List<Resource> resources)
+        {
+            lstViewResources.Columns.Clear();
+            lstViewResources.Columns.Add("Ilość");
+            lstViewResources.Columns.Add("Nazwa");
+            resourceTagSet.Clear();
+            foreach (Resource resource in resources)
+            {
+                Game g = (Game)resource.Position;
+
+                string[] row = { resource.Amount.ToString(), g.Name };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = resource.GetHashCode();
+                resourceTagSet.Add(item.Tag.ToString(), resource);
+                lstViewResources.Items.Add(item);
+            }
+        }
+
+        private void RefreshMagazineNumberResources(List<Resource> resources)
+        {
+            lstViewResources.Columns.Clear();
+            lstViewResources.Columns.Add("Ilość");
+            lstViewResources.Columns.Add("Magazyn");
+            lstViewResources.Columns.Add("Data publikacji");
+            resourceTagSet.Clear();
+            foreach (Resource resource in resources)
+            {
+                MagazineNumber mn = (MagazineNumber)resource.Position;
+
+                string[] row = { resource.Amount.ToString(), mn.Magazine.Title, mn.PublicationDate.ToString() };
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = resource.GetHashCode();
+                resourceTagSet.Add(item.Tag.ToString(), resource);
+                lstViewResources.Items.Add(item);
+            }
+        }
 
         private void helpButton_Click(object sender, EventArgs e)
         {

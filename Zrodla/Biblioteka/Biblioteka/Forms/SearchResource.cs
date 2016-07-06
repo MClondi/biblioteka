@@ -16,10 +16,10 @@ namespace Biblioteka.Forms
     {
 
         LibraryDBContainer dbContext;
-        public event EventHandler<List<Position>> searchClicked;
+        public event EventHandler<List<Resource>> searchClicked;
         Boolean help = false;
 
-        public SearchResource(LibraryDBContainer dbContext, EventHandler<List<Position>> search)
+        public SearchResource(LibraryDBContainer dbContext, EventHandler<List<Resource>> search)
         {
             this.dbContext = dbContext;
             this.searchClicked += search;
@@ -44,30 +44,30 @@ namespace Biblioteka.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            List<Position> results = new List<Position>();
+            List<Resource> results = new List<Resource>();
             switch (comboBoxType.SelectedIndex)
             {
                 case ((int)ResourceTypes.Book):
-                    results = dbContext.Positions
-                        .Where(position => position is BookEdition)
-                        .Where(book => textBoxTitle.Text.Trim().Equals(string.Empty) ? true : (book as BookEdition).Book.Title.Contains(textBoxTitle.Text))
-                        .Where(book => textBoxAuthorName.Text.Trim().Equals(string.Empty) ? true : (book as BookEdition).Book.Authorship.FirstOrDefault().Author.Name.Contains(textBoxAuthorName.Text))
-                        .Where(book => textBoxAuthorSurname.Text.Trim().Equals(string.Empty) ? true : (book as BookEdition).Book.Authorship.FirstOrDefault().Author.Surname.Contains(textBoxAuthorSurname.Text))
-                        .Where(book => textBoxPublisher.Text.Trim().Equals(string.Empty) ? true : (book as BookEdition).Publisher.Name.Contains(textBoxPublisher.Text))
+                    results = dbContext.Resources
+                        .Where(r => r.Position is BookEdition)
+                        .Where(r => textBoxTitle.Text.Trim().Equals(string.Empty) ? true : (r.Position as BookEdition).Book.Title.Contains(textBoxTitle.Text))
+                        .Where(r => textBoxAuthorName.Text.Trim().Equals(string.Empty) ? true : (r.Position as BookEdition).Book.Authorship.FirstOrDefault().Author.Name.Contains(textBoxAuthorName.Text))
+                        .Where(r => textBoxAuthorSurname.Text.Trim().Equals(string.Empty) ? true : (r.Position as BookEdition).Book.Authorship.FirstOrDefault().Author.Surname.Contains(textBoxAuthorSurname.Text))
+                        .Where(r => textBoxPublisher.Text.Trim().Equals(string.Empty) ? true : (r.Position as BookEdition).Publisher.Name.Contains(textBoxPublisher.Text))
                         .ToList();
                     break;
                 case ((int)ResourceTypes.Game):
-                    results = dbContext.Positions
-                        .Where(position => position is Game)
-                        .Where(game => textBoxTitle.Text.Trim().Equals(string.Empty) ? true : (game as Game).Name.Contains(textBoxTitle.Text))
-                        .Where(game => textBoxPublisher.Text.Trim().Equals(string.Empty) ? true : (game as Game).Producer.Contains(textBoxPublisher.Text))
+                    results = dbContext.Resources
+                        .Where(r => r.Position is Game)
+                        .Where(r => textBoxTitle.Text.Trim().Equals(string.Empty) ? true : (r.Position as Game).Name.Contains(textBoxTitle.Text))
+                        .Where(r => textBoxPublisher.Text.Trim().Equals(string.Empty) ? true : (r.Position as Game).Producer.Contains(textBoxPublisher.Text))
                         .ToList();
                     break;
                 case ((int)ResourceTypes.Magazine):
-                    results = dbContext.Positions
-                        .Where(position => position is MagazineNumber)
-                        .Where(magazine => textBoxTitle.Text.Trim().Equals(string.Empty) ? true : (magazine as MagazineNumber).Magazine.Title.Contains(textBoxTitle.Text))
-                        .Where(magazine => textBoxPublisher.Text.Trim().Equals(string.Empty) ? true : (magazine as MagazineNumber).Magazine.Publisher.Name.Contains(textBoxPublisher.Text))
+                    results = dbContext.Resources
+                        .Where(r => r.Position is MagazineNumber)
+                        .Where(r => textBoxTitle.Text.Trim().Equals(string.Empty) ? true : (r.Position as MagazineNumber).Magazine.Title.Contains(textBoxTitle.Text))
+                        .Where(r => textBoxPublisher.Text.Trim().Equals(string.Empty) ? true : (r.Position as MagazineNumber).Magazine.Publisher.Name.Contains(textBoxPublisher.Text))
                         .ToList();
                     break;
             }

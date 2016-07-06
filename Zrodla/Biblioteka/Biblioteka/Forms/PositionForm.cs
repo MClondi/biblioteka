@@ -236,20 +236,18 @@ namespace Biblioteka.Forms
         {
             MagazineNumber editedMagazineNumber = (MagazineNumber)position;
             editedMagazineNumber.PublicationDate = datePicker.Value;
-            editedMagazineNumber.Number = Int32.Parse(txtBoxNumber.Text);
             editedMagazineNumber.Magazine = dbContext.Magazines.Where(m => m.Title == magazineSpinner.Text).FirstOrDefault();
+            editedMagazineNumber.Number = 1;
         }
 
         private void SearchMagazineNumber(out List<Position> positions)
         {
             List<MagazineNumber> searchedPositions = new List<MagazineNumber>();
-            int number = Int32.Parse(txtBoxNumber.Text);
 
             searchedPositions = dbContext.Positions.Include("Magazine").OfType<MagazineNumber>()
                 .Where(m => !datePicker.Checked ? true : m.PublicationDate.Value.Year == datePicker.Value.Year &&
                                                              m.PublicationDate.Value.Month == datePicker.Value.Month &&
                                                              m.PublicationDate.Value.Day == datePicker.Value.Day)
-                .Where(m => txtBoxNumber.Text.Trim() == String.Empty ? true : m.Number == number)
                 .Where(m => magazineSpinner.SelectedIndex == 0 ? true : m.Magazine.Title == magazineSpinner.Text)
                 .ToList();
 
@@ -289,7 +287,6 @@ namespace Biblioteka.Forms
             txtBoxProducer.Enabled = false;
             txtBoxEdition.Enabled = false;
             magazineSpinner.Enabled = false;
-            txtBoxNumber.Enabled = false;
         }
 
         private void SetGameView()
@@ -297,7 +294,6 @@ namespace Biblioteka.Forms
             txbBoxIsbn.Enabled = false;
             datePicker.Enabled = false;
             publisherSpinner.Enabled = false;
-            txtBoxNumber.Enabled = false;
             magazineSpinner.Enabled = false;
             lstViewSearchBook.Enabled = false;
             lstViewSelectedBook.Enabled = false;
@@ -330,7 +326,6 @@ namespace Biblioteka.Forms
             datePicker.Enabled = true;
             publisherSpinner.Enabled = true;
             magazineSpinner.Enabled = true;
-            txtBoxNumber.Enabled = true;
             lstViewSearchBook.Enabled = true;
             lstViewSelectedBook.Enabled = true;
             btnSelectBook.Enabled = true;
@@ -372,7 +367,6 @@ namespace Biblioteka.Forms
             datePicker.Value = (DateTime) book.PublicationDate;
             selectedBook = book.Book;
             RefreshSelectedBookListView();
-            txtBoxNumber.Text = "1";
 
         }
 
@@ -390,7 +384,6 @@ namespace Biblioteka.Forms
         {
             MagazineNumber magazineNumber = (MagazineNumber)position;
 
-            txtBoxNumber.Text = magazineNumber.Number.ToString();
             magazineSpinner.Text = magazineNumber.Magazine.Title;
         }
     }

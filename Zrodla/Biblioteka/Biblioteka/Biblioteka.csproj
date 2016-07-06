@@ -275,6 +275,9 @@
     <EmbeddedResource Include="Forms\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ResourceForm.resx">
+      <DependentUpon>ResourceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SearchResource.resx">
       <DependentUpon>SearchResource.cs</DependentUpon>
     </EmbeddedResource>

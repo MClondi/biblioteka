@@ -16,7 +16,7 @@ namespace Biblioteka.Forms
         LibraryDBContainer dbContext;
         Form parent;
         Boolean help;
-        Dictionary<String, Position> tagSet = new Dictionary<string, Position>();
+        Dictionary<String, Resource> tagSet = new Dictionary<string, Resource>();
 
         public GuestForm(Form parent, LibraryDBContainer dbContext)
         {
@@ -24,7 +24,7 @@ namespace Biblioteka.Forms
             parent.Hide();
             this.parent = parent;
             this.dbContext = dbContext;
-            refreshListView(dbContext.Positions.ToList());
+            refreshListView(dbContext.Resources.ToList());
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace Biblioteka.Forms
         {
             if (lstViewBooksAndUsers.SelectedItems.Count > 0)
             {
-                Position resource;
+                Resource resource;
                 if (tagSet.TryGetValue(lstViewBooksAndUsers.SelectedItems[0].Tag.ToString(), out resource))
                 {
 
@@ -68,35 +68,35 @@ namespace Biblioteka.Forms
             sr.Show();
         }
 
-        private void refreshListView(List<Position> positions)
+        private void refreshListView(List<Resource> resources)
         {
             tagSet.Clear();
             lstViewBooksAndUsers.Clear();
 
-            foreach (Position pos in positions)
+            foreach (Resource res in resources)
             {
                 ListViewItem item = new ListViewItem();
 
-                if (pos is BookEdition)
+                if (res.Position is BookEdition)
                 {
-                    item.Text = ((BookEdition)pos).Book.Title;
+                    item.Text = ((BookEdition)res.Position).Book.Title;
                 }
-                else if (pos is Game)
+                else if (res.Position is Game)
                 {
-                    item.Text = ((Game)pos).Name;
+                    item.Text = ((Game)res.Position).Name;
                 }
-                else if (pos is MagazineNumber)
+                else if (res.Position is MagazineNumber)
                 {
-                    item.Text = ((MagazineNumber)pos).Magazine.Title;
+                    item.Text = ((MagazineNumber)res.Position).Magazine.Title;
                 }
 
-                item.Tag = pos.GetHashCode();
-                tagSet.Add(item.Tag.ToString(), pos);
+                item.Tag = res.GetHashCode();
+                tagSet.Add(item.Tag.ToString(), res);
                 lstViewBooksAndUsers.Items.Add(item);
             }
         }
 
-        void searchClicked(object sender, List<Position> results)
+        void searchClicked(object sender, List<Resource> results)
         {
             refreshListView(results);
         }
