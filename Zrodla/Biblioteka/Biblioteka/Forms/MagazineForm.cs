@@ -69,10 +69,12 @@ namespace Biblioteka.Forms
             switch (formAction)
             {
                 case FormAction.Add:
-                    AddMagazine();
+                    if (!AddMagazine())
+                        return;
                     break;
                 case FormAction.Edit:
-                    EditMagazine(editedMagazine);
+                    if (!EditMagazine(editedMagazine))
+                        return;
                     break;
                 case FormAction.Search:
                     SearchMagazine(out magazines);
@@ -84,18 +86,26 @@ namespace Biblioteka.Forms
             this.Close();
         }
 
-        private void AddMagazine()
+        private bool AddMagazine()
         {
             Magazine magazine = new Magazine();
-            EditMagazine(magazine);
+            if (!EditMagazine(magazine))
+                return false;
             dbContext.Magazines.Add(magazine);
+            return true;
         }
 
-        private void EditMagazine(Magazine editedMagazine)
+        private bool EditMagazine(Magazine editedMagazine)
         {
+            if (txtBoxName.Text.Count() == 0)
+            {
+                MessageBox.Show("Nazwa nie może być pusta");
+                return false;
+            }
             editedMagazine.Title = txtBoxName.Text;
             editedMagazine.Genre = dbContext.Genres.Where(g => g.Name == genreSpinner.Text).FirstOrDefault();
             editedMagazine.Publisher = dbContext.Publishers.Where(p => p.Name == publisherSpinner.Text).FirstOrDefault();
+            return true;
         }
 
         private void SearchMagazine(out List<Magazine> magazines)

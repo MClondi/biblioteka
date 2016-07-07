@@ -73,6 +73,7 @@
             this.helpProvider1.SetShowHelp(this.txtBxUsername, true);
             this.txtBxUsername.Size = new System.Drawing.Size(123, 21);
             this.txtBxUsername.TabIndex = 2;
+            this.txtBxUsername.TextChanged += new System.EventHandler(this.txtBxUsername_TextChanged);
             // 
             // txtBxPassword
             // 

@@ -29,6 +29,11 @@ namespace Biblioteka.Forms
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            if (datePicker.Value < DateTime.Today)
+            {
+                MessageBox.Show("Data oddania powinna być późniejsza");
+                return;
+            }
             if (DbUtils.IsResourceBorrowed(dbContext, resource) && !DbUtils.IsResourceReserved(dbContext, resource))
             {
                 ReserveResource();

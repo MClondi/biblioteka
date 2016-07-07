@@ -90,12 +90,18 @@ namespace Biblioteka.Forms
             switch (formAction)
             {
                 case FormAction.Add:
-                    addPosition();
-                    MessageBox.Show("Dodano pozycję", "Informacja");
+                    if (validate())
+                    { 
+                        addPosition();
+                        MessageBox.Show("Dodano pozycję", "Informacja");
+                    }
                     break;
                 case FormAction.Edit:
-                    editPosition(editedPosition);
-                    MessageBox.Show("Edytowano pozycję", "Informacja");
+                    if (validate())
+                    {
+                        editPosition(editedPosition);
+                        MessageBox.Show("Edytowano pozycję", "Informacja");
+                    }
                     break;
                 case FormAction.Search:
                     searchPosition(out positions);
@@ -385,6 +391,32 @@ namespace Biblioteka.Forms
             MagazineNumber magazineNumber = (MagazineNumber)position;
 
             magazineSpinner.Text = magazineNumber.Magazine.Title;
+        }
+
+        private bool validate()
+        {
+            if (txtBoxName.Text.Count() == 0 || txtBoxEdition.Text.Count() == 0 || txtBoxProducer.Text.Count() == 0 || txbBoxIsbn.Text.Count() == 0)
+            {
+                MessageBox.Show("Wszystkie pola muszą być uzupełnione");
+                return false;
+            }
+            if (datePicker.Value > DateTime.Today)
+            {
+                MessageBox.Show("Data publikacji jest błędna");
+                return false;
+            }
+            if (lstViewSelectedBook.Items.Count == 0)
+            {
+                MessageBox.Show("Wybierz książkę/i");
+                return false;
+            }
+            if (!txbBoxIsbn.Text.All(x => Char.IsDigit(x) || x == '-'))
+            {
+                MessageBox.Show("Nieprawidłowy ISBN");
+                return false;
+            }
+
+            return true;
         }
     }
 }

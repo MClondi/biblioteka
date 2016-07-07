@@ -46,10 +46,12 @@ namespace Biblioteka.Forms
             switch (formAction)
             {
                 case FormAction.Add:
-                    AddPublisher();
+                    if (!AddPublisher())
+                        return;
                     break;
                 case FormAction.Edit:
-                    EditPublisher();
+                    if (!EditPublisher())
+                        return;
                     break;
                 case FormAction.Search:
                     SearchPublisher(out publishers);
@@ -61,16 +63,28 @@ namespace Biblioteka.Forms
             this.Close();
         }
 
-        private void AddPublisher()
+        private bool AddPublisher()
         {
+            if (textBoxName.Text.Count() == 0)
+            {
+                MessageBox.Show("Nazwa nie może być pusta");
+                return false;
+            }
             Publisher result = new Publisher();
             result.Name = textBoxName.Text;
             dbContext.Publishers.Add(result);
+            return true;
         }
 
-        private void EditPublisher()
+        private bool EditPublisher()
         {
+            if (textBoxName.Text.Count() == 0)
+            {
+                MessageBox.Show("Nazwa nie może być pusta");
+                return false;
+            }
             editedPublisher.Name = textBoxName.Text;
+            return true;
         }
 
         private void SearchPublisher(out List<Publisher> publishers)

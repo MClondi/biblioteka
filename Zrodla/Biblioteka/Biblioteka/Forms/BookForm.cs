@@ -65,10 +65,12 @@ namespace Biblioteka.Forms
             switch (formAction)
             {
                 case FormAction.Add:
-                    AddBook();
+                    if (!AddBook())
+                        return;
                     break;
                 case FormAction.Edit:
-                    EditBook(editedBook);
+                    if (!EditBook(editedBook))
+                        return;
                     break;
                 case FormAction.Search:
                     SearchBook(out books);
@@ -80,15 +82,30 @@ namespace Biblioteka.Forms
             this.Close();
         }
 
-        private void AddBook()
+        private bool AddBook()
         {
+          
             Book book = new Book();
-            EditBook(book);
+            if (!EditBook(book))
+            {
+                return false;
+            }
             dbContext.Books.Add(book);
+            return true;
         }
 
-        private void EditBook(Book editedBook)
+        private bool EditBook(Book editedBook)
         {
+            if (textBoxTitle.Text.Count() == 0)
+            {
+                MessageBox.Show("Nazwa nie może być pusta");
+                return false;
+            }
+            if (lstViewAddedAuthors.Items.Count == 0)
+            {
+                MessageBox.Show("Lista autorów nie może być pusta");
+                return false;
+            }
             editedBook.Title = textBoxTitle.Text;
             editedBook.GenreId = dbContext.Genres.Where(g => g.Name == genreSpinner.Text).FirstOrDefault().Id;
             editedBook.Genre = dbContext.Genres.Where(g => g.Name == genreSpinner.Text).FirstOrDefault();
@@ -103,6 +120,7 @@ namespace Biblioteka.Forms
                 authorship.Author = author;
                 dbContext.Authorships.Add(authorship);
             }
+            return true;
         }
 
         private void SearchBook(out List<Book> books)

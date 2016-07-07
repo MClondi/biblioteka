@@ -46,10 +46,12 @@ namespace Biblioteka.Forms
             switch (formAction)
             {
                 case FormAction.Add:
-                    AddGenre();
+                    if (!AddGenre())
+                        return;
                     break;
                 case FormAction.Edit:
-                    EditGenre();
+                    if (!EditGenre())
+                        return;
                     break;
                 case FormAction.Search:
                     SearchGenre(out genres);
@@ -61,16 +63,28 @@ namespace Biblioteka.Forms
             this.Close();
         }
 
-        private void AddGenre()
+        private bool AddGenre()
         {
+            if (textBoxName.Text.Count() == 0)
+            {
+                MessageBox.Show("Nazwa nie może być pusta");
+                return false;
+            }
             Genre result = new Genre();
             result.Name = textBoxName.Text;
             dbContext.Genres.Add(result);
+            return true;
         }
 
-        private void EditGenre()
+        private bool EditGenre()
         {
+            if (textBoxName.Text.Count() == 0)
+            {
+                MessageBox.Show("Nazwa nie może być pusta");
+                return false;
+            }
             editedGenre.Name = textBoxName.Text;
+            return true;
         }
 
         private void SearchGenre(out List<Genre> publishers)

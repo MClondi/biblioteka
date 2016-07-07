@@ -47,13 +47,17 @@ namespace Biblioteka.Forms
         {
             List<Author> authors = null;
 
+
+
             switch(formAction)
             {
                 case FormAction.Add:
-                    AddAuthor();
+                    if (!AddAuthor())
+                        return;
                     break;
                 case FormAction.Edit:
-                    EditAuthor();
+                    if (!EditAuthor())
+                        return;
                     break;
                 case FormAction.Search:
                     SearchAuthor(out authors);
@@ -65,20 +69,52 @@ namespace Biblioteka.Forms
             this.Close();
         }
 
-        private void AddAuthor()
+        private bool AddAuthor()
         {
+            if (textBoxName.Text.Count() == 0 || textBoxSurname.Text.Count() == 0)
+            {
+                MessageBox.Show("Imie i nazwisko nie może być puste");
+                return false;
+            }
+            if (textBoxName.Text.Any(Char.IsDigit) || textBoxSurname.Text.Any(Char.IsDigit)){
+                MessageBox.Show("Imie i nazwisko nie może zawierać cyfr");
+                return false;
+            }
+            if (dateTimePicker1.Value >= DateTime.Today) {
+                MessageBox.Show("Ten autor jeszcze się nie urodził");
+                return false;
+            }
+
             Author result = new Author();
             result.Name = textBoxName.Text;
             result.Surname = textBoxSurname.Text;
             result.BirthDate = dateTimePicker1.Value;
             dbContext.Authors.Add(result);
+            return true;
         }
 
-        private void EditAuthor()
+        private bool EditAuthor()
         {
+            if (textBoxName.Text.Count() == 0 || textBoxSurname.Text.Count() == 0)
+            {
+                MessageBox.Show("Imie i nazwisko nie może być puste");
+                return false;
+            }
+            if (textBoxName.Text.Any(Char.IsDigit) || textBoxSurname.Text.Any(Char.IsDigit))
+            {
+                MessageBox.Show("Imie i nazwisko nie może zawierać cyfr");
+                return false;
+            }
+            if (dateTimePicker1.Value >= DateTime.Today)
+            {
+                MessageBox.Show("Ten autor jeszcze się nie urodził");
+                return false;
+            }
+
             editedAuthor.Name = textBoxName.Text;
             editedAuthor.Surname = textBoxSurname.Text;
             editedAuthor.BirthDate = dateTimePicker1.Value;
+            return true;
         }
 
         private void SearchAuthor(out List<Author> authors)

@@ -80,11 +80,31 @@ namespace Biblioteka.Forms
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+            if (dateTimePicker1.Value > dateTimePicker2.Value)
+            {
+                MessageBox.Show("Błędny zakres dat");
+                return;
+            }
+            if (dateTimePicker1.Value > DateTime.Today)
+            {
+                MessageBox.Show("Nie istnieją rekordy dla dat w przyszłości");
+                return;
+            }
             generateReturns();
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
+            if (dateTimePicker1.Value > dateTimePicker2.Value)
+            {
+                MessageBox.Show("Błędny zakres dat");
+                return;
+            }
+            if (dateTimePicker2.Value > DateTime.Today)
+            {
+                MessageBox.Show("Nie istnieją rekordy dla dat w przyszłości");
+                return;
+            }
             generateReturns();
         }
 

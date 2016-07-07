@@ -44,6 +44,11 @@ namespace Biblioteka.Forms
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            if (!txtBoxAmount.Text.All(Char.IsDigit))
+            {
+                MessageBox.Show("Tylko cyfry");
+                return;
+            }
             
             switch (formAction)
             {

@@ -36,7 +36,7 @@ namespace Biblioteka.Forms
 
             if (query.ToList().Count < 1)
             {
-                MessageBox.Show("Złe hasło lub nazwa użytkownika", "Niepowodzenie");
+                MessageBox.Show("Nieprawidłowe hasło lub nazwa użytkownika", "Niepowodzenie");
             } 
             else
             {
@@ -88,6 +88,11 @@ namespace Biblioteka.Forms
                     this.MinimizeBox = false;
                 }
             }
+        }
+
+        private void txtBxUsername_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

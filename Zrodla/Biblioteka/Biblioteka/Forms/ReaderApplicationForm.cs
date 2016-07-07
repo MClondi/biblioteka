@@ -35,6 +35,21 @@ namespace Biblioteka.Forms
 
         private void send_Click(object sender, EventArgs e)
         {
+            if (textBoxName.Text.Count() == 0 || textBoxSurname.Text.Count() == 0 || textBoxTel.Text.Count() == 0 || textBoxStreet.Text.Count() == 0 || textBoxStrNum.Text.Count() == 0 || textBoxCity.Text.Count() == 0 ||  textBoxPostal.Text.Count() == 0 )
+            {
+                MessageBox.Show("Wszystkie pola muszą być uzupełnione");
+                return;
+            }
+            if (!textBoxTel.Text.All(Char.IsDigit))
+            {
+                MessageBox.Show("Telefon może zawierać tylko cyfry");
+                return;
+            }
+            if (!textBoxPostal.Text.All(x => Char.IsDigit(x) || x == '-'))
+            {
+                MessageBox.Show("Nieprawidłowy kod pocztowy");
+                return;
+            }
 
             var applicationData = new ReaderApplicationData
             {

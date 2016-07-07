@@ -43,6 +43,13 @@ namespace Biblioteka.Forms
                 return;
             }
 
+            if (datePicker.Value < DateTime.Today)
+            {
+                MessageBox.Show("Data oddania powinna być późniejsza");
+                return;
+            }
+
+
             MessageBox.Show("Wypożyczono zasób!", "Informacja");
             this.Close();
         }
