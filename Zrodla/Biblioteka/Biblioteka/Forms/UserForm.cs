@@ -60,7 +60,6 @@ namespace Biblioteka.Forms
                 }
 
             }
-
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -101,6 +100,10 @@ namespace Biblioteka.Forms
 
                         dbContext.Reservations.Add(reservation);
                         MessageBox.Show("Twoja rezerwacja trwa do " + reservation.RealizationDate.ToString(), "Informacja");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Zasób jest zarezerwowany", "Błąd");
                     }
                 }
                 else

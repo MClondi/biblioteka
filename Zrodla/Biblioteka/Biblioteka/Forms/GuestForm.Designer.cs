@@ -106,7 +106,7 @@
             this.Controls.Add(this.btnSearchResource);
             this.Controls.Add(this.lstViewBooksAndUsers);
             this.Name = "GuestForm";
-            this.Text = "Panel użytkownika";
+            this.Text = "Panel gościa";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GuestForm_FormClosing);
             this.ResumeLayout(false);
 

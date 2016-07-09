@@ -45,8 +45,31 @@ namespace Biblioteka.Forms
             }
             else
             {
-                MessageBox.Show("Zasób niedostępny!", "Błąd");
-                return;
+                List<Borrowing> borrowings = dbContext.Borrowings
+                                            .Include("User")
+                                            .Include("Reader")
+                                            .Include("Resource")
+                                            .Where(b => b.ResourceId == resource.Id)
+                                            .Where(b => b.ReturnDate == null)
+                                            .ToList();
+
+                int count = 0;
+
+                if (borrowings != null)
+                {
+                    count = borrowings.Count;
+                    count = DbUtils.IsResourceReserved(dbContext, resource) ? count + 1 : count;
+                }
+
+                if (count < resource.Amount)
+                {
+                    BorrowResource();
+                }
+                else
+                {
+                    MessageBox.Show("Zasób niedostępny!", "Błąd");
+                    return;
+                }
             }    
 
             MessageBox.Show("Wypożyczono zasób!", "Informacja");

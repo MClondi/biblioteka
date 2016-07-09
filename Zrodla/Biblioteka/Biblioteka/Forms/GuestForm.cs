@@ -43,13 +43,17 @@ namespace Biblioteka.Forms
 
                     if (DbUtils.IsResourceBorrowed(dbContext, resource))
                     {
-
-                        MessageBox.Show("Zasób niedostępny");
+                        if (DbUtils.IsResourceReserved(dbContext, resource))
+                            MessageBox.Show("Zasób wypożyczony i zarezerwowany");
+                        else
+                            MessageBox.Show("Zasób wypożyczony");
                     }
                     else
                     {
-
-                        MessageBox.Show("Zasób dostępny");
+                        if (DbUtils.IsResourceReserved(dbContext, resource))
+                            MessageBox.Show("Zasób zarezerwowany");
+                        else
+                            MessageBox.Show("Zasób dostępny");
                     }
                 }
                 else
@@ -57,9 +61,7 @@ namespace Biblioteka.Forms
 
                     MessageBox.Show("Nastąpił błąd.");
                 }
-
-            }
-            
+            }            
         }
 
         private void btnSearchResource_Click(object sender, EventArgs e)
