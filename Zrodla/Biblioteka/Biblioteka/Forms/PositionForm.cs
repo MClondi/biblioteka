@@ -123,7 +123,7 @@ namespace Biblioteka.Forms
         {
             BookForm searchBook = new BookForm(dbContext, true);
             searchBook.bookSaved += new EventHandler<List<Book>>(bookSaved);
-            searchBook.Show();
+            searchBook.ShowDialog();
         }
 
         void bookSaved(object sender, List<Book> books)

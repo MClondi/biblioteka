@@ -96,7 +96,7 @@ namespace Biblioteka.Forms
         private void btnUpdateUserAccount_Click(object sender, EventArgs e)
         {
             ReaderApplicationForm raf = new ReaderApplicationForm(userContext ,dbContext);
-            raf.Show();
+            raf.ShowDialog();
         }
 
         private void UserForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -140,7 +140,7 @@ namespace Biblioteka.Forms
         private void btnSearchResource_Click(object sender, EventArgs e)
         {
             SearchResource sr = new SearchResource(dbContext, searchClicked);
-            sr.Show();
+            sr.ShowDialog();
             BookEdition eb = new BookEdition();            
         }
 

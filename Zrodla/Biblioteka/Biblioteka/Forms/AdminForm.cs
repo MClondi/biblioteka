@@ -50,7 +50,7 @@ namespace Biblioteka.Forms
         {
             AddUser newUser = new AddUser(false, dbContext);
             newUser.userSaved += new EventHandler(userSaved);
-            newUser.Show();
+            newUser.ShowDialog();
         }
 
         private void btnEditUser_Click(object sender, EventArgs e)
@@ -59,14 +59,14 @@ namespace Biblioteka.Forms
             {
                 AddUser editUser = new AddUser(getSelectedUser(), dbContext);
                 editUser.userSaved += new EventHandler(userSaved);
-                editUser.Show();
+                editUser.ShowDialog();
             }
         }
 
         private void btnSearchUser_Click(object sender, EventArgs e)
         {
             SearchUser searchUserForm = new SearchUser(dbContext, searchClicked);
-            searchUserForm.Show();
+            searchUserForm.ShowDialog();
         }
 
         private void refreshListView(List<User> users)

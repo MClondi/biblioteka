@@ -65,7 +65,7 @@ namespace Biblioteka.Forms
         private void btnSearchResource_Click(object sender, EventArgs e)
         {
             SearchResource sr = new SearchResource(dbContext, searchClicked);
-            sr.Show();
+            sr.ShowDialog();
         }
 
         private void refreshListView(List<Resource> resources)

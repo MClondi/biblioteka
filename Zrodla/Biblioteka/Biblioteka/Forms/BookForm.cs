@@ -177,7 +177,7 @@ namespace Biblioteka.Forms
         {
             AuthorForm searchAuthor = new AuthorForm(dbContext, true);
             searchAuthor.authorSaved += new EventHandler<List<Author>>(authorSaved);
-            searchAuthor.Show();
+            searchAuthor.ShowDialog();
         }
 
         void authorSaved(object sender, List<Author> authors)

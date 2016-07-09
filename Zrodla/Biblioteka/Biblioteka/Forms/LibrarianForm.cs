@@ -57,7 +57,7 @@ namespace Biblioteka.Forms
         private void btnSearchUser_Click(object sender, EventArgs e)
         {
             SearchUser searchUserForm = new SearchUser(dbContext, searchUserClicked);
-            searchUserForm.Show();
+            searchUserForm.ShowDialog();
         }
         
         void searchUserClicked(object sender, List<User> searchResults)
@@ -260,7 +260,7 @@ namespace Biblioteka.Forms
             if (reader != null && resource != null)
             {
                 BorrowingForm addBorrowing = new BorrowingForm(dbContext, resource, reader, librarian);
-                addBorrowing.Show();
+                addBorrowing.ShowDialog();
             }
             else
             {
@@ -407,7 +407,7 @@ namespace Biblioteka.Forms
             if (reader != null && resource != null)
             {
                 ReservationForm addReservation = new ReservationForm(dbContext, resource, reader, librarian);
-                addReservation.Show();
+                addReservation.ShowDialog();
             }
             else
             {
@@ -450,7 +450,7 @@ namespace Biblioteka.Forms
         {
             AuthorForm addAuthor = new AuthorForm(dbContext);
             addAuthor.authorSaved += new EventHandler<List<Author>>(authorSaved);
-            addAuthor.Show();
+            addAuthor.ShowDialog();
         }
 
         private void btnEditAuthor_Click(object sender, EventArgs e)
@@ -461,7 +461,7 @@ namespace Biblioteka.Forms
             {
                 AuthorForm editAuthor = new AuthorForm(dbContext, author);
                 editAuthor.authorSaved += new EventHandler<List<Author>>(authorSaved);
-                editAuthor.Show();
+                editAuthor.ShowDialog();
             }
             else
             {
@@ -475,9 +475,20 @@ namespace Biblioteka.Forms
 
             if (selectedAuthor != null)
             {
-                dbContext.Authors.Remove(selectedAuthor);
-                dbContext.SaveChanges();
-                RefreshAuthorListView();
+                List<Authorship> authorships = dbContext.Authorships
+                                                .Where(a => a.AuthorId == selectedAuthor.Id)
+                                                .ToList();
+
+                if (authorships == null)
+                {
+                    dbContext.Authors.Remove(selectedAuthor);
+                    dbContext.SaveChanges();
+                    RefreshAuthorListView();
+                }
+                else
+                {
+                    MessageBox.Show("Istnieją dzieła tego autora, nie możesz go usunąć!", "Błąd");
+                }
             }
         }
 
@@ -485,7 +496,7 @@ namespace Biblioteka.Forms
         {
             AuthorForm searchAuthor = new AuthorForm(dbContext, true);
             searchAuthor.authorSaved += new EventHandler<List<Author>>(authorSaved);
-            searchAuthor.Show();
+            searchAuthor.ShowDialog();
         }
 
         void authorSaved(object sender, List<Author> authors)
@@ -504,7 +515,7 @@ namespace Biblioteka.Forms
         {
             PublisherForm addPublisher = new PublisherForm(dbContext);
             addPublisher.publisherSaved += new EventHandler<List<Publisher>>(publisherSaved);
-            addPublisher.Show();
+            addPublisher.ShowDialog();
         }
 
         private void btnEditPublisher_Click(object sender, EventArgs e)
@@ -515,7 +526,7 @@ namespace Biblioteka.Forms
             {
                 PublisherForm editPublisher = new PublisherForm(dbContext, publisher);
                 editPublisher.publisherSaved += new EventHandler<List<Publisher>>(publisherSaved);
-                editPublisher.Show();
+                editPublisher.ShowDialog();
             }
             else
             {
@@ -549,7 +560,7 @@ namespace Biblioteka.Forms
         {
             PublisherForm searchPublisher = new PublisherForm(dbContext, true);
             searchPublisher.publisherSaved += new EventHandler<List<Publisher>>(publisherSaved);
-            searchPublisher.Show();
+            searchPublisher.ShowDialog();
         }
 
         void publisherSaved(object sender, List<Publisher> publishers)
@@ -582,7 +593,7 @@ namespace Biblioteka.Forms
         {
             GenreForm addGenre = new GenreForm(dbContext);
             addGenre.genreSaved += new EventHandler<List<Genre>>(genreSaved);
-            addGenre.Show();
+            addGenre.ShowDialog();
         }
 
         private void btnEditGenre_Click(object sender, EventArgs e)
@@ -593,7 +604,7 @@ namespace Biblioteka.Forms
             {
                 GenreForm editGenre = new GenreForm(dbContext, genre);
                 editGenre.genreSaved += new EventHandler<List<Genre>>(genreSaved);
-                editGenre.Show();
+                editGenre.ShowDialog();
             }
             else
             {
@@ -626,7 +637,7 @@ namespace Biblioteka.Forms
         {
             GenreForm searchGenre = new GenreForm(dbContext, true);
             searchGenre.genreSaved += new EventHandler<List<Genre>>(genreSaved);
-            searchGenre.Show();
+            searchGenre.ShowDialog();
         }
 
         void genreSaved(object sender, List<Genre> genres)
@@ -660,7 +671,7 @@ namespace Biblioteka.Forms
         {
             BookForm addBook = new BookForm(dbContext);
             addBook.bookSaved += new EventHandler<List<Book>>(bookSaved);
-            addBook.Show();
+            addBook.ShowDialog();
         }
 
         private void btnEditBook_Click(object sender, EventArgs e)
@@ -671,7 +682,7 @@ namespace Biblioteka.Forms
             {
                 BookForm editBook = new BookForm(dbContext, book);
                 editBook.bookSaved += new EventHandler<List<Book>>(bookSaved);
-                editBook.Show();
+                editBook.ShowDialog();
             }
             else
             {
@@ -682,13 +693,25 @@ namespace Biblioteka.Forms
         private void btnDeleteBook_Click(object sender, EventArgs e)
         {
             Book selectedBook = GuiUtils.GetSelected<Book>(lstViewBooks, bookTagSet);
-            dbContext.Authorships.RemoveRange(selectedBook.Authorship);
+            
 
             if (selectedBook != null)
             {
-                dbContext.Books.Remove(selectedBook);
-                dbContext.SaveChanges();
-                RefreshBooksListView();
+                List<BookEdition> positions = dbContext.Positions.OfType<BookEdition>()
+                                            .Where(p => p.BookId == selectedBook.Id)
+                                            .ToList();
+
+                if (positions == null)
+                {
+                    dbContext.Authorships.RemoveRange(selectedBook.Authorship);
+                    dbContext.Books.Remove(selectedBook);
+                    dbContext.SaveChanges();
+                    RefreshBooksListView();
+                }
+                else
+                {
+                    MessageBox.Show("Istnieją pozycje powiązane z tą książką, nie możesz jej usunąć!", "Błąd");
+                }
             }
         }
 
@@ -696,7 +719,7 @@ namespace Biblioteka.Forms
         {
             BookForm searchBook = new BookForm(dbContext, true);
             searchBook.bookSaved += new EventHandler<List<Book>>(bookSaved);
-            searchBook.Show();
+            searchBook.ShowDialog();
         }
 
         void bookSaved(object sender, List<Book> books)
@@ -715,7 +738,7 @@ namespace Biblioteka.Forms
         {
             MagazineForm addMagazine = new MagazineForm(dbContext);
             addMagazine.magazineSaved += new EventHandler<List<Magazine>>(magazineSaved);
-            addMagazine.Show();
+            addMagazine.ShowDialog();
         }
 
         private void btnEditMagazine_Click(object sender, EventArgs e)
@@ -726,7 +749,7 @@ namespace Biblioteka.Forms
             {
                 MagazineForm editMagazine = new MagazineForm(dbContext, magazine);
                 editMagazine.magazineSaved += new EventHandler<List<Magazine>>(magazineSaved);
-                editMagazine.Show();
+                editMagazine.ShowDialog();
             }
             else
             {
@@ -759,7 +782,7 @@ namespace Biblioteka.Forms
         {
             MagazineForm searchMagazine = new MagazineForm(dbContext, true);
             searchMagazine.magazineSaved += new EventHandler<List<Magazine>>(magazineSaved);
-            searchMagazine.Show();
+            searchMagazine.ShowDialog();
         }
 
         void magazineSaved(object sender, List<Magazine> magazines)
@@ -791,7 +814,7 @@ namespace Biblioteka.Forms
         private void btnAddPosition_Click(object sender, EventArgs e)
         {
             PositionForm addPosition = new PositionForm(dbContext);
-            addPosition.Show();
+            addPosition.ShowDialog();
         }
 
         private void btnEditPosition_Click(object sender, EventArgs e)
@@ -801,7 +824,7 @@ namespace Biblioteka.Forms
             if(position != null)
             {
                 PositionForm editPosition = new PositionForm(dbContext, position);
-                editPosition.Show();
+                editPosition.ShowDialog();
             }
             else
             {
@@ -815,9 +838,20 @@ namespace Biblioteka.Forms
 
             if (selectedPosition != null)
             {
-                dbContext.Positions.Remove(selectedPosition);
-                cachedPositions.Remove(selectedPosition);
-                dbContext.SaveChanges();
+                List<Resource> resources = dbContext.Resources
+                                            .Where(r => r.PositionId == selectedPosition.PositionId)
+                                            .ToList();
+                if(resources == null)
+                {
+                    dbContext.Positions.Remove(selectedPosition);
+                    cachedPositions.Remove(selectedPosition);
+                    dbContext.SaveChanges();                     
+                }
+                else
+                {
+                    MessageBox.Show("Istnieją zasoby powiązane z tą pozycją, nie możesz jej usunąć!", "Błąd");
+                }
+                
             }
             positionSaved(sender, cachedPositions);
         }
@@ -826,7 +860,7 @@ namespace Biblioteka.Forms
         {       
             PositionForm searchPosition = new PositionForm(dbContext, true);
             searchPosition.positionSaved += new EventHandler<List<Position>>(positionSaved);
-            searchPosition.Show();
+            searchPosition.ShowDialog();
         }
 
         void positionSaved(object sender, List<Position> positions)
@@ -907,7 +941,7 @@ namespace Biblioteka.Forms
         {
             ResourceForm addResource = new ResourceForm(dbContext, (Position)GuiUtils.GetSelected<Position>(lstViewPositions, positionTagSet));
             if(!addResource.IsDisposed)
-                addResource.Show();
+                addResource.ShowDialog();
         }
 
         private void btnEditResource_Click(object sender, EventArgs e)
@@ -917,7 +951,7 @@ namespace Biblioteka.Forms
             if(resource != null)
             {
                 ResourceForm editResource = new ResourceForm(dbContext, resource);
-                editResource.Show();
+                editResource.ShowDialog();
             }
             else
             {
@@ -931,9 +965,23 @@ namespace Biblioteka.Forms
 
             if (selectedResource != null)
             {
-                dbContext.Resources.Remove(selectedResource);
-                cachedResources.Remove(selectedResource);
-                dbContext.SaveChanges();
+                List<Borrowing> borrowings = dbContext.Borrowings
+                                                .Where(b => b.ResourceId == selectedResource.Id)
+                                                .ToList();
+                List<Reservation> reservations = dbContext.Reservations
+                                                    .Where(r => r.ResourceId == selectedResource.Id)
+                                                    .ToList();
+
+                if (borrowings == null && reservations == null)
+                {
+                    dbContext.Resources.Remove(selectedResource);
+                    cachedResources.Remove(selectedResource);
+                    dbContext.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("Dany zasób jest wypożyczony lub zarezerwowany, nie możesz go usunąć!", "Błąd");
+                }
             }
 
             searchResourceClicked(sender, cachedResources);
@@ -942,7 +990,7 @@ namespace Biblioteka.Forms
         private void btnSearchResource_Click_1(object sender, EventArgs e)
         {
             SearchResource sr = new SearchResource(dbContext, searchResourceClicked);
-            sr.Show();
+            sr.ShowDialog();
         }
 
         void searchResourceClicked(object sender, List<Resource> results)
@@ -1019,6 +1067,8 @@ namespace Biblioteka.Forms
             }
         }
 
+        // Other 
+
         private void helpButton_Click(object sender, EventArgs e)
         {
             help = !help;
@@ -1041,7 +1091,55 @@ namespace Biblioteka.Forms
         private void btnRaport_Click(object sender, EventArgs e)
         {
             ReportForm form = new ReportForm(dbContext);
-            form.Show();
+            form.ShowDialog();
+        }
+
+        private void btnShowReaderApplications_Click(object sender, EventArgs e)
+        {
+            RefreshReaderApplications();
+        }
+
+        private void RefreshReaderApplications()
+        {
+            readerApplicationTagSet.Clear();
+            lstViewActions.Items.Clear();
+            lstViewActions.Columns.Clear();
+            lstViewActions.Columns.Add("Login");
+            lstViewActions.Columns.Add("Imię");
+            lstViewActions.Columns.Add("Nazwisko");
+            lstViewActions.Columns.Add("Status");
+
+            List<ReaderApplication> applications = dbContext.ReaderApplications
+                                            .Include("Reader")
+                                            .Where(a => a.Status.Equals("N"))
+                                            .ToList();
+
+            foreach (ReaderApplication application in applications)
+            {
+                string[] row = {application.Reader.User.Login, application.Reader.User.Name, 
+                                   application.Reader.User.Surname, application.Status };
+
+                ListViewItem item = new ListViewItem(row);
+                item.Tag = application.GetHashCode();
+                readerApplicationTagSet.Add(item.Tag.ToString(), application);
+                lstViewActions.Items.Add(item);
+            }
+        }
+
+        private void btnHandleApplication_Click(object sender, EventArgs e)
+        {
+            ReaderApplication application = (ReaderApplication)GuiUtils.GetSelected<ReaderApplication>(lstViewActions, readerApplicationTagSet);
+
+            if (application != null)
+            {
+                HandleReaderApplicationForm handleApplication = new HandleReaderApplicationForm(dbContext, application);
+                handleApplication.ShowDialog();
+                RefreshReaderApplications();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano wniosku!", "Błąd");
+            }
         }
 
    
