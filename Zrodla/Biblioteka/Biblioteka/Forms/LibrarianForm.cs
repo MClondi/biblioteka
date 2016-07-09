@@ -27,6 +27,7 @@ namespace Biblioteka.Forms
         private Dictionary<String, User> userTagSet = new Dictionary<string, User>();
         private Dictionary<String, Borrowing> borrowingTagSet = new Dictionary<string, Borrowing>();
         private Dictionary<String, Reservation> reservationTagSet = new Dictionary<string, Reservation>();
+        private Dictionary<String, ReaderApplication> readerApplicationTagSet = new Dictionary<string, ReaderApplication>();
 
         List<Position> cachedPositions;
         List<Resource> cachedResources;
@@ -454,9 +455,18 @@ namespace Biblioteka.Forms
 
         private void btnEditAuthor_Click(object sender, EventArgs e)
         {
-            AuthorForm editAuthor = new AuthorForm(dbContext, (Author) GuiUtils.GetSelected<Author>(lstViewAuthors, authorTagSet));
-            editAuthor.authorSaved += new EventHandler<List<Author>>(authorSaved);
-            editAuthor.Show();
+            Author author = (Author) GuiUtils.GetSelected<Author>(lstViewAuthors, authorTagSet);
+
+            if(author != null) 
+            {
+                AuthorForm editAuthor = new AuthorForm(dbContext, author);
+                editAuthor.authorSaved += new EventHandler<List<Author>>(authorSaved);
+                editAuthor.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano autora!", "Błąd");
+            }
         }
 
         private void btnDeleteAuthor_Click(object sender, EventArgs e)
@@ -499,9 +509,18 @@ namespace Biblioteka.Forms
 
         private void btnEditPublisher_Click(object sender, EventArgs e)
         {
-            PublisherForm editPublisher = new PublisherForm(dbContext, (Publisher)GuiUtils.GetSelected<Publisher>(lstViewPublishers, publisherTagSet));
-            editPublisher.publisherSaved += new EventHandler<List<Publisher>>(publisherSaved);
-            editPublisher.Show();
+            Publisher publisher = (Publisher)GuiUtils.GetSelected<Publisher>(lstViewPublishers, publisherTagSet);
+
+            if (publisher != null)
+            {
+                PublisherForm editPublisher = new PublisherForm(dbContext, publisher);
+                editPublisher.publisherSaved += new EventHandler<List<Publisher>>(publisherSaved);
+                editPublisher.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano wydawcy!", "Błąd");
+            }
         }
 
         private void btnDeletePublisher_Click(object sender, EventArgs e)
@@ -568,9 +587,18 @@ namespace Biblioteka.Forms
 
         private void btnEditGenre_Click(object sender, EventArgs e)
         {
-            GenreForm editGenre = new GenreForm(dbContext, (Genre)GuiUtils.GetSelected<Genre>(lstViewGenres, genreTagSet));
-            editGenre.genreSaved += new EventHandler<List<Genre>>(genreSaved);
-            editGenre.Show();
+            Genre genre = (Genre)GuiUtils.GetSelected<Genre>(lstViewGenres, genreTagSet);
+
+            if(genre != null)
+            {
+                GenreForm editGenre = new GenreForm(dbContext, genre);
+                editGenre.genreSaved += new EventHandler<List<Genre>>(genreSaved);
+                editGenre.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano rodzaju!", "Błąd");
+            }
         }
 
         private void btnDeleteGenre_Click(object sender, EventArgs e)
@@ -637,9 +665,18 @@ namespace Biblioteka.Forms
 
         private void btnEditBook_Click(object sender, EventArgs e)
         {
-            BookForm editBook = new BookForm(dbContext, (Book)GuiUtils.GetSelected<Book>(lstViewBooks, bookTagSet));
-            editBook.bookSaved += new EventHandler<List<Book>>(bookSaved);
-            editBook.Show();
+            Book book = (Book)GuiUtils.GetSelected<Book>(lstViewBooks, bookTagSet);
+
+            if(book != null)
+            {
+                BookForm editBook = new BookForm(dbContext, book);
+                editBook.bookSaved += new EventHandler<List<Book>>(bookSaved);
+                editBook.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano książki!", "Błąd");
+            }
         }
 
         private void btnDeleteBook_Click(object sender, EventArgs e)
@@ -683,9 +720,18 @@ namespace Biblioteka.Forms
 
         private void btnEditMagazine_Click(object sender, EventArgs e)
         {
-            MagazineForm editMagazine = new MagazineForm(dbContext, (Magazine)GuiUtils.GetSelected<Magazine>(lstViewMagazines, magazineTagSet));
-            editMagazine.magazineSaved += new EventHandler<List<Magazine>>(magazineSaved);
-            editMagazine.Show();
+            Magazine magazine =  (Magazine)GuiUtils.GetSelected<Magazine>(lstViewMagazines, magazineTagSet);
+
+            if(magazine != null)
+            {
+                MagazineForm editMagazine = new MagazineForm(dbContext, magazine);
+                editMagazine.magazineSaved += new EventHandler<List<Magazine>>(magazineSaved);
+                editMagazine.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano magazynu!", "Błąd");
+            }
         }
 
         private void btnDeleteMagazine_Click(object sender, EventArgs e)
@@ -750,8 +796,17 @@ namespace Biblioteka.Forms
 
         private void btnEditPosition_Click(object sender, EventArgs e)
         {
-            PositionForm editPosition = new PositionForm(dbContext, (Position)GuiUtils.GetSelected<Position>(lstViewPositions, positionTagSet));
-            editPosition.Show();
+            Position position = (Position)GuiUtils.GetSelected<Position>(lstViewPositions, positionTagSet);
+
+            if(position != null)
+            {
+                PositionForm editPosition = new PositionForm(dbContext, position);
+                editPosition.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano pozycji!", "Błąd");
+            }
         }
 
         private void btnDeletePosition_Click(object sender, EventArgs e)
@@ -857,8 +912,17 @@ namespace Biblioteka.Forms
 
         private void btnEditResource_Click(object sender, EventArgs e)
         {
-            ResourceForm editResource = new ResourceForm(dbContext, (Resource)GuiUtils.GetSelected<Resource>(lstViewResources, resourceTagSet));
-            editResource.Show();
+            Resource resource = (Resource)GuiUtils.GetSelected<Resource>(lstViewResources, resourceTagSet);
+
+            if(resource != null)
+            {
+                ResourceForm editResource = new ResourceForm(dbContext, resource);
+                editResource.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano autora!", "Błąd");
+            }
         }
 
         private void btnDeleteResource_Click(object sender, EventArgs e)

@@ -31,14 +31,14 @@ namespace Biblioteka.Forms
             switch (comboBoxReports.SelectedIndex)
             {
                 case 0:
-                    textBoxReport.Text = "ID\tData wypożyczenia\tData zwrotu\tId zasobu\tCzytelnik\tID\n";
+                    textBoxReport.Text = "ID\tData wypożyczenia\t\tData zwrotu\t\tId zasobu\t\tCzytelnik\t\tID\n";
                     generateReturns();
                     break;
                 case 1:
-                    textBoxReport.Text = "ID\tData wypożyczenia\tTermin\tId zasobu\tCzytelnik\tID\n";
+                    textBoxReport.Text = "ID\tData wypożyczenia\t\tTermin\t\t\tId zasobu\t\tCzytelnik\t\tID\n";
                     dbContext.Borrowings
                         .Where(x => x.ReturnDate == null).ToList()
-                        .ForEach(x => textBoxReport.Text += (x.Id + "\t" + x.BorrowingDate + "\t" + x.ReturnTerm + "\t" + x.ResourceId + "\t" + x.User.Name + x.User.Surname + "\t" + x.User.Id + "\n"));
+                        .ForEach(x => textBoxReport.Text += (x.Id + "\t" + x.BorrowingDate + "\t" + x.ReturnTerm + "\t" + x.ResourceId + "\t\t" + x.User.Name + x.User.Surname + "\t\t" + x.User.Id + "\n"));
                     break;
                 case 2:
                     textBoxReport.Text = "Imie\tNazwisko\tMiasto\tDom\tWypożyczenia\tRezerwacje\tDług\n";
@@ -116,7 +116,7 @@ namespace Biblioteka.Forms
                 .Where(x => x.ReturnDate != null)
                 .Where(x => x.ReturnDate > from)
                 .Where(x => x.ReturnDate < to).ToList()
-                .ForEach(x => textBoxReport.Text += (x.Id + "\t" + x.BorrowingDate + "\t" + x.ReturnDate + "\t" + x.ResourceId + "\t" + x.User.Name + x.User.Surname + "\t" + x.User.Id + "\n"));
+                .ForEach(x => textBoxReport.Text += (x.Id + "\t" + x.BorrowingDate + "\t" + x.ReturnDate + "\t" + x.ResourceId + "\t\t" + x.User.Name + x.User.Surname + "\t\t" + x.User.Id + "\n"));
                    
         }
     }
