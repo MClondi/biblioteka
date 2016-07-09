@@ -47,6 +47,7 @@
             this.btnAddAuthor = new System.Windows.Forms.Button();
             this.btnAddPosition = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnHandleApplication = new System.Windows.Forms.Button();
             this.btnShowReaderApplications = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnShowBorrowings = new System.Windows.Forms.Button();
@@ -101,7 +102,7 @@
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.helpButton = new System.Windows.Forms.Button();
             this.btnRaport = new System.Windows.Forms.Button();
-            this.btnHandleApplication = new System.Windows.Forms.Button();
+            this.btnPayDebt = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -317,15 +318,28 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnPayDebt);
             this.groupBox1.Controls.Add(this.btnHandleApplication);
             this.groupBox1.Controls.Add(this.btnShowReaderApplications);
             this.groupBox1.Controls.Add(this.btnSearchUser);
             this.groupBox1.Location = new System.Drawing.Point(22, 167);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(202, 139);
+            this.groupBox1.Size = new System.Drawing.Size(202, 171);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Użytkownicy";
+            // 
+            // btnHandleApplication
+            // 
+            this.helpProvider1.SetHelpString(this.btnHandleApplication, "Przycisk pozwalajacy wyszukac uzytkownika w bazie danych");
+            this.btnHandleApplication.Location = new System.Drawing.Point(45, 107);
+            this.btnHandleApplication.Name = "btnHandleApplication";
+            this.helpProvider1.SetShowHelp(this.btnHandleApplication, true);
+            this.btnHandleApplication.Size = new System.Drawing.Size(112, 24);
+            this.btnHandleApplication.TabIndex = 10;
+            this.btnHandleApplication.Text = "Obsłuż wniosek";
+            this.btnHandleApplication.UseVisualStyleBackColor = true;
+            this.btnHandleApplication.Click += new System.EventHandler(this.btnHandleApplication_Click);
             // 
             // btnShowReaderApplications
             // 
@@ -936,17 +950,17 @@
             this.btnRaport.UseVisualStyleBackColor = true;
             this.btnRaport.Click += new System.EventHandler(this.btnRaport_Click);
             // 
-            // btnHandleApplication
+            // btnPayDebt
             // 
-            this.helpProvider1.SetHelpString(this.btnHandleApplication, "Przycisk pozwalajacy wyszukac uzytkownika w bazie danych");
-            this.btnHandleApplication.Location = new System.Drawing.Point(45, 107);
-            this.btnHandleApplication.Name = "btnHandleApplication";
-            this.helpProvider1.SetShowHelp(this.btnHandleApplication, true);
-            this.btnHandleApplication.Size = new System.Drawing.Size(112, 24);
-            this.btnHandleApplication.TabIndex = 10;
-            this.btnHandleApplication.Text = "Obsłuż wniosek";
-            this.btnHandleApplication.UseVisualStyleBackColor = true;
-            this.btnHandleApplication.Click += new System.EventHandler(this.btnHandleApplication_Click);
+            this.helpProvider1.SetHelpString(this.btnPayDebt, "Przycisk pozwalajacy wyszukac uzytkownika w bazie danych");
+            this.btnPayDebt.Location = new System.Drawing.Point(45, 137);
+            this.btnPayDebt.Name = "btnPayDebt";
+            this.helpProvider1.SetShowHelp(this.btnPayDebt, true);
+            this.btnPayDebt.Size = new System.Drawing.Size(112, 24);
+            this.btnPayDebt.TabIndex = 11;
+            this.btnPayDebt.Text = "Wpłać karę";
+            this.btnPayDebt.UseVisualStyleBackColor = true;
+            this.btnPayDebt.Click += new System.EventHandler(this.btnPayDebt_Click);
             // 
             // LibrarianForm
             // 
@@ -1049,5 +1063,6 @@
         private System.Windows.Forms.Button btnShowReservations;
         private System.Windows.Forms.Button btnShowReaderApplications;
         private System.Windows.Forms.Button btnHandleApplication;
+        private System.Windows.Forms.Button btnPayDebt;
     }
 }

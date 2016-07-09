@@ -184,6 +184,12 @@
     <Compile Include="Forms\SearchUser.Designer.cs">
       <DependentUpon>SearchUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserDebtForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserDebtForm.Designer.cs">
+      <DependentUpon>UserDebtForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SearchUser.resx">
       <DependentUpon>SearchUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserDebtForm.resx">
+      <DependentUpon>UserDebtForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>

@@ -149,7 +149,7 @@ namespace Biblioteka.Forms
                     case "G":
                         row = GenerateGameRow(borrowing);
                         break;
-                    case "M":
+                    case "N":
                         row = GenerateMagazineNumberRow(borrowing);
                         break;
                 }
@@ -275,6 +275,15 @@ namespace Biblioteka.Forms
             if(borrowing != null)
             {
                 borrowing.ReturnDate = DateTime.Now;
+                if(borrowing.ReturnTerm < DateTime.Now)
+                {
+                    int penaltyDays = (int) DateTime.Now.Subtract(borrowing.ReturnTerm).TotalDays;
+                    int penalty = penaltyDays * 20;
+                    Reader reader = borrowing.Reader;
+                    reader.Debt += penalty;
+                    MessageBox.Show("Naliczono karę w wysokości " + (((double) penalty / 100)).ToString() + " zł.",
+                        "Informacja");
+                }
             }
             else
             {
@@ -283,7 +292,7 @@ namespace Biblioteka.Forms
             }
 
             dbContext.SaveChanges();
-            MessageBox.Show("Zaksięgowano wypożyczenie.", "Informacja");
+            MessageBox.Show("Zaksięgowano zwrot.", "Informacja");
         }
 
 
@@ -358,7 +367,7 @@ namespace Biblioteka.Forms
                     case "G":
                         row = GenerateGameRow(reservation);
                         break;
-                    case "M":
+                    case "N":
                         row = GenerateMagazineNumberRow(reservation);
                         break;
                 }
@@ -1139,6 +1148,21 @@ namespace Biblioteka.Forms
             else
             {
                 MessageBox.Show("Nie wybrano wniosku!", "Błąd");
+            }
+        }
+
+        private void btnPayDebt_Click(object sender, EventArgs e)
+        {
+            User temp = GuiUtils.GetSelected<User>(lstViewUsers, userTagSet);
+
+            if(userName != null)
+            {
+                UserDebtForm debtForm = new UserDebtForm(dbContext, temp.Reader);
+                debtForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano użytkownika!");
             }
         }
 

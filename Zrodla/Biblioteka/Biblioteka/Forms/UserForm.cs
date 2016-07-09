@@ -40,13 +40,17 @@ namespace Biblioteka.Forms
 
                     if (DbUtils.IsResourceBorrowed(dbContext, resource))
                     {
-
-                        MessageBox.Show("Zasób niedostępny");
+                        if(DbUtils.IsResourceReserved(dbContext, resource))
+                            MessageBox.Show("Zasób wypożyczony i zarezerwowany");
+                        else
+                            MessageBox.Show("Zasób wypożyczony");
                     }
                     else
                     {
-
-                        MessageBox.Show("Zasób dostępny");
+                        if (DbUtils.IsResourceReserved(dbContext, resource))
+                            MessageBox.Show("Zasób zarezerwowany");
+                        else
+                            MessageBox.Show("Zasób dostępny");
                     }
                 }
                 else
@@ -67,27 +71,69 @@ namespace Biblioteka.Forms
 
         private void btnReserveResource_Click(object sender, EventArgs e)
         {
-           
+            if (lstViewBooksAndUsers.SelectedItems.Count > 0)
+            {
+                Resource resource;
+                if (tagSet.TryGetValue(lstViewBooksAndUsers.SelectedItems[0].Tag.ToString(), out resource))
+                {
+
+                    if (!DbUtils.IsResourceReserved(dbContext, resource))
+                    {
+                        Reservation reservation = new Reservation();
+                        reservation.Reader = userContext.Reader;
+                        reservation.Resource = resource;
+
+                        if (DbUtils.IsResourceBorrowed(dbContext, resource))
+                        {
+                            Borrowing bor = dbContext.Borrowings
+                                            .Where(b => b.ReturnDate == null)
+                                            .Where(b => b.ResourceId == resource.Id)
+                                            .OrderBy(b => b.ReturnTerm)
+                                            .ToList()
+                                            .FirstOrDefault();
+                            
+                            reservation.RealizationDate = bor.ReturnTerm.AddMonths(1);
+                        }
+                        else
+                        {
+                            reservation.RealizationDate = DateTime.Now.AddMonths(1);
+                        }
+
+                        dbContext.Reservations.Add(reservation);
+                        MessageBox.Show("Twoja rezerwacja trwa do " + reservation.RealizationDate.ToString(), "Informacja");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nie wybrano zasobu", "Błąd");
+                }
+            }
+
+            dbContext.SaveChanges();
         }
 
         private void btnCheckBorrowedPositions_Click(object sender, EventArgs e)
         {
             BorrowedResources brform = new BorrowedResources();
+            List<Borrowing> borrowings = dbContext.Borrowings
+                                            .Where(b => b.ReaderId == userContext.Reader.Id)
+                                            .Where(b => b.ReturnDate == null)
+                                            .ToList();
 
-            foreach( Borrowing bor in userContext.Borrowing)
+            foreach (Borrowing bor in borrowings)
             {
           
                 if (bor.Resource.Position is Game)
                 {
-                   brform.addItem( ((Game)bor.Resource.Position).Name );
+                   brform.addItem( ((Game)bor.Resource.Position).Name + " do " + bor.ReturnTerm.ToString());
                 }
                 else if (bor.Resource.Position is MagazineNumber)
                 {
-                    brform.addItem( ((MagazineNumber)bor.Resource.Position).Magazine.Title );
+                    brform.addItem(((MagazineNumber)bor.Resource.Position).Magazine.Title + " do " + bor.ReturnTerm.ToString());
                 }
                 else if (bor.Resource.Position is BookEdition)
                 {
-                    brform.addItem(((BookEdition)bor.Resource.Position).Book.Title);
+                    brform.addItem(((BookEdition)bor.Resource.Position).Book.Title + " do " + bor.ReturnTerm.ToString());
                 }
             }
             brform.initialize();

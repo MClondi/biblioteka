@@ -82,9 +82,9 @@ namespace Biblioteka.Forms
 
         private void initSpinner()
         {
-            comboBoxType.Items.Add("Book");
-            comboBoxType.Items.Add("Game");
-            comboBoxType.Items.Add("Magazine");
+            comboBoxType.Items.Add("Książka");
+            comboBoxType.Items.Add("Gra");
+            comboBoxType.Items.Add("Numer magazynu");
             comboBoxType.SelectedIndex = (int)ResourceTypes.Book;
         }
 
