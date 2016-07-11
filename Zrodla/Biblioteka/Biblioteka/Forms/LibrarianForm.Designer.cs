@@ -47,6 +47,7 @@
             this.btnAddAuthor = new System.Windows.Forms.Button();
             this.btnAddPosition = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPayDebt = new System.Windows.Forms.Button();
             this.btnHandleApplication = new System.Windows.Forms.Button();
             this.btnShowReaderApplications = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -102,7 +103,7 @@
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.helpButton = new System.Windows.Forms.Button();
             this.btnRaport = new System.Windows.Forms.Button();
-            this.btnPayDebt = new System.Windows.Forms.Button();
+            this.btnClearDb = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -328,6 +329,18 @@
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Użytkownicy";
+            // 
+            // btnPayDebt
+            // 
+            this.helpProvider1.SetHelpString(this.btnPayDebt, "Przycisk pozwalajacy wyszukac uzytkownika w bazie danych");
+            this.btnPayDebt.Location = new System.Drawing.Point(45, 137);
+            this.btnPayDebt.Name = "btnPayDebt";
+            this.helpProvider1.SetShowHelp(this.btnPayDebt, true);
+            this.btnPayDebt.Size = new System.Drawing.Size(112, 24);
+            this.btnPayDebt.TabIndex = 11;
+            this.btnPayDebt.Text = "Wpłać karę";
+            this.btnPayDebt.UseVisualStyleBackColor = true;
+            this.btnPayDebt.Click += new System.EventHandler(this.btnPayDebt_Click);
             // 
             // btnHandleApplication
             // 
@@ -942,7 +955,7 @@
             // 
             // btnRaport
             // 
-            this.btnRaport.Location = new System.Drawing.Point(451, 11);
+            this.btnRaport.Location = new System.Drawing.Point(451, 12);
             this.btnRaport.Name = "btnRaport";
             this.btnRaport.Size = new System.Drawing.Size(127, 23);
             this.btnRaport.TabIndex = 52;
@@ -950,23 +963,22 @@
             this.btnRaport.UseVisualStyleBackColor = true;
             this.btnRaport.Click += new System.EventHandler(this.btnRaport_Click);
             // 
-            // btnPayDebt
+            // btnClearDb
             // 
-            this.helpProvider1.SetHelpString(this.btnPayDebt, "Przycisk pozwalajacy wyszukac uzytkownika w bazie danych");
-            this.btnPayDebt.Location = new System.Drawing.Point(45, 137);
-            this.btnPayDebt.Name = "btnPayDebt";
-            this.helpProvider1.SetShowHelp(this.btnPayDebt, true);
-            this.btnPayDebt.Size = new System.Drawing.Size(112, 24);
-            this.btnPayDebt.TabIndex = 11;
-            this.btnPayDebt.Text = "Wpłać karę";
-            this.btnPayDebt.UseVisualStyleBackColor = true;
-            this.btnPayDebt.Click += new System.EventHandler(this.btnPayDebt_Click);
+            this.btnClearDb.Location = new System.Drawing.Point(318, 12);
+            this.btnClearDb.Name = "btnClearDb";
+            this.btnClearDb.Size = new System.Drawing.Size(127, 23);
+            this.btnClearDb.TabIndex = 53;
+            this.btnClearDb.Text = "Czyść bazę";
+            this.btnClearDb.UseVisualStyleBackColor = true;
+            this.btnClearDb.Click += new System.EventHandler(this.btnClearDb_Click);
             // 
             // LibrarianForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 415);
+            this.Controls.Add(this.btnClearDb);
             this.Controls.Add(this.btnRaport);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.tabControl1);
@@ -1064,5 +1076,6 @@
         private System.Windows.Forms.Button btnShowReaderApplications;
         private System.Windows.Forms.Button btnHandleApplication;
         private System.Windows.Forms.Button btnPayDebt;
+        private System.Windows.Forms.Button btnClearDb;
     }
 }

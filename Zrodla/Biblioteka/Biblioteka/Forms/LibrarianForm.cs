@@ -1166,6 +1166,20 @@ namespace Biblioteka.Forms
             }
         }
 
+        private void btnClearDb_Click(object sender, EventArgs e)
+        {
+            List<Reservation> expiredReservations = dbContext.Reservations
+                                                        .Include("Resource")
+                                                        .Include("Reader")
+                                                        .Where(r => r.RealizationDate < DateTime.Now)
+                                                        .ToList();
+
+            dbContext.Reservations.RemoveRange(expiredReservations);
+            dbContext.SaveChanges();
+
+            MessageBox.Show("Usunięto nieaktualne rezerwacje", "Informacja");
+        }
+
    
 
       

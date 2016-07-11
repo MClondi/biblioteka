@@ -39,11 +39,11 @@ namespace Biblioteka.Forms
 
             if(DbUtils.IsResourceAvailable(dbContext, resource))
             {
-                BorrowResource();
+                borrowingOk = BorrowResource();
             }
             else if(DbUtils.IsResourceReservedForUser(dbContext, resource, reader))
             {
-                BorrowReservedResource();
+                borrowingOk = BorrowResource();
             }
             else
             {
@@ -56,31 +56,35 @@ namespace Biblioteka.Forms
             this.Close();
         }
 
-        private void BorrowResource()
+        private bool BorrowResource()
         {
-            Borrowing borrowing = new Borrowing();
-
-            borrowing.BorrowingDate = DateTime.Now;
-            borrowing.ReturnDate = null;
-            borrowing.ReturnTerm = datePicker.Value;
-            borrowing.Reader = reader;
-            borrowing.Resource = resource;
-            borrowing.User = librarian;
-
-            dbContext.Borrowings.Add(borrowing);
-            dbContext.SaveChanges();
-        }
-
-        private void BorrowReservedResource()
-        {
-            List<Reservation> reservations = dbContext.Reservations
+            if (!DbUtils.HasUserAlreadyBorrowedResource(dbContext, resource, reader))
+            {
+                List<Reservation> reservations = dbContext.Reservations
                                                 .Include("Reader")
                                                 .Include("Resource")
                                                 .Where(r => r.ReaderId == reader.Id)
                                                 .Where(r => r.ResourceId == resource.Id)
                                                 .ToList();
-            dbContext.Reservations.RemoveRange(reservations);
-            BorrowResource();
+                dbContext.Reservations.RemoveRange(reservations);
+
+                Borrowing borrowing = new Borrowing();
+
+                borrowing.BorrowingDate = DateTime.Now;
+                borrowing.ReturnDate = null;
+                borrowing.ReturnTerm = datePicker.Value;
+                borrowing.Reader = reader;
+                borrowing.Resource = resource;
+                borrowing.User = librarian;
+
+                dbContext.Borrowings.Add(borrowing);
+                dbContext.SaveChanges();
+
+                return true;
+            }
+
+            MessageBox.Show("Użytkownik już wypożyczył ten zasób!", "Błąd");
+            return false;
         }
 
         private void buttonExit_Click(object sender, EventArgs e)

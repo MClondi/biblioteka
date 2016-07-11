@@ -37,6 +37,10 @@
             this.btnCheckBorrowedPositions = new System.Windows.Forms.Button();
             this.helpButton = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.btnShowReservations = new System.Windows.Forms.Button();
+            this.btnShowResourceReservations = new System.Windows.Forms.Button();
+            this.btnShowApplications = new System.Windows.Forms.Button();
+            this.btnDeleteReservation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLogout
@@ -77,7 +81,7 @@
             // btnReserveResource
             // 
             this.helpProvider1.SetHelpString(this.btnReserveResource, "Przycisk pozwalajacy na zarezerwowanie zasobu");
-            this.btnReserveResource.Location = new System.Drawing.Point(12, 290);
+            this.btnReserveResource.Location = new System.Drawing.Point(12, 292);
             this.btnReserveResource.Name = "btnReserveResource";
             this.helpProvider1.SetShowHelp(this.btnReserveResource, true);
             this.btnReserveResource.Size = new System.Drawing.Size(112, 23);
@@ -92,7 +96,7 @@
             this.btnCheckIfResourceAvailable.Location = new System.Drawing.Point(248, 261);
             this.btnCheckIfResourceAvailable.Name = "btnCheckIfResourceAvailable";
             this.helpProvider1.SetShowHelp(this.btnCheckIfResourceAvailable, true);
-            this.btnCheckIfResourceAvailable.Size = new System.Drawing.Size(107, 52);
+            this.btnCheckIfResourceAvailable.Size = new System.Drawing.Size(107, 54);
             this.btnCheckIfResourceAvailable.TabIndex = 11;
             this.btnCheckIfResourceAvailable.Text = "Sprawdź dostępność";
             this.btnCheckIfResourceAvailable.UseVisualStyleBackColor = true;
@@ -102,10 +106,10 @@
             // 
             this.helpProvider1.SetHelpString(this.btnUpdateUserAccount, "Przycisk pozwalajacy na zgloszenie wniosku o aktualizacje karty klienta bibliotek" +
         "i");
-            this.btnUpdateUserAccount.Location = new System.Drawing.Point(366, 261);
+            this.btnUpdateUserAccount.Location = new System.Drawing.Point(361, 261);
             this.btnUpdateUserAccount.Name = "btnUpdateUserAccount";
             this.helpProvider1.SetShowHelp(this.btnUpdateUserAccount, true);
-            this.btnUpdateUserAccount.Size = new System.Drawing.Size(112, 52);
+            this.btnUpdateUserAccount.Size = new System.Drawing.Size(112, 54);
             this.btnUpdateUserAccount.TabIndex = 12;
             this.btnUpdateUserAccount.Text = "Zgłoś wniosek o aktualizację karty klienta";
             this.btnUpdateUserAccount.UseVisualStyleBackColor = true;
@@ -135,11 +139,60 @@
             this.helpButton.UseVisualStyleBackColor = true;
             this.helpButton.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnShowReservations
+            // 
+            this.helpProvider1.SetHelpString(this.btnShowReservations, "Przycisk pozwalajacy na zarezerwowanie zasobu");
+            this.btnShowReservations.Location = new System.Drawing.Point(130, 321);
+            this.btnShowReservations.Name = "btnShowReservations";
+            this.helpProvider1.SetShowHelp(this.btnShowReservations, true);
+            this.btnShowReservations.Size = new System.Drawing.Size(112, 52);
+            this.btnShowReservations.TabIndex = 15;
+            this.btnShowReservations.Text = "Przeglądaj moje rezerwacje";
+            this.btnShowReservations.UseVisualStyleBackColor = true;
+            // 
+            // btnShowResourceReservations
+            // 
+            this.helpProvider1.SetHelpString(this.btnShowResourceReservations, "Przycisk pozwalajacy na zarezerwowanie zasobu");
+            this.btnShowResourceReservations.Location = new System.Drawing.Point(248, 321);
+            this.btnShowResourceReservations.Name = "btnShowResourceReservations";
+            this.helpProvider1.SetShowHelp(this.btnShowResourceReservations, true);
+            this.btnShowResourceReservations.Size = new System.Drawing.Size(107, 52);
+            this.btnShowResourceReservations.TabIndex = 16;
+            this.btnShowResourceReservations.Text = "Przeglądaj rezerwacje zasobu";
+            this.btnShowResourceReservations.UseVisualStyleBackColor = true;
+            // 
+            // btnShowApplications
+            // 
+            this.helpProvider1.SetHelpString(this.btnShowApplications, "Przycisk pozwalajacy na zgloszenie wniosku o aktualizacje karty klienta bibliotek" +
+        "i");
+            this.btnShowApplications.Location = new System.Drawing.Point(361, 321);
+            this.btnShowApplications.Name = "btnShowApplications";
+            this.helpProvider1.SetShowHelp(this.btnShowApplications, true);
+            this.btnShowApplications.Size = new System.Drawing.Size(112, 52);
+            this.btnShowApplications.TabIndex = 17;
+            this.btnShowApplications.Text = "Przeglądaj złożone wnioski";
+            this.btnShowApplications.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteReservation
+            // 
+            this.helpProvider1.SetHelpString(this.btnDeleteReservation, "Przycisk pozwalajacy na zarezerwowanie zasobu");
+            this.btnDeleteReservation.Location = new System.Drawing.Point(12, 321);
+            this.btnDeleteReservation.Name = "btnDeleteReservation";
+            this.helpProvider1.SetShowHelp(this.btnDeleteReservation, true);
+            this.btnDeleteReservation.Size = new System.Drawing.Size(112, 52);
+            this.btnDeleteReservation.TabIndex = 18;
+            this.btnDeleteReservation.Text = "Usuń rezerwację";
+            this.btnDeleteReservation.UseVisualStyleBackColor = true;
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(495, 331);
+            this.ClientSize = new System.Drawing.Size(495, 390);
+            this.Controls.Add(this.btnDeleteReservation);
+            this.Controls.Add(this.btnShowApplications);
+            this.Controls.Add(this.btnShowResourceReservations);
+            this.Controls.Add(this.btnShowReservations);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.btnCheckBorrowedPositions);
             this.Controls.Add(this.btnUpdateUserAccount);
@@ -166,5 +219,9 @@
         private System.Windows.Forms.Button btnCheckBorrowedPositions;
         private System.Windows.Forms.Button helpButton;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Button btnShowReservations;
+        private System.Windows.Forms.Button btnShowResourceReservations;
+        private System.Windows.Forms.Button btnShowApplications;
+        private System.Windows.Forms.Button btnDeleteReservation;
     }
 }
