@@ -145,6 +145,7 @@ namespace Biblioteka.Forms
             }
             else
             {
+                genreSpinner.Text = bookToAdd.Genre.Name;
                 selectedBook = bookToAdd;
                 RefreshSelectedBookListView();
             } 
@@ -292,7 +293,14 @@ namespace Biblioteka.Forms
             txtBoxName.Enabled = false;
             txtBoxProducer.Enabled = false;
             txtBoxEdition.Enabled = false;
+            genreSpinner.Enabled = false;
             magazineSpinner.Enabled = false;
+
+            txtBoxName.Text = "";
+            txtBoxProducer.Text = "";
+            txtBoxEdition.Text = "";
+            genreSpinner.Text = "";
+            magazineSpinner.Text = "";
         }
 
         private void SetGameView()
@@ -306,6 +314,16 @@ namespace Biblioteka.Forms
             btnSelectBook.Enabled = false;
             button3.Enabled = false;
             button2.Enabled = false;
+
+            txbBoxIsbn.Text = "";
+            datePicker.Text = "";
+            publisherSpinner.Text = "";
+            magazineSpinner.Text = "";
+            lstViewSearchBook.Text = "";
+            lstViewSelectedBook.Text = "";
+            btnSelectBook.Text = "";
+            button3.Text = "";
+            button2.Text = "";
         }
 
         private void SetMagazineView()
@@ -321,6 +339,18 @@ namespace Biblioteka.Forms
             btnSelectBook.Enabled = false;
             button3.Enabled = false;
             button2.Enabled = false;
+
+            txtBoxName.Text = "";
+            txtBoxProducer.Text = "";
+            txtBoxEdition.Text = "";
+            txbBoxIsbn.Text = "";
+            publisherSpinner.Text = "";
+            genreSpinner.Text = "";
+            lstViewSearchBook.Text = "";
+            lstViewSelectedBook.Text = "";
+            btnSelectBook.Text = "";
+            button3.Text = "";
+            button2.Text = "";
         }
 
         private void EnableAllControls()

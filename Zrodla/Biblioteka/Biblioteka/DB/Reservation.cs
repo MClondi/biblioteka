@@ -18,6 +18,7 @@ namespace Biblioteka.DB
         public System.DateTime RealizationDate { get; set; }
         public int ResourceId { get; set; }
         public int ReaderId { get; set; }
+        public System.DateTime ReservationDate { get; set; }
     
         public virtual Resource Resource { get; set; }
         public virtual Reader Reader { get; set; }

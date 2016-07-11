@@ -964,7 +964,7 @@ namespace Biblioteka.Forms
             }
             else
             {
-                MessageBox.Show("Nie wybrano autora!", "Błąd");
+                MessageBox.Show("Nie wybrano zasobu!", "Błąd");
             }
         }
 

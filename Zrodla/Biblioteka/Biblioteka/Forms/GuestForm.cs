@@ -41,19 +41,13 @@ namespace Biblioteka.Forms
                 if (tagSet.TryGetValue(lstViewBooksAndUsers.SelectedItems[0].Tag.ToString(), out resource))
                 {
 
-                    if (DbUtils.IsResourceBorrowed(dbContext, resource))
+                    if (DbUtils.IsResourceAvailable(dbContext, resource))
                     {
-                        if (DbUtils.IsResourceReserved(dbContext, resource))
-                            MessageBox.Show("Zasób wypożyczony i zarezerwowany");
-                        else
-                            MessageBox.Show("Zasób wypożyczony");
+                        MessageBox.Show("Zasób jest dostępny");
                     }
                     else
                     {
-                        if (DbUtils.IsResourceReserved(dbContext, resource))
-                            MessageBox.Show("Zasób zarezerwowany");
-                        else
-                            MessageBox.Show("Zasób dostępny");
+                        MessageBox.Show("Zasób nie jest dostępny");
                     }
                 }
                 else

@@ -15,22 +15,22 @@ namespace Biblioteka.Forms
     {
 
         LibraryDBContainer dbContext;
-        User user;
+        Reader user;
         Boolean help;
 
-        public ReaderApplicationForm(User u, LibraryDBContainer dbContext)
+        public ReaderApplicationForm(Reader u, LibraryDBContainer dbContext)
         {
             InitializeComponent();
             this.user = u;
             this.dbContext = dbContext;
-            textBoxName.Text = u.Name;
-            textBoxSurname.Text = u.Surname;
-            textBoxTel.Text = u.Reader.PhoneNumber;
-            textBoxStreet.Text = u.Reader.Street;
-            textBoxStrNum.Text = u.Reader.HouseNumber;
-            textBoxApt.Text = u.Reader.ApartmentNumber;
-            textBoxCity.Text = u.Reader.City;
-            textBoxPostal.Text = u.Reader.PostalCode;
+            textBoxName.Text = u.User.Name;
+            textBoxSurname.Text = u.User.Surname;
+            textBoxTel.Text = u.PhoneNumber;
+            textBoxStreet.Text = u.Street;
+            textBoxStrNum.Text = u.HouseNumber;
+            textBoxApt.Text = u.ApartmentNumber;
+            textBoxCity.Text = u.City;
+            textBoxPostal.Text = u.PostalCode;
         }
 
         private void send_Click(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace Biblioteka.Forms
             };
 
             application.ApplicationData.Add(applicationData);
-            user.Reader.Application.Add(application);
+            user.Application.Add(application);
             dbContext.SaveChanges();
             MessageBox.Show("Wysłano wniosek");
             this.Close();

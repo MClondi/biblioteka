@@ -117,24 +117,100 @@ namespace Biblioteka
             return false;
         }
 
-        public static bool IsResourceReserved(LibraryDBContainer dbContext, Resource resource)
+        public static bool IsResourceAvailable(LibraryDBContainer dbContext, Resource resource)
         {
-            foreach (Reservation reservation in dbContext.Reservations)
+            List<Borrowing> borrowings = dbContext.Borrowings
+                                            .Include("User")
+                                            .Include("Reader")
+                                            .Include("Resource")
+                                            .Where(b => b.ResourceId == resource.Id)
+                                            .Where(b => b.ReturnDate == null)
+                                            .ToList();
+
+            int availableAmount = resource.Amount;
+
+            if (borrowings != null)
+                availableAmount -= borrowings.Count;
+
+            List<Reservation> reservations = dbContext.Reservations
+                                               .Include("Reader")
+                                               .Include("Resource")
+                                               .Where(r => r.ResourceId == resource.Id)
+                                               .Where(r => r.RealizationDate > DateTime.Now)
+                                               .ToList();
+
+            if (reservations != null)
+                availableAmount -= reservations.Count;
+
+            return availableAmount > 0;
+        }
+
+        public static bool IsResourceReservedForUser(LibraryDBContainer dbContext, Resource resource, Reader user)
+        {
+            List<Borrowing> borrowings = dbContext.Borrowings
+                                            .Include("User")
+                                            .Include("Reader")
+                                            .Include("Resource")
+                                            .Where(b => b.ResourceId == resource.Id)
+                                            .Where(b => b.ReturnDate == null)
+                                            .ToList();
+
+            int availableAmount = resource.Amount;
+
+            if(borrowings != null)
+                availableAmount -= borrowings.Count;
+
+            List<Reservation> reservations = dbContext.Reservations
+                                               .Include("Reader")
+                                               .Include("Resource")
+                                               .Where(r => r.ResourceId == resource.Id)
+                                               .Where(r => r.RealizationDate > DateTime.Now)
+                                               .OrderBy(r => r.ReservationDate)
+                                               .ToList();
+            if (reservations != null)
             {
-                if (reservation.ResourceId == resource.Id && reservation.RealizationDate > DateTime.Now)
+                for (int i = 0; i < availableAmount; i++)
+                {
+                    if (reservations.ElementAt(i).ReaderId == user.Id)
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static bool HasUserAlreadyReservedResource(LibraryDBContainer dbContext, Resource resource, Reader user)
+        {
+            List<Reservation> reservations = dbContext.Reservations
+                                               .Include("Reader")
+                                               .Include("Resource")
+                                               .Where(r => r.ResourceId == resource.Id)
+                                               .Where(r => r.ReaderId == user.Id)
+                                               .Where(r => r.RealizationDate > DateTime.Now)
+                                               .ToList();
+            if (reservations != null)
+            {
+                if (reservations.Count > 0)
                     return true;
             }
 
             return false;
         }
 
-        public static bool IsResourceReservedForUser(LibraryDBContainer dbContext, Resource resource, Reader user)
+        public static bool HasUserAlreadyBorrowedResource(LibraryDBContainer dbContext, Resource resource, Reader reader)
         {
-            foreach (Reservation reservation in dbContext.Reservations)
+            List<Borrowing> borrowings = dbContext.Borrowings
+                                                .Include("User")
+                                                .Include("Reader")
+                                                .Include("Resource")
+                                                .Where(b => b.ResourceId == resource.Id)
+                                                .Where(b => b.ReaderId == reader.Id)
+                                                .Where(b => b.ReturnDate == null)
+                                                .ToList();
+            if (borrowings != null)
             {
-                if (reservation.ResourceId == resource.Id && reservation.RealizationDate > DateTime.Now)
-                    if(reservation.ReaderId == user.Id)
-                        return true;
+                if (borrowings.Count > 0)
+                    return true;
             }
 
             return false;

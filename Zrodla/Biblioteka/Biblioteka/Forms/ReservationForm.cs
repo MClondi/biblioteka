@@ -29,35 +29,56 @@ namespace Biblioteka.Forms
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            bool reservationOk = false; 
+
             if (datePicker.Value < DateTime.Today)
             {
                 MessageBox.Show("Data oddania powinna być późniejsza");
                 return;
             }
-            if (DbUtils.IsResourceBorrowed(dbContext, resource) && !DbUtils.IsResourceReserved(dbContext, resource))
+            if (!DbUtils.IsResourceAvailable(dbContext, resource))
             {
-                ReserveResource();
+                reservationOk = ReserveResource();
             }
             else
             {
-                MessageBox.Show("Rezerwacja nieudana (zasób jest już zarezerwowany lub dostępny do wypożyczenia)!", "Błąd");
+                MessageBox.Show("Rezerwacja nieudana - zasób jest dostępny do wypożyczenia!", "Błąd");
+                this.Close();
                 return;
             }
 
-            MessageBox.Show("Zarezerwowano zasób!", "Informacja");
+            if (reservationOk)
+                MessageBox.Show("Zarezerwowano zasób!", "Informacja");
             this.Close();
         }
 
-        private void ReserveResource()
+        private bool ReserveResource()
         {
-            Reservation reservation = new Reservation();
+            if (!DbUtils.HasUserAlreadyReservedResource(dbContext, resource, reader) &&
+                !DbUtils.HasUserAlreadyBorrowedResource(dbContext, resource, reader))
+            {
+                Reservation reservation = new Reservation();
 
-            reservation.Reader = reader;
-            reservation.Resource = resource; 
-            reservation.RealizationDate = datePicker.Value;
+                reservation.Reader = reader;
+                reservation.Resource = resource;
+                reservation.RealizationDate = datePicker.Value;
+                reservation.ReservationDate = DateTime.Now;
 
-            dbContext.Reservations.Add(reservation);
-            dbContext.SaveChanges();
+                dbContext.Reservations.Add(reservation);
+                dbContext.SaveChanges();
+            }
+            else if(DbUtils.HasUserAlreadyBorrowedResource(dbContext, resource, reader))
+            {
+                MessageBox.Show("Użytkownik już wypożyczył ten zasób!", "Błąd");
+                return false;
+            }
+            else
+            {
+                MessageBox.Show("Użytkownik już zarezerwował ten zasób!", "Błąd");
+                return false;
+            }
+
+            return true;
         }
 
         private void buttonExit_Click(object sender, EventArgs e)

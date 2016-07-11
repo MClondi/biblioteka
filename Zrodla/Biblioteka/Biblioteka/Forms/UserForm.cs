@@ -15,11 +15,11 @@ namespace Biblioteka.Forms
     {
         LibraryDBContainer dbContext;
         Form parent;
-        User userContext;
+        Reader userContext;
         Dictionary<String, Resource> tagSet = new Dictionary<string, Resource>();
         Boolean help;
 
-        public UserForm(Form parent, LibraryDBContainer dbContext, User userContext)
+        public UserForm(Form parent, LibraryDBContainer dbContext, Reader userContext)
         {
             
             InitializeComponent();
@@ -38,25 +38,19 @@ namespace Biblioteka.Forms
                 if (tagSet.TryGetValue(lstViewBooksAndUsers.SelectedItems[0].Tag.ToString(), out resource))
                 {
 
-                    if (DbUtils.IsResourceBorrowed(dbContext, resource))
+                    if (DbUtils.IsResourceAvailable(dbContext, resource))
                     {
-                        if(DbUtils.IsResourceReserved(dbContext, resource))
-                            MessageBox.Show("Zasób wypożyczony i zarezerwowany");
-                        else
-                            MessageBox.Show("Zasób wypożyczony");
+                        MessageBox.Show("Zasób jest dostępny");
                     }
                     else
                     {
-                        if (DbUtils.IsResourceReserved(dbContext, resource))
-                            MessageBox.Show("Zasób zarezerwowany");
-                        else
-                            MessageBox.Show("Zasób dostępny");
+                        MessageBox.Show("Zasób nie jest dostępny");
                     }
                 }
                 else
                 {
 
-                    MessageBox.Show("Nastąpił błąd.");
+                    MessageBox.Show("Nastąpił błąd");
                 }
 
             }
@@ -76,34 +70,56 @@ namespace Biblioteka.Forms
                 if (tagSet.TryGetValue(lstViewBooksAndUsers.SelectedItems[0].Tag.ToString(), out resource))
                 {
 
-                    if (!DbUtils.IsResourceReserved(dbContext, resource))
+                    if (!DbUtils.HasUserAlreadyReservedResource(dbContext, resource, userContext)
+                        && !DbUtils.HasUserAlreadyBorrowedResource(dbContext, resource, userContext))
                     {
                         Reservation reservation = new Reservation();
-                        reservation.Reader = userContext.Reader;
+                        reservation.Reader = userContext;
                         reservation.Resource = resource;
+                        reservation.ReservationDate = DateTime.Now;
 
-                        if (DbUtils.IsResourceBorrowed(dbContext, resource))
-                        {
-                            Borrowing bor = dbContext.Borrowings
-                                            .Where(b => b.ReturnDate == null)
-                                            .Where(b => b.ResourceId == resource.Id)
-                                            .OrderBy(b => b.ReturnTerm)
-                                            .ToList()
-                                            .FirstOrDefault();
+                       Borrowing bor = dbContext.Borrowings
+                                        .Where(b => b.ReturnDate == null)
+                                        .Where(b => b.ResourceId == resource.Id)
+                                        .OrderBy(b => b.ReturnTerm)
+                                        .ToList()
+                                        .FirstOrDefault();
+
+                        Reservation res = dbContext.Reservations
+                                        .Where(r => r.RealizationDate > DateTime.Now)
+                                        .Where(r => r.ResourceId == resource.Id)
+                                        .OrderBy(r => r.RealizationDate)
+                                        .ToList()
+                                        .FirstOrDefault();
                             
+                        if(bor != null && res != null)
+                        {
+                            DateTime date = bor.ReturnTerm > res.RealizationDate ? bor.ReturnTerm : res.RealizationDate;
+                            reservation.RealizationDate = date.AddMonths(1);
+                        }
+                        else if(res != null)
+                        {
+                            reservation.RealizationDate = res.RealizationDate.AddMonths(1);
+                        }
+                        else if (bor != null)
+                        {
                             reservation.RealizationDate = bor.ReturnTerm.AddMonths(1);
                         }
                         else
                         {
                             reservation.RealizationDate = DateTime.Now.AddMonths(1);
-                        }
+                        }                                        
 
                         dbContext.Reservations.Add(reservation);
                         MessageBox.Show("Twoja rezerwacja trwa do " + reservation.RealizationDate.ToString(), "Informacja");
                     }
+                    else if (DbUtils.HasUserAlreadyBorrowedResource(dbContext, resource, userContext))
+                    {
+                        MessageBox.Show("Aktualnie wypożyczasz ten zasób", "Błąd");
+                    }
                     else
                     {
-                        MessageBox.Show("Zasób jest zarezerwowany", "Błąd");
+                        MessageBox.Show("Już zarezerwowałeś ten zasób", "Błąd");
                     }
                 }
                 else
@@ -119,7 +135,7 @@ namespace Biblioteka.Forms
         {
             BorrowedResources brform = new BorrowedResources();
             List<Borrowing> borrowings = dbContext.Borrowings
-                                            .Where(b => b.ReaderId == userContext.Reader.Id)
+                                            .Where(b => b.ReaderId == userContext.Id)
                                             .Where(b => b.ReturnDate == null)
                                             .ToList();
 

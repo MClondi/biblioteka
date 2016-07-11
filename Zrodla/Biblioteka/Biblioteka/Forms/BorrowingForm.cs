@@ -29,13 +29,15 @@ namespace Biblioteka.Forms
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            bool borrowingOk = true; 
+
             if (datePicker.Value < DateTime.Today)
             {
                 MessageBox.Show("Data oddania powinna być późniejsza");
                 return;
             }
 
-            if(!DbUtils.IsResourceBorrowed(dbContext, resource) && !DbUtils.IsResourceReserved(dbContext, resource))
+            if(DbUtils.IsResourceAvailable(dbContext, resource))
             {
                 BorrowResource();
             }
@@ -45,34 +47,12 @@ namespace Biblioteka.Forms
             }
             else
             {
-                List<Borrowing> borrowings = dbContext.Borrowings
-                                            .Include("User")
-                                            .Include("Reader")
-                                            .Include("Resource")
-                                            .Where(b => b.ResourceId == resource.Id)
-                                            .Where(b => b.ReturnDate == null)
-                                            .ToList();
+                MessageBox.Show("Zasób niedostępny!", "Błąd");
+                borrowingOk = false;
+            }
 
-                int count = 0;
-
-                if (borrowings != null)
-                {
-                    count = borrowings.Count;
-                    count = DbUtils.IsResourceReserved(dbContext, resource) ? count + 1 : count;
-                }
-
-                if (count < resource.Amount)
-                {
-                    BorrowResource();
-                }
-                else
-                {
-                    MessageBox.Show("Zasób niedostępny!", "Błąd");
-                    return;
-                }
-            }    
-
-            MessageBox.Show("Wypożyczono zasób!", "Informacja");
+            if(borrowingOk)
+                MessageBox.Show("Wypożyczono zasób!", "Informacja");
             this.Close();
         }
 
