@@ -339,6 +339,7 @@ namespace Biblioteka.Forms
             btnSelectBook.Enabled = false;
             button3.Enabled = false;
             button2.Enabled = false;
+            magazineSpinner.SelectedIndex = 0;
 
             txtBoxName.Text = "";
             txtBoxProducer.Text = "";
@@ -425,25 +426,52 @@ namespace Biblioteka.Forms
 
         private bool validate()
         {
-            if (txtBoxName.Text.Count() == 0 || txtBoxEdition.Text.Count() == 0 || txtBoxProducer.Text.Count() == 0 || txbBoxIsbn.Text.Count() == 0)
+
+            switch (typeSpinner.SelectedIndex)
             {
-                MessageBox.Show("Wszystkie pola muszą być uzupełnione");
-                return false;
-            }
-            if (datePicker.Value > DateTime.Today)
-            {
-                MessageBox.Show("Data publikacji jest błędna");
-                return false;
-            }
-            if (lstViewSelectedBook.Items.Count == 0)
-            {
-                MessageBox.Show("Wybierz książkę/i");
-                return false;
-            }
-            if (!txbBoxIsbn.Text.All(x => Char.IsDigit(x) || x == '-'))
-            {
-                MessageBox.Show("Nieprawidłowy ISBN");
-                return false;
+                case 0:
+                    {
+                        if (txbBoxIsbn.Text.Count() == 0)
+                        {
+                            MessageBox.Show("Wszystkie pola muszą być uzupełnione");
+                            return false;
+                        }
+                        if (datePicker.Value > DateTime.Today)
+                        {
+                            MessageBox.Show("Data publikacji jest błędna");
+                            return false;
+                        }
+                        if (lstViewSelectedBook.Items.Count == 0)
+                        {
+                            MessageBox.Show("Wybierz książkę/i");
+                            return false;
+                        }
+                        if (!txbBoxIsbn.Text.All(x => Char.IsDigit(x) || x == '-'))
+                        {
+                            MessageBox.Show("Nieprawidłowy ISBN");
+                            return false;
+                        }
+                    }
+                    break;
+                case 1:
+                    {
+                        if (txtBoxName.Text.Count() == 0 || txtBoxEdition.Text.Count() == 0 || txtBoxProducer.Text.Count() == 0)
+                        {
+                            MessageBox.Show("Wszystkie pola muszą być uzupełnione");
+                            return false;
+                        }
+                    }
+                    break;
+                case 2:
+                    {
+                        if (datePicker.Value > DateTime.Today)
+                        {
+                            MessageBox.Show("Data publikacji jest błędna");
+                            return false;
+                        }
+                    }
+                    break;
+
             }
 
             return true;

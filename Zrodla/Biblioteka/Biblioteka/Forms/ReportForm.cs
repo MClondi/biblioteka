@@ -70,11 +70,8 @@ namespace Biblioteka.Forms
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
-                {
-                    myStream.Write(Encoding.ASCII.GetBytes(textBoxReport.Text), 0, Encoding.ASCII.GetBytes(textBoxReport.Text).Length);
-                    myStream.Close();
-                }
+                File.WriteAllLines(saveFileDialog1.FileName, textBoxReport.Text.Split('\n'));
+                  
             }
         }
 
@@ -90,6 +87,7 @@ namespace Biblioteka.Forms
                 MessageBox.Show("Nie istnieją rekordy dla dat w przyszłości");
                 return;
             }
+            textBoxReport.Text = "ID\tData wypożyczenia\t\tData zwrotu\t\tId zasobu\t\tCzytelnik\t\tID\nfds";
             generateReturns();
         }
 
@@ -105,6 +103,7 @@ namespace Biblioteka.Forms
                 MessageBox.Show("Nie istnieją rekordy dla dat w przyszłości");
                 return;
             }
+            textBoxReport.Text = "ID\tData wypożyczenia\t\tData zwrotu\t\tId zasobu\t\tCzytelnik\t\tID\n";
             generateReturns();
         }
 
