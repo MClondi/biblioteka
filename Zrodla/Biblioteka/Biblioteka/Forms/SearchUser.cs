@@ -68,9 +68,9 @@ namespace Biblioteka.Forms
 
         private void initSpinner()
         {
-            typeSpinner.Items.Add("User");
-            typeSpinner.Items.Add("Librarian");
-            typeSpinner.Items.Add("Admin");
+            typeSpinner.Items.Add("Użytkownik");
+            typeSpinner.Items.Add("Bibliotekarz");
+            typeSpinner.Items.Add("Administrator");
             typeSpinner.SelectedIndex = 0;
         }
 

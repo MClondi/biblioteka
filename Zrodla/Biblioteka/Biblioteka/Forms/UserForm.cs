@@ -17,6 +17,7 @@ namespace Biblioteka.Forms
         Form parent;
         Reader userContext;
         Dictionary<String, Resource> tagSet = new Dictionary<string, Resource>();
+        Dictionary<String, Reservation> tagSetReservations = new Dictionary<string, Reservation>();
         Boolean help;
 
         public UserForm(Form parent, LibraryDBContainer dbContext, Reader userContext)
@@ -40,17 +41,17 @@ namespace Biblioteka.Forms
 
                     if (DbUtils.IsResourceAvailable(dbContext, resource))
                     {
-                        MessageBox.Show("Zasób jest dostępny");
+                        MessageBox.Show("Zasób jest dostępny", "Informacja");
                     }
                     else
                     {
-                        MessageBox.Show("Zasób nie jest dostępny");
+                        MessageBox.Show("Zasób nie jest dostępny", "Informacja");
                     }
                 }
                 else
                 {
 
-                    MessageBox.Show("Nastąpił błąd");
+                    MessageBox.Show("Nastąpił błąd", "Błąd");
                 }
 
             }
@@ -228,6 +229,131 @@ namespace Biblioteka.Forms
                     this.MinimizeBox = false;
                 }
             }
+        }
+
+        private void btnShowResourceReservations_Click(object sender, EventArgs e)
+        {
+            BorrowedResources brform = new BorrowedResources();
+            brform.Text = "Rezerwacje zasobu";
+            List<Reservation> reservations = new List<Reservation>();
+
+            Resource resource;
+            if (lstViewBooksAndUsers.SelectedItems.Count > 0)
+            {
+                if (tagSet.TryGetValue(lstViewBooksAndUsers.SelectedItems[0].Tag.ToString(), out resource))
+                {
+                    reservations = dbContext.Reservations
+                                                .Where(r => r.ResourceId == resource.Id)
+                                                .Where(r => r.RealizationDate > DateTime.Now)
+                                                .OrderBy(r => r.ReservationDate)
+                                                .ToList();
+
+                    foreach (Reservation res in reservations)
+                    {
+                        brform.addItem(res.Reader.User.Name + " " + res.Reader.User.Surname
+                            + " do " + res.RealizationDate.ToShortDateString());
+                    }
+                    brform.initialize();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano zasobu", "Błąd");
+            }            
+        }
+
+        private void btnShowApplications_Click(object sender, EventArgs e)
+        {
+            BorrowedResources brform = new BorrowedResources();
+            brform.Text = "Złożone wnioski";
+            List<ReaderApplication> applications = new List<ReaderApplication>();
+
+            applications = dbContext.ReaderApplications
+                                            .Where(r => r.ReaderId == userContext.Id)
+                                            .OrderByDescending(r => r.ApplicationDate)
+                                            .ToList();
+
+            foreach (ReaderApplication app in applications)
+            {
+                String status;
+                switch(app.Status)
+                {
+                    case "N":
+                        status = "Nieobsłużony";
+                        break;
+                    case "O":
+                        status = "Odrzucony";
+                        break;
+                    case "A":
+                        status = "Zaakceptowany";
+                        break;
+                    default:
+                        status = "Nieobsłużony";
+                        break;
+
+                }
+                brform.addItem(app.ApplicationDate.ToShortDateString() + " : " + status);
+            }
+            brform.initialize(); 
+        }
+
+        private void btnShowReservations_Click(object sender, EventArgs e)
+        {
+            RefreshListViewReservations();
+        }
+
+        private void RefreshListViewReservations()
+        {
+            tagSetReservations.Clear();
+            lstViewBooksAndUsers.Clear();
+
+            List<Reservation> reservations = dbContext.Reservations
+                                                .Include("Resource")
+                                                .Include("Reader")
+                                                .Where(r => r.ReaderId == userContext.Id)
+                                                .Where(r => r.RealizationDate > DateTime.Now)
+                                                .ToList();
+
+            foreach (Reservation res in reservations)
+            {
+                ListViewItem item = new ListViewItem();
+
+                if (res.Resource.Position is BookEdition)
+                {
+                    item.Text = ((BookEdition)res.Resource.Position).Book.Title + " do " + res.RealizationDate.ToShortDateString();
+                }
+                else if (res.Resource.Position is Game)
+                {
+                    item.Text = ((Game)res.Resource.Position).Name + " do " + res.RealizationDate.ToShortDateString();
+                }
+                else if (res.Resource.Position is MagazineNumber)
+                {
+                    item.Text = ((MagazineNumber)res.Resource.Position).Magazine.Title + " do " + res.RealizationDate.ToShortDateString();
+                }
+
+                item.Tag = res.GetHashCode();
+                tagSetReservations.Add(item.Tag.ToString(), res);
+                lstViewBooksAndUsers.Items.Add(item);
+            }
+        }
+
+        private void btnDeleteReservation_Click(object sender, EventArgs e)
+        {
+            if (lstViewBooksAndUsers.SelectedItems.Count > 0)
+            {
+                Reservation reservation;
+                if (tagSetReservations.TryGetValue(lstViewBooksAndUsers.SelectedItems[0].Tag.ToString(), out reservation))
+                {
+                    dbContext.Reservations.Remove(reservation);
+                    dbContext.SaveChanges();
+                    MessageBox.Show("Usunięto rezerwację", "Informacja");
+                    RefreshListViewReservations();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano zasobu", "Błąd");
+            }   
         }
     }
 }
