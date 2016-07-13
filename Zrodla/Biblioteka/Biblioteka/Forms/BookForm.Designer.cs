@@ -120,8 +120,10 @@
             // 
             // btnAddAuthor
             // 
+            this.helpProvider.SetHelpString(this.btnAddAuthor, "Uzyj tego przycisku, aby przeniesc wyszukane ksiazki do przypisanych");
             this.btnAddAuthor.Location = new System.Drawing.Point(145, 161);
             this.btnAddAuthor.Name = "btnAddAuthor";
+            this.helpProvider.SetShowHelp(this.btnAddAuthor, true);
             this.btnAddAuthor.Size = new System.Drawing.Size(39, 37);
             this.btnAddAuthor.TabIndex = 63;
             this.btnAddAuthor.Text = ">>";

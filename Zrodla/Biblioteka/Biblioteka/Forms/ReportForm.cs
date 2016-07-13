@@ -15,7 +15,7 @@ namespace Biblioteka.Forms
     public partial class ReportForm : Form
     {
         LibraryDBContainer dbContext;
-
+        Boolean help = false;
         public ReportForm(LibraryDBContainer dbContext)
         {
             this.dbContext = dbContext;
@@ -117,6 +117,27 @@ namespace Biblioteka.Forms
                 .Where(x => x.ReturnDate < to).ToList()
                 .ForEach(x => textBoxReport.Text += (x.Id + "\t" + x.BorrowingDate + "\t" + x.ReturnDate + "\t" + x.ResourceId + "\t\t" + x.User.Name + x.User.Surname + "\t\t" + x.User.Id + "\n"));
                    
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            {
+                help = !help;
+                if (!help)
+                {
+                    helpButton.Text = "Pomoc";
+                    this.HelpButton = false;
+                    this.MaximizeBox = true;
+                    this.MinimizeBox = true;
+                }
+                else
+                {
+                    helpButton.Text = "Wylacz Pomoc";
+                    this.HelpButton = true;
+                    this.MaximizeBox = false;
+                    this.MinimizeBox = false;
+                }
+            }
         }
     }
 }

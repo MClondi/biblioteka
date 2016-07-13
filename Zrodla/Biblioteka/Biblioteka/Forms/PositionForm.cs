@@ -16,7 +16,7 @@ namespace Biblioteka.Forms
         private delegate void AddPosition();
         private delegate void EditPosition(Position positionToEdit);
         private delegate void SearchPosition(out List<Position> positions);
-
+        Boolean help = false;
         private AddPosition addPosition;
         private EditPosition editPosition;
         private SearchPosition searchPosition;
@@ -475,6 +475,27 @@ namespace Biblioteka.Forms
             }
 
             return true;
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            {
+                help = !help;
+                if (!help)
+                {
+                    helpButton.Text = "Pomoc";
+                    this.HelpButton = false;
+                    this.MaximizeBox = true;
+                    this.MinimizeBox = true;
+                }
+                else
+                {
+                    helpButton.Text = "Wylacz Pomoc";
+                    this.HelpButton = true;
+                    this.MaximizeBox = false;
+                    this.MinimizeBox = false;
+                }
+            }
         }
     }
 }

@@ -14,8 +14,8 @@ namespace Biblioteka.Forms
     public partial class HandleReaderApplicationForm : Form
     {
         private ReaderApplication readerApplication;
-        private LibraryDBContainer dbContext; 
-
+        private LibraryDBContainer dbContext;
+        Boolean help = false;
         public HandleReaderApplicationForm(LibraryDBContainer dbContext, ReaderApplication readerApplication)
         {
             this.dbContext = dbContext;
@@ -75,6 +75,32 @@ namespace Biblioteka.Forms
             dbContext.SaveChanges();
             MessageBox.Show("Wniosek zaakceptowany", "Informacja");
             this.Close();
+        }
+
+        private void oldCity_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            {
+                help = !help;
+                if (!help)
+                {
+                    helpButton.Text = "Pomoc";
+                    this.HelpButton = false;
+                    this.MaximizeBox = true;
+                    this.MinimizeBox = true;
+                }
+                else
+                {
+                    helpButton.Text = "Wylacz Pomoc";
+                    this.HelpButton = true;
+                    this.MaximizeBox = false;
+                    this.MinimizeBox = false;
+                }
+            }
         }
     }
 }
