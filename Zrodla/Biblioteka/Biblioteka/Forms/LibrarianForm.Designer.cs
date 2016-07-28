@@ -955,8 +955,10 @@
             // 
             // btnRaport
             // 
+            this.helpProvider1.SetHelpString(this.btnRaport, "Przycisk pozwalajacy wygenerowac raport dotyczacy biblioteki");
             this.btnRaport.Location = new System.Drawing.Point(451, 12);
             this.btnRaport.Name = "btnRaport";
+            this.helpProvider1.SetShowHelp(this.btnRaport, true);
             this.btnRaport.Size = new System.Drawing.Size(127, 23);
             this.btnRaport.TabIndex = 52;
             this.btnRaport.Text = "Generuj raport";
@@ -965,8 +967,10 @@
             // 
             // btnClearDb
             // 
+            this.helpProvider1.SetHelpString(this.btnClearDb, "Przycisk pozwalajacy wyczyscic baze danych biblitoeki");
             this.btnClearDb.Location = new System.Drawing.Point(318, 12);
             this.btnClearDb.Name = "btnClearDb";
+            this.helpProvider1.SetShowHelp(this.btnClearDb, true);
             this.btnClearDb.Size = new System.Drawing.Size(127, 23);
             this.btnClearDb.TabIndex = 53;
             this.btnClearDb.Text = "Czyść bazę";

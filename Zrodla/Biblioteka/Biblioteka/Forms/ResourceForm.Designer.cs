@@ -34,12 +34,17 @@
             this.txtBoxAmount = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBoxCategory = new System.Windows.Forms.TextBox();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // buttonExit
             // 
+            this.helpProvider1.SetHelpString(this.buttonExit, "Przycisk pozwalajacy anulowac wprowadzone dane i/lub powrocic do poprzedniego ekr" +
+        "anu");
             this.buttonExit.Location = new System.Drawing.Point(177, 106);
             this.buttonExit.Name = "buttonExit";
+            this.helpProvider1.SetShowHelp(this.buttonExit, true);
             this.buttonExit.Size = new System.Drawing.Size(148, 23);
             this.buttonExit.TabIndex = 49;
             this.buttonExit.Text = "Anuluj";
@@ -48,8 +53,10 @@
             // 
             // buttonSave
             // 
+            this.helpProvider1.SetHelpString(this.buttonSave, "Przycisk pozwalajacy zapisac wprowadzone dane w bazie");
             this.buttonSave.Location = new System.Drawing.Point(12, 106);
             this.buttonSave.Name = "buttonSave";
+            this.helpProvider1.SetShowHelp(this.buttonSave, true);
             this.buttonSave.Size = new System.Drawing.Size(136, 23);
             this.buttonSave.TabIndex = 48;
             this.buttonSave.Text = "Zapisz";
@@ -68,8 +75,10 @@
             // 
             // txtBoxAmount
             // 
+            this.helpProvider1.SetHelpString(this.txtBoxAmount, "Pole ktore pozwala okreslic ilosc zasobu w biliotece");
             this.txtBoxAmount.Location = new System.Drawing.Point(102, 70);
             this.txtBoxAmount.Name = "txtBoxAmount";
+            this.helpProvider1.SetShowHelp(this.txtBoxAmount, true);
             this.txtBoxAmount.Size = new System.Drawing.Size(223, 20);
             this.txtBoxAmount.TabIndex = 46;
             // 
@@ -86,16 +95,31 @@
             // txtBoxCategory
             // 
             this.txtBoxCategory.Enabled = false;
+            this.helpProvider1.SetHelpString(this.txtBoxCategory, "Pole ktore pozwala wprowadzic kategorie zasobu");
             this.txtBoxCategory.Location = new System.Drawing.Point(102, 44);
             this.txtBoxCategory.Name = "txtBoxCategory";
+            this.helpProvider1.SetShowHelp(this.txtBoxCategory, true);
             this.txtBoxCategory.Size = new System.Drawing.Size(223, 20);
             this.txtBoxCategory.TabIndex = 50;
+            // 
+            // helpButton
+            // 
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy na wlaczenie/wylaczenie pomocy");
+            this.helpButton.Location = new System.Drawing.Point(134, 12);
+            this.helpButton.Name = "helpButton";
+            this.helpProvider1.SetShowHelp(this.helpButton, true);
+            this.helpButton.Size = new System.Drawing.Size(191, 23);
+            this.helpButton.TabIndex = 52;
+            this.helpButton.Text = "Pomoc";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
             // 
             // ResourceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 141);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBoxCategory);
             this.Controls.Add(this.buttonExit);
@@ -117,5 +141,7 @@
         private System.Windows.Forms.TextBox txtBoxAmount;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBoxCategory;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Button helpButton;
     }
 }

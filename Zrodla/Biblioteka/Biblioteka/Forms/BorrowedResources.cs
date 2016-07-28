@@ -29,7 +29,7 @@ namespace Biblioteka.Forms
         {
             if (initList.Count == 0)
             {
-                listView1.Items.Add("Brak wypożyczonych rzeczy.");
+                listView1.Items.Add("Brak");
             }
             else
             {

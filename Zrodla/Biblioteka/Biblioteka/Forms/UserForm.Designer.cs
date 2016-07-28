@@ -149,6 +149,7 @@
             this.btnShowReservations.TabIndex = 15;
             this.btnShowReservations.Text = "Przeglądaj moje rezerwacje";
             this.btnShowReservations.UseVisualStyleBackColor = true;
+            this.btnShowReservations.Click += new System.EventHandler(this.btnShowReservations_Click);
             // 
             // btnShowResourceReservations
             // 
@@ -160,6 +161,7 @@
             this.btnShowResourceReservations.TabIndex = 16;
             this.btnShowResourceReservations.Text = "Przeglądaj rezerwacje zasobu";
             this.btnShowResourceReservations.UseVisualStyleBackColor = true;
+            this.btnShowResourceReservations.Click += new System.EventHandler(this.btnShowResourceReservations_Click);
             // 
             // btnShowApplications
             // 
@@ -172,6 +174,7 @@
             this.btnShowApplications.TabIndex = 17;
             this.btnShowApplications.Text = "Przeglądaj złożone wnioski";
             this.btnShowApplications.UseVisualStyleBackColor = true;
+            this.btnShowApplications.Click += new System.EventHandler(this.btnShowApplications_Click);
             // 
             // btnDeleteReservation
             // 
@@ -183,6 +186,7 @@
             this.btnDeleteReservation.TabIndex = 18;
             this.btnDeleteReservation.Text = "Usuń rezerwację";
             this.btnDeleteReservation.UseVisualStyleBackColor = true;
+            this.btnDeleteReservation.Click += new System.EventHandler(this.btnDeleteReservation_Click);
             // 
             // UserForm
             // 

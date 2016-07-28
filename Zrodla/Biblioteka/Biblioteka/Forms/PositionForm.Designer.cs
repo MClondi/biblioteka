@@ -58,17 +58,21 @@
             this.label10 = new System.Windows.Forms.Label();
             this.genreSpinner = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // typeSpinner
             // 
             this.typeSpinner.FormattingEnabled = true;
+            this.helpProvider1.SetHelpString(this.typeSpinner, "Lista pozwalajaca wybrac typ zasobu");
             this.typeSpinner.Items.AddRange(new object[] {
             "Książka",
             "Gra",
             "Numer magazynu"});
             this.typeSpinner.Location = new System.Drawing.Point(102, 47);
             this.typeSpinner.Name = "typeSpinner";
+            this.helpProvider1.SetShowHelp(this.typeSpinner, true);
             this.typeSpinner.Size = new System.Drawing.Size(223, 21);
             this.typeSpinner.TabIndex = 28;
             this.typeSpinner.SelectedIndexChanged += new System.EventHandler(this.typeSpinner_SelectedIndexChanged);
@@ -85,8 +89,11 @@
             // 
             // buttonExit
             // 
+            this.helpProvider1.SetHelpString(this.buttonExit, "Przycisk pozwalajacy anulowac wprowadzone dane i/lub powrocic do poprzedniego ekr" +
+        "anu");
             this.buttonExit.Location = new System.Drawing.Point(178, 513);
             this.buttonExit.Name = "buttonExit";
+            this.helpProvider1.SetShowHelp(this.buttonExit, true);
             this.buttonExit.Size = new System.Drawing.Size(148, 23);
             this.buttonExit.TabIndex = 41;
             this.buttonExit.Text = "Anuluj";
@@ -95,8 +102,10 @@
             // 
             // buttonSave
             // 
+            this.helpProvider1.SetHelpString(this.buttonSave, "Przycisk pozwalajacy zapisac zmiane");
             this.buttonSave.Location = new System.Drawing.Point(16, 513);
             this.buttonSave.Name = "buttonSave";
+            this.helpProvider1.SetShowHelp(this.buttonSave, true);
             this.buttonSave.Size = new System.Drawing.Size(136, 23);
             this.buttonSave.TabIndex = 40;
             this.buttonSave.Text = "Zapisz";
@@ -115,8 +124,10 @@
             // 
             // txbBoxIsbn
             // 
+            this.helpProvider1.SetHelpString(this.txbBoxIsbn, "Pole pozwalajace wprowadzic ISBN zasobu");
             this.txbBoxIsbn.Location = new System.Drawing.Point(102, 152);
             this.txbBoxIsbn.Name = "txbBoxIsbn";
+            this.helpProvider1.SetShowHelp(this.txbBoxIsbn, true);
             this.txbBoxIsbn.Size = new System.Drawing.Size(223, 20);
             this.txbBoxIsbn.TabIndex = 42;
             // 
@@ -132,16 +143,20 @@
             // 
             // datePicker
             // 
+            this.helpProvider1.SetHelpString(this.datePicker, "Pole pozwalajace ustawic data publikacje zasobu");
             this.datePicker.Location = new System.Drawing.Point(102, 178);
             this.datePicker.Name = "datePicker";
+            this.helpProvider1.SetShowHelp(this.datePicker, true);
             this.datePicker.Size = new System.Drawing.Size(223, 20);
             this.datePicker.TabIndex = 46;
             // 
             // publisherSpinner
             // 
             this.publisherSpinner.FormattingEnabled = true;
+            this.helpProvider1.SetHelpString(this.publisherSpinner, "Pole pozwalajace wprowadzic wydawce zasobu");
             this.publisherSpinner.Location = new System.Drawing.Point(102, 204);
             this.publisherSpinner.Name = "publisherSpinner";
+            this.helpProvider1.SetShowHelp(this.publisherSpinner, true);
             this.publisherSpinner.Size = new System.Drawing.Size(223, 21);
             this.publisherSpinner.TabIndex = 77;
             // 
@@ -157,8 +172,10 @@
             // 
             // button2
             // 
+            this.helpProvider1.SetHelpString(this.button2, "Przycisk pozwalajacy usunac wybrana ksiazke z listy wybranych ksiazek");
             this.button2.Location = new System.Drawing.Point(194, 484);
             this.button2.Name = "button2";
+            this.helpProvider1.SetShowHelp(this.button2, true);
             this.button2.Size = new System.Drawing.Size(112, 23);
             this.button2.TabIndex = 85;
             this.button2.Text = "Usuń";
@@ -167,8 +184,10 @@
             // 
             // button3
             // 
+            this.helpProvider1.SetHelpString(this.button3, "Przycisk pozwalajacy wyszukac ksiazke po wprowadzonych kryteriach");
             this.button3.Location = new System.Drawing.Point(31, 484);
             this.button3.Name = "button3";
+            this.helpProvider1.SetShowHelp(this.button3, true);
             this.button3.Size = new System.Drawing.Size(112, 23);
             this.button3.TabIndex = 84;
             this.button3.Text = "Wyszukaj";
@@ -199,8 +218,10 @@
             // 
             this.lstViewSelectedBook.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader3});
+            this.helpProvider1.SetHelpString(this.lstViewSelectedBook, "Lista wybranych ksiazek z systemu");
             this.lstViewSelectedBook.Location = new System.Drawing.Point(194, 352);
             this.lstViewSelectedBook.Name = "lstViewSelectedBook";
+            this.helpProvider1.SetShowHelp(this.lstViewSelectedBook, true);
             this.lstViewSelectedBook.Size = new System.Drawing.Size(112, 126);
             this.lstViewSelectedBook.TabIndex = 81;
             this.lstViewSelectedBook.UseCompatibleStateImageBehavior = false;
@@ -225,8 +246,10 @@
             // 
             this.lstViewSearchBook.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
+            this.helpProvider1.SetHelpString(this.lstViewSearchBook, "Lista wyszukanch ksiazek w systemie");
             this.lstViewSearchBook.Location = new System.Drawing.Point(31, 352);
             this.lstViewSearchBook.Name = "lstViewSearchBook";
+            this.helpProvider1.SetShowHelp(this.lstViewSearchBook, true);
             this.lstViewSearchBook.Size = new System.Drawing.Size(112, 126);
             this.lstViewSearchBook.TabIndex = 79;
             this.lstViewSearchBook.UseCompatibleStateImageBehavior = false;
@@ -259,8 +282,10 @@
             // 
             // txtBoxName
             // 
+            this.helpProvider1.SetHelpString(this.txtBoxName, "Pole pozwalajace wprowadzic nazwe zasobu");
             this.txtBoxName.Location = new System.Drawing.Point(102, 74);
             this.txtBoxName.Name = "txtBoxName";
+            this.helpProvider1.SetShowHelp(this.txtBoxName, true);
             this.txtBoxName.Size = new System.Drawing.Size(223, 20);
             this.txtBoxName.TabIndex = 86;
             // 
@@ -276,8 +301,10 @@
             // 
             // txtBoxProducer
             // 
+            this.helpProvider1.SetHelpString(this.txtBoxProducer, "Pole pozwalajace wprowadzic producenta zasobu");
             this.txtBoxProducer.Location = new System.Drawing.Point(102, 100);
             this.txtBoxProducer.Name = "txtBoxProducer";
+            this.helpProvider1.SetShowHelp(this.txtBoxProducer, true);
             this.txtBoxProducer.Size = new System.Drawing.Size(223, 20);
             this.txtBoxProducer.TabIndex = 88;
             // 
@@ -293,16 +320,20 @@
             // 
             // txtBoxEdition
             // 
+            this.helpProvider1.SetHelpString(this.txtBoxEdition, "Pole pozwalajace wprowadzic edycje zasobu");
             this.txtBoxEdition.Location = new System.Drawing.Point(102, 126);
             this.txtBoxEdition.Name = "txtBoxEdition";
+            this.helpProvider1.SetShowHelp(this.txtBoxEdition, true);
             this.txtBoxEdition.Size = new System.Drawing.Size(223, 20);
             this.txtBoxEdition.TabIndex = 90;
             // 
             // magazineSpinner
             // 
             this.magazineSpinner.FormattingEnabled = true;
+            this.helpProvider1.SetHelpString(this.magazineSpinner, "Pole pozwalajace wprowadzic magazyn zasobu");
             this.magazineSpinner.Location = new System.Drawing.Point(102, 231);
             this.magazineSpinner.Name = "magazineSpinner";
+            this.helpProvider1.SetShowHelp(this.magazineSpinner, true);
             this.magazineSpinner.Size = new System.Drawing.Size(223, 21);
             this.magazineSpinner.TabIndex = 95;
             // 
@@ -319,8 +350,10 @@
             // genreSpinner
             // 
             this.genreSpinner.FormattingEnabled = true;
+            this.helpProvider1.SetHelpString(this.genreSpinner, "Pole pozwalajace wprowadzic rodzaj zasobu");
             this.genreSpinner.Location = new System.Drawing.Point(102, 258);
             this.genreSpinner.Name = "genreSpinner";
+            this.helpProvider1.SetShowHelp(this.genreSpinner, true);
             this.genreSpinner.Size = new System.Drawing.Size(223, 21);
             this.genreSpinner.TabIndex = 97;
             // 
@@ -334,11 +367,24 @@
             this.label12.TabIndex = 96;
             this.label12.Text = "Rodzaj";
             // 
+            // helpButton
+            // 
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy wlaczyc/wylaczyc pomoc");
+            this.helpButton.Location = new System.Drawing.Point(149, 12);
+            this.helpButton.Name = "helpButton";
+            this.helpProvider1.SetShowHelp(this.helpButton, true);
+            this.helpButton.Size = new System.Drawing.Size(177, 23);
+            this.helpButton.TabIndex = 98;
+            this.helpButton.Text = "Pomoc";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
             // PositionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 545);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.genreSpinner);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.magazineSpinner);
@@ -406,5 +452,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox genreSpinner;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Button helpButton;
     }
 }

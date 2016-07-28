@@ -32,12 +32,17 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // buttonExit
             // 
+            this.helpProvider1.SetHelpString(this.buttonExit, "Przycisk pozwalajacy anulowac wprowadzone zmiany i/lub przeniesc do poprzedniego " +
+        "ekranu");
             this.buttonExit.Location = new System.Drawing.Point(178, 106);
             this.buttonExit.Name = "buttonExit";
+            this.helpProvider1.SetShowHelp(this.buttonExit, true);
             this.buttonExit.Size = new System.Drawing.Size(148, 23);
             this.buttonExit.TabIndex = 54;
             this.buttonExit.Text = "Anuluj";
@@ -46,8 +51,10 @@
             // 
             // buttonSave
             // 
+            this.helpProvider1.SetHelpString(this.buttonSave, "Przycisk pozwalajacy zapisac wprowadzone zmiany");
             this.buttonSave.Location = new System.Drawing.Point(16, 106);
             this.buttonSave.Name = "buttonSave";
+            this.helpProvider1.SetShowHelp(this.buttonSave, true);
             this.buttonSave.Size = new System.Drawing.Size(136, 23);
             this.buttonSave.TabIndex = 53;
             this.buttonSave.Text = "Zarezerwuj";
@@ -56,8 +63,10 @@
             // 
             // datePicker
             // 
+            this.helpProvider1.SetHelpString(this.datePicker, "Pole pozwalajace wybrac termin koncowy rezerwacji");
             this.datePicker.Location = new System.Drawing.Point(112, 65);
             this.datePicker.Name = "datePicker";
+            this.helpProvider1.SetShowHelp(this.datePicker, true);
             this.datePicker.Size = new System.Drawing.Size(223, 20);
             this.datePicker.TabIndex = 52;
             // 
@@ -71,11 +80,24 @@
             this.label1.TabIndex = 51;
             this.label1.Text = "Termin końca";
             // 
+            // helpButton
+            // 
+            this.helpProvider1.SetHelpString(this.helpButton, "Przycisk pozwalajacy wlaczyc/wylaczyc pomoc");
+            this.helpButton.Location = new System.Drawing.Point(112, 13);
+            this.helpButton.Name = "helpButton";
+            this.helpProvider1.SetShowHelp(this.helpButton, true);
+            this.helpButton.Size = new System.Drawing.Size(211, 23);
+            this.helpButton.TabIndex = 55;
+            this.helpButton.Text = "Pomoc";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
             // ReservationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(347, 141);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.datePicker);
@@ -93,5 +115,7 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Button helpButton;
     }
 }

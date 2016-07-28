@@ -29,6 +29,11 @@ namespace Biblioteka.Forms
         private Dictionary<String, Reservation> reservationTagSet = new Dictionary<string, Reservation>();
         private Dictionary<String, ReaderApplication> readerApplicationTagSet = new Dictionary<string, ReaderApplication>();
 
+        private bool reservationForUser;
+        private bool borrowingForUser;
+        private User cachedUser;
+        private Resource cachedResource;
+
         List<Position> cachedPositions;
         List<Resource> cachedResources;
 
@@ -79,7 +84,9 @@ namespace Biblioteka.Forms
         private void btnShowBorrowings_Click(object sender, EventArgs e)
         {
             ResourceOrUserForm choiceForm = new ResourceOrUserForm();
-            choiceForm.ShowDialog(); 
+            choiceForm.ShowDialog();
+
+            borrowingForUser = choiceForm.Choice;
 
             if (choiceForm.Choice)
                 ShowBorrowingsForUser();
@@ -87,9 +94,16 @@ namespace Biblioteka.Forms
                 ShowBorrowingsForResource();            
         }
 
-        private void ShowBorrowingsForUser()
+        private void ShowBorrowingsForUser(User user = null)
         {
-            User temp = GuiUtils.GetSelected<User>(lstViewUsers, userTagSet);
+            User temp;
+
+            if (user != null)
+                temp = user;
+            else             
+                temp = GuiUtils.GetSelected<User>(lstViewUsers, userTagSet);
+
+            cachedUser = temp;
             Reader reader = null;
 
             if (temp != null)
@@ -105,9 +119,14 @@ namespace Biblioteka.Forms
             }
         }
 
-        private void ShowBorrowingsForResource()
+        private void ShowBorrowingsForResource(Resource cResource = null)
         {
-            Resource resource = GuiUtils.GetSelected<Resource>(lstViewResources, resourceTagSet);
+            Resource resource;
+
+            if (cResource != null)
+                resource = cResource;
+            else
+                resource = GuiUtils.GetSelected<Resource>(lstViewResources, resourceTagSet);
 
             if (resource != null)
             {
@@ -179,7 +198,7 @@ namespace Biblioteka.Forms
 
             foreach (Borrowing borrowing in borrowings)
             {
-                string[] row = { borrowing.Reader.User.Name + " " + borrowing.Reader.User.Surname, borrowing.BorrowingDate.ToString(), borrowing.ReturnTerm.ToString() };
+                string[] row = { borrowing.Reader.User.Name + " " + borrowing.Reader.User.Surname, borrowing.BorrowingDate.ToShortDateString(), borrowing.ReturnTerm.ToShortDateString() };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = borrowing.GetHashCode();
                 borrowingTagSet.Add(item.Tag.ToString(), borrowing);
@@ -196,7 +215,7 @@ namespace Biblioteka.Forms
                 authors += authorship.Author.Name + " " + authorship.Author.Surname + "; ";
             }
 
-            string[] row = { book.Book.Title, authors, "", borrowing.BorrowingDate.ToString(), borrowing.ReturnTerm.ToString() };
+            string[] row = { book.Book.Title, authors, "", borrowing.BorrowingDate.ToShortDateString(), borrowing.ReturnTerm.ToShortDateString() };
             
             return row;
         }
@@ -210,15 +229,15 @@ namespace Biblioteka.Forms
                 authors += authorship.Author.Name + " " + authorship.Author.Surname + "; ";
             }
 
-            string[] row = { book.Book.Title, authors, "", reservation.RealizationDate.ToString() };
+            string[] row = { book.Book.Title, authors, "", reservation.RealizationDate.ToShortDateString() };
 
             return row;
         }
 
         private string[] GenerateGameRow(Borrowing borrowing)
         {
-            Game game = (Game)borrowing.Resource.Position;            
-            string[] row = { game.Name, "", "", borrowing.BorrowingDate.ToString(), borrowing.ReturnTerm.ToString() };
+            Game game = (Game)borrowing.Resource.Position;
+            string[] row = { game.Name, "", "", borrowing.BorrowingDate.ToShortDateString(), borrowing.ReturnTerm.ToShortDateString() };
 
             return row;
         }
@@ -226,7 +245,7 @@ namespace Biblioteka.Forms
         private string[] GenerateGameRow(Reservation reservation)
         {
             Game game = (Game)reservation.Resource.Position;
-            string[] row = { game.Name, "", "", reservation.RealizationDate.ToString() };
+            string[] row = { game.Name, "", "", reservation.RealizationDate.ToShortDateString() };
 
             return row;
         }
@@ -234,7 +253,7 @@ namespace Biblioteka.Forms
         private string[] GenerateMagazineNumberRow(Borrowing borrowing)
         {
             MagazineNumber magazineNumber = (MagazineNumber)borrowing.Resource.Position;
-            string[] row = { magazineNumber.Magazine.Title, "", magazineNumber.PublicationDate.ToString(), borrowing.BorrowingDate.ToString(), borrowing.ReturnTerm.ToString() };
+            string[] row = { magazineNumber.Magazine.Title, "", ((DateTime)magazineNumber.PublicationDate).ToShortDateString(), borrowing.BorrowingDate.ToShortDateString(), borrowing.ReturnTerm.ToShortDateString() };
 
             return row;
         }
@@ -242,7 +261,7 @@ namespace Biblioteka.Forms
         private string[] GenerateMagazineNumberRow(Reservation reservation)
         {
             MagazineNumber magazineNumber = (MagazineNumber)reservation.Resource.Position;
-            string[] row = { magazineNumber.Magazine.Title, "", magazineNumber.PublicationDate.ToString(), reservation.RealizationDate.ToString() };
+            string[] row = { magazineNumber.Magazine.Title, "", ((DateTime)magazineNumber.PublicationDate).ToShortDateString(), reservation.RealizationDate.ToShortDateString() };
 
             return row;
         }
@@ -284,6 +303,13 @@ namespace Biblioteka.Forms
                     MessageBox.Show("Naliczono karę w wysokości " + (((double) penalty / 100)).ToString() + " zł.",
                         "Informacja");
                 }
+
+                dbContext.SaveChanges();
+
+                if (borrowingForUser)
+                    ShowBorrowingsForUser(cachedUser);
+                else
+                    ShowBorrowingsForResource(cachedResource);
             }
             else
             {
@@ -291,7 +317,6 @@ namespace Biblioteka.Forms
                 return;
             }
 
-            dbContext.SaveChanges();
             MessageBox.Show("Zaksięgowano zwrot.", "Informacja");
         }
 
@@ -301,15 +326,24 @@ namespace Biblioteka.Forms
             ResourceOrUserForm choiceForm = new ResourceOrUserForm();
             choiceForm.ShowDialog();
 
+            reservationForUser = choiceForm.Choice;
+
             if (choiceForm.Choice)
                 ShowReservationsForUser();
             else
                 ShowReservationsForResource();   
         }
 
-        private void ShowReservationsForUser()
+        private void ShowReservationsForUser(User user = null)
         {
-            User temp = GuiUtils.GetSelected<User>(lstViewUsers, userTagSet);
+            User temp;
+
+            if (user != null)
+                temp = user;
+            else
+                temp = GuiUtils.GetSelected<User>(lstViewUsers, userTagSet);
+
+            cachedUser = temp;
             Reader reader = null;
 
             if (temp != null)
@@ -325,9 +359,16 @@ namespace Biblioteka.Forms
             }
         }
 
-        private void ShowReservationsForResource()
+        private void ShowReservationsForResource(Resource cResource = null)
         {
-            Resource resource = GuiUtils.GetSelected<Resource>(lstViewResources, resourceTagSet);
+            Resource resource;
+
+            if (cachedResource != null)
+                resource = cResource;
+            else
+                resource = GuiUtils.GetSelected<Resource>(lstViewResources, resourceTagSet);
+
+            cachedResource = resource;
 
             if (resource != null)
             {
@@ -395,7 +436,7 @@ namespace Biblioteka.Forms
 
             foreach (Reservation reservation in reservations)
             {
-                string[] row = { reservation.Reader.User.Name + " " + reservation.Reader.User.Surname, reservation.RealizationDate.ToString() };
+                string[] row = { reservation.Reader.User.Name + " " + reservation.Reader.User.Surname, reservation.RealizationDate.ToShortDateString() };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = reservation.GetHashCode();
                 reservationTagSet.Add(item.Tag.ToString(), reservation);
@@ -431,6 +472,13 @@ namespace Biblioteka.Forms
             if (reservation != null)
             {
                 dbContext.Reservations.Remove(reservation);
+
+                dbContext.SaveChanges();
+
+                if (reservationForUser)
+                    ShowReservationsForUser(cachedUser);
+                else
+                    ShowReservationsForResource(cachedResource);
             }
             else
             {
@@ -438,7 +486,6 @@ namespace Biblioteka.Forms
                 return;
             }
 
-            dbContext.SaveChanges();
             MessageBox.Show("Usunięto rezerwację.", "Informacja");
         }
 
@@ -935,7 +982,7 @@ namespace Biblioteka.Forms
             {
                 MagazineNumber mn = (MagazineNumber)position;
 
-                string[] row = { mn.Magazine.Title, mn.PublicationDate.ToString() };
+                string[] row = { mn.Magazine.Title, ((DateTime)mn.PublicationDate).ToShortDateString() };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = position.GetHashCode();
                 positionTagSet.Add(item.Tag.ToString(), position);
@@ -1068,7 +1115,7 @@ namespace Biblioteka.Forms
             {
                 MagazineNumber mn = (MagazineNumber)resource.Position;
 
-                string[] row = { resource.Amount.ToString(), mn.Magazine.Title, mn.PublicationDate.ToString() };
+                string[] row = { resource.Amount.ToString(), mn.Magazine.Title, ((DateTime)mn.PublicationDate).ToShortDateString() };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = resource.GetHashCode();
                 resourceTagSet.Add(item.Tag.ToString(), resource);
